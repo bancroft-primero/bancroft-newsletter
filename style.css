@@ -425,6 +425,11 @@ body {
   font-size: 1.3rem;
 }
 
+.classroom-flag {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
 .classroom-card table {
   width: 100%;
   border-collapse: collapse;
@@ -517,6 +522,11 @@ body {
 .roars-card:nth-child(6n+4) .roars-card-classroom { background: var(--color-roars-pill-1); }
 .roars-card:nth-child(6n+5) .roars-card-classroom { background: var(--color-roars-pill-2); }
 .roars-card:nth-child(6n+6) .roars-card-classroom { background: var(--color-roars-pill-3); }
+
+.roars-card-flag {
+  font-size: 1.3rem;
+  margin-bottom: 0.15rem;
+}
 
 .roars-card-name {
   font-weight: 700;

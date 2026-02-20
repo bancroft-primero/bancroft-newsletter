@@ -41,11 +41,13 @@ function buildClassSelector() {
   const allBtn = container.querySelector('[data-class=""]');
 
   // Add classroom buttons
+  const flags = configData.classroomFlags || {};
   configData.classrooms.forEach(classroom => {
     const btn = document.createElement('button');
     btn.className = 'class-btn';
     btn.dataset.class = classroom;
-    btn.textContent = classroom;
+    const flag = flags[classroom] || '';
+    btn.textContent = flag ? `${flag} ${classroom}` : classroom;
     container.appendChild(btn);
   });
 
@@ -246,8 +248,9 @@ function renderClassroomGrids(specials, labels) {
       </tr>`;
     }).join('');
 
+    const flag = (configData.classroomFlags || {})[classroom] || '';
     return `<div class="classroom-card">
-      <div class="classroom-card-header">${classroom}</div>
+      <div class="classroom-card-header">${classroom}<br><span class="classroom-flag">${flag}</span></div>
       <table>${rows}</table>
     </div>`;
   }).join('');
@@ -258,8 +261,10 @@ function renderROARS(roars) {
   const container = document.getElementById('roars-cards');
   container.innerHTML = configData.classrooms.map(classroom => {
     const name = roars[classroom] || '';
+    const flag = (configData.classroomFlags || {})[classroom] || '';
     return `<div class="roars-card">
       <div class="roars-card-classroom">${classroom}</div>
+      <div class="roars-card-flag">${flag}</div>
       <div class="roars-card-name">${name}</div>
     </div>`;
   }).join('');

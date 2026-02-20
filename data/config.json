@@ -11,6 +11,15 @@
     "Venezuela":  { "A": "Art",     "B": "Music",   "C": "Science", "D": "PE",      "E": "PE",      "F": "Library" }
   },
 
+  "classroomFlags": {
+    "Cartagena": "🇨🇴",
+    "Colombia": "🇨🇴",
+    "España": "🇪🇸",
+    "DR": "🇩🇴",
+    "Managua": "🇳🇮",
+    "Venezuela": "🇻🇪"
+  },
+
   "subjectIcons": {
     "Music": "🎵",
     "Science": "🔬",
