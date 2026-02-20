@@ -1,22 +1,18 @@
 {
   "date": "2025-11-04",
   "season": "fall",
-
   "welcome": {
     "en": "Happy November! We finished Term 1 last Friday and starting Term 2 this week, so we'll be processing grades in the coming weeks. Be on the lookout for that. Have a great week!",
     "es": "¡Feliz noviembre! Terminamos el primer trimestre el viernes pasado y comenzamos el segundo esta semana, así que procesaremos las calificaciones en las próximas semanas. Estén atentos. ¡Que tengan una excelente semana!"
   },
-
   "math": {
-    "en": "This week in math, students are working in Topic C: Finding an Unknown Part in Change-Unknown Problems. They're learning to use the Read\u2013Draw\u2013Write process to solve addition and subtraction problems where part of the information is missing. Through stories like \"Some frogs jumped off the log,\" students practice counting on and counting back to find what's unknown. Encourage your child to explain their drawing and number sentence when solving problems at home.",
-    "es": "Esta semana en matemáticas, los estudiantes trabajan en el Tema C: Hallar una parte desconocida en problemas con cambio desconocido. Están aprendiendo a usar el proceso Lee\u2013Dibuja\u2013Escribe para resolver problemas de suma y resta cuando falta una parte de la información. A través de historias como \"Algunas ranas saltaron del tronco,\" los estudiantes practican contar hacia adelante y hacia atrás para encontrar lo desconocido. Anime a su hijo/a a explicar su dibujo y oración numérica al resolver problemas en casa."
+    "en": "This week in math, students are working in Topic C: Finding an Unknown Part in Change-Unknown Problems. They're learning to use the Read–Draw–Write process to solve addition and subtraction problems where part of the information is missing. Through stories like \"Some frogs jumped off the log,\" students practice counting on and counting back to find what's unknown. Encourage your child to explain their drawing and number sentence when solving problems at home.",
+    "es": "Esta semana en matemáticas, los estudiantes trabajan en el Tema C: Hallar una parte desconocida en problemas con cambio desconocido. Están aprendiendo a usar el proceso Lee–Dibuja–Escribe para resolver problemas de suma y resta cuando falta una parte de la información. A través de historias como \"Algunas ranas saltaron del tronco,\" los estudiantes practican contar hacia adelante y hacia atrás para encontrar lo desconocido. Anime a su hijo/a a explicar su dibujo y oración numérica al resolver problemas en casa."
   },
-
   "literacy": {
-    "en": "This week in literacy, first graders will continue exploring informational texts in both English and Spanish through our Endangered Animals unit. Students will research their chosen animal and learn to identify its classification\u2014mammal, reptile, bird, fish, or amphibian\u2014while comparing and contrasting information across texts. They will also bridge vocabulary between English and Spanish to deepen understanding and make cross-language connections. In Spanish, students will practice reading and writing words with g (ga, gue, gui, go, gu) and verb endings -amos, -emos, and -imos using words like llegamos, seguimos, jugamos, and pagamos. Please continue to support your child by discussing animal classifications, practicing vocabulary, and reading together for 20 minutes each day in both languages.",
+    "en": "This week in literacy, first graders will continue exploring informational texts in both English and Spanish through our Endangered Animals unit. Students will research their chosen animal and learn to identify its classification—mammal, reptile, bird, fish, or amphibian—while comparing and contrasting information across texts. They will also bridge vocabulary between English and Spanish to deepen understanding and make cross-language connections. In Spanish, students will practice reading and writing words with g (ga, gue, gui, go, gu) and verb endings -amos, -emos, and -imos using words like llegamos, seguimos, jugamos, and pagamos. Please continue to support your child by discussing animal classifications, practicing vocabulary, and reading together for 20 minutes each day in both languages.",
     "es": "Esta semana, en lectoescritura, los estudiantes de primer grado continuarán explorando textos informativos en inglés y en español dentro de nuestra unidad sobre animales en peligro de extinción. Cada estudiante investigará el animal que eligió y aprenderá a identificar su clasificación (mamífero, reptil, ave, pez o anfibio), además de comparar y contrastar información entre textos. También conectarán vocabulario entre ambos idiomas para fortalecer la comprensión. En español, practicarán la lectura y escritura de palabras con g (ga, gue, gui, go, gu) y terminaciones verbales -amos, -emos, y -imos, usando palabras como llegamos, seguimos, jugamos y pagamos. Por favor, apoyen a sus hijos en casa conversando sobre las clasificaciones de los animales, practicando vocabulario y leyendo juntos 20 minutos diarios en ambos idiomas."
   },
-
   "specials": {
     "monday": "NO SCHOOL",
     "tuesday": "E",
@@ -24,13 +20,12 @@
     "thursday": "A",
     "friday": "B"
   },
-
   "roars": {
-    "Cartagena": "Ronan Archambault",
-    "Colombia": "June Gabbai",
-    "España": "Nacer Benkhraba",
-    "DR": "Kimberly Linares",
-    "Managua": "Meidy Cerros Ramírez",
-    "Venezuela": "Adrien David"
+    "Cartagena": "Ronan A.",
+    "Colombia": "June G.",
+    "España": "Nacer B.",
+    "DR": "Kimberly L.",
+    "Managua": "Meidy R.",
+    "Venezuela": "Adrien D."
   }
 }

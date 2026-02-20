@@ -1,22 +1,18 @@
 {
   "date": "2025-12-01",
   "season": "fall",
-
   "welcome": {
     "en": "Welcome back from break! We hope you all had a restful and rejuvenating break. Pleasure ensure to continue labeling student items and keep checking the Lost and Found if your child is missing a personal item.",
     "es": "Bienvenidos de vuelta de las vacaciones! Esperamos que hayan tenido un descanso reparador y revitalizante. Les pido que sigan etiquetando los articulos de los estudiantes y que revisen la seccion de objetos perdidos si a su hijo/a le falta algun articulo personal."
   },
-
   "math": {
     "en": "This week, we will be finishing up our End-of-Module math project. Students have been working hard to collect, organize and compare their class data to present it to you on Wednesday December 3rd! Save the date! Then, students will be taking an assessment to finalize Module 2 and prepare for Module 3. At home, continue to practice counting on from a number to add and counting backward to subtract.",
-    "es": "Esta semana, terminaremos nuestro proyecto de matematicas de fin de modulo. Los estudiantes se han esforzado mucho para recopilar, organizar y comparar sus datos para presentarselos el miercoles 3 de diciembre. \u00a1Reserven la fecha! Realizaran una evaluacion para finalizar el Modulo 2 y prepararse para el Modulo 3. En casa, sigan practicando contar hacia adelante a partir de un numero para sumar y contar hacia atras para restar."
+    "es": "Esta semana, terminaremos nuestro proyecto de matematicas de fin de modulo. Los estudiantes se han esforzado mucho para recopilar, organizar y comparar sus datos para presentarselos el miercoles 3 de diciembre. ¡Reserven la fecha! Realizaran una evaluacion para finalizar el Modulo 2 y prepararse para el Modulo 3. En casa, sigan practicando contar hacia adelante a partir de un numero para sumar y contar hacia atras para restar."
   },
-
   "literacy": {
     "en": "This week in literacy, students will continue learning about endangered animals while focusing on the actions people can take to protect them. They will also explore why certain animals become endangered, discussing vocabulary such as poachers, habitat loss, climate change, and pollution.\n\nIn Spanish, students will practice reading and writing words with the letter j and use them in meaningful sentences. We will also complete our end-of-unit writing test. At home, please support your child by practicing words like jirafa, jaguar, jugo, jamon, jabon, and juguetes, and by reading for 20 minutes a day in English and Spanish while talking about what you read.",
-    "es": "Esta semana, en lectoescritura, los estudiantes leeran y escribiran sobre las acciones que las personas pueden tomar para proteger a los animales que estan en peligro de extincion. Tambien continuaremos finalizando la Unidad 2 sobre Animales en Peligro y exploraremos la pregunta: \u00bfPor que esta en peligro tu animal? Los estudiantes aprenderan vocabulario como cazadores furtivos, perdida de habitat, cambio climatico y contaminacion.\n\nEn el estudio de palabras en espanol, practicaremos la lectura y escritura de palabras con la letra j, usando ejemplos como jirafa, jaguar, jugo, jamon, jabon y juguetes. Recuerden leer 20 minutos al dia en ambos idiomas y practicar las palabras esenciales de primer grado."
+    "es": "Esta semana, en lectoescritura, los estudiantes leeran y escribiran sobre las acciones que las personas pueden tomar para proteger a los animales que estan en peligro de extincion. Tambien continuaremos finalizando la Unidad 2 sobre Animales en Peligro y exploraremos la pregunta: ¿Por que esta en peligro tu animal? Los estudiantes aprenderan vocabulario como cazadores furtivos, perdida de habitat, cambio climatico y contaminacion.\n\nEn el estudio de palabras en espanol, practicaremos la lectura y escritura de palabras con la letra j, usando ejemplos como jirafa, jaguar, jugo, jamon, jabon y juguetes. Recuerden leer 20 minutos al dia en ambos idiomas y practicar las palabras esenciales de primer grado."
   },
-
   "specials": {
     "monday": "B",
     "tuesday": "C",
@@ -24,13 +20,12 @@
     "thursday": "E",
     "friday": "F"
   },
-
   "roars": {
-    "Cartagena": "Trent Kelly",
-    "Colombia": "Silas Balijepalli",
-    "España": "Elissa Reyes",
-    "DR": "Ava Lent",
-    "Managua": "Adi Parbhoo",
-    "Venezuela": "Elodie Koeppel"
+    "Cartagena": "Trent K.",
+    "Colombia": "Silas B.",
+    "España": "Elissa R.",
+    "DR": "Ava L.",
+    "Managua": "Adi P.",
+    "Venezuela": "Elodie K."
   }
 }

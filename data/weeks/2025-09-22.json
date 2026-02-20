@@ -1,22 +1,18 @@
 {
   "date": "2025-09-22",
   "season": "default",
-
   "welcome": {
     "en": "Happy Fall! Students will soon start bringing gloves and hats to school. Please label these items (with student and homeroom names). Also, if you're interested in learning what students have been working on, check out their backpacks on Friday (you'll find a review packet there). Have a great week!",
     "es": "¡Feliz otoño! Pronto los estudiantes comenzarán a traer guantes y gorros a la escuela. Por favor, pongan etiquetas en estos artículos (con el nombre del estudiante y el del maestro de salón). Además, si están interesados en ver en qué han estado trabajando los estudiantes, revisen sus mochilas el viernes (allí encontrarán un paquete de repaso). ¡Que tengan una excelente semana!"
   },
-
   "math": {
     "en": "In math, we will continue to work on identifying part-part-whole relationships. At home, have your kiddo solve addition problems to find for the total unknown as well as unknown part. For example, give them an equation like 8+2=__ for unknown total and 6+__=10 for unknown part.",
     "es": "En matemáticas, seguiremos trabajando en la identificación de las relaciones entre partes y todo. En casa, pídele a tu hij@ que resuelva problemas de suma para hallar tanto el total como la parte desconocida. Por ejemplo, dale una ecuación como 8+2=__ para el total desconocido y 6+__=10 para la parte desconocida."
   },
-
   "literacy": {
     "en": "We have finished the reading assessments and we remain very excited about learning about maps of our world. In phonics, this week we focused on reading and writing words with diphthongs. We will also read and discuss texts to answer the question: What does a map of my country look like? Practice reading, breaking apart, and writing words with diphthongs such as: cielo (cie-lo), lluvia, afuera, pueblo, ruido, and ciudad. Read for 20 minutes and ask your child questions about the reading.\n\nWe are continuing our first unit on maps. Our focus question for this week is \"How do I use a map of my country to explore different landmarks?\" We will be discussing vocabulary such as: modes of transportation and landmarks. Discuss what landmarks you see in Washington DC or near your house.",
     "es": "Español: Hemos terminado los exámenes de lectura y continuamos muy emocionados aprendiendo sobre mapas de nuestro mundo. En fonética, esta semana nos enfocamos en leer y escribir palabras con diptongos. También, leeremos y discutiremos textos para responder a la pregunta ¿Cómo se ve un mapa de mi país? Practique a leer, separar y escribir palabras con diptongos como: cielo (cie-lo), lluvia, afuera, pueblo, ruido y ciudad. Lea durante 20 minutos y haga preguntas a su hij@ sobre la lectura.\n\nInglés: Continuamos con nuestra primera unidad sobre mapas. Nuestra pregunta clave de esta semana es: \"¿Cómo uso un mapa de mi país para explorar diferentes lugares emblemáticos?\". Hablaremos sobre vocabulario como medios de transporte y lugares emblemáticos. Comenten qué lugares emblemáticos ven en Washington D. C. o cerca de su casa."
   },
-
   "specials": {
     "monday": "B",
     "tuesday": "C",
@@ -24,13 +20,12 @@
     "thursday": "E",
     "friday": "F"
   },
-
   "roars": {
-    "Cartagena": "Mateo Zambrano",
-    "Colombia": "Charles Herzog",
-    "España": "Lis Dutta",
-    "DR": "Liam Buran",
-    "Managua": "Briana Martínez Lazo",
-    "Venezuela": "Ketzaly Lopez Melendez"
+    "Cartagena": "Mateo Z.",
+    "Colombia": "Charles H.",
+    "España": "Lis D.",
+    "DR": "Liam B.",
+    "Managua": "Briana L.",
+    "Venezuela": "Ketzaly M."
   }
 }

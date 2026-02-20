@@ -1,22 +1,18 @@
 {
   "date": "2025-11-24",
   "season": "fall",
-
   "welcome": {
     "en": "This a short 2-day week and we hope you all enjoy Thanksgiving with your loved ones. Also, We plan to conduct the classroom Spelling Bee on Monday, December 8. Please ask students to start studying the list of words that was previously handed to students. Thanks!",
-    "es": "Esta semana es corta, de solo dos dias, y esperamos que disfruten del Dia de Accion de Gracias con sus seres queridos. Ademas, planeamos realizar el concurso de ortografia en el aula el lunes 8 de diciembre. Por favor, pidan a los estudiantes que comiencen a estudiar la lista de palabras que se les entrego previamente. \u00a1Gracias!"
+    "es": "Esta semana es corta, de solo dos dias, y esperamos que disfruten del Dia de Accion de Gracias con sus seres queridos. Ademas, planeamos realizar el concurso de ortografia en el aula el lunes 8 de diciembre. Por favor, pidan a los estudiantes que comiencen a estudiar la lista de palabras que se les entrego previamente. ¡Gracias!"
   },
-
   "math": {
-    "en": "This week, we're beginning a new math topic that can be tricky for students: comparison problems. Students will learn to compare two quantities and use addition or subtraction to figure out how many more or fewer one group has than another. For example: Juan has 8 pencils and Lisa has 5\u2014how many more does Juan have? Students can solve by adding 5 + __ = 8 or subtracting 8 \u2013 5 = __. Practice at home with real objects like blueberries or crackers; concrete practice helps build strong understanding before moving on to more abstract work in class.",
-    "es": "Esta semana comenzamos un nuevo tema de matematicas que puede resultar dificil: los problemas de comparacion. Los estudiantes aprenderan a comparar dos cantidades y usar la suma o la resta para averiguar cuantos mas o cuantos menos tiene un grupo que otro. Por ejemplo: Juan tiene 8 lapices y Lisa 5. \u00bfCuantos mas tiene Juan? Pueden resolver sumando 5 + __ = 8 o restando 8 \u2013 5 = __. Practiquen en casa con objetos reales como arandanos o galletas; la practica concreta ayudara a fortalecer la comprension antes de avanzar a trabajo mas abstracto en clase."
+    "en": "This week, we're beginning a new math topic that can be tricky for students: comparison problems. Students will learn to compare two quantities and use addition or subtraction to figure out how many more or fewer one group has than another. For example: Juan has 8 pencils and Lisa has 5—how many more does Juan have? Students can solve by adding 5 + __ = 8 or subtracting 8 – 5 = __. Practice at home with real objects like blueberries or crackers; concrete practice helps build strong understanding before moving on to more abstract work in class.",
+    "es": "Esta semana comenzamos un nuevo tema de matematicas que puede resultar dificil: los problemas de comparacion. Los estudiantes aprenderan a comparar dos cantidades y usar la suma o la resta para averiguar cuantos mas o cuantos menos tiene un grupo que otro. Por ejemplo: Juan tiene 8 lapices y Lisa 5. ¿Cuantos mas tiene Juan? Pueden resolver sumando 5 + __ = 8 o restando 8 – 5 = __. Practiquen en casa con objetos reales como arandanos o galletas; la practica concreta ayudara a fortalecer la comprension antes de avanzar a trabajo mas abstracto en clase."
   },
-
   "literacy": {
-    "en": "This week in literacy, students will continue building their reading and writing skills in both English and Spanish. In ELA, we will keep learning about digraphs\u2014two letters that make one sound\u2014such as sh, ch, ph, wh, th, and ck. Students will also continue their work on endangered animals as they edit and develop their bilingual animal books.\n\nIn Spanish (SLA), we will review all of the word study skills practiced so far and read texts and complete activities related to Thanksgiving. As we head into the break, please encourage your child to read for at least 20 minutes each day in both languages and to continue practicing their heart word flashcards.",
-    "es": "Esta semana en lectura y escritura, los estudiantes seguiran desarrollando sus habilidades en ingles y en espanol. En ELA, continuaremos aprendiendo sobre los digrafos\u2014dos letras que producen un solo sonido\u2014como sh, ch, ph, wh, th y ck. Los estudiantes tambien seguiran trabajando en su proyecto sobre animales en peligro de extincion mientras editan y desarrollan sus libros bilingues sobre animales.\n\nEn la clase de espanol (SLA), repasaremos todas las destrezas de estudio de palabras que hemos practicado hasta ahora y leeremos textos y realizaremos actividades relacionadas con el Dia de Accion de Gracias. Al acercarnos a las vacaciones, les pedimos que animen a sus hijos a leer al menos 20 minutos cada dia en ambos idiomas y a seguir practicando sus tarjetas de palabras esenciales en ingles."
+    "en": "This week in literacy, students will continue building their reading and writing skills in both English and Spanish. In ELA, we will keep learning about digraphs—two letters that make one sound—such as sh, ch, ph, wh, th, and ck. Students will also continue their work on endangered animals as they edit and develop their bilingual animal books.\n\nIn Spanish (SLA), we will review all of the word study skills practiced so far and read texts and complete activities related to Thanksgiving. As we head into the break, please encourage your child to read for at least 20 minutes each day in both languages and to continue practicing their heart word flashcards.",
+    "es": "Esta semana en lectura y escritura, los estudiantes seguiran desarrollando sus habilidades en ingles y en espanol. En ELA, continuaremos aprendiendo sobre los digrafos—dos letras que producen un solo sonido—como sh, ch, ph, wh, th y ck. Los estudiantes tambien seguiran trabajando en su proyecto sobre animales en peligro de extincion mientras editan y desarrollan sus libros bilingues sobre animales.\n\nEn la clase de espanol (SLA), repasaremos todas las destrezas de estudio de palabras que hemos practicado hasta ahora y leeremos textos y realizaremos actividades relacionadas con el Dia de Accion de Gracias. Al acercarnos a las vacaciones, les pedimos que animen a sus hijos a leer al menos 20 minutos cada dia en ambos idiomas y a seguir practicando sus tarjetas de palabras esenciales en ingles."
   },
-
   "specials": {
     "monday": "F",
     "tuesday": "A",
@@ -24,13 +20,12 @@
     "thursday": "NO SCHOOL",
     "friday": "NO SCHOOL"
   },
-
   "roars": {
-    "Cartagena": "Oliver Acuna",
-    "Colombia": "Owen Woodward",
-    "España": "Ashley Chavez",
-    "DR": "Jacob Maradiaga",
-    "Managua": "Wyatt Williams",
-    "Venezuela": "Josephine Marion"
+    "Cartagena": "Oliver A.",
+    "Colombia": "Owen W.",
+    "España": "Ashley C.",
+    "DR": "Jacob M.",
+    "Managua": "Wyatt W.",
+    "Venezuela": "Josephine M."
   }
 }

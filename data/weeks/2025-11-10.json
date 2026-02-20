@@ -1,22 +1,18 @@
 {
   "date": "2025-11-10",
   "season": "fall",
-
   "welcome": {
-    "en": "Happy November! As the weather cools, students are coming in bundled with sweaters, hats, and jackets, so please be sure to label all belongings to help lost items find their way home. This is a short week, with no school on Tuesday for Veterans Day, and November is a shorter month overall with only 15 instructional days. We will also be out November 26\u201328 for Thanksgiving. If your child misplaces something, the Lost and Found is open from 7:00\u20138:20 a.m., 9:00 a.m.\u20133:00 p.m., and 3:45\u20136:00 p.m.",
-    "es": "¡Feliz noviembre! A medida que baja la temperatura, los estudiantes vienen con suéteres, gorros y chaquetas, así que por favor asegúrense de poner el nombre en todas las pertenencias para que los objetos perdidos puedan regresar a casa. Esta es una semana corta, sin clases el martes por el Día de los Veteranos, y noviembre en general es un mes más breve con solo 15 días de instrucción. También estaremos sin clases del 26 al 28 de noviembre por el Día de Acción de Gracias. Si su hijo/a pierde algo, el Objetos Perdidos está abierto de 7:00\u20138:20 a.m., 9:00 a.m.\u20133:00 p.m. y 3:45\u20136:00 p.m."
+    "en": "Happy November! As the weather cools, students are coming in bundled with sweaters, hats, and jackets, so please be sure to label all belongings to help lost items find their way home. This is a short week, with no school on Tuesday for Veterans Day, and November is a shorter month overall with only 15 instructional days. We will also be out November 26–28 for Thanksgiving. If your child misplaces something, the Lost and Found is open from 7:00–8:20 a.m., 9:00 a.m.–3:00 p.m., and 3:45–6:00 p.m.",
+    "es": "¡Feliz noviembre! A medida que baja la temperatura, los estudiantes vienen con suéteres, gorros y chaquetas, así que por favor asegúrense de poner el nombre en todas las pertenencias para que los objetos perdidos puedan regresar a casa. Esta es una semana corta, sin clases el martes por el Día de los Veteranos, y noviembre en general es un mes más breve con solo 15 días de instrucción. También estaremos sin clases del 26 al 28 de noviembre por el Día de Acción de Gracias. Si su hijo/a pierde algo, el Objetos Perdidos está abierto de 7:00–8:20 a.m., 9:00 a.m.–3:00 p.m. y 3:45–6:00 p.m."
   },
-
   "math": {
-    "en": "This week in math, students will continue to use the Read\u2013Draw\u2013Write process to solve addition and subtraction problems where part of the information is missing. Through stories like \"There are 10 rocks. 7 rocks are heart-shaped and others are round. How many are round?,\" students practice counting on and counting back to find what's unknown. Encourage your child to create their own problems with unknown part and explain their drawing, number bond and number sentence when solving problems at home.",
-    "es": "Esta semana en matemáticas, los estudiantes continuarán usando el proceso Lee\u2013Dibuja\u2013Escribe para resolver problemas de suma y resta cuando falta parte de la información. A través de historias como \"Hay 10 piedras. 7 piedras tienen forma de corazón y las otras son redondas. ¿Cuántas son redondas?\", los estudiantes practican contar hacia adelante y hacia atrás para encontrar lo desconocido. Anime a su hijo/a a crear sus propios problemas con una parte desconocida y a explicar su dibujo, vínculo numérico y oración numérica al resolver problemas en casa."
+    "en": "This week in math, students will continue to use the Read–Draw–Write process to solve addition and subtraction problems where part of the information is missing. Through stories like \"There are 10 rocks. 7 rocks are heart-shaped and others are round. How many are round?,\" students practice counting on and counting back to find what's unknown. Encourage your child to create their own problems with unknown part and explain their drawing, number bond and number sentence when solving problems at home.",
+    "es": "Esta semana en matemáticas, los estudiantes continuarán usando el proceso Lee–Dibuja–Escribe para resolver problemas de suma y resta cuando falta parte de la información. A través de historias como \"Hay 10 piedras. 7 piedras tienen forma de corazón y las otras son redondas. ¿Cuántas son redondas?\", los estudiantes practican contar hacia adelante y hacia atrás para encontrar lo desconocido. Anime a su hijo/a a crear sus propios problemas con una parte desconocida y a explicar su dibujo, vínculo numérico y oración numérica al resolver problemas en casa."
   },
-
   "literacy": {
     "en": "This week in literacy, students will be learning about animal life cycles in both Spanish and English. They will explore how animals grow and change, draw and label life cycle diagrams, and use transition words to describe each stage. In English, students will discuss vocabulary such as life cycle and sequential words like first, next, then, and last. In Spanish word study, they will work with syllables that contain c and q, reading and writing words to practice using them. Please continue talking with your child about the animal they are researching and make time for 20 minutes of daily reading.",
     "es": "Esta semana en lectoescritura, los estudiantes aprenderán sobre los ciclos de vida de los animales tanto en español como en inglés. Explorarán cómo los animales crecen y cambian, dibujarán y rotularán diagramas del ciclo de vida y usarán palabras de secuencia para describir cada etapa. En inglés, trabajarán vocabulario como ciclo de vida y palabras como primero, después, luego y por último. En el estudio de palabras en español, practicarán sílabas que contienen c y q, leyendo y escribiendo palabras para reforzar su uso. Por favor, continúen conversando con su estudiante sobre el animal que está investigando y hagan tiempo para 20 minutos de lectura diaria."
   },
-
   "specials": {
     "monday": "C",
     "tuesday": "NO SCHOOL",
@@ -24,13 +20,12 @@
     "thursday": "E",
     "friday": "F"
   },
-
   "roars": {
-    "Cartagena": "Ramona Lawrence",
-    "Colombia": "Zabdiel Campusano",
-    "España": "Nicolle Tunay",
-    "DR": "Paloma Carrasco McConnell",
-    "Managua": "Leonora Espinoza",
-    "Venezuela": "Elena Hernandez Villagres"
+    "Cartagena": "Ramona L.",
+    "Colombia": "Zabdiel C.",
+    "España": "Nicolle T.",
+    "DR": "Paloma M.",
+    "Managua": "Leonora E.",
+    "Venezuela": "Elena V."
   }
 }

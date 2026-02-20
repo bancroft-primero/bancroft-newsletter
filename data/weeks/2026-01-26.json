@@ -1,22 +1,18 @@
 {
   "date": "2026-01-26",
   "season": "winter",
-
   "welcome": {
-    "en": "This is a short week, as there is no school for students on Monday. With snow expected this weekend, we hope families have a chance to enjoy it\u2014whether by playing outside or staying warm and cozy indoors. As we continue learning about family narratives, take a moment to turn your snow day into a family story by talking, drawing, or writing about what you did together. We look forward to seeing students back at school ready to share their stories! Please keep an eye out for any announcements about any possible weather-related closures or delays in the coming week.",
-    "es": "Esta es una semana corta, ya que no habr\u00e1 clases para los estudiantes el lunes. Con la nieve que se espera este fin de semana, esperamos que las familias puedan disfrutarla, ya sea jugando afuera o abrigados en casa. Mientras continuamos aprendiendo sobre narrativas familiares, conviertan su d\u00eda de nieve en una historia familiar hablando, dibujando o escribiendo sobre lo que hicieron juntos. \u00a1Esperamos ver a los estudiantes de regreso listos para compartir sus aventuras! Por favor, est\u00e9n atentos a posibles anuncios sobre cierres o retrasos relacionados con el clima."
+    "en": "This is a short week, as there is no school for students on Monday. With snow expected this weekend, we hope families have a chance to enjoy it—whether by playing outside or staying warm and cozy indoors. As we continue learning about family narratives, take a moment to turn your snow day into a family story by talking, drawing, or writing about what you did together. We look forward to seeing students back at school ready to share their stories! Please keep an eye out for any announcements about any possible weather-related closures or delays in the coming week.",
+    "es": "Esta es una semana corta, ya que no habrá clases para los estudiantes el lunes. Con la nieve que se espera este fin de semana, esperamos que las familias puedan disfrutarla, ya sea jugando afuera o abrigados en casa. Mientras continuamos aprendiendo sobre narrativas familiares, conviertan su día de nieve en una historia familiar hablando, dibujando o escribiendo sobre lo que hicieron juntos. ¡Esperamos ver a los estudiantes de regreso listos para compartir sus aventuras! Por favor, estén atentos a posibles anuncios sobre cierres o retrasos relacionados con el clima."
   },
-
   "math": {
-    "en": "This week, we will focus on adding and subtracting a one-digit number to or from a two-digit number. At home, have your child solve subtraction problems with teen numbers, such as 15 \u2212 7 = __, 18 \u2212 5 = __, and 17 \u2212 6 = __. Ask them to explain the strategy they used to solve each problem, and encourage them to share their thinking in Spanish.",
-    "es": "Esta semana nos centraremos en sumar y restar n\u00fameros de dos d\u00edgitos con n\u00fameros de un d\u00edgito. En casa, p\u00eddale a su hijo/a que resuelva problemas de resta con n\u00fameros entre 10 y 19, como 15 \u2212 7 = __, 18 \u2212 5 = __ y 17 \u2212 6 = __. P\u00eddale que explique la estrategia que utiliz\u00f3 para resolver cada problema y an\u00edmele a compartir su razonamiento en espa\u00f1ol."
+    "en": "This week, we will focus on adding and subtracting a one-digit number to or from a two-digit number. At home, have your child solve subtraction problems with teen numbers, such as 15 − 7 = __, 18 − 5 = __, and 17 − 6 = __. Ask them to explain the strategy they used to solve each problem, and encourage them to share their thinking in Spanish.",
+    "es": "Esta semana nos centraremos en sumar y restar números de dos dígitos con números de un dígito. En casa, pídale a su hijo/a que resuelva problemas de resta con números entre 10 y 19, como 15 − 7 = __, 18 − 5 = __ y 17 − 6 = __. Pídale que explique la estrategia que utilizó para resolver cada problema y anímele a compartir su razonamiento en español."
   },
-
   "literacy": {
-    "en": "This week in literacy, in Spanish class (SLA) students will read to identify how an author presents a problem and its solution in a story and practice recognizing what the character does to solve it. They will also describe events in order using sequence words such as first, next, then, and finally to strengthen comprehension and sequencing skills. In English (ELA), we will continue exploring Small Moments, or zoomed-in parts of a narrative, and use the five senses\u2014smell, taste, touch, sight, and hearing\u2014to add detail to our storytelling. Please continue discussing narratives and small moments at home as students begin sharing their own stories.",
-    "es": "Esta semana en lectoescritura, en la clase de espa\u00f1ol (SLA) los estudiantes leer\u00e1n para identificar c\u00f3mo el autor presenta un problema y su soluci\u00f3n en una historia y reconocer qu\u00e9 hace el personaje para resolverlo. Tambi\u00e9n describir\u00e1n los eventos en orden usando palabras de secuencia como primero, despu\u00e9s, luego y por \u00faltimo para fortalecer la comprensi\u00f3n y las habilidades de secuenciaci\u00f3n. En ingl\u00e9s (ELA), continuaremos explorando los Momentos Peque\u00f1os, o partes espec\u00edficas de una narrativa, y usaremos los cinco sentidos\u2014olfato, gusto, tacto, vista y o\u00eddo\u2014para a\u00f1adir detalles a nuestras historias. Por favor, contin\u00faen conversando en casa sobre narrativas y momentos peque\u00f1os mientras los estudiantes comienzan a compartir sus propias historias."
+    "en": "This week in literacy, in Spanish class (SLA) students will read to identify how an author presents a problem and its solution in a story and practice recognizing what the character does to solve it. They will also describe events in order using sequence words such as first, next, then, and finally to strengthen comprehension and sequencing skills. In English (ELA), we will continue exploring Small Moments, or zoomed-in parts of a narrative, and use the five senses—smell, taste, touch, sight, and hearing—to add detail to our storytelling. Please continue discussing narratives and small moments at home as students begin sharing their own stories.",
+    "es": "Esta semana en lectoescritura, en la clase de español (SLA) los estudiantes leerán para identificar cómo el autor presenta un problema y su solución en una historia y reconocer qué hace el personaje para resolverlo. También describirán los eventos en orden usando palabras de secuencia como primero, después, luego y por último para fortalecer la comprensión y las habilidades de secuenciación. En inglés (ELA), continuaremos explorando los Momentos Pequeños, o partes específicas de una narrativa, y usaremos los cinco sentidos—olfato, gusto, tacto, vista y oído—para añadir detalles a nuestras historias. Por favor, continúen conversando en casa sobre narrativas y momentos pequeños mientras los estudiantes comienzan a compartir sus propias historias."
   },
-
   "specials": {
     "monday": "NO SCHOOL",
     "tuesday": "A",
@@ -24,13 +20,12 @@
     "thursday": "C",
     "friday": "D"
   },
-
   "roars": {
-    "Cartagena": "Esperanza Bure-Hill",
-    "Colombia": "August Yu-Dobias",
-    "Espa\u00f1a": "Keilyn Garcia",
-    "DR": "Miles Ballenger",
-    "Managua": "Tova Kowalski",
-    "Venezuela": "Shasta Chandler"
+    "Cartagena": "Esperanza B.",
+    "Colombia": "August Y.",
+    "España": "Keilyn G.",
+    "DR": "Miles B.",
+    "Managua": "Tova K.",
+    "Venezuela": "Shasta C."
   }
 }

@@ -1,22 +1,18 @@
 {
   "date": "2025-10-20",
   "season": "fall",
-
   "welcome": {
     "en": "Happy October! It was great seeing many of you last Friday at our Hispanic Heritage celebration. As the weather changes, please make sure students are dressed accordinly, and perhaps in layers to they can stay adequately warm or cool from room to room.",
     "es": "¡Feliz octubre! Fue un placer verlos a muchos el viernes pasado en nuestra celebración de la Herencia Hispana. Con el cambio de clima, por favor, asegúrense de que los estudiantes se vistan adecuadamente, y quizás con varias capas, para que puedan mantenerse abrigados o frescos de una habitación a otra."
   },
-
   "math": {
     "en": "This week, we will be starting Module 2! Woohoo! At home, please review the steps on how to solve a word problem RDW (Read, Draw, Write)*you received this during PTCs*. Ask them what they should do while reading, drawing and writing their answer.",
     "es": "¡Esta semana comenzaremos el Módulo 2! ¡Woohoo! En casa, por favor repasen los pasos para resolver un problema de palabras usando RDW (Leer, Dibujar, Escribir) recibieron esto durante las conferencias de padres y maestros. Pregúntenles qué deben hacer mientras leen, dibujan y escriben su respuesta."
   },
-
   "literacy": {
     "en": "SLA: This week we're beginning our unit on endangered animals. We'll kick things off with a fun activity called \"The School Zoo,\" then read books and do a gallery walk to choose an animal to study. In word study, we'll read and write words ending in -ar, -er, -ir, -an, and -en, and review words with b and v. Please practice reading and writing sentences using trabajar (to work), regresar (to return), conocer (to meet/know), escribir (to write), preguntan (they ask), and enseñan (they teach). Continue reading daily for 20 minutes and asking your child questions about the reading.\n\nELA: We are starting our second unit on Endangered Animals! We will be researching endangered animals around the world while reading nonfiction texts. Please discuss the word endangered with your student. What does it mean? What are some endangered animals that you know of? Remember to have your student read to you every day for 20 minutes in English and Spanish.",
     "es": "Español: Esta semana comenzamos nuestra unidad sobre animales en peligro de extinción. Empezaremos con la divertida actividad El zoológico en la escuela, leeremos libros y haremos una galería para elegir un animal que estudiaremos. En estudio de palabras, leeremos y escribiremos palabras terminadas en -ar, -er, -ir, -an y -en, y repasaremos palabras con b y v. Practiquen leer y escribir oraciones usando trabajar, regresar, conocer, escribir, preguntan y enseñan. Continúen leyendo 20 minutos al día y haciendo preguntas sobre la lectura.\n\nInglés: ¡Estamos comenzando nuestra segunda unidad sobre animales en peligro de extinción! Investigaremos animales en peligro alrededor del mundo mientras leemos textos informativos. Por favor, hablen con su estudiante sobre la palabra \"en peligro de extinción.\" ¿Qué significa? ¿Qué animales en peligro conocen? Recuerden que su estudiante debe leerles todos los días durante 20 minutos en inglés y en español."
   },
-
   "specials": {
     "monday": "A",
     "tuesday": "B",
@@ -24,13 +20,12 @@
     "thursday": "D",
     "friday": "E"
   },
-
   "roars": {
-    "Cartagena": "Brianna Cerros",
-    "Colombia": "Mae Kimmel",
-    "España": "Keidelyn Diaz",
-    "DR": "Gabriel Cerros",
-    "Managua": "Alexa Molina",
-    "Venezuela": "Georgia Diamonstein"
+    "Cartagena": "Brianna C.",
+    "Colombia": "Mae K.",
+    "España": "Keidelyn D.",
+    "DR": "Gabriel C.",
+    "Managua": "Alexa M.",
+    "Venezuela": "Georgia D."
   }
 }

@@ -1,22 +1,18 @@
 {
   "date": "2026-02-17",
   "season": "winter",
-
   "welcome": {
     "en": "We hope you enjoyed the extended weekend! This week, we will finish up ACCESS testing, so please help students arrive at school on time to minimize disruptions and support a focused testing environment. This week, we are learning about Benjamin Banneker, a Black mathematician and astronomer who helped survey Washington, DC, and built an extraordinary wooden clock. Throughout February, we are celebrating Black History Month by learning how Black Americans have shaped our country through their creativity, leadership, innovation, and courage in the ongoing work for justice. Thank you for your continued support!",
     "es": "¡Esperamos que hayan disfrutado el fin de semana largo! Esta semana finalizaremos las evaluaciones de ACCESS, por lo que les pedimos que los estudiantes lleguen a la escuela a tiempo para mantener un ambiente enfocado y minimizar interrupciones. Esta semana estamos aprendiendo sobre Benjamin Banneker, un matemático y astrónomo afroamericano que ayudó a medir y diseñar Washington, DC, y construyó un extraordinario reloj de madera. Durante febrero, celebramos el Mes de la Historia Afroamericana aprendiendo cómo los afroamericanos han dado forma a nuestro país a través de su creatividad, liderazgo, innovación y valentía en la búsqueda de la justicia. ¡Gracias por su continuo apoyo!"
   },
-
   "math": {
     "en": "In math, we will be finishing module 3. At home, continue to use the number path to practice counting onward and backward from a number. For addition, have your kiddo solve 9+6 using the strategy \"make a ten\" and have them solve 15-6 using \"taking away from 10\". Then, have your kiddo explain their reasoning.",
     "es": "En matemáticas, terminaremos el módulo 3. En casa, sigan usando la recta numérica para practicar el conteo hacia adelante y hacia atrás a partir de un número. Para la suma, pídale a su hijo/a que resuelva 9+6 usando la estrategia de \"completar la decena\" y que resuelva 15-6 usando la estrategia de \"restar de 10\". Luego, pídale que explique su razonamiento."
   },
-
   "literacy": {
     "en": "This week, students will continue working with family stories across both Spanish (SLA) and English (ELA). In Spanish, we will read a new family story and compare and contrast its elements with a story we have already read. In word study, students will work with infinitive verbs ending in -ar, -er, and -ir (such as abandonar, prometer, and descubrir), as well as past-tense verbs ending in -é and -í (such as nací, dibujé, abrí, and pregunté). In English, students will write their small moment stories, adding rich descriptive details using their senses and feelings.",
     "es": "Esta semana, los estudiantes continuarán trabajando con historias de familia tanto en Español (SLA) como en Inglés (ELA). En Español, leeremos una nueva historia de familia para comparar y contrastar sus elementos con una historia que ya hemos leído. En estudio de palabras, los estudiantes trabajarán con verbos en infinitivo que terminan en -ar, -er y -ir (como abandonar, prometer y descubrir), así como con verbos en pasado que terminan en -é y -í (como nací, dibujé, abrí y pregunté). En Inglés, los estudiantes escribirán sus historias de momentos pequeños, añadiendo detalles descriptivos usando sus sentidos y sentimientos."
   },
-
   "specials": {
     "monday": "NO SCHOOL",
     "tuesday": "D",
@@ -24,13 +20,12 @@
     "thursday": "F",
     "friday": "A"
   },
-
   "roars": {
-    "Cartagena": "Wesley Rosanelli",
-    "Colombia": "Beau Bouwer",
-    "España": "James Higgins",
-    "DR": "Henry Vasquez",
-    "Managua": "Nilson Avelar Rivera",
-    "Venezuela": "Jade Sowers"
+    "Cartagena": "Wesley R.",
+    "Colombia": "Beau B.",
+    "España": "James H.",
+    "DR": "Henry V.",
+    "Managua": "Nilson R.",
+    "Venezuela": "Jade S."
   }
 }

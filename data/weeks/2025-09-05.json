@@ -1,22 +1,18 @@
 {
   "date": "2025-09-05",
   "season": "default",
-
   "welcome": {
     "en": "Happy second week of September! It has been a joy getting to know our students and seeing them settle into their new first grade routines. With many teachers, classes, and enrichment activities, it's natural that keeping track of personal items can be a challenge. Please help by labeling EVERYTHING with student names and homerooms (sweaters, water bottles, lunch boxes, backpacks, etc.). This will make it easier to return lost items and ensure students have what they need each day.",
     "es": "¡Feliz segunda semana de septiembre! Ha sido un placer conocer mejor a nuestros estudiantes y ver cómo se adaptan a sus nuevas rutinas de primer grado. Como saben, tienen muchos maestros, varias clases y también actividades de enriquecimiento. Con tantas cosas, es natural que a veces sea difícil mantener el control de sus pertenencias personales. Para apoyarnos como comunidad, les pedimos que etiqueten TODO con el nombre del estudiante y su salón (incluyendo suéteres, botellas de agua, loncheras, mochilas, etc.). Así podremos devolver los objetos perdidos más fácilmente y asegurarnos de que cada estudiante tenga lo que necesita durante el día."
   },
-
   "math": {
     "en": "Another week as mathematicians! Way to go! This week, we will be continuing our module 1 lessons on sorting and counting. At home, please continue to practice counting onward and backward from a number. At home, your kiddo can find objects they can use to sort and count with.",
     "es": "¡Otra semana de matemáticas! ¡Bien hecho! Esta semana, continuaremos con las lecciones del módulo 1 sobre clasificación y conteo. En casa, por favor, sigan practicando el conteo progresivo y regresivo a partir de un número. En casa, su hij@ puede buscar objetos que pueda usar para clasificar y contar."
   },
-
   "literacy": {
     "en": "SLA: This week we are exploring maps of our neighborhood. Students will read, discuss, and write to answer the question: What does a map of my neighborhood look like? At home, please practice Spanish letter names and sounds together, set aside 20 minutes for daily reading, and talk with your child about what they read. These routines help build strong reading habits and support classroom learning.\n\nELA: We had a wonderful first week launching our Maps unit! At home, please continue the conversation by talking about words like commute, compass rose, and other directional terms. You might ask: What is your commute to and from school like? Which direction do you go? These discussions will help students connect classroom learning to their everyday experiences.",
     "es": "Español: Esta semana exploramos los mapas de nuestro vecindario. Los estudiantes leerán, conversarán y escribirán para responder a la pregunta: ¿Cómo se ve un mapa de mi vecindario? En casa, apoye el aprendizaje de su hij@ practicando junt@s los nombres y sonidos de las letras en español. También reserven 20 minutos diarios para leer y conversar sobre lo leído. Junt@s podemos fortalecer hábitos de lectura que les ayuden a crecer como estudiantes seguros y exitosos.\n\nInglés: ¡Tuvimos una primera semana excelente al comenzar nuestra unidad de Mapas! En casa, continúe la conversación con palabras como trayecto, rosa de los vientos y términos direccionales. Puede preguntar: ¿Cómo es tu trayecto de ida y vuelta a la escuela? ¿En qué dirección vas? Estas charlas ayudan a los estudiantes a conectar lo aprendido en clase con sus experiencias diarias."
   },
-
   "specials": {
     "monday": "D",
     "tuesday": "E",
@@ -24,13 +20,12 @@
     "thursday": "A",
     "friday": "B"
   },
-
   "roars": {
-    "Cartagena": "Jonas Obser",
-    "Colombia": "Ori Schectman",
-    "España": "Maya Albert",
-    "DR": "Eleanor Ralph",
-    "Managua": "Talia Dean",
-    "Venezuela": "Rose Exum"
+    "Cartagena": "Jonas O.",
+    "Colombia": "Ori S.",
+    "España": "Maya A.",
+    "DR": "Eleanor R.",
+    "Managua": "Talia D.",
+    "Venezuela": "Rose E."
   }
 }

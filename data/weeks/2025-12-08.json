@@ -1,22 +1,18 @@
 {
   "date": "2025-12-08",
   "season": "fall",
-
   "welcome": {
     "en": "Our Spelling Bee is Monday, December 8. Please ask students to study the words we sent out weeks ago. Also, remind them to be good sports as only one person per class will have a chance to move on to the School Spelling Bee!",
     "es": "Nuestro concurso de ortografia es el lunes 8 de diciembre. Por favor, pidanles a los estudiantes que estudien las palabras que les enviamos hace semanas. Ademas, recuerdenles que sean amables, ya que solo una persona por clase tendra la oportunidad de pasar al concurso de ortografia escolar."
   },
-
   "math": {
     "en": "In math, we will be launching our 3rd module on the properties on operations and learn which strategies help us solve our math problems easier. At home, continue to practice counting on and back from a number. Have your kiddo solve the following problems and encourage them to draw to solve: 18-5= __ , 8+12= __ , and 21+7= __.",
     "es": "En matematicas, comenzaremos nuestro tercer modulo sobre las propiedades de las operaciones y que estrategias nos ayudan a resolver nuestros problemas matematicos con mayor facilidad. En casa, continuen practicando el conteo progresivo y regresivo. Pidan a sus hijos que resuelvan los siguientes problemas y animenlos a dibujar para resolverlos: 18-5 = __, 8 + 12 = __ y 21 + 7 = __."
   },
-
   "literacy": {
-    "en": "This week, students will be organizing and finalizing their bilingual animal books and completing their end-of-unit writing assessments in both Spanish and English as we wrap up our unit on endangered animals.\n\nIn Spanish word study, we will work with words that include \u201cy\u201d and \u201cll\u201d, and students can practice reading and writing the words: sombrilla, lluvia, yate, yoyo, llave, llora, llamada, and payaso at home. Please continue supporting your child\u2019s reading by spending 20 minutes each day reading together.",
-    "es": "Esta semana, estaremos organizando nuestro libro bilingue sobre el animal que elegimos y finalizaremos nuestra unidad sobre animales en peligro de extincion con nuestras evaluaciones de escritura.\n\nEn estudio de palabras trabajaremos palabras que incluyen \u201cy\u201d y \u201cll\u201d. En casa, por favor practiquen leer y escribir las palabras: sombrilla, lluvia, yate, yoyo, llave, llora, llamada y payaso. Recuerden continuar leyendo 20 minutos diarios."
+    "en": "This week, students will be organizing and finalizing their bilingual animal books and completing their end-of-unit writing assessments in both Spanish and English as we wrap up our unit on endangered animals.\n\nIn Spanish word study, we will work with words that include “y” and “ll”, and students can practice reading and writing the words: sombrilla, lluvia, yate, yoyo, llave, llora, llamada, and payaso at home. Please continue supporting your child’s reading by spending 20 minutes each day reading together.",
+    "es": "Esta semana, estaremos organizando nuestro libro bilingue sobre el animal que elegimos y finalizaremos nuestra unidad sobre animales en peligro de extincion con nuestras evaluaciones de escritura.\n\nEn estudio de palabras trabajaremos palabras que incluyen “y” y “ll”. En casa, por favor practiquen leer y escribir las palabras: sombrilla, lluvia, yate, yoyo, llave, llora, llamada y payaso. Recuerden continuar leyendo 20 minutos diarios."
   },
-
   "specials": {
     "monday": "A",
     "tuesday": "B",
@@ -24,13 +20,12 @@
     "thursday": "D",
     "friday": "E"
   },
-
   "roars": {
-    "Cartagena": "Camila Maldonado",
-    "Colombia": "Giavaughnni Gilbeaux",
-    "España": "Amias Martinez",
-    "DR": "Karla Tobar",
-    "Managua": "Mercedes Pineda Delgado",
-    "Venezuela": "Elias Rubio"
+    "Cartagena": "Camila M.",
+    "Colombia": "Giavaughnni G.",
+    "España": "Amias M.",
+    "DR": "Karla T.",
+    "Managua": "Mercedes D.",
+    "Venezuela": "Elias R."
   }
 }

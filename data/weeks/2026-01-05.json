@@ -1,22 +1,18 @@
 {
   "date": "2026-01-05",
   "season": "new-year",
-
   "welcome": {
     "en": "Happy New Year! We hope you had a restful, joyful, and rejuvenating winter break. This week, we will launch Unit 3: Family Stories. We look forward to reading rich and interesting personal narratives. Also, the school Spelling Bee is next Monday, January 12.",
-    "es": "\u00a1Feliz A\u00f1o Nuevo! Esperamos que hayan tenido unas vacaciones de invierno tranquilas, alegres y reparadoras. Esta semana comenzaremos la Unidad 3: Historias de familia. Estamos muy entusiasmados por leer narraciones personales ricas e interesantes. Adem\u00e1s, el Spelling Bee de la escuela ser\u00e1 el pr\u00f3ximo lunes 12 de enero."
+    "es": "¡Feliz Año Nuevo! Esperamos que hayan tenido unas vacaciones de invierno tranquilas, alegres y reparadoras. Esta semana comenzaremos la Unidad 3: Historias de familia. Estamos muy entusiasmados por leer narraciones personales ricas e interesantes. Además, el Spelling Bee de la escuela será el próximo lunes 12 de enero."
   },
-
   "math": {
     "en": "Welcome back! This week, we will be revisiting counting on and counting back from a number using a number path. At home, have your kiddo draw a number path from 1-20 and have them create their own addition and subtraction problems to solve. Students will also learn about tens and ones.",
-    "es": "\u00a1Bienvenidos de nuevo! Esta semana volveremos a repasar c\u00f3mo contar hacia adelante y hacia atr\u00e1s desde un n\u00famero usando una recta num\u00e9rica. En casa, p\u00eddale a su hijo/a que dibuje una recta num\u00e9rica del 1 al 20 y que cree sus propios problemas de suma y resta para resolver. Los estudiantes tambi\u00e9n aprender\u00e1n sobre las decenas y las unidades."
+    "es": "¡Bienvenidos de nuevo! Esta semana volveremos a repasar cómo contar hacia adelante y hacia atrás desde un número usando una recta numérica. En casa, pídale a su hijo/a que dibuje una recta numérica del 1 al 20 y que cree sus propios problemas de suma y resta para resolver. Los estudiantes también aprenderán sobre las decenas y las unidades."
   },
-
   "literacy": {
-    "en": "This week, we are launching Unit 3: Family Stories in both English and Spanish. Students will explore stories about families and traditions while learning to tell the difference between fiction and nonfiction. In ELA, students will read We Are in a Book! by Mo Willems, Elephants Do Not Belong in Trees by Russ Willms, and Elephants (National Geographic Reader), compare texts, and review vowel sounds during phonics. In Spanish, students will read X\u00f3chitl, la ni\u00f1a de las flores and Familias diferentes, focusing on comprehension and discussing how families can be the same and different. This week, students will also complete their MOY SLA i-Ready assessment.\n\nAs part of this unit, we are looking for families who are interested in sharing about their family traditions with the class. If you would like to participate, please message your child\u2019s homeroom teacher.",
-    "es": "Esta semana damos inicio a la Unidad 3: Cuentos de las Familias en lenguaje. En ELA, los estudiantes leer\u00e1n We Are in a Book! de Mo Willems, Elephants Do Not Belong in Trees de Russ Willms y Elephants (National Geographic Reader) para explorar las diferencias entre textos de ficci\u00f3n y no ficci\u00f3n, comparar textos y comenzar a compartir ideas sobre historias familiares. Tambi\u00e9n haremos un repaso de los sonidos de las vocales en fon\u00e9tica. En SLA, leer\u00e1n X\u00f3chitl, la ni\u00f1a de las flores y Familias diferentes, enfoc\u00e1ndose en la comprensi\u00f3n lectora y en c\u00f3mo las familias pueden ser similares y diferentes. Durante esta semana, los estudiantes tambi\u00e9n completar\u00e1n su evaluaci\u00f3n i-Ready de mitad de a\u00f1o (MOY) en SLA.\n\nAdem\u00e1s, estamos buscando familias interesadas en compartir sus tradiciones familiares como parte de nuestra unidad. Si desea participar, por favor comun\u00edquese con el/la maestro/a titular de su hijo/a."
+    "en": "This week, we are launching Unit 3: Family Stories in both English and Spanish. Students will explore stories about families and traditions while learning to tell the difference between fiction and nonfiction. In ELA, students will read We Are in a Book! by Mo Willems, Elephants Do Not Belong in Trees by Russ Willms, and Elephants (National Geographic Reader), compare texts, and review vowel sounds during phonics. In Spanish, students will read Xóchitl, la niña de las flores and Familias diferentes, focusing on comprehension and discussing how families can be the same and different. This week, students will also complete their MOY SLA i-Ready assessment.\n\nAs part of this unit, we are looking for families who are interested in sharing about their family traditions with the class. If you would like to participate, please message your child’s homeroom teacher.",
+    "es": "Esta semana damos inicio a la Unidad 3: Cuentos de las Familias en lenguaje. En ELA, los estudiantes leerán We Are in a Book! de Mo Willems, Elephants Do Not Belong in Trees de Russ Willms y Elephants (National Geographic Reader) para explorar las diferencias entre textos de ficción y no ficción, comparar textos y comenzar a compartir ideas sobre historias familiares. También haremos un repaso de los sonidos de las vocales en fonética. En SLA, leerán Xóchitl, la niña de las flores y Familias diferentes, enfocándose en la comprensión lectora y en cómo las familias pueden ser similares y diferentes. Durante esta semana, los estudiantes también completarán su evaluación i-Ready de mitad de año (MOY) en SLA.\n\nAdemás, estamos buscando familias interesadas en compartir sus tradiciones familiares como parte de nuestra unidad. Si desea participar, por favor comuníquese con el/la maestro/a titular de su hijo/a."
   },
-
   "specials": {
     "monday": "E",
     "tuesday": "F",
@@ -24,13 +20,12 @@
     "thursday": "B",
     "friday": "C"
   },
-
   "roars": {
-    "Cartagena": "Astrid Perez",
-    "Colombia": "August Yu-Dobias",
-    "Espa\u00f1a": "Douglas Siegler",
-    "DR": "Reimy Gomez",
-    "Managua": "Kace Parker",
-    "Venezuela": "Massimo Perrino-Retig"
+    "Cartagena": "Astrid P.",
+    "Colombia": "August Y.",
+    "España": "Douglas S.",
+    "DR": "Reimy G.",
+    "Managua": "Kace P.",
+    "Venezuela": "Massimo P."
   }
 }

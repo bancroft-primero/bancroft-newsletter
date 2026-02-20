@@ -1,22 +1,18 @@
 {
   "date": "2026-02-23",
   "season": "winter",
-
   "welcome": {
     "en": "This Thursday, February 26, we are inviting parents to share family traditions with our students. We encourage you to bring food, traditional clothing, a favorite read-aloud, pictures, or special objects that represent your traditions. Please reach out to your homeroom teacher if you are interested in participating.",
     "es": "Este jueves 26 de febrero, invitamos a los padres a compartir las tradiciones familiares con nuestros estudiantes. Les animamos a traer comida, vestimenta tradicional, un cuento favorito para leer en voz alta, fotos u objetos especiales que representen sus tradiciones. Por favor, comuníquense con el maestro(a) de su salón de clases si están interesados en participar."
   },
-
   "math": {
     "en": "In Math, this week your student is learning to measure and compare lengths. They use tools to find how long or tall something is from one end of it to the other end. At home, please help your student develop good measuring behaviors by asking questions about objects around the house. For example:\n\n• \"If we were going to measure this table, where would we start measuring?\"\n• \"Where would we stop measuring?\"\n• \"What do we call the space between the endpoints of the table?\"",
     "es": "En matemáticas, esta semana su estudiante está aprendiendo a medir y comparar longitudes. Usan herramientas para determinar qué tan largo o alto es algo, desde un extremo hasta el otro. En casa, por favor ayude a su hijo/a a desarrollar buenos hábitos de medición haciendo preguntas sobre objetos en el hogar. Por ejemplo:\n\n• «Si fuéramos a medir esta mesa, ¿dónde empezaríamos a medir?»\n• «¿Dónde dejaríamos de medir?»\n• «¿Cómo llamamos al espacio entre los extremos de la mesa?»"
   },
-
   "literacy": {
     "en": "In Spanish, we will read two new family stories. We will practice reading comprehension and learn to retell a story, including all its elements (characters, settings, events, and lesson or message). In word study, we will work with verb endings –aría, -ería, -iría, –ara, -iera. At home, you can practice dividing words into syllables, and reading and writing sentences using words such as: hablar, hablaría, hablarían, comer, comería, comerías.\n\nIn ELA we are continuing to practice words with digraphs. Digraphs are two letters that make one sound. Keep practicing your heart words at home! In ARC we are continuing to write our Small Moments. Continue to talk to your student about feelings and the 5 senses.",
     "es": "En español vamos a leer dos nuevas historias de familia. Practicaremos comprensión de lectura y aprenderemos a recontar una historia, incluyendo todos los elementos (personajes, escenarios, eventos y lección o mensaje). En estudio de palabras, trabajaremos con terminaciones de verbos en –aría, -ería, -iría, –ara, -iera. En casa, pueden practicar a dividir en sílabas, leer y escribir oraciones usando palabras como: hablar, hablaría, hablarían, comer, comería, comerías.\n\nEn ELA continuamos practicando palabras con dígrafos. Los dígrafos son dos letras que forman un solo sonido. ¡Sigan practicando las palabras esenciales (heart words) en casa! En ARC, continuamos escribiendo nuestros Momentos Pequeños. Continúen hablando con su estudiante sobre los sentimientos y los cinco sentidos."
   },
-
   "specials": {
     "monday": "B",
     "tuesday": "C",
@@ -24,13 +20,12 @@
     "thursday": "E",
     "friday": "F"
   },
-
   "roars": {
-    "Cartagena": "Nicholas DeHanas",
-    "Colombia": "Santiago Salvador",
-    "España": "Johnny Pena",
-    "DR": "Eleanor Ralph",
-    "Managua": "Pablo Saravia",
-    "Venezuela": "Kieran Pauly"
+    "Cartagena": "Nicholas D.",
+    "Colombia": "Santiago S.",
+    "España": "Johnny P.",
+    "DR": "Eleanor R.",
+    "Managua": "Pablo S.",
+    "Venezuela": "Kieran P."
   }
 }

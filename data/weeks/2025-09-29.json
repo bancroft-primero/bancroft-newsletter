@@ -1,22 +1,18 @@
 {
   "date": "2025-09-29",
   "season": "default",
-
   "welcome": {
     "en": "It's almost October and parent-teacher conferences will occur next Thursday, October 9. Be on the lookout, as we will be sending the PTC sign-up sheet this week. See you next week!",
     "es": "Ya casi es octubre y las conferencias de padres y maestros se llevarán a cabo el próximo jueves, 9 de octubre. Estén atentos, ya que esta semana enviaremos la hoja de inscripción para las conferencias. ¡Nos vemos la próxima semana!"
   },
-
   "math": {
     "en": "This week, we will be learning about the \"commutative property\". Students will grasp the understanding that even when the two addends change places the total will always remain the same (i.e., 2+3= 5 and 3+2= 5). We will continue to work on our addition strategy--counting on from a number to help us solve problems. At home, have your kiddo solve the following problems: 1) 7+4 = ___ 2) 4+7= ___ 3) 5+3= __ 4) 3+5 = __. Ask them to explain the strategy that they used to solve.",
     "es": "Esta semana, aprenderemos sobre la propiedad conmutativa. Los estudiantes comprenderán que, incluso cuando los dos sumandos cambian de lugar, el total siempre será el mismo (es decir, 2 + 3 = 5 y 3 + 2 = 5). Además, seguiremos trabajando en nuestra estrategia de suma: contar hacia adelante a partir de un número para ayudarnos a resolver problemas. En casa, pídeles a tus hijos que resuelvan los siguientes problemas: 1) 7 + 4 = ___ 2) 4 + 7 = ___ 3) 5 + 3 = __ 4) 3 + 5 = __. Pídeles que expliquen la estrategia que usaron para resolverlos."
   },
-
   "literacy": {
     "en": "SLA: In word study, we are continuing to learn about diphthongs. In reading and writing, we will read, discuss, and write to answer the question: What does the map of the Earth look like? Please practice reading, writing, and breaking into syllables the following words: bailar (bai-lar), veinte (vein-te), reina (rei-na), autor (au-tor), and others that contain diphthongs. For this practice, you should use the diphthong chart we sent home with the homework packet. Continue reading at least 20 minutes each day.\n\nELA: We are continuing our first unit on Maps. Our focus question this week is \"How do I use a map of my world?\". We will be using vocabulary words such as continents, oceans, and landmarks. Discuss the 7 continents and 5 oceans with your student. Make sure your student is reading to you in English and in Spanish every night!",
     "es": "SLA: En estudio de palabras continuamos aprendiendo sobre diptongos. En lectura y escritura leeremos, discutiremos y escrbiremos para responder a la pregunta ¿Cómo se ve el mapa de la tierra? Por favor, practique a leer, escribir y separar en sílabas palabras: bailar (bai-lar), veinte (vein-te), reina (rei-na), autor (au-tor) y otras que tengan diptongos. Para esta práctica, deben usar la tabla de diptongos que enviamos con el paquete de tareas. Continúen leyendo por lo menos 20 minutos diarios.\n\nInglés (ELA): Continuamos con nuestra primera unidad sobre Mapas. Nuestra pregunta clave esta semana es \"¿Cómo uso un mapa del mundo?\". Usaremos vocabulario como continentes, océanos y lugares emblemáticos. Hablen sobre los 7 continentes y los 5 océanos con su estudiante. ¡Asegúrense de que su estudiante les lea en inglés y en español todas las noches!"
   },
-
   "specials": {
     "monday": "A",
     "tuesday": "B",
@@ -24,13 +20,12 @@
     "thursday": "D",
     "friday": "E"
   },
-
   "roars": {
-    "Cartagena": "Sasha Johnson",
-    "Colombia": "Jessia Beltran",
-    "España": "Marlene Tobar",
-    "DR": "Oscar Quesada",
-    "Managua": "Maya Wilkins-Lake",
-    "Venezuela": "Maya Mkais"
+    "Cartagena": "Sasha J.",
+    "Colombia": "Jessia B.",
+    "España": "Marlene T.",
+    "DR": "Oscar Q.",
+    "Managua": "Maya W.",
+    "Venezuela": "Maya M."
   }
 }

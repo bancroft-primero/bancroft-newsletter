@@ -1,22 +1,18 @@
 {
   "date": "2025-12-15",
   "season": "fall",
-
   "welcome": {
     "en": "Happy last week of December (before Winter Break)! Remember that English and Spanish have their writing celebration this Tuesday, October 18 from 9:00-9:30a. Also, this week, DR, Venezuela and Managua will celebrate birthdays on Friday and Espana, Colombia and Cartagena will celebrate birthdays on Thursday. Lastly, please remember to keep track of when your child has Library and return books in a timely fashion.",
-    "es": "\u00a1Feliz ultima semana de diciembre (antes de las vacaciones de invierno)! Recuerden que los estudiantes de ingles y espanol celebran su escritura este martes 18 de octubre de 9:00 a 9:30 a. m. Ademas, esta semana, Republica Dominicana, Venezuela y Managua celebraran sus cumpleanos el viernes, y Espana, Colombia y Cartagena lo haran el jueves. Por ultimo, recuerden estar al tanto de cuando su hijo/a tiene acceso a la biblioteca y devolver los libros a tiempo."
+    "es": "¡Feliz ultima semana de diciembre (antes de las vacaciones de invierno)! Recuerden que los estudiantes de ingles y espanol celebran su escritura este martes 18 de octubre de 9:00 a 9:30 a. m. Ademas, esta semana, Republica Dominicana, Venezuela y Managua celebraran sus cumpleanos el viernes, y Espana, Colombia y Cartagena lo haran el jueves. Por ultimo, recuerden estar al tanto de cuando su hijo/a tiene acceso a la biblioteca y devolver los libros a tiempo."
   },
-
   "math": {
     "en": "This week, we will be using our friendly 10 to solve addition problems. At home, practice your pairs to 10 and have your kiddo solve the following problems: 6+5, 6+9, 7+5 and 8+9. Ask them how they can decompose their parts and if they can make a 10 to help them solve.",
     "es": "Esta semana, usaremos nuestro 10 para resolver problemas de suma. En casa, practiquen las parejas hasta el 10 y pidanle a su hijo que resuelva los siguientes problemas: 6+5, 6+9, 7+5 y 8+9. Preguntenle como puede descomponer sus partes y si puede formar un 10 para ayudarle a resolverlo."
   },
-
   "literacy": {
     "en": "This week in literacy, students will be wrapping up our Endangered Animals unit and preparing for our learning celebration. They will complete and share their bilingual endangered animal books with their families, and we look forward to welcoming you on Thursday at 9:00 a.m. to read together with your student.\n\nIn Spanish, we will review words with ll and y and practice writing sentences using MEPO to check our work. It's an exciting week of celebrating learning and bringing our bilingual reading and writing work to a close!",
-    "es": "Esta semana en SLA y ELA, los estudiantes finalizaran nuestra unidad sobre Animales en peligro de extincion y participaran en nuestra celebracion de aprendizaje. Los estudiantes compartiran sus libros bilingues con sus familias y estamos muy emocionados de verlos el jueves a las 9:00 a.m. para leer junto a sus hijos.\n\nEn clase, repasaremos palabras con ll y y, y los estudiantes practicaran la escritura de oraciones usando MEPO para revisar su trabajo. \u00a1Estamos muy orgullosos de todo lo que han aprendido y logrado durante esta unidad!"
+    "es": "Esta semana en SLA y ELA, los estudiantes finalizaran nuestra unidad sobre Animales en peligro de extincion y participaran en nuestra celebracion de aprendizaje. Los estudiantes compartiran sus libros bilingues con sus familias y estamos muy emocionados de verlos el jueves a las 9:00 a.m. para leer junto a sus hijos.\n\nEn clase, repasaremos palabras con ll y y, y los estudiantes practicaran la escritura de oraciones usando MEPO para revisar su trabajo. ¡Estamos muy orgullosos de todo lo que han aprendido y logrado durante esta unidad!"
   },
-
   "specials": {
     "monday": "F",
     "tuesday": "A",
@@ -24,13 +20,12 @@
     "thursday": "C",
     "friday": "D"
   },
-
   "roars": {
-    "Cartagena": "Kate Watson-Kite",
-    "Colombia": "Felsy Morales",
-    "España": "Zoe Worthington",
-    "DR": "Ryan Heller",
-    "Managua": "Alexander Louria",
-    "Venezuela": "Naomi Russell"
+    "Cartagena": "Kate W.",
+    "Colombia": "Felsy M.",
+    "España": "Zoe W.",
+    "DR": "Ryan H.",
+    "Managua": "Alexander L.",
+    "Venezuela": "Naomi R."
   }
 }
