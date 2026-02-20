@@ -168,6 +168,119 @@ body {
   margin-top: 0.25rem;
 }
 
+/* ===== Class Selector ===== */
+.class-selector-bar {
+  background: var(--color-white);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.class-selector-bar label {
+  font-family: var(--font-script);
+  font-size: 1.1rem;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.class-selector-buttons {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.class-btn {
+  background: #e8ecf1;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  padding: 0.3rem 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--color-text);
+}
+
+.class-btn:hover {
+  background: #d0d8e4;
+}
+
+.class-btn.active {
+  background: var(--color-classroom-heading);
+  color: var(--color-white);
+  border-color: var(--color-classroom-heading);
+}
+
+/* ===== My Specials This Week ===== */
+.my-specials-section {
+  border-top: 4px solid var(--color-specials-heading);
+}
+
+.my-specials-body {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+}
+
+.my-specials-day {
+  text-align: center;
+  padding: 0.75rem 0.5rem;
+  border-radius: 12px;
+  background: #f5f7fa;
+}
+
+.my-specials-day.today {
+  background: #e8f5e9;
+  box-shadow: 0 0 0 2px var(--color-specials-heading);
+}
+
+.my-specials-day.no-school {
+  background: #fde8e8;
+}
+
+.my-specials-day-name {
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-light);
+  margin-bottom: 0.25rem;
+}
+
+.my-specials-day-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.15rem;
+}
+
+.my-specials-day-subject {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.my-specials-day-letter {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+}
+
+@media (max-width: 600px) {
+  .my-specials-body {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .my-specials-body {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* ===== Sections (shared) ===== */
 .section {
   background: var(--color-white);

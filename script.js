@@ -3,6 +3,7 @@ let currentLang = 'en';
 let currentWeekData = null;
 let configData = null;
 let weeksList = [];
+let selectedClass = localStorage.getItem('selectedClass') || '';
 
 // --- Init ---
 async function init() {
@@ -13,6 +14,8 @@ async function init() {
     ]);
     configData = config;
     weeksList = index;
+
+    buildClassSelector();
 
     // Check URL hash for a specific week
     const hash = window.location.hash.replace('#', '');
@@ -30,6 +33,39 @@ async function fetchJSON(path) {
   const res = await fetch(path);
   if (!res.ok) throw new Error(`Failed to fetch ${path}: ${res.status}`);
   return res.json();
+}
+
+// --- Class Selector ---
+function buildClassSelector() {
+  const container = document.getElementById('class-selector-buttons');
+  const allBtn = container.querySelector('[data-class=""]');
+
+  // Add classroom buttons
+  configData.classrooms.forEach(classroom => {
+    const btn = document.createElement('button');
+    btn.className = 'class-btn';
+    btn.dataset.class = classroom;
+    btn.textContent = classroom;
+    container.appendChild(btn);
+  });
+
+  // Set initial active state
+  container.querySelectorAll('.class-btn').forEach(btn => {
+    if (btn.dataset.class === selectedClass) btn.classList.add('active');
+  });
+  if (!selectedClass) allBtn.classList.add('active');
+
+  // Click handler
+  container.addEventListener('click', (e) => {
+    const btn = e.target.closest('.class-btn');
+    if (!btn) return;
+    selectedClass = btn.dataset.class;
+    localStorage.setItem('selectedClass', selectedClass);
+    container.querySelectorAll('.class-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderMySpecials();
+    renderClassroomGrids(currentWeekData.specials, configData.labels[currentLang]);
+  });
 }
 
 // --- Load a week ---
@@ -65,6 +101,10 @@ function render() {
   // Language toggle button
   document.getElementById('lang-toggle').textContent = labels.langToggle;
 
+  // Class selector label
+  document.getElementById('class-selector-label').textContent =
+    lang === 'es' ? 'Mi Salón:' : 'My Classroom:';
+
   // Content sections
   document.getElementById('welcome-heading').textContent = labels.welcomeHeading;
   document.getElementById('welcome-body').innerHTML = textToHTML(data.welcome[lang]) + renderImages(data.welcomeImages);
@@ -78,6 +118,9 @@ function render() {
   // Specials schedule
   document.getElementById('specials-heading').textContent = labels.specialsHeading;
   renderSpecials(data.specials, labels);
+
+  // My Specials (personalized)
+  renderMySpecials();
 
   // Classroom grids
   renderClassroomGrids(data.specials, labels);
@@ -93,6 +136,59 @@ function render() {
 
   // Re-render archive links with translated dates
   renderArchiveList();
+}
+
+// --- My Specials This Week (personalized) ---
+function renderMySpecials() {
+  const section = document.getElementById('my-specials');
+  const body = document.getElementById('my-specials-body');
+  const heading = document.getElementById('my-specials-heading');
+
+  if (!selectedClass || !currentWeekData) {
+    section.hidden = true;
+    return;
+  }
+
+  section.hidden = false;
+  const lang = currentLang;
+  const labels = configData.labels[lang];
+  const specials = currentWeekData.specials;
+  const rotations = configData.rotations[selectedClass];
+  const icons = configData.subjectIcons;
+  const translations = configData.subjectTranslations;
+
+  heading.textContent = lang === 'es'
+    ? `Especialidades de ${selectedClass} Esta Semana`
+    : `${selectedClass}'s Specials This Week`;
+
+  const dayKeys = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+  const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+  const todayKey = dayNames[new Date().getDay()];
+
+  body.innerHTML = dayKeys.map((day, i) => {
+    const letter = (specials[day] || '').trim().toUpperCase();
+    const isNoSchool = letter.includes('NO SCHOOL') || letter.includes('NO HAY') || letter.includes('CONFERENCES');
+    const isToday = day === todayKey;
+
+    if (isNoSchool) {
+      return `<div class="my-specials-day no-school${isToday ? ' today' : ''}">
+        <div class="my-specials-day-name">${labels.days[i]}</div>
+        <div class="my-specials-day-icon">🚫</div>
+        <div class="my-specials-day-subject">${labels.noSchool}</div>
+      </div>`;
+    }
+
+    const subject = (letter.length === 1 && rotations[letter]) ? rotations[letter] : '—';
+    const subjectName = lang === 'es' ? (translations[subject] || subject) : subject;
+    const icon = icons[subject] || '📅';
+
+    return `<div class="my-specials-day${isToday ? ' today' : ''}">
+      <div class="my-specials-day-name">${labels.days[i]}</div>
+      <div class="my-specials-day-icon">${icon}</div>
+      <div class="my-specials-day-subject">${subjectName}</div>
+      <div class="my-specials-day-letter">${letter}</div>
+    </div>`;
+  }).join('');
 }
 
 // --- Specials Schedule Table ---
@@ -131,7 +227,12 @@ function renderClassroomGrids(specials, labels) {
     activeLetters.add(todayVal);
   }
 
-  container.innerHTML = configData.classrooms.map(classroom => {
+  // If a class is selected, only show that class's grid
+  const classroomsToShow = selectedClass
+    ? [selectedClass]
+    : configData.classrooms;
+
+  container.innerHTML = classroomsToShow.map(classroom => {
     const classRotations = rotations[classroom];
     const rows = ['A', 'B', 'C', 'D', 'E', 'F'].map(letter => {
       const subject = classRotations[letter];
