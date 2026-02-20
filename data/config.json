@@ -37,7 +37,8 @@
   },
 
   "seasonLogos": {
-    "default": "images/logos/fall.png",
+    "default": "images/logos/default.png",
+    "bancroft": "images/logos/default.png",
     "fall": "images/logos/fall.png",
     "winter": "images/logos/winter.png",
     "spring": "images/logos/spring.png",
