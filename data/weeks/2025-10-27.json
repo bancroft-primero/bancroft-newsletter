@@ -1,0 +1,36 @@
+{
+  "date": "2025-10-27",
+  "season": "fall",
+
+  "welcome": {
+    "en": "Happy Monday! This Friday we'll be celebrating Book Character Day and birthdays! If students have their matching book (to their costume), please send it with them. If your child has a birthday this week, reach out to your room parent so they can coordinate and help organize Friday's birthday celebration.",
+    "es": "¡Feliz lunes! Este viernes celebraremos el Día del Personaje de Libro y sus cumpleaños. Si los alumnos tienen el libro que corresponde a su disfraz, por favor, envíenlo. Si su hijo cumple años esta semana, contacten con el tutor de su aula para que puedan coordinar y ayudar a organizar la celebración del viernes."
+  },
+
+  "math": {
+    "en": "This week, we will finish Topic B and begin Topic C. Students are using the Read\u2013Draw\u2013Write process to make sense of addition and subtraction problems and are learning how addition and subtraction are connected. We'll also begin solving problems with an unknown part by counting on or counting back. Try asking your child to explain how their drawing shows their thinking when solving a problem.",
+    "es": "Esta semana terminaremos el Tema B y comenzaremos el Tema C. Los estudiantes están usando el proceso Lee\u2013Dibuja\u2013Escribe para comprender problemas de suma y resta y para ver cómo estas operaciones están conectadas. También empezarán a resolver problemas con una parte desconocida contando hacia adelante o hacia atrás. Intente pedirle a su hijo/a que explique cómo su dibujo muestra su razonamiento al resolver un problema."
+  },
+
+  "literacy": {
+    "en": "This week in literacy, first graders are exploring informational texts in both English and Spanish through our unit on endangered animals. Students are learning to use text features\u2014such as images, captions, table of contents, and titles\u2014to find and understand key information. In Spanish, we're also practicing reading and writing words ending in -as and -es and reviewing words with Z and C, while paying close attention to singular and plural forms like veloz/veloces, lombriz/lombrices, and avestruz/avestruces. In English, students are focusing on habitats and how animals adapt to them. Each student is researching one endangered animal that they will study throughout the unit. Please continue to support literacy growth by having your child read at home every day for 20 minutes in both languages.",
+    "es": "Esta semana en las clases de lectoescritura, los estudiantes de primer grado están explorando textos informativos en inglés y en español a través de nuestra unidad sobre animales en peligro de extinción. Están aprendiendo a usar elementos del texto \u2014como imágenes, leyendas, tabla de contenido y títulos\u2014 para encontrar y comprender información importante. En español, también estamos practicando palabras que terminan en -as y -es (como alas, hojas, peces, nueces) y repasando palabras con Z y C, prestando especial atención a las formas en singular y plural como veloz/veloces, lombriz/lombrices y avestruz/avestruces. En inglés, los estudiantes se enfocan en los hábitats y en cómo los animales se adaptan a ellos. Cada estudiante está investigando un animal en peligro de extinción que estudiará durante toda la unidad. Por favor, continúen apoyando el desarrollo de la lectura dedicando 20 minutos diarios a leer en ambos idiomas."
+  },
+
+  "specials": {
+    "monday": "F",
+    "tuesday": "A",
+    "wednesday": "B",
+    "thursday": "C",
+    "friday": "D"
+  },
+
+  "roars": {
+    "Cartagena": "Mateo Alemán",
+    "Colombia": "Alondra Blasini",
+    "España": "Charles Yabroff",
+    "DR": "Miley Navidi-Kasmai",
+    "Managua": "Leila Khoury",
+    "Venezuela": "Zoe López Chávez"
+  }
+}

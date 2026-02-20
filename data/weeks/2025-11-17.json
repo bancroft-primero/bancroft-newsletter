@@ -1,0 +1,36 @@
+{
+  "date": "2025-11-17",
+  "season": "fall",
+
+  "welcome": {
+    "en": "This week is our last full week of school before the Thanksgiving holiday, and we are feeling especially grateful. We've shared so many joyful moments with your children already this year, and we deeply appreciate all the ways\u2014big and small\u2014that parents and family members support their learning and enrich our school community. On Tuesday, teachers will have extended planning time in the afternoon, and students will enjoy special activities led by Imagination Stage from 12:00\u20133:00 p.m. We look forward to a wonderful week together!",
+    "es": "Esta será nuestra última semana completa de clases antes del receso de Acción de Gracias. Estamos agradecidos por todos los momentos de alegría que hemos compartido con sus hijos este año y por todas las maneras, grandes y pequeñas, en que las familias contribuyen a su educación y a nuestra comunidad escolar. El martes, los maestros tendrán tiempo extendido de planificación por la tarde, y los estudiantes participarán en actividades dirigidas por Imagination Stage de 12:00 p.m. a 3:00 p.m."
+  },
+
+  "math": {
+    "en": "This week, we will be relating addition and subtraction by solving math facts. Students will write related number sentences and draw number bonds. At home, give your child a math fact such as 8 + 2 = 10 and have them tell you the related subtraction fact (10 \u2212 8 = 2). For an extra challenge, give your child three numbers and have them write all four related facts (for example, with 10, 8, 2 \u2192 8 + 2 = 10, 2 + 8 = 10, 10 \u2212 8 = 2, and 10 \u2212 2 = 8).",
+    "es": "Esta semana relacionaremos la suma y la resta resolviendo hechos numéricos. Escribiremos oraciones numéricas relacionadas y dibujaremos vínculos numéricos. En casa, puede darle a su niño/a un hecho numérico como 8+2=10 y pedirle que le diga el hecho opuesto que está relacionado (10-8=2). Empuje adicional: dele a su niño/a tres números y pídale que escriba los cuatro hechos relacionados (10, 8, 2 \u2192 8+2=10, 2+8=10, 10-8=2 y 10-2=8)."
+  },
+
+  "literacy": {
+    "en": "This week in literacy, students will continue building their informational reading and writing skills in both Spanish and English. In Spanish class, we will learn about the food chain and students will read to investigate where their research animal fits within it. In word study, we will work with the verb endings -aron, -ieron, and -jeron, as well as words spelled with g and j. At home, students can practice writing and reading sentences using the words gigante, jirafa, gemelos, gente, and mensaje. In ELA, we are beginning to learn about digraphs\u2014two letters that make one sound\u2014such as sh, ch, ph, wh, th, and ck. We will continue our study of endangered animals, focusing on the question: What does your animal eat? Please discuss the vocabulary words herbivore, carnivore, omnivore, predator, and prey with your child, read together for 20 minutes each day in English, and practice heart-word flashcards.",
+    "es": "Esta semana, en nuestras clases de lectoescritura en inglés y en español, los estudiantes continuarán investigando a los animales en peligro de extinción y profundizarán su aprendizaje sobre lo que comen y su lugar en la cadena alimentaria. Leerán textos informativos para descubrir si su animal es herbívoro, carnívoro u omnívoro, así como para identificar depredadores y presas. En español, trabajaremos con las terminaciones verbales -aron, -ieron, -jeron y con palabras que usan g y j, practicando vocabulario como gigante, jirafa, gemelos, gente y mensaje. En inglés, los estudiantes comenzarán a aprender sobre los dígrafos, dos letras que forman un solo sonido, como sh, ch, ph, wh, th y ck. Por favor continúen leyendo en casa 20 minutos diarios en ambos idiomas, practicando las tarjetas de palabras esenciales en inglés y escribiendo oraciones con las palabras en español."
+  },
+
+  "specials": {
+    "monday": "A",
+    "tuesday": "B",
+    "wednesday": "C",
+    "thursday": "D",
+    "friday": "E"
+  },
+
+  "roars": {
+    "Cartagena": "Arman Akan",
+    "Colombia": "Aideen Patil",
+    "España": "Gabriel Lipton",
+    "DR": "Kylie Rodríguez",
+    "Managua": "Cleo Howard",
+    "Venezuela": "Elena Hernandez Villagres"
+  }
+}

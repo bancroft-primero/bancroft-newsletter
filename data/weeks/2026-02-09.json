@@ -1,0 +1,36 @@
+{
+  "date": "2026-02-09",
+  "season": "winter",
+
+  "welcome": {
+    "en": "Happy February! This week, we will be conducting WIDA testing. To help us maintain a focused environment and minimize disruptions, please ensure students arrive at school on time. We appreciate your support!",
+    "es": "\u00a1Feliz febrero! Esta semana estaremos realizando las evaluaciones de WIDA. Para ayudarnos a mantener un ambiente enfocado y minimizar interrupciones, por favor aseg\u00farense de que los estudiantes lleguen a la escuela a tiempo. \u00a1Agradecemos mucho su apoyo!"
+  },
+
+  "math": {
+    "en": "This week, we will keep on adding a 2-digit number plus a 1-digit number. And we will begin solving subtraction Math problems with totals between 11 and 19. At home, practice with your student how to subtract 1-digit numbers from 2-digit numbers. For example: 16 \u2013 2 = 14. Have them explain the strategy that they used to help them solve. Encourage them to share in Spanish.",
+    "es": "Esta semana continuaremos sumando n\u00fameros de dos d\u00edgitos con n\u00fameros de un d\u00edgito y comenzaremos a resolver problemas de resta con resultados entre 11 y 19. En casa, practiquen con su estudiante c\u00f3mo restar n\u00fameros de un d\u00edgito a n\u00fameros de dos d\u00edgitos. Por ejemplo: 16 \u2212 2 = 14. P\u00eddale que explique la estrategia que utiliz\u00f3 para resolver el problema y an\u00edmele a compartir su razonamiento en espa\u00f1ol."
+  },
+
+  "literacy": {
+    "en": "This week in literacy, students will continue exploring family narratives in both Spanish and English. In Spanish (SLA), we will read a new family story to practice asking and answering comprehension questions, and in word study students will learn verb endings -\u00eda, -\u00edamos, -aba, -aban, and -abas, using words like viajaba, jugaban, visitaban, and com\u00edamos in sentences. In English (ELA), we will continue working on Small Moments, or zoomed-in parts of a narrative, and begin using the five senses\u2014smell, taste, touch, sight, and hearing\u2014to add detail to our storytelling. Please continue discussing narratives and small moments at home as students begin telling their own stories.",
+    "es": "Esta semana en lectoescritura, los estudiantes continuar\u00e1n explorando narrativas familiares en espa\u00f1ol y en ingl\u00e9s. En espa\u00f1ol (SLA), leeremos una nueva historia de familia para practicar c\u00f3mo hacer y responder preguntas de comprensi\u00f3n, y en estudio de palabras aprenderemos verbos con las terminaciones -\u00eda, -\u00edamos, -aba, -aban y -abas, usando palabras como viajaba, jugaban, visitaban y com\u00edamos en oraciones. En ingl\u00e9s (ELA), continuaremos trabajando el concepto de Momentos Peque\u00f1os, o partes espec\u00edficas de una narrativa, y comenzaremos a usar los cinco sentidos\u2014olfato, gusto, tacto, vista y o\u00eddo\u2014para a\u00f1adir detalles a nuestras historias. Por favor, contin\u00faen conversando en casa sobre narrativas y momentos peque\u00f1os mientras los estudiantes comienzan a contar sus propias historias."
+  },
+
+  "specials": {
+    "monday": "B",
+    "tuesday": "C",
+    "wednesday": "D",
+    "thursday": "E",
+    "friday": "NO SCHOOL"
+  },
+
+  "roars": {
+    "Cartagena": "Claire-Louise Higgins, Astrid Perez",
+    "Colombia": "Chelsey Lopez, Sonia Duran",
+    "Espa\u00f1a": "Mia Menjivar, Liam Guzm\u00e1n",
+    "DR": "Maeve Belser, Emory Blackburn",
+    "Managua": "Jeremy Rodas, Axel Games Gamez",
+    "Venezuela": "Jade Sowers, Harlei Davis"
+  }
+}

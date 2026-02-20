@@ -1,0 +1,36 @@
+{
+  "date": "2025-08-29",
+  "season": "default",
+
+  "welcome": {
+    "en": "Welcome back to school! This week we worked on learning each other's names and practicing classroom and school routines. Next week we begin our first academic units. Way to go, first graders!",
+    "es": "¡Bienvenido de nuevo! Esta semana, tuvimos la oportunidad de aprender los nombres de los demás y practicar las rutinas del aula y de la escuela. La semana que viene comenzaremos nuestra primera unidad académica. ¡Vamos, primer grado!"
+  },
+
+  "math": {
+    "en": "Woohoo! We made it through the first week of first grade math! In our first Eureka Math module, we will work on sorting and counting.\n\nAt home, you can support your child by encouraging them to practice counting forward and sorting everyday objects (like toys or snacks) into groups of 1-10.",
+    "es": "Esta semana, comenzaremos nuestro primer módulo de Eureka Math sobre clasificación y conteo.\n\nEn casa, puede apoyar a su hijo/a practicando el conteo hacia adelante y ayudándole a clasificar objetos cotidianos (como juguetes, cereales, o frutas pequeñas) en grupos del 1 al 10."
+  },
+
+  "literacy": {
+    "en": "English (ELA): This week in English class we started Unit 1 in our English phonics curriculum (UFLI) and practiced the alphabet. At home, you can discuss goals with your first grader, like: \"What do they want to accomplish?\" or \"How can they make bilingualism their superpower?\"\n\nSpanish (SLA): In Spanish class we began learning about maps. We enjoyed reading, discussing, and writing in response to the question: \"What does a map of my house look like?\" At home, you can talk about the activities you like to do as a family and about where those activities take place.",
+    "es": "Inglés (ELA): Esta semana comenzaremos la Unidad 1 en el currículo de fonética en inglés (UFLI) y practicaremos el alfabeto inglés. Por favor, comenten las metas que tienen para su hijo/a en primer grado. ¿Qué quieren lograr? ¿Cómo podemos convertir el bilingüismo en nuestra superpotencia? ¡Estamos muy emocionados por este año escolar!\n\nEspañol (SLA): Esta semana en la clase de español, empezaremos nuestra fantástica unidad 1, en la que aprendemos sobre mapas. Leeremos, discutiremos y escribiremos para responder a la pregunta ¿Cómo se ve un mapa de mi casa? Por favor hablar en familia sobre las actividades que disfrutan hacer en casa."
+  },
+
+  "specials": {
+    "monday": "NO SCHOOL",
+    "tuesday": "F",
+    "wednesday": "A",
+    "thursday": "B",
+    "friday": "C"
+  },
+
+  "roars": {
+    "Cartagena": "Aaron Hernández",
+    "Colombia": "Monica Funes",
+    "España": "Olive Hamelers",
+    "DR": "Samuel Paz",
+    "Managua": "Pablo Saravia",
+    "Venezuela": "Jeremy Sacarias Molina"
+  }
+}

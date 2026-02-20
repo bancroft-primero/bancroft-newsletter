@@ -1,0 +1,36 @@
+{
+  "date": "2026-01-19",
+  "season": "winter",
+
+  "welcome": {
+    "en": "We hope you had a restful three-day weekend celebrating Martin Luther King Jr. Day. This week, students will be taking the i-Ready Math assessment. Please help your child do their best by ensuring they get a good night\u2019s rest and arrive at school on time each day so they are ready to tackle the assessment. Thank you for your continued support!",
+    "es": "Esperamos que hayan tenido un fin de semana de tres d\u00edas reparador celebrando el D\u00eda de Martin Luther King Jr. Esta semana, los estudiantes estar\u00e1n presentando la evaluaci\u00f3n de i-Ready de matem\u00e1ticas. Por favor, ayude a su hijo/a a dar lo mejor de s\u00ed asegur\u00e1ndose de que descanse bien por la noche y llegue a la escuela a tiempo cada d\u00eda, listo/a para enfrentar la evaluaci\u00f3n. \u00a1Gracias por su apoyo continuo!"
+  },
+
+  "math": {
+    "en": "Thank you to all the families who joined us for our APTT last week! This week we will be taking the i-Ready Math assessment. At home, we encourage you to try some of the activities presented at our APTT meeting with your children. If you were unable to attend the APTT, keep an eye out for resources being sent home in backpacks and on ParentSquare.",
+    "es": "\u00a1Gracias a todas las familias que nos acompa\u00f1aron en nuestro APTT la semana pasada! Esta semana estaremos realizando la evaluaci\u00f3n de i-Ready de matem\u00e1ticas. En casa, les animamos a probar algunas de las actividades que se presentaron durante la reuni\u00f3n de APTT con sus hijos. Si no pudieron asistir al APTT, est\u00e9n atentos a los recursos que se enviar\u00e1n en las mochilas y a trav\u00e9s de ParentSquare."
+  },
+
+  "literacy": {
+    "en": "This week in literacy, students have completed their i-Ready assessments in Spanish and English, which measure reading comprehension and vocabulary\u2014congratulations to our students for their hard work! We will continue reading a new family story in Spanish, focusing on identifying and describing different settings in the text, and we will also keep working on mCLASS assessments to support reading fluency. In English, we will continue exploring Small Moments, or zoomed-in parts of a narrative, and begin using the five senses\u2014smell, taste, touch, sight, and hearing\u2014to help strengthen our storytelling. Please continue discussing narratives and small moments at home as students begin sharing their own stories.",
+    "es": "Esta semana en lectoescritura, los estudiantes han completado sus evaluaciones i-Ready en espa\u00f1ol e ingl\u00e9s, las cuales miden la comprensi\u00f3n lectora y el vocabulario\u2014\u00a1felicitaciones por su gran esfuerzo! Continuaremos leyendo una nueva historia sobre una familia en espa\u00f1ol, enfoc\u00e1ndonos en identificar y describir los diferentes escenarios que presenta el autor. Tambi\u00e9n seguiremos trabajando con las evaluaciones mCLASS para apoyar la fluidez lectora. En ingl\u00e9s, continuaremos explorando los Momentos Peque\u00f1os, o partes espec\u00edficas de una narrativa, y comenzaremos a usar los cinco sentidos\u2014olfato, gusto, tacto, vista y o\u00eddo\u2014para fortalecer la narraci\u00f3n de historias. Por favor, contin\u00faen conversando en casa sobre narrativas y momentos peque\u00f1os mientras los estudiantes comienzan a compartir sus propias historias."
+  },
+
+  "specials": {
+    "monday": "NO SCHOOL",
+    "tuesday": "C",
+    "wednesday": "D",
+    "thursday": "E",
+    "friday": "F"
+  },
+
+  "roars": {
+    "Cartagena": "Kendrick Treminio",
+    "Colombia": "Amalia Fischer-Lyon",
+    "Espa\u00f1a": "Isabel Randall",
+    "DR": "Lisbeth Cortes",
+    "Managua": "Yariel Bonilla",
+    "Venezuela": "Eloise Parilla"
+  }
+}

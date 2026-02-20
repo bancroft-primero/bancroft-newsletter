@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bancroft ES - First Grade Newsletter</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Language Toggle -->
+  <button id="lang-toggle" aria-label="Switch language">Español</button>
+
+  <div class="page-layout">
+
+    <!-- Archive Sidebar (desktop) -->
+    <aside id="archive-sidebar" class="archive-sidebar">
+      <h3 id="archive-heading">Past Newsletters</h3>
+      <ul id="archive-list"></ul>
+    </aside>
+
+    <!-- Newsletter Content -->
+    <main id="newsletter">
+
+      <!-- Header -->
+      <header class="newsletter-header">
+        <img id="school-logo" src="" alt="Bancroft ES Logo" class="school-logo">
+        <div class="header-text">
+          <h1 id="title" class="script-font">First Grade</h1>
+          <h2 id="subtitle">Weekly Newsletter</h2>
+          <p id="date-display" class="script-font"></p>
+        </div>
+      </header>
+
+      <!-- Welcome -->
+      <section class="section welcome-section">
+        <div class="section-heading-wrap">
+          <h3 id="welcome-heading" class="welcome-heading">Hello 1st Grade Families!</h3>
+        </div>
+        <div id="welcome-body" class="section-body"></div>
+      </section>
+
+      <!-- Math News -->
+      <section class="section math-section">
+        <div class="section-heading-wrap">
+          <h3 id="math-heading" class="math-heading">Math News</h3>
+        </div>
+        <div id="math-body" class="section-body"></div>
+      </section>
+
+      <!-- Literacy News -->
+      <section class="section literacy-section">
+        <div class="section-heading-wrap">
+          <h3 id="literacy-heading" class="literacy-heading">Literacy News</h3>
+        </div>
+        <div id="literacy-body" class="section-body"></div>
+      </section>
+
+      <!-- Specials Schedule -->
+      <section class="section specials-section">
+        <div class="section-heading-wrap">
+          <h3 id="specials-heading" class="specials-heading">Specials Schedule</h3>
+        </div>
+        <table id="specials-table" class="specials-table">
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <!-- Classroom Rotation Grids -->
+      <div id="classroom-grids" class="classroom-grids"></div>
+
+      <!-- ROARS -->
+      <section class="section roars-section">
+        <div class="roars-header">
+          <span class="tiger-emoji">🐯</span>
+          <h3 id="roars-heading" class="roars-heading">ROARS</h3>
+          <span class="tiger-emoji">🐯</span>
+        </div>
+        <div id="roars-cards" class="roars-cards"></div>
+      </section>
+
+      <!-- Mobile Archive -->
+      <section class="section archive-mobile">
+        <details>
+          <summary id="archive-heading-mobile">Past Newsletters</summary>
+          <ul id="archive-list-mobile"></ul>
+        </details>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Error overlay -->
+  <div id="error-overlay" class="error-overlay" hidden>
+    <div class="error-box">
+      <p id="error-message">Could not load the newsletter. Please check back later.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "date": "2025-10-06",
+  "season": "fall",
+
+  "welcome": {
+    "en": "Parent-teacher conferences are happening this week! If you haven't signed-up for a conference, please do so ASAP. Teachers are also offering additional times in case you can't meet on Thursday, October 9. So, reach out to homeroom teachers if you need to meet on a different day/time.",
+    "es": "¡Las reuniones de padres y maestros se llevarán a cabo esta semana! Si aún no se han inscrito para una reunión, por favor, háganlo lo antes posible. Los maestros también ofrecen horarios adicionales en caso de que no puedan reunirse el jueves 9 de octubre. Por lo tanto, comuníquense con los maestros de aula si necesitan reunirse en otro día u hora."
+  },
+
+  "math": {
+    "en": "In math, we will be finding all of the two-part expressions that make 7, 8, 9 and 10. At home, practice your 10 facts and have your kiddo draw a number bond to organize their parts and total.",
+    "es": "En matemáticas, encontraremos todas las expresiones de dos partes que tengan un total de 7, 8, 9 y 10. En casa, practique los datos del 10 y haga que su hij@ dibuje un vínculo numérico para organizar sus partes y su total."
+  },
+
+  "literacy": {
+    "en": "SLA: This short week, in word study we will review diphthongs and CCV words (consonant, consonant, vowel). In reading and writing, we are going to learn about what the Earth looks like from space. At home, you can practice reading, breaking into syllables, and writing words such as: niebla (nie-bla), gracias (gra-cias), grande (gran-de), sembrar (sem-brar), and cambiar (cam-biar). Continue reading daily and asking your child questions about the reading.\n\nELA: Wow we are getting close to the end of our Maps unit! The focus question for next week is, \"How do I use a map of my world?\". We will be using globes and discussing how maps and globes are similar and different. Please discuss the 7 continents and 5 oceans with your students. Remember to have your student read to you every day for 20 minutes in English and Spanish.",
+    "es": "Español: Esta semana corta, en estudio de palabras repasaremos diptongos y palabras con CCV (consonante, consonante, vocal) En lectura y escritura vamos a aprender sobre cómo se ve la tierra en el espacio. En casa, pueden repasar a leer, separar en sílabas y escribir palabras como: niebla (nie-bla), gracias (gra-cias), grande (gran-de), sembrar (sem-brar) cambiar (cam-biar). Continúe leyendo a diario y haciendo preguntas sobre la lectura.\n\nInglés: ¡Guau, ya casi terminamos nuestra unidad de Mapas! La pregunta clave de la próxima semana es: \"¿Cómo uso un mapa de mi mundo?\". Usaremos globos terráqueos y hablaremos sobre sus similitudes y diferencias. Por favor, hablen con sus alumnos sobre los 7 continentes y los 5 océanos. Recuerden que su alumno les lea todos los días durante 20 minutos en inglés y español."
+  },
+
+  "specials": {
+    "monday": "F",
+    "tuesday": "A",
+    "wednesday": "B",
+    "thursday": "CONFERENCES",
+    "friday": "NO SCHOOL"
+  },
+
+  "roars": {
+    "Cartagena": "Lohany Guerra",
+    "Colombia": "Yara Mokhtarzada",
+    "España": "Jason Nguyen",
+    "DR": "Kian Basa",
+    "Managua": "Maxence Notteghem-Pradel",
+    "Venezuela": "Cora Maier"
+  }
+}

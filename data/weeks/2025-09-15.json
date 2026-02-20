@@ -1,0 +1,36 @@
+{
+  "date": "2025-09-15",
+  "season": "default",
+
+  "welcome": {
+    "en": "September is flying by and fall is around the corner. Please continue to label student items (with their name and homeroom teacher) such as water bottles and sweaters. Also, let's remind students to keep toys at home. Thanks!",
+    "es": "Septiembre está pasando volando y el otoño está a la vuelta de la esquina. Por favor, continúen etiquetando los artículos de los estudiantes (con su nombre y el del maestro de salón) como botellas de agua y suéteres. También, recordemos a los estudiantes que los juguetes se quedan en casa. ¡Gracias!"
+  },
+
+  "math": {
+    "en": "This week, we will be working on our counting on strategies to solve part-part-whole math problems. At home, have your kiddo create their own addition problems and have them draw a number bond to match.",
+    "es": "Esta semana, trabajaremos en estrategias de conteo para resolver problemas matemáticos de partes. En casa, pídele a tu hijo que cree sus propios problemas de suma y que dibuje un vínculo numérico que los corresponda."
+  },
+
+  "literacy": {
+    "en": "SLA: We are very excited to learn about maps of different places. This week we will focus on maps of our city. We will read fiction and informational texts and discuss what different cities look like. We will also write to answer the question: What does a map of my city look like? At home, please continue practicing the names and sounds of the letters in Spanish and writing the first and last name. Read for 20 minutes and ask your child questions about the reading.\n\nELA: Great job persevering through our iReady Reading test! This week we will be continuing our Unit 1 on Maps. Our focus question for this week is \"How can I use the map of my city to get around?\". Discuss what city we live in and certain landmarks you see around your city. We will be using vocabulary words such as: Compass rose, Quadrants, Near, Far, Rivers, Transportation, Borders.",
+    "es": "Español: Estamos muy emocionados aprendiendo sobre mapas de diferentes lugares. Esta semana nos enfocaremos en mapas de nuestra ciudad. Leeremos textos de ficción y textos informativos y discutiremos sobre cómo se ven diferentes ciudades. También, escribiremos para responder a la pregunta ¿Cómo se ve un mapa de mi ciudad? En casa, por favor continúe practicando los nombres y los sonidos de las letras en español y a escribir el nombre y apellido. Lea durante 20 minutos y haga preguntas a su hij@ sobre la lectura.\n\nInglés: ¡Excelente perseverancia en el examen de lectura de iReady! Esta semana continuaremos con la Unidad 1 sobre Mapas. Nuestra pregunta clave es: \"¿Cómo puedo usar el mapa de mi ciudad para desplazarme?\". Hablen sobre la ciudad en la que vivimos y sobre los lugares emblemáticos que ven en su ciudad. Usaremos vocabulario como: rosa de los vientos, cuadrantes, cerca, lejos, ríos, transporte y fronteras."
+  },
+
+  "specials": {
+    "monday": "C",
+    "tuesday": "D",
+    "wednesday": "E",
+    "thursday": "F",
+    "friday": "A"
+  },
+
+  "roars": {
+    "Cartagena": "Ada Bordes-Ozlu",
+    "Colombia": "Eliel Sanchez",
+    "España": "Ashwin Aladangady",
+    "DR": "Henry Vasquez",
+    "Managua": "Liam Williamson",
+    "Venezuela": "Iker Medina Perez"
+  }
+}

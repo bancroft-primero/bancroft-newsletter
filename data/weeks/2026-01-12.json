@@ -1,0 +1,36 @@
+{
+  "date": "2026-01-12",
+  "season": "winter",
+
+  "welcome": {
+    "en": "Happy second week of January! We kick off this week with APTT\u2019s and the school Spelling Bee. We\u2019ll also be taking I-ready in English, so make sure students are getting a good night\u2019s rest and arriving to school on time.",
+    "es": "\u00a1Feliz segunda semana de enero! Comenzamos la semana con las reuniones de APTT y el Spelling Bee de la escuela. Tambi\u00e9n estaremos tomando i-Ready en ingl\u00e9s, as\u00ed que aseg\u00farense de que los estudiantes descansen bien por la noche y lleguen a la escuela a tiempo."
+  },
+
+  "math": {
+    "en": "This week, we will continue to decompose a part in our number sentence to help us make a 10. We will also solve 3-digit word problems. At home, have your kiddo continue to practice their pairs to 10. Have you kiddo solve and explain their strategy to the following problem: There are 8 red ants. 2 more red ants join the line. Then, 5 more red ants join the line. How many red ants are in the line?",
+    "es": "\u00bfCu\u00e1ntas hormigas rojas hay en la fila? Esta semana, continuaremos descomponiendo una parte de nuestra oraci\u00f3n num\u00e9rica para ayudarnos a formar un 10. Tambi\u00e9n resolveremos problemas escritos de 3 d\u00edgitos. En casa, haga que su hijo contin\u00fae practicando sus pares hasta 10. Haga que su hijo resuelva y explique su estrategia para el siguiente problema: Hay 8 hormigas rojas. 2 hormigas rojas m\u00e1s se ponen en la fila. Luego, 5 hormigas rojas se ponen en la fila. \u00bfCu\u00e1ntas hormigas rojas hay en la fila?"
+  },
+
+  "literacy": {
+    "en": "This week in literacy, students are beginning our Family Stories unit in both Spanish and English. In Spanish (SLA), students will read Abuela and learn what a narrative is by identifying the characters and setting, using details from the text and illustrations. They will also make connections between the story and their own family experiences. In English (ELA), we will introduce the concept of Small Moments, which are narratives that zoom in on one specific moment in a story. Please talk with your child about the word tradition and share a family tradition you celebrate at home. Remember to read for 20 minutes in English each day and practice heart words at home.",
+    "es": "Esta semana en lectoescritura, los estudiantes comienzan nuestra unidad de Cuentos de las Familias en espa\u00f1ol y en ingl\u00e9s. En espa\u00f1ol (SLA), los estudiantes leer\u00e1n Abuela y aprender\u00e1n qu\u00e9 es una narrativa al identificar los personajes y el lugar donde ocurre la historia, usando detalles del texto y las ilustraciones. Tambi\u00e9n har\u00e1n conexiones entre la historia y sus propias experiencias familiares. En ingl\u00e9s (ELA), presentaremos el concepto de Momentos Peque\u00f1os, que son narrativas que se enfocan en un momento espec\u00edfico de la historia. Por favor, converse con su hijo/a sobre la palabra tradici\u00f3n y compartan una tradici\u00f3n familiar que celebran en casa. Recuerden leer 20 minutos en ingl\u00e9s cada d\u00eda y practicar las palabras esenciales (heart words) en casa."
+  },
+
+  "specials": {
+    "monday": "D",
+    "tuesday": "E",
+    "wednesday": "F",
+    "thursday": "A",
+    "friday": "B"
+  },
+
+  "roars": {
+    "Cartagena": "Sofia Palma",
+    "Colombia": "Geoffrey Mart\u00ednez Garc\u00eda",
+    "Espa\u00f1a": "Graham Smith Gibbon",
+    "DR": "Thiago Stearman",
+    "Managua": "Theodore Sikorsky Stewart",
+    "Venezuela": "Enmanuel Ferrufino Nolasco"
+  }
+}

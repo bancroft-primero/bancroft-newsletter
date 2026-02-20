@@ -1,0 +1,36 @@
+{
+  "date": "2025-10-14",
+  "season": "fall",
+
+  "welcome": {
+    "en": "We hope you enjoyed the extended weekend and got a chance to get some rest and spend time with loved ones. Parent-teacher conferences occurred last week, but if you need to make-up yours, feel free to reach out to your child's homeroom teacher. Have a great week!",
+    "es": "Esperamos que hayan disfrutado del fin de semana largo y que hayan tenido la oportunidad de descansar y pasar tiempo con sus seres queridos. Las conferencias entre padres y maestros ocurrieron la semana pasada, pero si necesitan reprogramar la suya, no duden en comunicarse con el maestro principal de su hijo/a. ¡Que tengan una excelente semana!"
+  },
+
+  "math": {
+    "en": "In math, we will be finalizing our first module of the year and getting ready to start Module 2. Module 2 will be all about the relationship between addition and subtraction. At home, have your kiddo solve the following equations and have them organize thier parts/total in their number bond (you received this during PTCs :)! 1) 8+2=___ 2) 2+8= __ 3) 10-8= __ 4) 10-2= __",
+    "es": "En matemáticas, finalizaremos nuestro primer módulo del año y nos preparamos para comenzar el Módulo 2. Este módulo se centra en la relación entre la suma y la resta. En casa, pídele a tu hijo que resuelva las siguientes ecuaciones y que organice sus partes/total en su vínculo numérico (¡lo aprendiste en las clases de matemáticas :)! 1) 8+2=___ 2) 2+8= __ 3) 10-8= __ 4) 10-2= __"
+  },
+
+  "literacy": {
+    "en": "SLA: This week, in word study we are reviewing diphthongs and words with CCV (consonant, consonant, vowel) and will practice writing sentences while checking with MEPO. In reading and writing, we are finishing our maps unit and will have our end-of-unit writing test. We will take home all the writing from this unit. At home, please practice writing sentences using the words: gracias, mientras, niebla, muebles, avión, auto, globo. Continue reading daily and asking your children about what they read.\n\nELA: This is our last week learning about maps! We will be getting ready for our Unit 1 Assessment. We will be bridging our English vocabulary with Spanish and continue to experiment with globes. We will be taking our writing assessment on Wednesday and Thursday! Remember to have your student read to you every day for 20 minutes in English and Spanish.",
+    "es": "SLA: Esta semana, en estudio de palabras repasamos diptongos y palabras con CCV (consonante,consonante, vocal) y practicaremos a escribir oraciones revisando con MEPO. En lectura y escritura, terminamos nuestra unidad de mapas y tendremos nuestro test de escritura de final de unidad. Llevaremos a casa todos los escritos de esta unidad. En casa, por favor practique a escribir oraciones usando las palabras: gracias, mientras, niebla, muebles, avión, auto, globo. Continúen leyendo a diario y preguntando a sus hijos sobre la lectura.\n\nELA: ¡Esta es nuestra última semana aprendiendo sobre los mapas! Nos estaremos preparando para nuestra Evaluación de la Unidad 1. Vamos a conectar nuestro vocabulario en inglés con el español y continuaremos experimentando con globos terráqueos. ¡Tomaremos nuestra evaluación de escritura el miércoles y el jueves! Recuerden que su estudiante debe leerles todos los días durante 20 minutos en inglés y en español."
+  },
+
+  "specials": {
+    "monday": "NO SCHOOL",
+    "tuesday": "C",
+    "wednesday": "D",
+    "thursday": "E",
+    "friday": "F"
+  },
+
+  "roars": {
+    "Cartagena": "Jonas Obser",
+    "Colombia": "Benjamin Kaye-Dumas",
+    "España": "Yannely Infante Silva",
+    "DR": "Eva Rouhi",
+    "Managua": "Edith Chapman",
+    "Venezuela": "William Deras"
+  }
+}

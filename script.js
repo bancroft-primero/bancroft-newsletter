@@ -1,0 +1,250 @@
+// --- State ---
+let currentLang = 'en';
+let currentWeekData = null;
+let configData = null;
+let weeksList = [];
+
+// --- Init ---
+async function init() {
+  try {
+    const [config, index] = await Promise.all([
+      fetchJSON('data/config.json'),
+      fetchJSON('data/weeks/weeks-index.json')
+    ]);
+    configData = config;
+    weeksList = index;
+
+    // Check URL hash for a specific week
+    const hash = window.location.hash.replace('#', '');
+    const targetWeek = weeksList.includes(hash) ? hash : weeksList[0];
+
+    await loadWeek(targetWeek, false);
+    renderArchiveList();
+  } catch (err) {
+    showError('Could not load the newsletter. Please check back later.');
+    console.error(err);
+  }
+}
+
+async function fetchJSON(path) {
+  const res = await fetch(path);
+  if (!res.ok) throw new Error(`Failed to fetch ${path}: ${res.status}`);
+  return res.json();
+}
+
+// --- Load a week ---
+async function loadWeek(date, updateHash) {
+  try {
+    currentWeekData = await fetchJSON(`data/weeks/${date}.json`);
+    if (updateHash !== false) {
+      window.location.hash = date;
+    }
+    render();
+    updateActiveArchiveLink(date);
+  } catch (err) {
+    showError(`Could not load newsletter for ${date}. The data file may be missing.`);
+    console.error(err);
+  }
+}
+
+// --- Render everything ---
+function render() {
+  const data = currentWeekData;
+  const lang = currentLang;
+  const labels = configData.labels[lang];
+
+  // Header
+  document.getElementById('title').textContent = labels.title;
+  document.getElementById('subtitle').textContent = labels.subtitle;
+  document.getElementById('date-display').textContent = formatDate(data.date, lang);
+
+  // Logo
+  const logoSrc = configData.seasonLogos[data.season] || configData.seasonLogos['default'];
+  document.getElementById('school-logo').src = logoSrc;
+
+  // Language toggle button
+  document.getElementById('lang-toggle').textContent = labels.langToggle;
+
+  // Content sections
+  document.getElementById('welcome-heading').textContent = labels.welcomeHeading;
+  document.getElementById('welcome-body').innerHTML = textToHTML(data.welcome[lang]) + renderImages(data.welcomeImages);
+
+  document.getElementById('math-heading').textContent = labels.mathHeading;
+  document.getElementById('math-body').innerHTML = textToHTML(data.math[lang]) + renderImages(data.mathImages);
+
+  document.getElementById('literacy-heading').textContent = labels.literacyHeading;
+  document.getElementById('literacy-body').innerHTML = textToHTML(data.literacy[lang]) + renderImages(data.literacyImages);
+
+  // Specials schedule
+  document.getElementById('specials-heading').textContent = labels.specialsHeading;
+  renderSpecials(data.specials, labels);
+
+  // Classroom grids
+  renderClassroomGrids(data.specials, labels);
+
+  // ROARS
+  document.getElementById('roars-heading').textContent = labels.roarsHeading;
+  renderROARS(data.roars);
+
+  // Archive headings
+  document.getElementById('archive-heading').textContent = labels.archiveHeading;
+  const mobileHeading = document.getElementById('archive-heading-mobile');
+  if (mobileHeading) mobileHeading.textContent = labels.archiveHeading;
+
+  // Re-render archive links with translated dates
+  renderArchiveList();
+}
+
+// --- Specials Schedule Table ---
+function renderSpecials(specials, labels) {
+  const tbody = document.querySelector('#specials-table tbody');
+  const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+
+  tbody.innerHTML = days.map((day, i) => {
+    const val = specials[day] || '';
+    const isNoSchool = val.toUpperCase().includes('NO SCHOOL') || val.toUpperCase().includes('NO HAY');
+    const displayVal = isNoSchool
+      ? labels.noSchool
+      : val;
+    const cellClass = isNoSchool ? ' class="no-school-cell"' : '';
+    return `<tr>
+      <td>${labels.days[i]}</td>
+      <td${cellClass}>${displayVal}</td>
+    </tr>`;
+  }).join('');
+}
+
+// --- Classroom Rotation Grids ---
+function renderClassroomGrids(specials, labels) {
+  const container = document.getElementById('classroom-grids');
+  const rotations = configData.rotations;
+  const icons = configData.subjectIcons;
+  const translations = configData.subjectTranslations;
+  const lang = currentLang;
+
+  // Determine today's rotation letter (only highlight current day)
+  const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+  const today = dayNames[new Date().getDay()];
+  const todayVal = (specials[today] || '').trim().toUpperCase();
+  const activeLetters = new Set();
+  if (todayVal.length === 1 && todayVal >= 'A' && todayVal <= 'F') {
+    activeLetters.add(todayVal);
+  }
+
+  container.innerHTML = configData.classrooms.map(classroom => {
+    const classRotations = rotations[classroom];
+    const rows = ['A', 'B', 'C', 'D', 'E', 'F'].map(letter => {
+      const subject = classRotations[letter];
+      const subjectName = lang === 'es' ? (translations[subject] || subject) : subject;
+      const icon = icons[subject] || '';
+      const highlight = activeLetters.has(letter) ? ' class="rotation-highlight"' : '';
+      return `<tr${highlight}>
+        <td>${letter}</td>
+        <td>${icon}</td>
+        <td>${subjectName}</td>
+      </tr>`;
+    }).join('');
+
+    return `<div class="classroom-card">
+      <div class="classroom-card-header">${classroom}</div>
+      <table>${rows}</table>
+    </div>`;
+  }).join('');
+}
+
+// --- ROARS ---
+function renderROARS(roars) {
+  const container = document.getElementById('roars-cards');
+  container.innerHTML = configData.classrooms.map(classroom => {
+    const name = roars[classroom] || '';
+    return `<div class="roars-card">
+      <div class="roars-card-classroom">${classroom}</div>
+      <div class="roars-card-name">${name}</div>
+    </div>`;
+  }).join('');
+}
+
+// --- Archive List ---
+function renderArchiveList() {
+  const labels = configData.labels[currentLang];
+  const html = weeksList.map(date => {
+    const formatted = `${labels.weekOf} ${formatDate(date, currentLang)}`;
+    const activeClass = currentWeekData && currentWeekData.date === date ? ' class="active"' : '';
+    return `<li><a href="#${date}"${activeClass} onclick="loadWeek('${date}'); return false;">${formatted}</a></li>`;
+  }).join('');
+
+  document.getElementById('archive-list').innerHTML = html;
+  const mobileList = document.getElementById('archive-list-mobile');
+  if (mobileList) mobileList.innerHTML = html;
+}
+
+function updateActiveArchiveLink(date) {
+  document.querySelectorAll('.archive-sidebar a, .archive-mobile a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + date);
+  });
+}
+
+// --- Language Toggle ---
+function toggleLanguage() {
+  currentLang = currentLang === 'en' ? 'es' : 'en';
+  document.documentElement.lang = currentLang;
+  render();
+}
+
+document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
+
+// --- Hash change listener ---
+window.addEventListener('hashchange', () => {
+  const hash = window.location.hash.replace('#', '');
+  if (weeksList.includes(hash) && (!currentWeekData || currentWeekData.date !== hash)) {
+    loadWeek(hash, false);
+  }
+});
+
+// --- Helpers ---
+function formatDate(dateStr, lang) {
+  // dateStr is "YYYY-MM-DD"
+  const [y, m, d] = dateStr.split('-').map(Number);
+  const date = new Date(y, m - 1, d);
+  const locale = lang === 'es' ? 'es-US' : 'en-US';
+  return date.toLocaleDateString(locale, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+
+function textToHTML(text) {
+  if (!text) return '';
+  // Escape HTML entities
+  const escaped = text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+  // Split on double newlines for paragraphs
+  const paragraphs = escaped.split(/\n\n+/);
+  return paragraphs.map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+}
+
+function renderImages(images) {
+  if (!images || images.length === 0) return '';
+  const imgs = images.map(img => {
+    const alt = img.alt || '';
+    const caption = img.caption || '';
+    const captionHTML = caption ? `<figcaption>${caption}</figcaption>` : '';
+    return `<figure class="section-image"><img src="${img.src}" alt="${alt}" loading="lazy">${captionHTML}</figure>`;
+  }).join('');
+  return `<div class="section-images">${imgs}</div>`;
+}
+
+function showError(msg) {
+  document.getElementById('error-message').textContent = msg;
+  document.getElementById('error-overlay').hidden = false;
+  // Auto-hide after 5 seconds
+  setTimeout(() => {
+    document.getElementById('error-overlay').hidden = true;
+  }, 5000);
+}
+
+// --- Start ---
+init();
