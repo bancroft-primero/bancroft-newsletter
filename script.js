@@ -47,7 +47,11 @@ function buildClassSelector() {
     btn.className = 'class-btn';
     btn.dataset.class = classroom;
     const flag = flags[classroom] || '';
-    btn.textContent = flag ? `${flag} ${classroom}` : classroom;
+    if (flag.startsWith('img:')) {
+      btn.innerHTML = flagHTML(flag, 'small') + ' ' + classroom;
+    } else {
+      btn.textContent = flag ? `${flag} ${classroom}` : classroom;
+    }
     container.appendChild(btn);
   });
 
@@ -250,7 +254,7 @@ function renderClassroomGrids(specials, labels) {
 
     const flag = (configData.classroomFlags || {})[classroom] || '';
     return `<div class="classroom-card">
-      <div class="classroom-card-header">${classroom}<br><span class="classroom-flag">${flag}</span></div>
+      <div class="classroom-card-header">${classroom}<br><span class="classroom-flag">${flagHTML(flag, 'large')}</span></div>
       <table>${rows}</table>
     </div>`;
   }).join('');
@@ -264,7 +268,7 @@ function renderROARS(roars) {
     const flag = (configData.classroomFlags || {})[classroom] || '';
     return `<div class="roars-card">
       <div class="roars-card-classroom">${classroom}</div>
-      <div class="roars-card-flag">${flag}</div>
+      <div class="roars-card-flag">${flagHTML(flag, 'large')}</div>
       <div class="roars-card-name">${name}</div>
     </div>`;
   }).join('');
@@ -341,6 +345,16 @@ function renderImages(images) {
     return `<figure class="section-image"><img src="${img.src}" alt="${alt}" loading="lazy">${captionHTML}</figure>`;
   }).join('');
   return `<div class="section-images">${imgs}</div>`;
+}
+
+function flagHTML(flagValue, size) {
+  if (!flagValue) return '';
+  if (flagValue.startsWith('img:')) {
+    const src = flagValue.slice(4);
+    const px = size === 'small' ? 20 : size === 'large' ? 32 : 24;
+    return `<img src="${src}" alt="flag" class="flag-img" style="height:${px}px;width:auto;vertical-align:middle;">`;
+  }
+  return `<span class="flag-emoji">${flagValue}</span>`;
 }
 
 function showError(msg) {

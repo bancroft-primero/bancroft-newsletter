@@ -12,7 +12,7 @@
   },
 
   "classroomFlags": {
-    "Cartagena": "🇨🇴",
+    "Cartagena": "img:images/flag-cartagena.png",
     "Colombia": "🇨🇴",
     "España": "🇪🇸",
     "DR": "🇩🇴",
