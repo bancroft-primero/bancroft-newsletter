@@ -1,5 +1,5 @@
 // --- State ---
-let currentLang = 'en';
+let currentLang = 'es';
 let currentWeekData = null;
 let configData = null;
 let weeksList = [];
@@ -104,8 +104,10 @@ function render() {
   const logoSrc = configData.seasonLogos[data.season] || configData.seasonLogos['default'];
   document.getElementById('school-logo').src = logoSrc;
 
-  // Language toggle button
-  document.getElementById('lang-toggle').textContent = labels.langToggle;
+  // Language toggle buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
 
   // Class selector label
   document.getElementById('class-selector-label').textContent =
@@ -312,13 +314,13 @@ function updateActiveArchiveLink(date) {
 }
 
 // --- Language Toggle ---
-function toggleLanguage() {
-  currentLang = currentLang === 'en' ? 'es' : 'en';
+document.getElementById('lang-toggle-wrap').addEventListener('click', (e) => {
+  const btn = e.target.closest('.lang-btn');
+  if (!btn || btn.dataset.lang === currentLang) return;
+  currentLang = btn.dataset.lang;
   document.documentElement.lang = currentLang;
   render();
-}
-
-document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
+});
 
 // --- Hash change listener ---
 window.addEventListener('hashchange', () => {
