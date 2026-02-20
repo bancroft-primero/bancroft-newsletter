@@ -171,14 +171,24 @@ function renderMySpecials() {
   const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
   const todayKey = dayNames[new Date().getDay()];
 
+  // Calculate dates for each day of the week from the newsletter date (which is a Monday)
+  const [ny, nm, nd] = currentWeekData.date.split('-').map(Number);
+  const weekStart = new Date(ny, nm - 1, nd);
+
   body.innerHTML = dayKeys.map((day, i) => {
     const letter = (specials[day] || '').trim().toUpperCase();
     const isNoSchool = letter.includes('NO SCHOOL') || letter.includes('NO HAY') || letter.includes('CONFERENCES');
     const isToday = day === todayKey;
 
+    // Calculate this day's date (Mon=0, Tue=1, etc.)
+    const dayDate = new Date(weekStart);
+    dayDate.setDate(weekStart.getDate() + i);
+    const shortDate = `${dayDate.getMonth() + 1}/${dayDate.getDate()}`;
+    const dayLabel = `${labels.days[i]} (${shortDate})`;
+
     if (isNoSchool) {
       return `<div class="my-specials-day no-school${isToday ? ' today' : ''}">
-        <div class="my-specials-day-name">${labels.days[i]}</div>
+        <div class="my-specials-day-name">${dayLabel}</div>
         <div class="my-specials-day-icon">🚫</div>
         <div class="my-specials-day-subject">${labels.noSchool}</div>
       </div>`;
@@ -189,7 +199,7 @@ function renderMySpecials() {
     const icon = icons[subject] || '📅';
 
     return `<div class="my-specials-day${isToday ? ' today' : ''}">
-      <div class="my-specials-day-name">${labels.days[i]}</div>
+      <div class="my-specials-day-name">${dayLabel}</div>
       <div class="my-specials-day-icon">${icon}</div>
       <div class="my-specials-day-subject">${subjectName}</div>
       <div class="my-specials-day-letter">${letter}</div>
@@ -202,15 +212,22 @@ function renderSpecials(specials, labels) {
   const tbody = document.querySelector('#specials-table tbody');
   const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
 
+  // Calculate dates for the week
+  const [ny, nm, nd] = currentWeekData.date.split('-').map(Number);
+  const weekStart = new Date(ny, nm - 1, nd);
+
   tbody.innerHTML = days.map((day, i) => {
     const val = specials[day] || '';
     const isNoSchool = val.toUpperCase().includes('NO SCHOOL') || val.toUpperCase().includes('NO HAY');
-    const displayVal = isNoSchool
-      ? labels.noSchool
-      : val;
+    const displayVal = isNoSchool ? labels.noSchool : val;
     const cellClass = isNoSchool ? ' class="no-school-cell"' : '';
+
+    const dayDate = new Date(weekStart);
+    dayDate.setDate(weekStart.getDate() + i);
+    const shortDate = `${dayDate.getMonth() + 1}/${dayDate.getDate()}`;
+
     return `<tr>
-      <td>${labels.days[i]}</td>
+      <td>${labels.days[i]} <span class="specials-date">(${shortDate})</span></td>
       <td${cellClass}>${displayVal}</td>
     </tr>`;
   }).join('');
@@ -349,12 +366,12 @@ function renderImages(images) {
 
 function flagHTML(flagValue, size) {
   if (!flagValue) return '';
+  const px = size === 'small' ? 16 : size === 'large' ? 24 : 18;
   if (flagValue.startsWith('img:')) {
     const src = flagValue.slice(4);
-    const px = size === 'small' ? 20 : size === 'large' ? 32 : 24;
     return `<img src="${src}" alt="flag" class="flag-img" style="height:${px}px;width:auto;vertical-align:middle;">`;
   }
-  return `<span class="flag-emoji">${flagValue}</span>`;
+  return `<span class="flag-emoji" style="font-size:${px}px;line-height:1;">${flagValue}</span>`;
 }
 
 function showError(msg) {

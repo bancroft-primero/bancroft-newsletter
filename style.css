@@ -386,6 +386,14 @@ body {
   color: var(--color-text-light);
 }
 
+.specials-date {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.8rem;
+  color: #999;
+}
+
 .specials-table td:last-child {
   text-align: center;
   font-weight: 700;
