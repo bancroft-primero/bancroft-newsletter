@@ -142,15 +142,12 @@ function render() {
   const mobileHeading = document.getElementById('archive-heading-mobile');
   if (mobileHeading) mobileHeading.textContent = labels.archiveHeading;
 
-  // Weather
-  renderWeather();
-
   // Re-render archive links with translated dates
   renderArchiveList();
 }
 
 // --- My Specials This Week (personalized) ---
-function renderMySpecials() {
+async function renderMySpecials() {
   const section = document.getElementById('my-specials');
   const body = document.getElementById('my-specials-body');
   const heading = document.getElementById('my-specials-heading');
@@ -180,6 +177,9 @@ function renderMySpecials() {
   const [ny, nm, nd] = currentWeekData.date.split('-').map(Number);
   const weekStart = new Date(ny, nm - 1, nd);
 
+  // Fetch weather for current week
+  const daily = await fetchWeatherData();
+
   body.innerHTML = dayKeys.map((day, i) => {
     const letter = (specials[day] || '').trim().toUpperCase();
     const isNoSchool = letter.includes('NO SCHOOL') || letter.includes('NO HAY') || letter.includes('CONFERENCES');
@@ -191,11 +191,14 @@ function renderMySpecials() {
     const shortDate = `${dayDate.getMonth() + 1}/${dayDate.getDate()}`;
     const dayLabel = `${labels.days[i]} (${shortDate})`;
 
+    const weatherHTML = weatherSnippetHTML(daily, i, lang);
+
     if (isNoSchool) {
       return `<div class="my-specials-day no-school${isToday ? ' today' : ''}">
         <div class="my-specials-day-name">${dayLabel}</div>
         <div class="my-specials-day-icon">🚫</div>
         <div class="my-specials-day-subject">${labels.noSchool}</div>
+        ${weatherHTML}
       </div>`;
     }
 
@@ -208,18 +211,22 @@ function renderMySpecials() {
       <div class="my-specials-day-icon">${icon}</div>
       <div class="my-specials-day-subject">${subjectName}</div>
       <div class="my-specials-day-letter">${letter}</div>
+      ${weatherHTML}
     </div>`;
   }).join('');
 }
 
 // --- Specials Schedule Table ---
-function renderSpecials(specials, labels) {
+async function renderSpecials(specials, labels) {
   const tbody = document.querySelector('#specials-table tbody');
   const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
 
   // Calculate dates for the week
   const [ny, nm, nd] = currentWeekData.date.split('-').map(Number);
   const weekStart = new Date(ny, nm - 1, nd);
+
+  // Fetch weather for current week
+  const daily = await fetchWeatherData();
 
   tbody.innerHTML = days.map((day, i) => {
     const val = specials[day] || '';
@@ -231,9 +238,11 @@ function renderSpecials(specials, labels) {
     dayDate.setDate(weekStart.getDate() + i);
     const shortDate = `${dayDate.getMonth() + 1}/${dayDate.getDate()}`;
 
+    const weatherHTML = weatherSnippetHTML(daily, i, currentLang);
+
     return `<tr>
       <td>${labels.days[i]} <span class="specials-date">(${shortDate})</span></td>
-      <td${cellClass}>${displayVal}</td>
+      <td${cellClass}>${displayVal}${weatherHTML ? '<div class="specials-weather-row">' + weatherHTML + '</div>' : ''}</td>
     </tr>`;
   }).join('');
 }
@@ -374,39 +383,19 @@ const BANCROFT_LAT = 38.9296;
 const BANCROFT_LON = -77.0325;
 let weatherCache = {};
 
-async function renderWeather() {
-  const section = document.getElementById('weather-section');
-  const body = document.getElementById('weather-body');
-  const heading = document.getElementById('weather-heading');
-  const credit = document.getElementById('weather-credit');
-  const lang = currentLang;
+// Fetch weather data for the current week (returns null if unavailable or not current week)
+async function fetchWeatherData() {
+  if (!currentWeekData || currentWeekData.date !== weeksList[0]) return null;
 
-  heading.textContent = lang === 'es' ? 'El Clima de Esta Semana' : "This Week's Weather";
-  credit.textContent = lang === 'es' ? 'Pronóstico de Open-Meteo.com' : 'Forecast from Open-Meteo.com';
-
-  // Only show weather for the most recent newsletter (current/upcoming week)
-  if (!currentWeekData || currentWeekData.date !== weeksList[0]) {
-    section.hidden = true;
-    return;
-  }
-
-  // Calculate the week's date range
   const [ny, nm, nd] = currentWeekData.date.split('-').map(Number);
   const weekStart = new Date(ny, nm - 1, nd);
   const weekEnd = new Date(weekStart);
   weekEnd.setDate(weekStart.getDate() + 4);
 
-  // Check if the week is too far in the future for forecasts (>14 days)
   const now = new Date();
   const daysUntilEnd = Math.ceil((weekEnd - now) / (1000 * 60 * 60 * 24));
-  if (daysUntilEnd > 16) {
-    section.hidden = true;
-    return;
-  }
+  if (daysUntilEnd > 16) return null;
 
-  section.hidden = false;
-
-  // Fetch weather data
   const startStr = formatDateISO(weekStart);
   const endStr = formatDateISO(weekEnd);
   const cacheKey = `${startStr}_${endStr}`;
@@ -419,50 +408,35 @@ async function renderWeather() {
       weatherCache[cacheKey] = await res.json();
     } catch (err) {
       console.error('Weather error:', err);
-      body.innerHTML = `<p class="weather-unavailable">${lang === 'es' ? 'Pronóstico no disponible' : 'Forecast not available'}</p>`;
-      return;
+      return null;
     }
   }
 
   const weather = weatherCache[cacheKey];
-  const daily = weather.daily;
-  if (!daily || !daily.time || daily.time.length === 0) {
-    body.innerHTML = `<p class="weather-unavailable">${lang === 'es' ? 'Pronóstico no disponible' : 'Forecast not available'}</p>`;
-    return;
-  }
+  if (!weather.daily || !weather.daily.time || weather.daily.time.length === 0) return null;
+  return weather.daily;
+}
 
-  const labels = configData.labels[lang];
-  const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-  const todayStr = formatDateISO(now);
+// Build inline weather HTML for a specific day index (0=Mon, 1=Tue, etc.)
+function weatherSnippetHTML(daily, dayIndex, lang) {
+  if (!daily || dayIndex >= daily.time.length) return '';
+  const high = Math.round(daily.temperature_2m_max[dayIndex]);
+  const low = Math.round(daily.temperature_2m_min[dayIndex]);
+  const rainChance = daily.precipitation_probability_max[dayIndex];
+  const code = daily.weathercode[dayIndex];
+  const icon = weatherIcon(code);
+  const desc = weatherDescription(code, lang);
+  const tips = weatherTips(high, low, rainChance, code, lang);
 
-  body.innerHTML = daily.time.map((dateStr, i) => {
-    const date = new Date(dateStr + 'T12:00:00');
-    const dayIdx = date.getDay();
-    const dayOfWeek = labels.days[dayIdx === 0 ? 6 : dayIdx - 1]; // Mon-Fri mapping
-    const shortDate = `${date.getMonth() + 1}/${date.getDate()}`;
-    const isToday = dateStr === todayStr;
-
-    const high = Math.round(daily.temperature_2m_max[i]);
-    const low = Math.round(daily.temperature_2m_min[i]);
-    const rainChance = daily.precipitation_probability_max[i];
-    const code = daily.weathercode[i];
-
-    const icon = weatherIcon(code);
-    const desc = weatherDescription(code, lang);
-    const tips = weatherTips(high, low, rainChance, code, lang);
-
-    return `<div class="weather-day${isToday ? ' today' : ''}" onclick="this.classList.toggle('expanded')">
-      <div class="weather-day-name">${dayOfWeek}</div>
-      <div class="weather-day-date">${shortDate}</div>
-      <div class="weather-day-icon">${icon}</div>
-      <div class="weather-day-temp">${high}° / ${low}°</div>
-      <div class="weather-day-desc">${desc}</div>
-      ${rainChance > 0 ? `<div class="weather-day-desc">💧 ${rainChance}%</div>` : ''}
-      <div class="weather-day-tips">
-        ${tips.map(t => `<div class="weather-tip">${t}</div>`).join('')}
-      </div>
-    </div>`;
-  }).join('');
+  return `<div class="weather-inline" onclick="event.stopPropagation(); this.classList.toggle('expanded')">
+    <span class="weather-inline-icon">${icon}</span>
+    <span class="weather-inline-temp">${high}°/${low}°</span>
+    <span class="weather-inline-desc">${desc}</span>
+    ${rainChance > 0 ? `<span class="weather-inline-rain">💧${rainChance}%</span>` : ''}
+    <div class="weather-inline-tips">
+      ${tips.map(t => `<div class="weather-tip">${t}</div>`).join('')}
+    </div>
+  </div>`;
 }
 
 function formatDateISO(d) {
@@ -553,12 +527,12 @@ function weatherTips(high, low, rainChance, code, lang) {
 
 function flagHTML(flagValue, size) {
   if (!flagValue) return '';
-  const px = size === 'small' ? 16 : size === 'large' ? 24 : 18;
+  const h = size === 'small' ? 14 : size === 'large' ? 22 : 16;
   if (flagValue.startsWith('img:')) {
     const src = flagValue.slice(4);
-    return `<img src="${src}" alt="flag" class="flag-img" style="height:${px}px;width:auto;vertical-align:middle;">`;
+    return `<img src="${src}" alt="flag" class="flag-img flag-${size}" style="height:${h}px;">`;
   }
-  return `<span class="flag-emoji" style="font-size:${px}px;line-height:1;">${flagValue}</span>`;
+  return `<span class="flag-emoji" style="font-size:${h}px;line-height:1;">${flagValue}</span>`;
 }
 
 function showError(msg) {

@@ -12,12 +12,12 @@
   },
 
   "classroomFlags": {
-    "Cartagena": "img:images/flag-cartagena.png",
-    "Colombia": "🇨🇴",
-    "España": "🇪🇸",
-    "DR": "🇩🇴",
-    "Managua": "🇳🇮",
-    "Venezuela": "🇻🇪"
+    "Cartagena": "img:images/flags/cartagena.svg",
+    "Colombia": "img:images/flags/colombia.svg",
+    "España": "img:images/flags/espana.svg",
+    "DR": "img:images/flags/dr.svg",
+    "Managua": "img:images/flags/managua.svg",
+    "Venezuela": "img:images/flags/venezuela.svg"
   },
 
   "subjectIcons": {
