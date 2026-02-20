@@ -142,6 +142,9 @@ function render() {
   const mobileHeading = document.getElementById('archive-heading-mobile');
   if (mobileHeading) mobileHeading.textContent = labels.archiveHeading;
 
+  // Weather
+  renderWeather();
+
   // Re-render archive links with translated dates
   renderArchiveList();
 }
@@ -364,6 +367,188 @@ function renderImages(images) {
     return `<figure class="section-image"><img src="${img.src}" alt="${alt}" loading="lazy">${captionHTML}</figure>`;
   }).join('');
   return `<div class="section-images">${imgs}</div>`;
+}
+
+// --- Weather ---
+const BANCROFT_LAT = 38.9296;
+const BANCROFT_LON = -77.0325;
+let weatherCache = {};
+
+async function renderWeather() {
+  const section = document.getElementById('weather-section');
+  const body = document.getElementById('weather-body');
+  const heading = document.getElementById('weather-heading');
+  const credit = document.getElementById('weather-credit');
+  const lang = currentLang;
+
+  heading.textContent = lang === 'es' ? 'El Clima de Esta Semana' : "This Week's Weather";
+  credit.textContent = lang === 'es' ? 'Pronóstico de Open-Meteo.com' : 'Forecast from Open-Meteo.com';
+
+  // Only show weather for the most recent newsletter (current/upcoming week)
+  if (!currentWeekData || currentWeekData.date !== weeksList[0]) {
+    section.hidden = true;
+    return;
+  }
+
+  // Calculate the week's date range
+  const [ny, nm, nd] = currentWeekData.date.split('-').map(Number);
+  const weekStart = new Date(ny, nm - 1, nd);
+  const weekEnd = new Date(weekStart);
+  weekEnd.setDate(weekStart.getDate() + 4);
+
+  // Check if the week is too far in the future for forecasts (>14 days)
+  const now = new Date();
+  const daysUntilEnd = Math.ceil((weekEnd - now) / (1000 * 60 * 60 * 24));
+  if (daysUntilEnd > 16) {
+    section.hidden = true;
+    return;
+  }
+
+  section.hidden = false;
+
+  // Fetch weather data
+  const startStr = formatDateISO(weekStart);
+  const endStr = formatDateISO(weekEnd);
+  const cacheKey = `${startStr}_${endStr}`;
+
+  if (!weatherCache[cacheKey]) {
+    try {
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${BANCROFT_LAT}&longitude=${BANCROFT_LON}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode&temperature_unit=fahrenheit&timezone=America/New_York&start_date=${startStr}&end_date=${endStr}`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('Weather fetch failed');
+      weatherCache[cacheKey] = await res.json();
+    } catch (err) {
+      console.error('Weather error:', err);
+      body.innerHTML = `<p class="weather-unavailable">${lang === 'es' ? 'Pronóstico no disponible' : 'Forecast not available'}</p>`;
+      return;
+    }
+  }
+
+  const weather = weatherCache[cacheKey];
+  const daily = weather.daily;
+  if (!daily || !daily.time || daily.time.length === 0) {
+    body.innerHTML = `<p class="weather-unavailable">${lang === 'es' ? 'Pronóstico no disponible' : 'Forecast not available'}</p>`;
+    return;
+  }
+
+  const labels = configData.labels[lang];
+  const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+  const todayStr = formatDateISO(now);
+
+  body.innerHTML = daily.time.map((dateStr, i) => {
+    const date = new Date(dateStr + 'T12:00:00');
+    const dayIdx = date.getDay();
+    const dayOfWeek = labels.days[dayIdx === 0 ? 6 : dayIdx - 1]; // Mon-Fri mapping
+    const shortDate = `${date.getMonth() + 1}/${date.getDate()}`;
+    const isToday = dateStr === todayStr;
+
+    const high = Math.round(daily.temperature_2m_max[i]);
+    const low = Math.round(daily.temperature_2m_min[i]);
+    const rainChance = daily.precipitation_probability_max[i];
+    const code = daily.weathercode[i];
+
+    const icon = weatherIcon(code);
+    const desc = weatherDescription(code, lang);
+    const tips = weatherTips(high, low, rainChance, code, lang);
+
+    return `<div class="weather-day${isToday ? ' today' : ''}" onclick="this.classList.toggle('expanded')">
+      <div class="weather-day-name">${dayOfWeek}</div>
+      <div class="weather-day-date">${shortDate}</div>
+      <div class="weather-day-icon">${icon}</div>
+      <div class="weather-day-temp">${high}° / ${low}°</div>
+      <div class="weather-day-desc">${desc}</div>
+      ${rainChance > 0 ? `<div class="weather-day-desc">💧 ${rainChance}%</div>` : ''}
+      <div class="weather-day-tips">
+        ${tips.map(t => `<div class="weather-tip">${t}</div>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function formatDateISO(d) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
+function weatherIcon(code) {
+  if (code === 0) return '☀️';
+  if (code <= 3) return '⛅';
+  if (code <= 48) return '☁️';
+  if (code <= 57) return '🌧️';
+  if (code <= 67) return '🌧️';
+  if (code <= 77) return '❄️';
+  if (code <= 82) return '🌧️';
+  if (code <= 86) return '❄️';
+  if (code >= 95) return '⛈️';
+  return '🌤️';
+}
+
+function weatherDescription(code, lang) {
+  const descriptions = {
+    en: {
+      0: 'Clear sky', 1: 'Mostly clear', 2: 'Partly cloudy', 3: 'Overcast',
+      45: 'Foggy', 48: 'Icy fog', 51: 'Light drizzle', 53: 'Drizzle',
+      55: 'Heavy drizzle', 56: 'Freezing drizzle', 57: 'Freezing drizzle',
+      61: 'Light rain', 63: 'Rain', 65: 'Heavy rain',
+      66: 'Freezing rain', 67: 'Freezing rain',
+      71: 'Light snow', 73: 'Snow', 75: 'Heavy snow',
+      77: 'Snow grains', 80: 'Light showers', 81: 'Showers', 82: 'Heavy showers',
+      85: 'Snow showers', 86: 'Heavy snow showers',
+      95: 'Thunderstorm', 96: 'Thunderstorm w/ hail', 99: 'Thunderstorm w/ hail'
+    },
+    es: {
+      0: 'Cielo despejado', 1: 'Mayormente despejado', 2: 'Parcialmente nublado', 3: 'Nublado',
+      45: 'Niebla', 48: 'Niebla helada', 51: 'Llovizna ligera', 53: 'Llovizna',
+      55: 'Llovizna fuerte', 56: 'Llovizna helada', 57: 'Llovizna helada',
+      61: 'Lluvia ligera', 63: 'Lluvia', 65: 'Lluvia fuerte',
+      66: 'Lluvia helada', 67: 'Lluvia helada',
+      71: 'Nieve ligera', 73: 'Nieve', 75: 'Nieve fuerte',
+      77: 'Granizo', 80: 'Chubascos ligeros', 81: 'Chubascos', 82: 'Chubascos fuertes',
+      85: 'Chubascos de nieve', 86: 'Chubascos fuertes de nieve',
+      95: 'Tormenta', 96: 'Tormenta con granizo', 99: 'Tormenta con granizo'
+    }
+  };
+  const map = descriptions[lang] || descriptions.en;
+  return map[code] || map[Math.floor(code / 10) * 10] || (lang === 'es' ? 'Variable' : 'Mixed');
+}
+
+function weatherTips(high, low, rainChance, code, lang) {
+  const tips = [];
+  const isEn = lang === 'en';
+
+  // Temperature-based tips
+  if (low <= 32) {
+    tips.push(isEn ? '🧤 Heavy coat, hat & gloves' : '🧤 Abrigo grueso, gorro y guantes');
+  } else if (low <= 45) {
+    tips.push(isEn ? '🧥 Warm jacket & layers' : '🧥 Chaqueta abrigada y capas');
+  } else if (high <= 55) {
+    tips.push(isEn ? '🧥 Light jacket' : '🧥 Chaqueta ligera');
+  }
+
+  if (high >= 85) {
+    tips.push(isEn ? '💧 Extra water bottle' : '💧 Botella de agua extra');
+    tips.push(isEn ? '🧴 Sunscreen' : '🧴 Protector solar');
+  }
+
+  // Rain/snow tips
+  if (rainChance >= 50 || (code >= 61 && code <= 67) || (code >= 80 && code <= 82)) {
+    tips.push(isEn ? '☂️ Umbrella & rain boots' : '☂️ Paraguas y botas de lluvia');
+  } else if (rainChance >= 30) {
+    tips.push(isEn ? '☂️ Umbrella just in case' : '☂️ Paraguas por si acaso');
+  }
+
+  if (code >= 71 && code <= 77 || code >= 85 && code <= 86) {
+    tips.push(isEn ? '🥾 Snow boots & warm socks' : '🥾 Botas de nieve y calcetines abrigados');
+  }
+
+  if (code >= 95) {
+    tips.push(isEn ? '⚡ Stay safe indoors if possible' : '⚡ Manténganse seguros adentro si es posible');
+  }
+
+  if (tips.length === 0) {
+    tips.push(isEn ? '👍 Great weather for school!' : '👍 ¡Buen clima para la escuela!');
+  }
+
+  return tips;
 }
 
 function flagHTML(flagValue, size) {

@@ -619,6 +619,129 @@ body {
   color: #c0392b;
 }
 
+/* ===== Weather Section ===== */
+.weather-section {
+  background: linear-gradient(135deg, #e0f0ff 0%, #f0f8ff 100%);
+  border-top: 4px solid #4a9bd9;
+}
+
+.weather-heading {
+  font-family: var(--font-script);
+  font-size: 1.5rem;
+  background: #4a9bd9;
+  display: inline-block;
+  padding: 0.2rem 1.5rem;
+  border-radius: 24px;
+  color: var(--color-white);
+}
+
+.weather-body {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.weather-day {
+  text-align: center;
+  padding: 0.75rem 0.4rem;
+  border-radius: 12px;
+  background: var(--color-white);
+  cursor: pointer;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+.weather-day:hover {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}
+
+.weather-day.today {
+  box-shadow: 0 0 0 2px #4a9bd9;
+}
+
+.weather-day-name {
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-light);
+  margin-bottom: 0.15rem;
+}
+
+.weather-day-date {
+  font-size: 0.7rem;
+  color: #999;
+  margin-bottom: 0.3rem;
+}
+
+.weather-day-icon {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.weather-day-temp {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-text);
+  margin: 0.15rem 0;
+}
+
+.weather-day-desc {
+  font-size: 0.7rem;
+  color: var(--color-text-light);
+  margin-bottom: 0.3rem;
+  line-height: 1.2;
+}
+
+.weather-day-tips {
+  display: none;
+  margin-top: 0.4rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid #e8e8e8;
+}
+
+.weather-day.expanded .weather-day-tips {
+  display: block;
+}
+
+.weather-tip {
+  font-size: 0.75rem;
+  margin-bottom: 0.15rem;
+}
+
+.weather-credit {
+  text-align: right;
+  font-size: 0.65rem;
+  color: #bbb;
+  margin-top: 0.5rem;
+}
+
+.weather-unavailable {
+  text-align: center;
+  color: var(--color-text-light);
+  font-style: italic;
+  padding: 1rem 0;
+}
+
+@media (max-width: 600px) {
+  .weather-body {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .weather-body {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media print {
+  .weather-section {
+    display: none !important;
+  }
+}
+
 /* ===== Section Images ===== */
 .section-images {
   display: flex;
