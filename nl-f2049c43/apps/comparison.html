@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Comparemos!</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Nunito',sans-serif;background:#E8F4FD;color:#2D3748;min-height:100vh}
+.app{max-width:900px;margin:0 auto;padding:16px}
+.hdr{text-align:center;padding:20px 16px 12px;background:linear-gradient(135deg,#4ECDC4,#A78BFA);border-radius:24px;margin-bottom:16px;box-shadow:0 8px 24px rgba(78,205,196,.3);position:relative;overflow:hidden}
+.hdr h1{font-family:'Fredoka',sans-serif;font-size:2rem;color:#fff;text-shadow:2px 2px 0 rgba(0,0,0,.1);margin-bottom:4px}
+.hdr p{color:rgba(255,255,255,.9);font-size:1rem;font-weight:600}
+.lt{position:absolute;top:14px;right:14px;display:flex;background:rgba(255,255,255,.2);border-radius:12px;overflow:hidden;border:2px solid rgba(255,255,255,.3)}
+.lb{padding:6px 12px;border:none;background:0 0;color:rgba(255,255,255,.7);font-family:'Fredoka',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;transition:.25s}
+.lb.on{background:rgba(255,255,255,.95);color:#7C5FCF;border-radius:9px}
+.tabs{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px}
+.tb{flex-shrink:0;padding:10px 16px;border:3px solid transparent;border-radius:16px;font-family:'Fredoka',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;transition:.25s;background:#fff;color:#718096;box-shadow:0 2px 8px rgba(0,0,0,.06);white-space:nowrap}
+.tb:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.tb.on{color:#fff;transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.tb[data-t="0"].on{background:#FF6B6B}.tb[data-t="1"].on{background:#4ECDC4}.tb[data-t="2"].on{background:#F0C000}.tb[data-t="3"].on{background:#A78BFA}.tb[data-t="4"].on{background:#FB923C}.tb[data-t="5"].on{background:linear-gradient(135deg,#FF6B6B,#A78BFA)}
+.tc{display:none;animation:fi .4s ease}.tc.on{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.cd{background:#fff;border-radius:20px;padding:24px;margin-bottom:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);border:3px solid transparent}
+.cd.ex{border-color:#E2E8F0}.cd.pr{border-color:#4ECDC4}.cd.ch{border-color:#FF6B6B}
+.cl{display:inline-block;padding:4px 14px;border-radius:20px;font-family:'Fredoka',sans-serif;font-size:.8rem;font-weight:600;color:#fff;margin-bottom:12px}
+.cl.e{background:#718096}.cl.p{background:#4ECDC4}.cl.c{background:#FF6B6B}
+.qt{font-family:'Fredoka',sans-serif;font-size:1.25rem;font-weight:600;color:#2D3748;margin-bottom:16px;line-height:1.4}
+.ti{background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.7));border-radius:16px;padding:16px 20px;margin-bottom:16px;border-left:5px solid #4ECDC4;font-size:1rem;font-weight:600;line-height:1.5}
+.bv{margin:16px 0}.br{display:flex;align-items:center;margin-bottom:10px;gap:10px}
+.bl{font-family:'Fredoka',sans-serif;font-weight:600;font-size:.95rem;min-width:100px;text-align:right}
+.bar{height:40px;border-radius:10px;display:flex;align-items:center}
+.bu{display:flex;height:100%;gap:2px;padding:3px}
+.bx{width:32px;height:100%;border-radius:6px;background:rgba(255,255,255,.4);border:2px solid rgba(255,255,255,.6)}
+.bc{font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;min-width:30px}
+.db{display:flex;align-items:center;margin:8px 0 8px 110px;gap:8px}
+.dl{height:3px;border-radius:2px;background:#FF6B6B}
+.dt{font-family:'Fredoka',sans-serif;font-weight:700;font-size:1rem;color:#FF6B6B;white-space:nowrap}
+.ec{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin:16px 0}
+.eg{text-align:center}
+.el{font-family:'Fredoka',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px}
+.gg{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:220px;min-height:50px}
+.ei{font-size:1.8rem;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:#EDF2F7;border-radius:10px;transition:.3s}
+.ei.hl{background:#FED7D7;border:2px solid #FF6B6B}
+.en2{font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.5rem;margin-top:6px}
+.co{font-family:'Fredoka',sans-serif;font-size:2.5rem;font-weight:700;color:#718096;display:flex;align-items:center;justify-content:center;padding:0 8px}
+.aa{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}
+.ai{width:80px;height:56px;border:3px solid #CBD5E0;border-radius:14px;text-align:center;font-family:'Fredoka',sans-serif;font-size:1.5rem;font-weight:700;color:#2D3748;outline:none;transition:.2s}
+.ai:focus{border-color:#4ECDC4}.ai.ok{border-color:#48BB78;background:#F0FFF4}.ai.no{border-color:#FC8181;background:#FFF5F5}
+.as{font-family:'Fredoka',sans-serif;font-size:1.1rem;font-weight:600;color:#718096}
+.btn{padding:10px 20px;border:none;border-radius:14px;font-family:'Fredoka',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{transform:translateY(-2px)}
+.bck{background:#4ECDC4;color:#fff;box-shadow:0 4px 12px rgba(78,205,196,.3)}
+.bht{background:#FFFBEB;color:#F59E0B;border:2px solid #F59E0B}
+.fb{margin-top:12px;padding:12px 16px;border-radius:14px;font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.05rem;display:none}
+.fb.ok{display:block;background:#F0FFF4;color:#276749;border:2px solid #48BB78}
+.fb.no{display:block;background:#FFF5F5;color:#9B2C2C;border:2px solid #FC8181}
+.hb{margin-top:12px;padding:14px 16px;background:#FFFBEB;border:2px dashed #F59E0B;border-radius:14px;font-size:1rem;font-weight:600;color:#92400E;display:none;line-height:1.5}
+.hb.vis{display:block}
+.ea{margin-top:12px;padding:14px 16px;background:#F0FFF4;border:2px solid #48BB78;border-radius:14px;font-family:'Fredoka',sans-serif;font-size:1.05rem;font-weight:600;color:#276749;display:none;line-height:1.5}
+.ea.vis{display:block}
+.rb{margin-top:12px;padding:10px 20px;background:#48BB78;color:#fff;border:none;border-radius:14px;font-family:'Fredoka',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:.2s}
+.rb:hover{transform:translateY(-2px)}
+.sf{background:#F7FAFC;border:2px dashed #CBD5E0;border-radius:14px;padding:14px 16px;margin-top:12px;font-family:'Fredoka',sans-serif;font-size:1.1rem;font-weight:600;color:#2D3748;line-height:1.6}
+.sf .bk{display:inline-block;min-width:50px;border-bottom:3px solid #4ECDC4;text-align:center;color:#4ECDC4;margin:0 4px;font-weight:700}
+.pb{display:flex;justify-content:center;gap:6px;margin:12px 0}
+.st{font-size:1.4rem;opacity:.25;transition:.3s}.st.wd{opacity:1}
+@media(max-width:600px){.hdr h1{font-size:1.5rem}.qt{font-size:1.1rem}.ei{width:36px;height:36px;font-size:1.5rem}.bx{width:26px}.bl{min-width:80px;font-size:.85rem}.cd{padding:16px}.lt{top:10px;right:10px}.lb{padding:4px 8px;font-size:.75rem}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="hdr">
+<div class="lt"><button class="lb on" id="les" onclick="SL('es')">🇲🇽 Español</button><button class="lb" id="len" onclick="SL('en')">🇺🇸 English</button></div>
+<h1 id="ht"></h1><p id="hs"></p>
+</div>
+<div class="tabs" id="tbs"></div>
+<div id="ct"></div>
+</div>
+<script>
+var L='es',AT=0,CS=new Set();
+
+// All translatable strings stored as arrays indexed by position
+// Format for questions array: sequential strings used by builder functions
+var D={es:{
+ht:'🔍 ¡Comparemos! 🔍',
+hs:'¿Cuántos más? ¿Cuántos menos? ¡Vamos a comparar!',
+tn:['📏 Longitudes','🐾 Animales','🍎 Comida','🧸 Juguetes','⚽ Deportes','🌟 Desafío'],
+el:'📖 Ejemplo',pl:'✏️ ¡Tu turno!',chl:'🌟 Desafío',ck:'✓ Verificar',hi:'💡 Pista',
+sw:'👀 ¡Muéstrame por qué!',hw:'🙈 Ocultar',nm:'🤔 ¡Escribe un número primero!',
+cm:'🎉 ¡Excelente! ¡Correcto!',im:'🤔 ¡Casi! Inténtalo de nuevo. Piensa cuál es más grande y resta.',
+sm:'🎉 ¡Fantástico! ¡Ganaste una estrella!',am:'🎉🌟 ¡INCREÍBLE! ¡Ganaste TODAS las 5 estrellas! ¡Eres Campeón/a de Comparaciones! 🏆',
+ti:['📏 Podemos comparar qué tan <b>largo</b> o <b>corto</b> son las cosas. ¡Usemos cubos para medir y comparar!','🐾 ¡Contemos animales y comparemos! <b>¿Cuántos más? ¿Cuántos menos?</b>','🍎 ¡Comparaciones deliciosas! Comparemos cantidades de comida y encontremos la diferencia.','🧸 ¡Comparemos juguetes! Cantidades Y longitudes.','⚽ ¡Comparaciones deportivas! Comparemos puntos, goles y equipo.','🌟 ¡Eres una superestrella! Intenta estos problemas difíciles. ¡Tú puedes!']
+},en:{
+ht:'🔍 Let\'s Compare! 🔍',
+hs:'How many more? How many fewer? Let\'s compare!',
+tn:['📏 Lengths','🐾 Animals','🍎 Food','🧸 Toys','⚽ Sports','🌟 Challenge'],
+el:'📖 Example',pl:'✏️ Your Turn!',chl:'🌟 Challenge',ck:'✓ Check',hi:'💡 Hint',
+sw:'👀 Show me why!',hw:'🙈 Hide',nm:'🤔 Type a number first!',
+cm:'🎉 Excellent! That\'s right!',im:'🤔 Not quite! Try again. Think which is bigger and subtract.',
+sm:'🎉 Fantastic! You earned a star!',am:'🎉🌟 AMAZING! All 5 stars! You\'re a Comparison Champion! 🏆',
+ti:['📏 We can compare how <b>long</b> or <b>short</b> things are. Let\'s use cubes!','🐾 Let\'s count animals and compare! <b>How many more? How many fewer?</b>','🍎 Yummy comparisons! Let\'s compare food amounts and find the difference!','🧸 Time to compare toys! How many AND how long!','⚽ Sports comparison time! Scores, points, and equipment!','🌟 You\'re a comparison superstar! Try these tricky problems!']
+}};
+
+// Content definitions: each item is [type, ...params]
+// type: 'ex-bar'=example w/bar, 'ex-emj'=example w/emoji, 'pr-bar'=practice w/bar, 'pr-emj'=practice w/emoji, 'ch-bar'=challenge w/bar, 'ch-emj'=challenge w/emoji
+// Bar params: [labelA_es,labelA_en,colA,nA,labelB_es,labelB_en,colB,nB,bracket_es,bracket_en]
+// Emoji params: [labelA_es,labelA_en,colA,emojiA,nA,hlA,labelB_es,labelB_en,colB,emojiB,nB,hlB]
+// Example: [...barOrEmoji, question_es, question_en, frame_es, frame_en, explain_es, explain_en]
+// Practice: [...barOrEmoji, question_es, question_en, pre_es, pre_en, suf_es, suf_en, hint_es, hint_en, answer]
+// Challenge: [...barOrEmoji, question_es, question_en, suf_es, suf_en, hint_es, hint_en, answer, starNum]
+
+var TABS=[
+// TAB 0: Lengths
+[
+['ex-bar','Rojo ✏️','Red ✏️','#FF6B6B',7,'Azul ✏️','Blue ✏️','#4ECDC4',4,'← ¡3 más!','← 3 more!',
+'Un lápiz rojo mide 7 cubos de largo. Un lápiz azul mide 4 cubos. ¿Cuánto más largo es el rojo?',
+'A red pencil is 7 cubes long. A blue pencil is 4 cubes long. How much longer is the red pencil?',
+'El lápiz rojo es <span class="bk">3</span> cubos más largo que el azul.<br>7 − 4 = <span class="bk">3</span>',
+'The red pencil is <span class="bk">3</span> cubes longer than the blue pencil.<br>7 − 4 = <span class="bk">3</span>',
+'✅ Alineamos los lápices. Contamos los <b>cubos extra</b>: 1... 2... 3! El rojo es <b>3 cubos más largo</b>. 7 − 4 = 3.',
+'✅ Line up both pencils. Count the <b>extra cubes</b>: 1... 2... 3! The red pencil is <b>3 cubes longer</b>. 7 − 4 = 3.'],
+
+['ex-bar','Serpiente 🐍','Snake 🐍','#68D391',5,'Gusano 🪱','Worm 🪱','#A0826D',8,'← ¡3 más corta!','← 3 shorter!',
+'Una serpiente mide 5 cubos. Un gusano mide 8 cubos. ¿Cuánto más corta es la serpiente?',
+'A snake is 5 cubes long. A worm is 8 cubes long. How much shorter is the snake?',
+'La serpiente es <span class="bk">3</span> cubos más corta.<br>8 − 5 = <span class="bk">3</span>',
+'The snake is <span class="bk">3</span> cubes shorter than the worm.<br>8 − 5 = <span class="bk">3</span>',
+'✅ Los alineamos. El gusano tiene <b>3 cubos extra</b>. La serpiente es <b>3 cubos más corta</b>. 8 − 5 = 3.',
+'✅ Line them up. The worm has <b>3 extra cubes</b>. The snake is <b>3 cubes shorter</b>. 8 − 5 = 3.'],
+
+['pr-bar','Verde 🎀','Green 🎀','#48BB78',6,'Amarilla 🎀','Yellow 🎀','#ECC94B',9,null,null,
+'Una cinta verde mide 6 cubos. Una amarilla mide 9 cubos. ¿Cuánto más corta es la verde?',
+'A green ribbon is 6 cubes. A yellow ribbon is 9 cubes. How much shorter is the green ribbon?',
+'La cinta verde es','The green ribbon is','cubos más corta.','cubes shorter.',
+'💡 ¡Alinéalas! Cuenta los cubos amarillos extra. 9 − 6 = ?','💡 Line them up! Count the extra yellow cubes. 9 − 6 = ?',3],
+
+['pr-bar','Carro 🚗','Car 🚗','#4299E1',10,'Camión 🚚','Truck 🚚','#ED8936',6,null,null,
+'Un carro mide 10 cubos. Un camión mide 6. ¿Cuánto más largo es el carro?',
+'A toy car is 10 cubes long. A toy truck is 6. How much longer is the car?',
+'El carro es','The car is','cubos más largo.','cubes longer.',
+'💡 ¡El carro es más largo! 10 − 6 = ?','💡 The car is longer! 10 − 6 = ?',4]
+],
+
+// TAB 1: Animals
+[
+['ex-emj','Gatos','Cats','#ED8936','🐱',5,3,'Perros','Dogs','#A0826D','🐶',3,-1,
+'Hay 5 gatos y 3 perros. ¿Cuántos gatos más hay?',
+'There are 5 cats and 3 dogs. How many more cats are there?',
+'Hay <span class="bk">2</span> gatos más que perros.<br>5 − 3 = <span class="bk">2</span>',
+'There are <span class="bk">2</span> more cats than dogs.<br>5 − 3 = <span class="bk">2</span>',
+'✅ Empareja cada perro con un gato. ¡2 gatos <b>sobran</b>! Hay <b>2 gatos más</b>. 5 − 3 = 2.',
+'✅ Match each dog with a cat. 2 cats are <b>left over</b>! There are <b>2 more cats</b>. 5 − 3 = 2.'],
+
+['ex-emj','Peces','Fish','#4299E1','🐟',3,-1,'Pájaros','Birds','#F56565','🐦',7,3,
+'Hay 3 peces y 7 pájaros. ¿Cuántos peces menos hay?',
+'There are 3 fish and 7 birds. How many fewer fish are there?',
+'Hay <span class="bk">4</span> peces menos que pájaros.<br>7 − 3 = <span class="bk">4</span>',
+'There are <span class="bk">4</span> fewer fish than birds.<br>7 − 3 = <span class="bk">4</span>',
+'✅ Empareja cada pez con un pájaro. ¡4 pájaros <b>no tienen pareja</b>! Hay <b>4 peces menos</b>. 7 − 3 = 4.',
+'✅ Match each fish to a bird. 4 birds have <b>no match</b>! There are <b>4 fewer fish</b>. 7 − 3 = 4.'],
+
+['pr-emj','Mariposas','Butterflies','#A78BFA','🦋',8,-1,'Catarinas','Ladybugs','#FF6B6B','🐞',5,-1,
+'Hay 8 mariposas y 5 catarinas. ¿Cuántas mariposas más hay?',
+'There are 8 butterflies and 5 ladybugs. How many more butterflies?',
+'Hay','There are','mariposas más.','more butterflies.',
+'💡 Empareja cada catarina con una mariposa. ¿Cuántas sobran? 8 − 5 = ?','💡 Match each ladybug with a butterfly. How many are left? 8 − 5 = ?',3],
+
+['pr-emj','Tortugas','Turtles','#68D391','🐢',4,-1,'Ranas','Frogs','#48BB78','🐸',9,-1,
+'Hay 4 tortugas y 9 ranas. ¿Cuántas tortugas menos hay?',
+'There are 4 turtles and 9 frogs. How many fewer turtles?',
+'Hay','There are','tortugas menos.','fewer turtles.',
+'💡 "Menos" = ¡el grupo más pequeño! 9 − 4 = ?','💡 "Fewer" = the smaller group! 9 − 4 = ?',5]
+],
+
+// TAB 2: Food
+[
+['ex-emj','Marco','Marco','#E53E3E','🍎',6,2,'Sofía','Sofía','#38A169','🍎',2,-1,
+'Marco tiene 6 manzanas. Sofía tiene 2. ¿Cuántas manzanas más tiene Marco?',
+'Marco has 6 apples. Sofía has 2. How many more apples does Marco have?',
+'Marco tiene <span class="bk">4</span> manzanas más que Sofía.<br>6 − 2 = <span class="bk">4</span>',
+'Marco has <span class="bk">4</span> more apples than Sofía.<br>6 − 2 = <span class="bk">4</span>',
+'✅ Empareja las 2 de Sofía con 2 de Marco. A Marco le <b>sobran 4</b>. Tiene <b>4 más</b>. 6 − 2 = 4.',
+'✅ Match Sofía\'s 2 with Marco\'s. Marco has <b>4 left over</b>. He has <b>4 more</b>. 6 − 2 = 4.'],
+
+['pr-emj','Plátanos','Bananas','#D69E2E','🍌',7,-1,'Naranjas','Oranges','#ED8936','🍊',3,-1,
+'Hay 7 plátanos y 3 naranjas. ¿Cuántos plátanos más hay?',
+'There are 7 bananas and 3 oranges. How many more bananas?',
+'Hay','There are','plátanos más.','more bananas.',
+'💡 Empareja naranjas con plátanos. ¿Cuántos sobran? 7 − 3 = ?','💡 Match oranges to bananas. How many are left? 7 − 3 = ?',4],
+
+['pr-emj','Ana','Ana','#F9A8D4','🍪',3,-1,'Ben','Ben','#A0826D','🍪',8,-1,
+'Ana tiene 3 galletas. Ben tiene 8. ¿Cuántas galletas menos tiene Ana?',
+'Ana has 3 cookies. Ben has 8. How many fewer cookies does Ana have?',
+'Ana tiene','Ana has','galletas menos.','fewer cookies.',
+'💡 "Menos" = ¡el grupo pequeño! 8 − 3 = ?','💡 "Fewer" = the smaller group. 8 − 3 = ?',5],
+
+['pr-emj','Fresas','Strawberries','#E53E3E','🍓',10,-1,'Uvas','Grapes','#805AD5','🍇',4,-1,
+'Hay 10 fresas y 4 uvas. ¿Cuántas uvas menos hay?',
+'There are 10 strawberries and 4 grapes. How many fewer grapes?',
+'Hay','There are','uvas menos.','fewer grapes.',
+'💡 Empareja cada uva con una fresa. ¿Cuántas fresas sobran? 10 − 4 = ?','💡 Match grapes to strawberries. How many are left? 10 − 4 = ?',6]
+],
+
+// TAB 3: Toys
+[
+['ex-emj','Mía','Mia','#F9A8D4','🧸',4,-1,'Jake','Jake','#4299E1','🧸',7,4,
+'Mía tiene 4 muñecos. Jake tiene 7. ¿Cuántos muñecos menos tiene Mía?',
+'Mia has 4 dolls. Jake has 7. How many fewer dolls does Mia have?',
+'Mía tiene <span class="bk">3</span> muñecos menos que Jake.<br>7 − 4 = <span class="bk">3</span>',
+'Mia has <span class="bk">3</span> fewer dolls than Jake.<br>7 − 4 = <span class="bk">3</span>',
+'✅ Empareja los 4 de Mía con 4 de Jake. Jake tiene <b>3 extra</b>. Mía tiene <b>3 menos</b>. 7 − 4 = 3.',
+'✅ Match Mia\'s 4 with Jake\'s. Jake has <b>3 extra</b>. Mia has <b>3 fewer</b>. 7 − 4 = 3.'],
+
+['ex-bar','Tren 🚂','Train 🚂','#E53E3E',8,'Barco ⛵','Boat ⛵','#4299E1',5,'← ¡3 más largo!','← 3 longer!',
+'Un tren mide 8 cubos. Un barco mide 5. ¿Cuánto más largo es el tren?',
+'A toy train is 8 cubes. A toy boat is 5 cubes. How much longer is the train?',
+'El tren es <span class="bk">3</span> cubos más largo.<br>8 − 5 = <span class="bk">3</span>',
+'The train is <span class="bk">3</span> cubes longer than the boat.<br>8 − 5 = <span class="bk">3</span>',
+'✅ El tren tiene <b>3 cubos extra</b>. Es <b>3 más largo</b>. 8 − 5 = 3.',
+'✅ The train has <b>3 extra cubes</b>. It\'s <b>3 cubes longer</b>. 8 − 5 = 3.'],
+
+['pr-emj','Lily','Lily','#FF6B6B','🟥',9,-1,'Sam','Sam','#4299E1','🟦',6,-1,
+'Lily tiene 9 bloques. Sam tiene 6. ¿Cuántos bloques más tiene Lily?',
+'Lily has 9 blocks. Sam has 6. How many more blocks does Lily have?',
+'Lily tiene','Lily has','bloques más.','more blocks.',
+'💡 Empareja los bloques de Sam con los de Lily. ¿Cuántos sobran? 9 − 6 = ?','💡 Match Sam\'s blocks to Lily\'s. How many are left? 9 − 6 = ?',3],
+
+['pr-bar','Cuerda 🪢','Rope 🪢','#A78BFA',9,'Cinturón 🥋','Belt 🥋','#A0826D',5,null,null,
+'Una cuerda mide 9 cubos. Un cinturón mide 5. ¿Cuánto más corto es el cinturón?',
+'A jump rope is 9 cubes. A belt is 5 cubes. How much shorter is the belt?',
+'El cinturón es','The belt is','cubos más corto.','cubes shorter.',
+'💡 Cuenta los cubos morados extra. 9 − 5 = ?','💡 Count the extra purple cubes. 9 − 5 = ?',4]
+],
+
+// TAB 4: Sports
+[
+['ex-emj','Equipo Rojo','Team Red','#E53E3E','⚽',8,5,'Equipo Azul','Team Blue','#3182CE','⚽',5,-1,
+'El equipo rojo anotó 8 goles. El azul anotó 5. ¿Cuántos goles más anotó el rojo?',
+'Team Red scored 8 goals. Team Blue scored 5. How many more goals did Team Red score?',
+'El equipo rojo anotó <span class="bk">3</span> goles más.<br>8 − 5 = <span class="bk">3</span>',
+'Team Red scored <span class="bk">3</span> more goals.<br>8 − 5 = <span class="bk">3</span>',
+'✅ Empareja los 5 del azul con 5 del rojo. Al rojo le <b>sobran 3</b>. ¡Anotaron <b>3 más</b>! 8 − 5 = 3.',
+'✅ Match Blue\'s 5 with Red\'s. Red has <b>3 extra</b>. They scored <b>3 more</b>! 8 − 5 = 3.'],
+
+['pr-emj','Rosa','Rosa','#F9A8D4','🏀',6,-1,'Leo','Leo','#4ECDC4','🏀',10,-1,
+'Rosa encestó 6 canastas. Leo encestó 10. ¿Cuántas canastas menos encestó Rosa?',
+'Rosa made 6 baskets. Leo made 10. How many fewer baskets did Rosa make?',
+'Rosa encestó','Rosa made','canastas menos.','fewer baskets.',
+'💡 Empareja las 6 de Rosa con 6 de Leo. ¿Cuántas de Leo sobran? 10 − 6 = ?','💡 Match Rosa\'s 6 to Leo\'s. How many of Leo\'s are left? 10 − 6 = ?',4],
+
+['pr-bar','Bate ⚾','Bat ⚾','#D69E2E',7,'Raqueta 🎾','Racket 🎾','#38A169',10,null,null,
+'Un bate mide 7 cubos. Una raqueta mide 10. ¿Cuánto más corto es el bate?',
+'A baseball bat is 7 cubes. A tennis racket is 10 cubes. How much shorter is the bat?',
+'El bate es','The bat is','cubos más corto.','cubes shorter.',
+'💡 ¡La raqueta es más larga! 10 − 7 = ?','💡 The racket is longer! 10 − 7 = ?',3]
+],
+
+// TAB 5: Challenge
+[
+['ch-bar','Crayón 🖍️','Crayon 🖍️','#E53E3E',5,'Marcador 🖊️','Marker 🖊️','#805AD5',8,null,null,
+'Un crayón mide 5 cubos. Un marcador mide 8. ¿Cuánto más largo es el marcador?',
+'A crayon is 5 cubes. A marker is 8 cubes. How much longer is the marker?',
+'cubos más largo','cubes longer',
+'💡 ¿Cuál es más largo? ¡El marcador! 8 − 5 = ?','💡 Which is longer? The marker! 8 − 5 = ?',3,1],
+
+['ch-emj','Estrellas Rojas','Red Stars','#E53E3E','⭐',6,-1,'Estrellas Azules','Blue Stars','#3182CE','🔵',6,-1,
+'Hay 6 estrellas rojas y 6 azules. ¿Cuántas estrellas rojas más hay?',
+'There are 6 red stars and 6 blue stars. How many more red stars?',
+'estrellas rojas más','more red stars',
+'💡 ¡Difícil! Cuando tienen la <b>misma cantidad</b>... 6 − 6 = ?','💡 Tricky! Same amount... 6 − 6 = ?',0,2],
+
+['ch-emj','Carlos','Carlos','#D69E2E','🌻',4,-1,'Dina','Dina','#D53F8C','🌸',9,-1,
+'Carlos recogió 4 flores. Dina recogió 9. ¿Cuántas flores menos recogió Carlos?',
+'Carlos picked 4 flowers. Dina picked 9. How many fewer flowers did Carlos pick?',
+'flores menos','fewer flowers',
+'💡 Empareja las 4 de Carlos con las de Dina. 9 − 4 = ?','💡 Match Carlos\'s 4 to Dina\'s. 9 − 4 = ?',5,3],
+
+['ch-bar','Oruga 🐛','Caterpillar 🐛','#48BB78',7,'Escarabajo 🪲','Beetle 🪲','#2D3748',3,null,null,
+'Una oruga mide 7 cubos. Un escarabajo mide 3. ¿Cuánto más corto es el escarabajo?',
+'A caterpillar is 7 cubes. A beetle is 3 cubes. How much shorter is the beetle?',
+'cubos más corto','cubes shorter',
+'💡 ¡El escarabajo es más corto! 7 − 3 = ?','💡 The beetle is shorter! 7 − 3 = ?',4,4],
+
+['ch-emj','Sra. López','Ms. López','#E53E3E','🖍️',10,-1,'Sr. Rodríguez','Mr. Rodríguez','#2B6CB0','🖍️',4,-1,
+'La Sra. López tiene 10 crayones. El Sr. Rodríguez tiene 4. ¿Cuántos más tiene la Sra. López?',
+'Ms. López has 10 crayons. Mr. Rodríguez has 4. How many more does Ms. López have?',
+'crayones más','more crayons',
+'💡 ¿Quién tiene más? ¡La Sra. López! 10 − 4 = ?','💡 Who has more? Ms. López! 10 − 4 = ?',6,5]
+]
+];
+
+// Helper: build bar units
+function BU(n){var h='';for(var i=0;i<n;i++)h+='<div class="bx"></div>';return h}
+
+// Helper: build bar visual from item array (bar items start at index 1)
+function MBi(it){
+var la=L==='es'?it[1]:it[2],ca=it[3],na=it[4];
+var lb=L==='es'?it[5]:it[6],cb=it[7],nb=it[8];
+var br=L==='es'?it[9]:it[10];
+var d=Math.abs(na-nb);
+var h='<div class="bv"><div class="br"><span class="bl" style="color:'+ca+'">'+la+'</span><div class="bar" style="background:'+ca+';width:calc('+na+' * 36px)"><div class="bu">'+BU(na)+'</div></div><span class="bc" style="color:'+ca+'">'+na+'</span></div>';
+h+='<div class="br"><span class="bl" style="color:'+cb+'">'+lb+'</span><div class="bar" style="background:'+cb+';width:calc('+nb+' * 36px)"><div class="bu">'+BU(nb)+'</div></div><span class="bc" style="color:'+cb+'">'+nb+'</span></div>';
+if(br)h+='<div class="db"><div class="dl" style="width:calc('+d+' * 36px)"></div><span class="dt">'+br+'</span></div>';
+return h+'</div>'}
+
+// Helper: build emoji visual from item (emoji items start at index 1)
+function MEi(it){
+var la=L==='es'?it[1]:it[2],ca=it[3],ea=it[4],na=it[5],ha=it[6];
+var lb=L==='es'?it[7]:it[8],cb=it[9],eb=it[10],nb=it[11],hb=it[12];
+var h='<div class="ec"><div class="eg"><div class="el" style="color:'+ca+'">'+la+'</div><div class="gg">';
+for(var i=0;i<na;i++){h+='<div class="ei'+(ha>=0&&i>=ha?' hl':'')+'">'+ea+'</div>'}
+h+='</div><div class="en2" style="color:'+ca+'">'+na+'</div></div><div class="co">⟷</div>';
+h+='<div class="eg"><div class="el" style="color:'+cb+'">'+lb+'</div><div class="gg">';
+for(var i=0;i<nb;i++){h+='<div class="ei'+(hb>=0&&i>=hb?' hl':'')+'">'+eb+'</div>'}
+h+='</div><div class="en2" style="color:'+cb+'">'+nb+'</div></div></div>';
+return h}
+
+var uid=0;
+function UID(){return 'u'+(uid++)}
+
+function BA(){
+uid=0;
+var d=D[L];
+document.getElementById('ht').innerHTML=d.ht;
+document.getElementById('hs').textContent=d.hs;
+
+var tb='';for(var i=0;i<6;i++){tb+='<button class="tb'+(i===AT?' on':'')+'" data-t="'+i+'" onclick="ST('+i+')">'+d.tn[i]+'</button>'}
+document.getElementById('tbs').innerHTML=tb;
+
+var html='';
+for(var ti=0;ti<TABS.length;ti++){
+html+='<div class="tc'+(ti===AT?' on':'')+'" id="t'+ti+'"><div class="ti">'+d.ti[ti]+'</div>';
+if(ti===5){html+='<div class="pb">';for(var s=1;s<=5;s++)html+='<span class="st'+(CS.has(s)?' wd':'')+'" id="s'+s+'">⭐</span>';html+='</div>'}
+
+for(var ci=0;ci<TABS[ti].length;ci++){
+var it=TABS[ti][ci],tp=it[0],id=UID();
+var vis,q,fr,ex;
+
+if(tp==='ex-bar'){
+vis=MBi(it);q=L==='es'?it[11]:it[12];fr=L==='es'?it[13]:it[14];ex=L==='es'?it[15]:it[16];
+html+='<div class="cd ex"><span class="cl e">'+d.el+'</span><div class="qt">'+q+'</div>'+vis+'<div class="sf">'+fr+'</div><button class="rb" onclick="TR(\''+id+'\')" id="b'+id+'">'+d.sw+'</button><div class="ea" id="'+id+'">'+ex+'</div></div>';
+}
+else if(tp==='ex-emj'){
+vis=MEi(it);q=L==='es'?it[13]:it[14];fr=L==='es'?it[15]:it[16];ex=L==='es'?it[17]:it[18];
+html+='<div class="cd ex"><span class="cl e">'+d.el+'</span><div class="qt">'+q+'</div>'+vis+'<div class="sf">'+fr+'</div><button class="rb" onclick="TR(\''+id+'\')" id="b'+id+'">'+d.sw+'</button><div class="ea" id="'+id+'">'+ex+'</div></div>';
+}
+else if(tp==='pr-bar'){
+vis=MBi(it);q=L==='es'?it[11]:it[12];var pre=L==='es'?it[13]:it[14],suf=L==='es'?it[15]:it[16],ht2=L==='es'?it[17]:it[18],ans=it[19];
+html+='<div class="cd pr"><span class="cl p">'+d.pl+'</span><div class="qt">'+q+'</div>'+vis+'<div class="aa"><span class="as">'+pre+'</span><input type="number" class="ai" id="i'+id+'" min="0" max="20" onkeypress="if(event.key===\'Enter\')CA(\'i'+id+'\','+ans+',\'f'+id+'\')"><span class="as">'+suf+'</span><button class="btn bck" onclick="CA(\'i'+id+'\','+ans+',\'f'+id+'\')">'+d.ck+'</button><button class="btn bht" onclick="SH(\'h'+id+'\')">'+d.hi+'</button></div><div class="fb" id="f'+id+'"></div><div class="hb" id="h'+id+'">'+ht2+'</div></div>';
+}
+else if(tp==='pr-emj'){
+vis=MEi(it);q=L==='es'?it[13]:it[14];var pre=L==='es'?it[15]:it[16],suf=L==='es'?it[17]:it[18],ht2=L==='es'?it[19]:it[20],ans=it[21];
+html+='<div class="cd pr"><span class="cl p">'+d.pl+'</span><div class="qt">'+q+'</div>'+vis+'<div class="aa"><span class="as">'+pre+'</span><input type="number" class="ai" id="i'+id+'" min="0" max="20" onkeypress="if(event.key===\'Enter\')CA(\'i'+id+'\','+ans+',\'f'+id+'\')"><span class="as">'+suf+'</span><button class="btn bck" onclick="CA(\'i'+id+'\','+ans+',\'f'+id+'\')">'+d.ck+'</button><button class="btn bht" onclick="SH(\'h'+id+'\')">'+d.hi+'</button></div><div class="fb" id="f'+id+'"></div><div class="hb" id="h'+id+'">'+ht2+'</div></div>';
+}
+else if(tp==='ch-bar'){
+vis=MBi(it);q=L==='es'?it[11]:it[12];var suf=L==='es'?it[13]:it[14],ht2=L==='es'?it[15]:it[16],ans=it[17],sn=it[18];
+html+='<div class="cd ch"><span class="cl c">'+d.chl+' '+sn+'</span><div class="qt">'+q+'</div>'+vis+'<div class="aa"><input type="number" class="ai" id="i'+id+'" min="0" max="20" onkeypress="if(event.key===\'Enter\')CC(\'i'+id+'\','+ans+',\'f'+id+'\','+sn+')"><span class="as">'+suf+'</span><button class="btn bck" onclick="CC(\'i'+id+'\','+ans+',\'f'+id+'\','+sn+')">'+d.ck+'</button><button class="btn bht" onclick="SH(\'h'+id+'\')">'+d.hi+'</button></div><div class="fb" id="f'+id+'"></div><div class="hb" id="h'+id+'">'+ht2+'</div></div>';
+}
+else if(tp==='ch-emj'){
+vis=MEi(it);q=L==='es'?it[13]:it[14];var suf=L==='es'?it[15]:it[16],ht2=L==='es'?it[17]:it[18],ans=it[19],sn=it[20];
+html+='<div class="cd ch"><span class="cl c">'+d.chl+' '+sn+'</span><div class="qt">'+q+'</div>'+vis+'<div class="aa"><input type="number" class="ai" id="i'+id+'" min="0" max="20" onkeypress="if(event.key===\'Enter\')CC(\'i'+id+'\','+ans+',\'f'+id+'\','+sn+')"><span class="as">'+suf+'</span><button class="btn bck" onclick="CC(\'i'+id+'\','+ans+',\'f'+id+'\','+sn+')">'+d.ck+'</button><button class="btn bht" onclick="SH(\'h'+id+'\')">'+d.hi+'</button></div><div class="fb" id="f'+id+'"></div><div class="hb" id="h'+id+'">'+ht2+'</div></div>';
+}
+}
+html+='</div>';
+}
+document.getElementById('ct').innerHTML=html;
+}
+
+function ST(i){AT=i;document.querySelectorAll('.tc').forEach(function(e){e.classList.remove('on')});document.querySelectorAll('.tb').forEach(function(e){e.classList.remove('on')});var t=document.getElementById('t'+i);if(t)t.classList.add('on');var b=document.querySelector('.tb[data-t="'+i+'"]');if(b)b.classList.add('on')}
+
+function SL(l){L=l;document.getElementById('les').classList.toggle('on',l==='es');document.getElementById('len').classList.toggle('on',l==='en');document.documentElement.lang=l;BA()}
+
+function TR(id){var e=document.getElementById(id),b=document.getElementById('b'+id),d=D[L];if(e.classList.contains('vis')){e.classList.remove('vis');b.textContent=d.sw}else{e.classList.add('vis');b.textContent=d.hw}}
+
+function SH(id){var e=document.getElementById(id);if(e)e.classList.toggle('vis')}
+
+function CA(iid,cor,fid){var d=D[L],inp=document.getElementById(iid),fb=document.getElementById(fid),v=parseInt(inp.value);if(isNaN(v)){fb.className='fb no';fb.textContent=d.nm;return}if(v===cor){inp.className='ai ok';fb.className='fb ok';fb.textContent=d.cm}else{inp.className='ai no';fb.className='fb no';fb.textContent=d.im;setTimeout(function(){inp.className='ai'},1500)}}
+
+function CC(iid,cor,fid,sn){var d=D[L],inp=document.getElementById(iid),fb=document.getElementById(fid),v=parseInt(inp.value);if(isNaN(v)){fb.className='fb no';fb.textContent=d.nm;return}if(v===cor){inp.className='ai ok';fb.className='fb ok';fb.textContent=d.sm;if(!CS.has(sn)){CS.add(sn);var s=document.getElementById('s'+sn);if(s)s.classList.add('wd')}if(CS.size===5)fb.textContent=d.am}else{inp.className='ai no';fb.className='fb no';fb.textContent=d.im;setTimeout(function(){inp.className='ai'},1500)}}
+
+BA();
+</script>
+</body>
+</html>

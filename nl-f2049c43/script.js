@@ -809,11 +809,18 @@ function formatDate(dateStr, lang) {
 
 function textToHTML(text) {
   if (!text) return '';
-  const escaped = text
+  // Preserve <a> tags before escaping
+  const links = [];
+  const withPlaceholders = text.replace(/<a\s[^>]*>.*?<\/a>/gi, (match) => {
+    links.push(match);
+    return `__LINK_${links.length - 1}__`;
+  });
+  const escaped = withPlaceholders
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
-  const paragraphs = escaped.split(/\n\n+/);
+  const restored = escaped.replace(/__LINK_(\d+)__/g, (_, i) => links[i]);
+  const paragraphs = restored.split(/\n\n+/);
   return paragraphs.map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
 }
 
