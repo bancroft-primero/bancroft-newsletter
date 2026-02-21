@@ -34,7 +34,7 @@ body{font-family:'Nunito',sans-serif;background:#E8F4FD;color:#2D3748;min-height
 .bu{display:flex;height:100%;gap:2px;padding:3px}
 .bx{width:32px;height:100%;border-radius:6px;background:rgba(255,255,255,.4);border:2px solid rgba(255,255,255,.6)}
 .bc{font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;min-width:30px}
-.db{display:flex;align-items:center;margin:8px 0 8px 110px;gap:8px}
+.db{display:flex;align-items:center;margin:8px 0 8px 0;gap:8px}
 .dl{height:3px;border-radius:2px;background:#FF6B6B}
 .dt{font-family:'Fredoka',sans-serif;font-weight:700;font-size:1rem;color:#FF6B6B;white-space:nowrap}
 .ec{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin:16px 0}
@@ -302,7 +302,8 @@ var br=L==='es'?it[9]:it[10];
 var d=Math.abs(na-nb);
 var h='<div class="bv"><div class="br"><span class="bl" style="color:'+ca+'">'+la+'</span><div class="bar" style="background:'+ca+';width:calc('+na+' * 36px)"><div class="bu">'+BU(na)+'</div></div><span class="bc" style="color:'+ca+'">'+na+'</span></div>';
 h+='<div class="br"><span class="bl" style="color:'+cb+'">'+lb+'</span><div class="bar" style="background:'+cb+';width:calc('+nb+' * 36px)"><div class="bu">'+BU(nb)+'</div></div><span class="bc" style="color:'+cb+'">'+nb+'</span></div>';
-if(br)h+='<div class="db"><div class="dl" style="width:calc('+d+' * 36px)"></div><span class="dt">'+br+'</span></div>';
+var shorter=Math.min(na,nb);
+if(br)h+='<div class="db" style="margin-left:calc(110px + 10px + '+shorter+' * 36px)"><div class="dl" style="width:calc('+d+' * 36px)"></div><span class="dt">'+br+'</span></div>';
 return h+'</div>'}
 
 // Helper: build emoji visual from item (emoji items start at index 1)
