@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+:root{--cube-unit:36px;--label-w:100px;--bar-gap:10px}
 body{font-family:'Nunito',sans-serif;background:#E8F4FD;color:#2D3748;min-height:100vh}
 .app{max-width:900px;margin:0 auto;padding:16px}
 .hdr{text-align:center;padding:20px 16px 12px;background:linear-gradient(135deg,#4ECDC4,#A78BFA);border-radius:24px;margin-bottom:16px;box-shadow:0 8px 24px rgba(78,205,196,.3);position:relative;overflow:hidden}
@@ -28,11 +29,11 @@ body{font-family:'Nunito',sans-serif;background:#E8F4FD;color:#2D3748;min-height
 .cl.e{background:#718096}.cl.p{background:#4ECDC4}.cl.c{background:#FF6B6B}
 .qt{font-family:'Fredoka',sans-serif;font-size:1.25rem;font-weight:600;color:#2D3748;margin-bottom:16px;line-height:1.4}
 .ti{background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.7));border-radius:16px;padding:16px 20px;margin-bottom:16px;border-left:5px solid #4ECDC4;font-size:1rem;font-weight:600;line-height:1.5}
-.bv{margin:16px 0}.br{display:flex;align-items:center;margin-bottom:10px;gap:10px}
-.bl{font-family:'Fredoka',sans-serif;font-weight:600;font-size:.95rem;min-width:100px;text-align:right}
+.bv{margin:16px 0;overflow-x:auto}.br{display:flex;align-items:center;margin-bottom:10px;gap:var(--bar-gap)}
+.bl{font-family:'Fredoka',sans-serif;font-weight:600;font-size:.95rem;min-width:var(--label-w);text-align:right}
 .bar{height:40px;border-radius:10px;display:flex;align-items:center}
 .bu{display:flex;height:100%;gap:2px;padding:3px}
-.bx{width:32px;height:100%;border-radius:6px;background:rgba(255,255,255,.4);border:2px solid rgba(255,255,255,.6)}
+.bx{flex:1;height:100%;border-radius:6px;background:rgba(255,255,255,.4);border:2px solid rgba(255,255,255,.6)}
 .bc{font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;min-width:30px}
 .db{display:flex;align-items:center;margin:8px 0 8px 0;gap:8px}
 .dl{height:3px;border-radius:2px;background:#FF6B6B}
@@ -66,7 +67,8 @@ body{font-family:'Nunito',sans-serif;background:#E8F4FD;color:#2D3748;min-height
 .sf .bk{display:inline-block;min-width:50px;border-bottom:3px solid #4ECDC4;text-align:center;color:#4ECDC4;margin:0 4px;font-weight:700}
 .pb{display:flex;justify-content:center;gap:6px;margin:12px 0}
 .st{font-size:1.4rem;opacity:.25;transition:.3s}.st.wd{opacity:1}
-@media(max-width:600px){.hdr h1{font-size:1.5rem}.qt{font-size:1.1rem}.ei{width:36px;height:36px;font-size:1.5rem}.bx{width:26px}.bl{min-width:80px;font-size:.85rem}.cd{padding:16px}.lt{top:10px;right:10px}.lb{padding:4px 8px;font-size:.75rem}}
+@media(max-width:600px){:root{--cube-unit:28px;--label-w:80px;--bar-gap:8px}.hdr h1{font-size:1.5rem}.qt{font-size:1.1rem}.ei{width:36px;height:36px;font-size:1.5rem}.bl{font-size:.85rem}.br{gap:8px}.cd{padding:16px}.lt{top:10px;right:10px}.lb{padding:4px 8px;font-size:.75rem}}
+@media(max-width:420px){:root{--cube-unit:22px;--label-w:60px;--bar-gap:6px}.bar{height:30px}.bu{gap:1px;padding:2px}.bc{font-size:.85rem;min-width:20px}.br{gap:6px}.bl{font-size:.7rem}.dt{font-size:.75rem}.db{gap:4px}.dl{height:2px}.qt{font-size:1rem}.ei{width:30px;height:30px;font-size:1.2rem}.gg{gap:4px}.en2{font-size:1.2rem}.co{font-size:1.8rem;padding:0 4px}.hdr h1{font-size:1.3rem}.hdr p{font-size:.85rem}}
 </style>
 </head>
 <body>
@@ -300,10 +302,10 @@ var la=L==='es'?it[1]:it[2],ca=it[3],na=it[4];
 var lb=L==='es'?it[5]:it[6],cb=it[7],nb=it[8];
 var br=L==='es'?it[9]:it[10];
 var d=Math.abs(na-nb);
-var h='<div class="bv"><div class="br"><span class="bl" style="color:'+ca+'">'+la+'</span><div class="bar" style="background:'+ca+';width:calc('+na+' * 36px)"><div class="bu">'+BU(na)+'</div></div><span class="bc" style="color:'+ca+'">'+na+'</span></div>';
-h+='<div class="br"><span class="bl" style="color:'+cb+'">'+lb+'</span><div class="bar" style="background:'+cb+';width:calc('+nb+' * 36px)"><div class="bu">'+BU(nb)+'</div></div><span class="bc" style="color:'+cb+'">'+nb+'</span></div>';
+var h='<div class="bv"><div class="br"><span class="bl" style="color:'+ca+'">'+la+'</span><div class="bar" style="background:'+ca+';width:calc('+na+' * var(--cube-unit))"><div class="bu">'+BU(na)+'</div></div><span class="bc" style="color:'+ca+'">'+na+'</span></div>';
+h+='<div class="br"><span class="bl" style="color:'+cb+'">'+lb+'</span><div class="bar" style="background:'+cb+';width:calc('+nb+' * var(--cube-unit))"><div class="bu">'+BU(nb)+'</div></div><span class="bc" style="color:'+cb+'">'+nb+'</span></div>';
 var shorter=Math.min(na,nb);
-if(br)h+='<div class="db" style="margin-left:calc(110px + 10px + '+shorter+' * 36px)"><div class="dl" style="width:calc('+d+' * 36px)"></div><span class="dt">'+br+'</span></div>';
+if(br)h+='<div class="db" style="margin-left:calc(var(--label-w) + var(--bar-gap) + '+shorter+' * var(--cube-unit))"><div class="dl" style="width:calc('+d+' * var(--cube-unit))"></div><span class="dt">'+br+'</span></div>';
 return h+'</div>'}
 
 // Helper: build emoji visual from item (emoji items start at index 1)
