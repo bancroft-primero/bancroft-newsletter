@@ -69,43 +69,43 @@
   "books": [
     {
       "title": {
-        "en": "Those Shoes",
-        "es": "Esos Zapatos"
+        "en": "Grandma's Chocolate",
+        "es": "El chocolate de Abuelita"
       },
-      "author": "Maribeth Boelts",
-      "youtubeUrl": "https://www.youtube.com/watch?v=H6IAOeOhqU4",
+      "author": "Mara Price",
+      "youtubeUrl": null,
       "questions": [
-        { "en": "What did Jeremy want more than anything?", "es": "¿Qué quería Jeremy más que nada?" },
-        { "en": "How did Jeremy feel when he gave his shoes to Antonio?", "es": "¿Cómo se sintió Jeremy cuando le dio sus zapatos a Antonio?" },
-        { "en": "What is the difference between what we want and what we need?", "es": "¿Cuál es la diferencia entre lo que queremos y lo que necesitamos?" }
+        { "en": "What special things did Grandma bring from Mexico?", "es": "¿Qué cosas especiales trajo la abuelita de México?" },
+        { "en": "Why is chocolate important to the Mayans and Aztecs?", "es": "¿Por qué era importante el chocolate para los mayas y los aztecas?" },
+        { "en": "What traditions does your family share together?", "es": "¿Qué tradiciones comparte tu familia?" }
       ]
     },
     {
       "title": {
-        "en": "The Name Jar",
-        "es": "El Frasco de los Nombres"
+        "en": "I'm Proud of My Past",
+        "es": "Estoy orgullosa de mi pasado"
       },
-      "author": "Yangsook Choi",
-      "youtubeUrl": "https://www.youtube.com/watch?v=EBLRmGxYMgw",
+      "author": "Amy White",
+      "youtubeUrl": null,
       "questions": [
-        { "en": "Why did Unhei not want to tell the class her name at first?", "es": "¿Por qué Unhei no quería decirle su nombre a la clase al principio?" },
-        { "en": "What does your name mean to you and your family?", "es": "¿Qué significa tu nombre para ti y tu familia?" }
+        { "en": "What is Tania proud of about her family and culture?", "es": "¿De qué está orgullosa Tania sobre su familia y cultura?" },
+        { "en": "What are you proud of about your family's past?", "es": "¿De qué estás orgulloso/a del pasado de tu familia?" }
       ]
     }
   ],
 
   "mathDetails": {
     "module": {
-      "en": "Module 4: Ordering and Comparing Length Measurements",
-      "es": "Módulo 4: Ordenar y Comparar Medidas de Longitud"
+      "en": "Module 4: Comparison and Composition of Length Measurements",
+      "es": "Módulo 4: Comparación y Composición de Medidas de Longitud"
     },
     "topic": {
-      "en": "Topic C: Measure and Compare",
-      "es": "Tema C: Medir y Comparar"
+      "en": "Topic A: Direct and Indirect Length Comparison → Topic B: Length Measurement and Comparison",
+      "es": "Tema A: Comparación Directa e Indirecta de Longitud → Tema B: Medición y Comparación de Longitud"
     },
     "lesson": {
-      "en": "Lessons 10-12",
-      "es": "Lecciones 10-12"
+      "en": "Lessons 2-5",
+      "es": "Lecciones 2-5"
     }
   }
 }
