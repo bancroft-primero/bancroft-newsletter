@@ -46,6 +46,33 @@
     "new-year": "images/logos/new-year.png"
   },
 
+  "quickLinks": [
+    {
+      "icon": "💬",
+      "url": "https://www.parentsquare.com/schools/36694/",
+      "en": "ParentSquare",
+      "es": "ParentSquare"
+    },
+    {
+      "icon": "📅",
+      "url": "https://www.bancroftelementary.org/apps/events/?id=0&v=1&m=1&y=2026",
+      "en": "School Calendar",
+      "es": "Calendario Escolar"
+    },
+    {
+      "icon": "🏫",
+      "url": "https://www.bancroftelementary.org/",
+      "en": "School Website",
+      "es": "Sitio de la Escuela"
+    },
+    {
+      "icon": "🍽️",
+      "url": "https://dcps.nutrislice.com/menu/bancroft-elementary-school/lunch/2026-02-20",
+      "en": "Lunch Menu",
+      "es": "Menú de Almuerzo"
+    }
+  ],
+
   "labels": {
     "en": {
       "title": "First Grade",
@@ -59,7 +86,24 @@
       "weekOf": "Week of",
       "noSchool": "No School",
       "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "langToggle": "Español"
+      "langToggle": "Español",
+      "dashboardHeading": "School Year at a Glance",
+      "weekXofY": "Week {x} of {y}",
+      "schoolDaysLeft": "school days remaining",
+      "upcomingDates": "Coming Up",
+      "remindersHeading": "Important Reminders",
+      "askHeading": "Ask Your Child About...",
+      "vocabHeading": "Words of the Week",
+      "booksHeading": "Books & Read-Alouds",
+      "printBtn": "Print this week",
+      "shareBtn": "Share",
+      "discussionQuestions": "Discussion Questions",
+      "addToCalendar": "Add to Calendar",
+      "mathDetailsModule": "Module",
+      "mathDetailsTopic": "Topic",
+      "mathDetailsLesson": "Lesson",
+      "linkCopied": "Link copied!",
+      "mySpecialsHeading": "My Specials This Week"
     },
     "es": {
       "title": "Primer Grado",
@@ -67,13 +111,30 @@
       "welcomeHeading": "¡Hola familias de primer grado!",
       "mathHeading": "Noticias de Matemáticas",
       "literacyHeading": "Noticias de Lectura y Escritura",
-      "specialsHeading": "Horario de Especialidades",
+      "specialsHeading": "Horario de Especiales",
       "roarsHeading": "ROARS",
       "archiveHeading": "Boletines Anteriores",
       "weekOf": "Semana del",
       "noSchool": "No Hay Clases",
       "days": ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"],
-      "langToggle": "English"
+      "langToggle": "English",
+      "dashboardHeading": "El Año Escolar de un Vistazo",
+      "weekXofY": "Semana {x} de {y}",
+      "schoolDaysLeft": "días escolares restantes",
+      "upcomingDates": "Próximos Eventos",
+      "remindersHeading": "Recordatorios Importantes",
+      "askHeading": "Pregúntale a Tu Hijo/a Sobre...",
+      "vocabHeading": "Palabras de la Semana",
+      "booksHeading": "Libros y Lectura en Voz Alta",
+      "printBtn": "Imprimir esta semana",
+      "shareBtn": "Compartir",
+      "discussionQuestions": "Preguntas de Discusión",
+      "addToCalendar": "Agregar al Calendario",
+      "mathDetailsModule": "Módulo",
+      "mathDetailsTopic": "Tema",
+      "mathDetailsLesson": "Lección",
+      "linkCopied": "¡Enlace copiado!",
+      "mySpecialsHeading": "Especiales de Esta Semana"
     }
   }
 }

@@ -53,27 +53,36 @@ function unlockSite() {
 let currentLang = 'es';
 let currentWeekData = null;
 let configData = null;
+let calendarData = null;
 let weeksList = [];
 let selectedClass = localStorage.getItem('selectedClass') || '';
 
 // --- Init ---
 async function init() {
   try {
-    const [config, index] = await Promise.all([
+    const [config, index, calendar] = await Promise.all([
       fetchJSON('data/config.json'),
-      fetchJSON('data/weeks/weeks-index.json')
+      fetchJSON('data/weeks/weeks-index.json'),
+      fetchJSON('data/calendar.json')
     ]);
     configData = config;
     weeksList = index;
+    calendarData = calendar;
 
     buildClassSelector();
+    buildQuickLinks();
+    setupDarkMode();
+    setupPrintButton();
+    setupShareButton();
 
-    // Check URL hash for a specific week
     const hash = window.location.hash.replace('#', '');
     const targetWeek = weeksList.includes(hash) ? hash : weeksList[0];
 
     await loadWeek(targetWeek, false);
     renderArchiveList();
+
+    // Set up scroll animations after initial render
+    requestAnimationFrame(() => setupScrollAnimations());
   } catch (err) {
     showError('Could not load the newsletter. Please check back later.');
     console.error(err);
@@ -91,7 +100,6 @@ function buildClassSelector() {
   const container = document.getElementById('class-selector-buttons');
   const allBtn = container.querySelector('[data-class=""]');
 
-  // Add classroom buttons
   const flags = configData.classroomFlags || {};
   configData.classrooms.forEach(classroom => {
     const btn = document.createElement('button');
@@ -106,13 +114,11 @@ function buildClassSelector() {
     container.appendChild(btn);
   });
 
-  // Set initial active state
   container.querySelectorAll('.class-btn').forEach(btn => {
     if (btn.dataset.class === selectedClass) btn.classList.add('active');
   });
   if (!selectedClass) allBtn.classList.add('active');
 
-  // Click handler
   container.addEventListener('click', (e) => {
     const btn = e.target.closest('.class-btn');
     if (!btn) return;
@@ -195,7 +201,402 @@ function render() {
 
   // Re-render archive links with translated dates
   renderArchiveList();
+
+  // --- NEW FEATURES ---
+  renderDashboard();
+  renderReminders();
+  renderMathDetails();
+  renderAskYourChild();
+  renderVocabulary();
+  renderBooks();
+  renderQuickLinks();
+
+  // Update header action tooltips
+  document.getElementById('print-btn').title = labels.printBtn;
+  document.getElementById('share-btn').title = labels.shareBtn;
 }
+
+// ============================================================
+// FEATURE 1: Dashboard / At a Glance
+// ============================================================
+function renderDashboard() {
+  const lang = currentLang;
+  const labels = configData.labels[lang];
+  const cal = calendarData;
+
+  document.getElementById('dashboard-heading').textContent = labels.dashboardHeading;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const firstDay = parseDate(cal.firstDay);
+  const lastDay = parseDate(cal.lastDay);
+
+  // Build set of all no-school dates
+  const noSchoolDates = new Set();
+  cal.dates.forEach(d => noSchoolDates.add(d.date));
+  // Fill break ranges
+  if (cal.breaks) {
+    cal.breaks.forEach(br => {
+      const d = parseDate(br.start);
+      const end = parseDate(br.end);
+      while (d <= end) {
+        noSchoolDates.add(formatDateISO(d));
+        d.setDate(d.getDate() + 1);
+      }
+    });
+  }
+
+  // Count school days
+  const totalSchoolDays = countWeekdays(firstDay, lastDay, noSchoolDates);
+  const effectiveToday = today > lastDay ? lastDay : today < firstDay ? firstDay : today;
+  const elapsedSchoolDays = countWeekdays(firstDay, effectiveToday, noSchoolDates);
+  const remainingDays = Math.max(0, totalSchoolDays - elapsedSchoolDays);
+
+  // Week number (based on actual school calendar, not published newsletters)
+  const currentWeekDate = parseDate(currentWeekData.date);
+  const msPerWeek = 7 * 24 * 60 * 60 * 1000;
+  const weekNum = Math.max(1, Math.ceil((currentWeekDate - firstDay + msPerWeek) / msPerWeek));
+  const totalWeeks = Math.ceil((lastDay - firstDay + msPerWeek) / msPerWeek);
+
+  // Upcoming dates (next 3 future dates from calendar)
+  const upcomingDates = cal.dates
+    .filter(d => parseDate(d.date) > today)
+    .slice(0, 3);
+
+  const progressPct = Math.min(100, Math.round((elapsedSchoolDays / totalSchoolDays) * 100));
+
+  const body = document.getElementById('dashboard-body');
+  body.innerHTML = `
+    <div class="dashboard-stats">
+      <div class="dashboard-stat">
+        <div class="dashboard-stat-value">${labels.weekXofY.replace('{x}', weekNum).replace('{y}', totalWeeks)}</div>
+        <div class="dashboard-progress-bar">
+          <div class="dashboard-progress-fill" style="width:${progressPct}%"></div>
+        </div>
+      </div>
+      <div class="dashboard-stat" style="text-align:center;">
+        <div class="dashboard-stat-big">${remainingDays}</div>
+        <div class="dashboard-stat-label">${labels.schoolDaysLeft}</div>
+      </div>
+    </div>
+    ${upcomingDates.length > 0 ? `
+    <div class="dashboard-upcoming">
+      <h4>${labels.upcomingDates}</h4>
+      ${upcomingDates.map(d => `
+        <div class="dashboard-upcoming-item">
+          <span class="dashboard-upcoming-type">${cal.typeLabels[lang][d.type] || d.type}</span>
+          <span class="dashboard-upcoming-date">${formatDate(d.date, lang)}</span>
+          <span class="dashboard-upcoming-name">${d[lang]}</span>
+          <button class="ics-btn" onclick="event.stopPropagation(); downloadICS('${d.date}', '${escapeAttr(d.en)}')" title="${labels.addToCalendar}">📅</button>
+        </div>
+      `).join('')}
+    </div>` : ''}
+  `;
+}
+
+function countWeekdays(start, end, noSchoolDates) {
+  let count = 0;
+  const d = new Date(start);
+  while (d <= end) {
+    const dow = d.getDay();
+    const iso = formatDateISO(d);
+    if (dow >= 1 && dow <= 5 && !noSchoolDates.has(iso)) {
+      count++;
+    }
+    d.setDate(d.getDate() + 1);
+  }
+  return count;
+}
+
+function parseDate(str) {
+  const [y, m, d] = str.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
+
+function escapeAttr(str) {
+  return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+}
+
+// ============================================================
+// FEATURE 3: Ask Your Child About...
+// ============================================================
+function renderAskYourChild() {
+  const data = currentWeekData;
+  const section = document.getElementById('ask-your-child');
+  const body = document.getElementById('ask-body');
+  const heading = document.getElementById('ask-heading');
+  const labels = configData.labels[currentLang];
+
+  if (!data.askYourChild || data.askYourChild.length === 0) {
+    section.hidden = true;
+    return;
+  }
+
+  section.hidden = false;
+  heading.textContent = labels.askHeading;
+
+  body.innerHTML = data.askYourChild.map(item => `
+    <div class="ask-bubble">
+      <span class="ask-bubble-icon">💬</span>
+      <p>${escapeHTML(item[currentLang])}</p>
+    </div>
+  `).join('');
+}
+
+// ============================================================
+// FEATURE 4: Quick Links Bar
+// ============================================================
+function buildQuickLinks() {
+  renderQuickLinks();
+}
+
+function renderQuickLinks() {
+  const container = document.getElementById('quick-links');
+  const links = configData.quickLinks;
+  if (!links || links.length === 0) {
+    container.style.display = 'none';
+    return;
+  }
+  const lang = currentLang;
+  container.innerHTML = links.map(link => `
+    <a href="${link.url}" target="_blank" rel="noopener" class="quick-link">
+      <span class="quick-link-icon">${link.icon}</span>
+      <span class="quick-link-label">${link[lang]}</span>
+    </a>
+  `).join('');
+}
+
+// ============================================================
+// FEATURE 5: Important Reminders
+// ============================================================
+function renderReminders() {
+  const data = currentWeekData;
+  const section = document.getElementById('reminders');
+  const body = document.getElementById('reminders-body');
+  const heading = document.getElementById('reminders-heading');
+  const labels = configData.labels[currentLang];
+
+  if (!data.reminders || data.reminders.length === 0) {
+    section.hidden = true;
+    return;
+  }
+
+  section.hidden = false;
+  heading.textContent = labels.remindersHeading;
+
+  body.innerHTML = data.reminders.map(r => `
+    <div class="reminder-item">
+      <span class="reminder-icon">📌</span>
+      <div class="reminder-content">
+        <span class="reminder-date">${formatDate(r.date, currentLang)}</span>
+        <p>${escapeHTML(r[currentLang])}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ============================================================
+// FEATURE 6: Vocabulary / Words of the Week
+// ============================================================
+function renderVocabulary() {
+  const data = currentWeekData;
+  const section = document.getElementById('vocabulary');
+  const body = document.getElementById('vocab-body');
+  const heading = document.getElementById('vocab-heading');
+  const labels = configData.labels[currentLang];
+
+  if (!data.vocabulary || !data.vocabulary[currentLang] || data.vocabulary[currentLang].length === 0) {
+    section.hidden = true;
+    return;
+  }
+
+  section.hidden = false;
+  heading.textContent = labels.vocabHeading;
+
+  body.innerHTML = `<div class="vocab-pills">
+    ${data.vocabulary[currentLang].map(word => `<span class="vocab-pill">${escapeHTML(word)}</span>`).join('')}
+  </div>`;
+}
+
+// ============================================================
+// FEATURE 7: Books & Read-Alouds
+// ============================================================
+function renderBooks() {
+  const data = currentWeekData;
+  const section = document.getElementById('books');
+  const body = document.getElementById('books-body');
+  const heading = document.getElementById('books-heading');
+  const labels = configData.labels[currentLang];
+  const lang = currentLang;
+
+  if (!data.books || data.books.length === 0) {
+    section.hidden = true;
+    return;
+  }
+
+  section.hidden = false;
+  heading.textContent = labels.booksHeading;
+
+  body.innerHTML = data.books.map(book => {
+    const title = book.title[lang] || book.title.en;
+    const ytLink = book.youtubeUrl
+      ? `<a href="${book.youtubeUrl}" target="_blank" rel="noopener" class="book-yt-link">▶️ ${lang === 'es' ? 'Ver Lectura en Voz Alta' : 'Watch Read-Aloud'}</a>`
+      : '';
+    const questions = (book.questions && book.questions.length > 0)
+      ? `<details class="book-questions">
+           <summary>${labels.discussionQuestions}</summary>
+           <ul>${book.questions.map(q => `<li>${escapeHTML(q[lang])}</li>`).join('')}</ul>
+         </details>`
+      : '';
+
+    return `<div class="book-card">
+      <div class="book-card-icon">📖</div>
+      <div class="book-card-content">
+        <div class="book-title">${escapeHTML(title)}</div>
+        <div class="book-author">${escapeHTML(book.author)}</div>
+        ${ytLink}
+        ${questions}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ============================================================
+// FEATURE 8: Math Curriculum Details
+// ============================================================
+function renderMathDetails() {
+  // Remove any existing math-details
+  const existing = document.querySelector('.math-details');
+  if (existing) existing.remove();
+
+  const data = currentWeekData;
+  if (!data.mathDetails) return;
+
+  const labels = configData.labels[currentLang];
+  const lang = currentLang;
+  const md = data.mathDetails;
+
+  const detailsHTML = `<div class="math-details">
+    <div class="math-detail-item"><strong>${labels.mathDetailsModule}:</strong> ${escapeHTML(md.module[lang])}</div>
+    <div class="math-detail-item"><strong>${labels.mathDetailsTopic}:</strong> ${escapeHTML(md.topic[lang])}</div>
+    <div class="math-detail-item"><strong>${labels.mathDetailsLesson}:</strong> ${escapeHTML(md.lesson[lang])}</div>
+  </div>`;
+
+  document.getElementById('math-body').insertAdjacentHTML('beforeend', detailsHTML);
+}
+
+// ============================================================
+// FEATURE 9: Entrance Animations
+// ============================================================
+function setupScrollAnimations() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.section, .classroom-card, .newsletter-header, .quick-links-bar, .class-selector-bar').forEach(el => {
+    el.classList.add('animate-ready');
+    observer.observe(el);
+  });
+}
+
+// ============================================================
+// FEATURE 10: Print Button
+// ============================================================
+function setupPrintButton() {
+  document.getElementById('print-btn').addEventListener('click', () => {
+    window.print();
+  });
+}
+
+// ============================================================
+// FEATURE 11: Share Button
+// ============================================================
+function setupShareButton() {
+  document.getElementById('share-btn').addEventListener('click', async () => {
+    const url = window.location.href;
+    const title = `Bancroft ES - ${configData.labels[currentLang].title}`;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, url });
+      } catch (e) { /* user cancelled */ }
+    } else {
+      try {
+        await navigator.clipboard.writeText(url);
+        const btn = document.getElementById('share-btn');
+        const orig = btn.textContent;
+        btn.textContent = '✓';
+        setTimeout(() => { btn.textContent = orig; }, 1500);
+      } catch (e) {
+        prompt(currentLang === 'es' ? 'Copiar enlace:' : 'Copy link:', url);
+      }
+    }
+  });
+}
+
+// ============================================================
+// FEATURE 12: Add to Calendar (.ics download)
+// ============================================================
+function downloadICS(dateStr, title) {
+  const [y, m, d] = dateStr.split('-');
+  const dtStart = `${y}${m}${d}`;
+
+  // All-day event: DTEND is the next day
+  const endDate = new Date(Number(y), Number(m) - 1, Number(d) + 1);
+  const dtEnd = `${endDate.getFullYear()}${String(endDate.getMonth() + 1).padStart(2, '0')}${String(endDate.getDate()).padStart(2, '0')}`;
+
+  const ics = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Bancroft ES//Newsletter//EN',
+    'BEGIN:VEVENT',
+    `DTSTART;VALUE=DATE:${dtStart}`,
+    `DTEND;VALUE=DATE:${dtEnd}`,
+    `SUMMARY:${title} (DCPS)`,
+    'DESCRIPTION:From the DCPS 2025-26 School Calendar',
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\r\n');
+
+  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `bancroft-${dateStr}.ics`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// ============================================================
+// FEATURE 13: Dark Mode
+// ============================================================
+function setupDarkMode() {
+  const btn = document.getElementById('dark-mode-btn');
+  const stored = localStorage.getItem('darkMode');
+
+  if (stored === 'true' || (stored === null && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.body.classList.add('dark-mode');
+    btn.textContent = '☀️';
+  }
+
+  btn.addEventListener('click', () => {
+    const isDark = document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', isDark);
+    btn.textContent = isDark ? '☀️' : '🌙';
+  });
+}
+
+// ============================================================
+// EXISTING FEATURES (from original script.js)
+// ============================================================
 
 // --- My Specials This Week (personalized) ---
 async function renderMySpecials() {
@@ -224,11 +625,9 @@ async function renderMySpecials() {
   const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
   const todayKey = dayNames[new Date().getDay()];
 
-  // Calculate dates for each day of the week from the newsletter date (which is a Monday)
   const [ny, nm, nd] = currentWeekData.date.split('-').map(Number);
   const weekStart = new Date(ny, nm - 1, nd);
 
-  // Fetch weather for current week
   const daily = await fetchWeatherData();
 
   body.innerHTML = dayKeys.map((day, i) => {
@@ -236,7 +635,6 @@ async function renderMySpecials() {
     const isNoSchool = letter.includes('NO SCHOOL') || letter.includes('NO HAY') || letter.includes('CONFERENCES');
     const isToday = day === todayKey;
 
-    // Calculate this day's date (Mon=0, Tue=1, etc.)
     const dayDate = new Date(weekStart);
     dayDate.setDate(weekStart.getDate() + i);
     const shortDate = `${dayDate.getMonth() + 1}/${dayDate.getDate()}`;
@@ -272,11 +670,9 @@ async function renderSpecials(specials, labels) {
   const tbody = document.querySelector('#specials-table tbody');
   const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
 
-  // Calculate dates for the week
   const [ny, nm, nd] = currentWeekData.date.split('-').map(Number);
   const weekStart = new Date(ny, nm - 1, nd);
 
-  // Fetch weather for current week
   const daily = await fetchWeatherData();
 
   tbody.innerHTML = days.map((day, i) => {
@@ -292,8 +688,8 @@ async function renderSpecials(specials, labels) {
     const weatherHTML = weatherSnippetHTML(daily, i, currentLang);
 
     return `<tr>
-      <td>${labels.days[i]} <span class="specials-date">(${shortDate})</span></td>
-      <td${cellClass}>${displayVal}${weatherHTML ? '<div class="specials-weather-row">' + weatherHTML + '</div>' : ''}</td>
+      <td>${labels.days[i]} <span class="specials-date">(${shortDate})</span>${weatherHTML ? '<div class="specials-weather-row">' + weatherHTML + '</div>' : ''}</td>
+      <td${cellClass}>${displayVal}</td>
     </tr>`;
   }).join('');
 }
@@ -306,7 +702,6 @@ function renderClassroomGrids(specials, labels) {
   const translations = configData.subjectTranslations;
   const lang = currentLang;
 
-  // Determine today's rotation letter (only highlight current day)
   const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
   const today = dayNames[new Date().getDay()];
   const todayVal = (specials[today] || '').trim().toUpperCase();
@@ -315,7 +710,6 @@ function renderClassroomGrids(specials, labels) {
     activeLetters.add(todayVal);
   }
 
-  // If a class is selected, only show that class's grid
   const classroomsToShow = selectedClass
     ? [selectedClass]
     : configData.classrooms;
@@ -376,13 +770,21 @@ function updateActiveArchiveLink(date) {
   });
 }
 
-// --- Language Toggle ---
+// --- Language Toggle (with smooth transition) ---
 document.getElementById('lang-toggle-wrap').addEventListener('click', (e) => {
   const btn = e.target.closest('.lang-btn');
   if (!btn || btn.dataset.lang === currentLang) return;
   currentLang = btn.dataset.lang;
   document.documentElement.lang = currentLang;
-  render();
+
+  const main = document.getElementById('newsletter');
+  main.classList.add('fade-out');
+  setTimeout(() => {
+    render();
+    main.classList.remove('fade-out');
+    main.classList.add('fade-in');
+    setTimeout(() => main.classList.remove('fade-in'), 300);
+  }, 150);
 });
 
 // --- Hash change listener ---
@@ -395,7 +797,6 @@ window.addEventListener('hashchange', () => {
 
 // --- Helpers ---
 function formatDate(dateStr, lang) {
-  // dateStr is "YYYY-MM-DD"
   const [y, m, d] = dateStr.split('-').map(Number);
   const date = new Date(y, m - 1, d);
   const locale = lang === 'es' ? 'es-US' : 'en-US';
@@ -408,14 +809,21 @@ function formatDate(dateStr, lang) {
 
 function textToHTML(text) {
   if (!text) return '';
-  // Escape HTML entities
   const escaped = text
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
-  // Split on double newlines for paragraphs
   const paragraphs = escaped.split(/\n\n+/);
   return paragraphs.map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+}
+
+function escapeHTML(text) {
+  if (!text) return '';
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
 function renderImages(images) {
@@ -434,7 +842,6 @@ const BANCROFT_LAT = 38.9296;
 const BANCROFT_LON = -77.0325;
 let weatherCache = {};
 
-// Fetch weather data for the current week (returns null if unavailable or not current week)
 async function fetchWeatherData() {
   if (!currentWeekData || currentWeekData.date !== weeksList[0]) return null;
 
@@ -468,7 +875,6 @@ async function fetchWeatherData() {
   return weather.daily;
 }
 
-// Build inline weather HTML for a specific day index (0=Mon, 1=Tue, etc.)
 function weatherSnippetHTML(daily, dayIndex, lang) {
   if (!daily || dayIndex >= daily.time.length) return '';
   const high = Math.round(daily.temperature_2m_max[dayIndex]);
@@ -540,7 +946,6 @@ function weatherTips(high, low, rainChance, code, lang) {
   const tips = [];
   const isEn = lang === 'en';
 
-  // Temperature-based tips
   if (low <= 32) {
     tips.push(isEn ? '🧤 Heavy coat, hat & gloves' : '🧤 Abrigo grueso, gorro y guantes');
   } else if (low <= 45) {
@@ -554,7 +959,6 @@ function weatherTips(high, low, rainChance, code, lang) {
     tips.push(isEn ? '🧴 Sunscreen' : '🧴 Protector solar');
   }
 
-  // Rain/snow tips
   if (rainChance >= 50 || (code >= 61 && code <= 67) || (code >= 80 && code <= 82)) {
     tips.push(isEn ? '☂️ Umbrella & rain boots' : '☂️ Paraguas y botas de lluvia');
   } else if (rainChance >= 30) {
@@ -589,7 +993,6 @@ function flagHTML(flagValue, size) {
 function showError(msg) {
   document.getElementById('error-message').textContent = msg;
   document.getElementById('error-overlay').hidden = false;
-  // Auto-hide after 5 seconds
   setTimeout(() => {
     document.getElementById('error-overlay').hidden = true;
   }, 5000);

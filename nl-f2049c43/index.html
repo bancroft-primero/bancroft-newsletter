@@ -34,18 +34,36 @@
           <h2 id="subtitle">Boletín Semanal</h2>
           <p id="date-display" class="script-font"></p>
         </div>
-        <div class="lang-toggle-wrap" id="lang-toggle-wrap">
-          <button class="lang-btn" data-lang="es">Español</button>
-          <button class="lang-btn" data-lang="en">English</button>
+        <div class="header-right">
+          <div class="header-actions">
+            <button id="print-btn" class="header-action-btn" title="Print">🖨️</button>
+            <button id="share-btn" class="header-action-btn" title="Share">🔗</button>
+            <button id="dark-mode-btn" class="header-action-btn" title="Dark Mode">🌙</button>
+          </div>
+          <div class="lang-toggle-wrap" id="lang-toggle-wrap">
+            <button class="lang-btn" data-lang="es">Español</button>
+            <button class="lang-btn" data-lang="en">English</button>
+          </div>
         </div>
       </header>
 
+      <!-- Quick Links Bar -->
+      <nav id="quick-links" class="quick-links-bar"></nav>
+
       <!-- Class Selector -->
       <section class="class-selector-bar">
-        <label id="class-selector-label" for="class-select">My Classroom:</label>
+        <label id="class-selector-label" for="class-select">Mi Salón:</label>
         <div class="class-selector-buttons" id="class-selector-buttons">
           <button class="class-btn" data-class="">All</button>
         </div>
+      </section>
+
+      <!-- Dashboard / At a Glance -->
+      <section id="dashboard" class="section dashboard-section">
+        <div class="section-heading-wrap">
+          <h3 id="dashboard-heading" class="dashboard-heading">El Año Escolar de un Vistazo</h3>
+        </div>
+        <div id="dashboard-body" class="dashboard-body"></div>
       </section>
 
       <!-- My Specials This Week (shown when a class is selected) -->
@@ -64,6 +82,14 @@
         <div id="welcome-body" class="section-body"></div>
       </section>
 
+      <!-- Important Reminders -->
+      <section id="reminders" class="section reminders-section" hidden>
+        <div class="section-heading-wrap">
+          <h3 id="reminders-heading" class="reminders-heading">Important Reminders</h3>
+        </div>
+        <div id="reminders-body" class="reminders-body"></div>
+      </section>
+
       <!-- Math News -->
       <section class="section math-section">
         <div class="section-heading-wrap">
@@ -78,6 +104,30 @@
           <h3 id="literacy-heading" class="literacy-heading">Literacy News</h3>
         </div>
         <div id="literacy-body" class="section-body"></div>
+      </section>
+
+      <!-- Ask Your Child About... -->
+      <section id="ask-your-child" class="section ask-section" hidden>
+        <div class="section-heading-wrap">
+          <h3 id="ask-heading" class="ask-heading">Ask Your Child About...</h3>
+        </div>
+        <div id="ask-body" class="ask-body"></div>
+      </section>
+
+      <!-- Vocabulary / Words of the Week -->
+      <section id="vocabulary" class="section vocab-section" hidden>
+        <div class="section-heading-wrap">
+          <h3 id="vocab-heading" class="vocab-heading">Words of the Week</h3>
+        </div>
+        <div id="vocab-body" class="vocab-body"></div>
+      </section>
+
+      <!-- Books & Read-Alouds -->
+      <section id="books" class="section books-section" hidden>
+        <div class="section-heading-wrap">
+          <h3 id="books-heading" class="books-heading">Books & Read-Alouds</h3>
+        </div>
+        <div id="books-body" class="books-body"></div>
       </section>
 
       <!-- Specials Schedule -->
