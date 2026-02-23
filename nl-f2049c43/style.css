@@ -22,6 +22,11 @@
   --radius: 16px;
 }
 
+/* ===== Smooth Scroll ===== */
+html {
+  scroll-behavior: smooth;
+}
+
 /* ===== Reset & Base ===== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -248,6 +253,68 @@ body {
 
 .quick-link-icon {
   font-size: 1rem;
+}
+
+/* ===== Table of Contents ===== */
+.toc-bar {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  background: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+.toc-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  margin-right: 0.2rem;
+}
+
+.toc-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.7rem;
+  background: #e8ecf1;
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s, transform 0.15s;
+}
+
+.toc-link:hover {
+  background: var(--color-literacy-bg);
+  color: var(--color-literacy-heading);
+  transform: translateY(-1px);
+}
+
+/* ===== Back to Top ===== */
+.back-to-top {
+  display: block;
+  text-align: right;
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  font-size: 0.78rem;
+  color: var(--color-text-light);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s;
+}
+
+.back-to-top:hover {
+  color: var(--color-literacy-heading);
 }
 
 /* ===== Class Selector ===== */
@@ -1246,6 +1313,29 @@ body.dark-mode {
   --color-roars-bg: #8a5a10;
 }
 
+body.dark-mode .toc-bar {
+  background: var(--color-white);
+}
+
+body.dark-mode .toc-link {
+  background: #3a3d45;
+  color: var(--color-text);
+}
+
+body.dark-mode .toc-link:hover {
+  background: #2a3d4a;
+  color: #7aabdf;
+}
+
+body.dark-mode .back-to-top {
+  border-top-color: rgba(255,255,255,0.1);
+  color: var(--color-text-light);
+}
+
+body.dark-mode .back-to-top:hover {
+  color: var(--color-literacy-heading);
+}
+
 body.dark-mode .class-btn,
 body.dark-mode .lang-btn,
 body.dark-mode .header-action-btn,
@@ -1421,6 +1511,8 @@ body.dark-mode .ics-btn:hover {
   .archive-mobile,
   .class-selector-bar,
   .quick-links-bar,
+  .toc-bar,
+  .back-to-top,
   .ics-btn,
   .weather-inline,
   #my-specials {

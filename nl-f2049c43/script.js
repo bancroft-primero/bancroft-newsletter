@@ -74,6 +74,7 @@ async function init() {
     setupDarkMode();
     setupPrintButton();
     setupShareButton();
+    addBackToTopLinks();
 
     const hash = window.location.hash.replace('#', '');
     const targetWeek = weeksList.includes(hash) ? hash : weeksList[0];
@@ -128,6 +129,7 @@ function buildClassSelector() {
     btn.classList.add('active');
     renderMySpecials();
     renderClassroomGrids(currentWeekData.specials, configData.labels[currentLang]);
+    renderTOC();
   });
 }
 
@@ -214,6 +216,14 @@ function render() {
   // Update header action tooltips
   document.getElementById('print-btn').title = labels.printBtn;
   document.getElementById('share-btn').title = labels.shareBtn;
+
+  // Back to top link text
+  document.querySelectorAll('.back-to-top').forEach(el => {
+    el.textContent = lang === 'es' ? '↑ Arriba' : '↑ Top';
+  });
+
+  // TOC (rendered after all sections are updated so visibility is accurate)
+  renderTOC();
 }
 
 // ============================================================
@@ -603,6 +613,12 @@ async function renderMySpecials() {
   const section = document.getElementById('my-specials');
   const body = document.getElementById('my-specials-body');
   const heading = document.getElementById('my-specials-heading');
+
+  // When a class is selected, hide the generic specials table and classroom grids
+  const specialsSection = document.getElementById('section-specials');
+  const classroomGrids = document.getElementById('classroom-grids');
+  if (specialsSection) specialsSection.hidden = !!selectedClass;
+  if (classroomGrids) classroomGrids.hidden = !!selectedClass;
 
   if (!selectedClass || !currentWeekData) {
     section.hidden = true;
@@ -1003,6 +1019,68 @@ function showError(msg) {
   setTimeout(() => {
     document.getElementById('error-overlay').hidden = true;
   }, 5000);
+}
+
+// ============================================================
+// Table of Contents
+// ============================================================
+function renderTOC() {
+  const toc = document.getElementById('toc');
+  if (!toc) return;
+  const lang = currentLang;
+
+  const items = [
+    { id: 'dashboard',        es: '🗓️ Un Vistazo',       en: '🗓️ At a Glance' },
+    { id: 'my-specials',      es: '⭐ Mis Especialidades', en: '⭐ My Specials' },
+    { id: 'section-welcome',  es: '👋 Bienvenida',         en: '👋 Welcome' },
+    { id: 'reminders',        es: '📌 Recordatorios',      en: '📌 Reminders' },
+    { id: 'section-math',     es: '🔢 Matemáticas',        en: '🔢 Math' },
+    { id: 'section-literacy', es: '📚 Lectura',            en: '📚 Literacy' },
+    { id: 'ask-your-child',   es: '💬 Pregúntale',         en: '💬 Ask Your Child' },
+    { id: 'vocabulary',       es: '✏️ Vocabulario',        en: '✏️ Vocabulary' },
+    { id: 'books',            es: '📖 Libros',             en: '📖 Books' },
+    { id: 'section-specials', es: '🎨 Especialidades',     en: '🎨 Specials' },
+    { id: 'section-roars',    es: '🐯 ROARS',              en: '🐯 ROARS' },
+  ];
+
+  const visibleItems = items.filter(item => {
+    const el = document.getElementById(item.id);
+    return el && !el.hidden;
+  });
+
+  if (visibleItems.length === 0) {
+    toc.hidden = true;
+    return;
+  }
+
+  const label = lang === 'es' ? 'Ir a:' : 'Jump to:';
+  toc.hidden = false;
+  toc.innerHTML =
+    `<span class="toc-label">${label}</span>` +
+    visibleItems.map(item =>
+      `<a href="#${item.id}" class="toc-link">${item[lang]}</a>`
+    ).join('');
+}
+
+// ============================================================
+// Back to Top Links
+// ============================================================
+function addBackToTopLinks() {
+  const sectionIds = [
+    'dashboard', 'my-specials', 'section-welcome', 'reminders',
+    'section-math', 'section-literacy', 'ask-your-child',
+    'vocabulary', 'books', 'section-specials', 'section-roars'
+  ];
+  sectionIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && !el.querySelector('.back-to-top')) {
+      const link = document.createElement('a');
+      link.href = '#top';
+      link.className = 'back-to-top';
+      link.textContent = currentLang === 'es' ? '↑ Arriba' : '↑ Top';
+      el.appendChild(link);
+    }
+  });
 }
 
 // --- Start ---
