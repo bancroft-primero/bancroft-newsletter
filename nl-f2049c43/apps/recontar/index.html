@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recontar: El chocolate de abuela</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --terra: #C04A2A;
+      --gold: #C9900A;
+      --green: #2D6A2F;
+      --brown: #3D1C0C;
+      --cream: #FDF3E3;
+      --card-bg: #FFFBF5;
+      --border: #E2CCAA;
+      --shadow: rgba(61,28,12,0.13);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--brown); min-height: 100vh; }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #7A1E00, #C04A2A, #7A1E00);
+      color: white; padding: 1.4rem 2rem; text-align: center;
+      border-bottom: 5px solid var(--gold);
+    }
+    header h1 { font-size: 1.85rem; font-weight: 800; text-shadow: 1px 2px 5px rgba(0,0,0,0.4); }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.2rem; }
+
+    /* TABS */
+    .tab-nav { background: #2C1006; display: flex; padding: 0.5rem 1.5rem 0; gap: 0.4rem; overflow-x: auto; }
+    .tab-btn {
+      padding: 0.6rem 1.2rem; border: none; border-radius: 8px 8px 0 0;
+      font-family: 'Nunito', sans-serif; font-size: 0.92rem; font-weight: 700;
+      cursor: pointer; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.8);
+      transition: all 0.2s; white-space: nowrap;
+    }
+    .tab-btn.active { background: var(--cream); color: var(--brown); }
+    .tab-btn:hover:not(.active) { background: rgba(255,255,255,0.28); color: white; }
+
+    /* PANELS */
+    .tab-panel { display: none; padding: 1.75rem 2rem; max-width: 1080px; margin: 0 auto; }
+    .tab-panel.active { display: block; }
+
+    /* SHARED COMPONENTS */
+    .instructions {
+      background: white; border-left: 5px solid var(--terra);
+      border-radius: 0 10px 10px 0; padding: 0.9rem 1.1rem;
+      margin-bottom: 1.6rem; box-shadow: 0 2px 8px var(--shadow);
+      font-size: 1rem; line-height: 1.55;
+    }
+    .instructions strong { color: var(--terra); }
+
+    .section-title {
+      font-size: 1rem; font-weight: 800; color: var(--terra);
+      text-transform: uppercase; letter-spacing: 0.05em;
+      margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .section-title::after { content: ''; flex: 1; height: 2px; background: linear-gradient(to right, var(--terra), transparent); }
+
+    .actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .btn {
+      padding: 0.55rem 1.1rem; border: none; border-radius: 8px;
+      font-family: 'Nunito', sans-serif; font-size: 0.92rem; font-weight: 700;
+      cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.35rem;
+    }
+    .btn-primary { background: var(--terra); color: white; }
+    .btn-primary:hover { background: #9E3318; transform: translateY(-1px); }
+    .btn-secondary { background: white; color: var(--brown); border: 2px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--brown); transform: translateY(-1px); }
+
+    /* ===================== NIVEL 1 ===================== */
+    .card-bank {
+      display: flex; flex-wrap: wrap; gap: 0.9rem;
+      padding: 1.1rem; background: white; border-radius: 12px;
+      border: 2px dashed var(--border); min-height: 170px;
+      margin-bottom: 1.75rem; justify-content: center; align-items: flex-start;
+    }
+    .bank-empty { color: #BBB; font-size: 0.9rem; align-self: center; }
+
+    .story-card {
+      width: 190px; background: var(--card-bg); border-radius: 10px;
+      border: 3px solid var(--border); overflow: hidden; cursor: pointer;
+      transition: all 0.2s; user-select: none; box-shadow: 0 3px 8px var(--shadow);
+    }
+    .story-card:hover { transform: translateY(-3px); box-shadow: 0 6px 14px var(--shadow); }
+    .story-card.selected {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,144,10,0.35), 0 6px 14px var(--shadow);
+      transform: translateY(-3px) rotate(-1.5deg);
+    }
+    .story-card.placed { opacity: 0.35; pointer-events: none; transform: none; }
+    .story-card img { width: 100%; height: 120px; object-fit: cover; display: block; }
+    .story-card .card-label { padding: 0.45rem 0.5rem; font-size: 0.75rem; font-weight: 600; line-height: 1.35; text-align: center; }
+
+    .drop-zones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.9rem; margin-bottom: 1.75rem; }
+    .drop-zone {
+      background: white; border-radius: 12px; border: 3px dashed #CCC;
+      overflow: hidden; cursor: pointer; transition: all 0.2s; min-height: 210px;
+    }
+    .drop-zone .seq-label {
+      background: var(--terra); color: white; padding: 0.45rem;
+      text-align: center; font-weight: 800; font-size: 0.95rem;
+    }
+    .drop-zone .drop-area {
+      min-height: 165px; display: flex; align-items: center;
+      justify-content: center; padding: 0.4rem; position: relative;
+    }
+    .drop-zone .placeholder-txt { color: #CCC; font-size: 0.8rem; text-align: center; line-height: 1.4; }
+    .drop-zone.can-drop { border-color: var(--gold); background: #FFFBEE; }
+    .drop-zone.has-card { border-color: var(--green); border-style: solid; }
+
+    .placed-card { width: 100%; position: relative; }
+    .placed-card img { width: 100%; height: 110px; object-fit: cover; display: block; }
+    .placed-card .placed-lbl { padding: 0.35rem 0.45rem; font-size: 0.72rem; font-weight: 600; line-height: 1.3; text-align: center; }
+    .remove-btn {
+      position: absolute; top: 4px; right: 4px; background: rgba(192,74,42,0.88);
+      color: white; border: none; border-radius: 50%; width: 22px; height: 22px;
+      font-size: 11px; cursor: pointer; display: flex; align-items: center;
+      justify-content: center; font-weight: 800; z-index: 10;
+    }
+
+    /* Sentence frames */
+    .sentence-frames { background: white; border-radius: 12px; padding: 1.4rem; box-shadow: 0 2px 8px var(--shadow); margin-bottom: 1.25rem; }
+    .sentence-row { margin-bottom: 1.1rem; }
+    .sentence-row:last-child { margin-bottom: 0; }
+    .s-top { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.3rem; }
+    .seq-badge { background: var(--terra); color: white; padding: 0.2rem 0.7rem; border-radius: 20px; font-weight: 800; font-size: 0.85rem; white-space: nowrap; flex-shrink: 0; }
+    .sentence-start { font-weight: 700; font-size: 0.97rem; white-space: nowrap; }
+    .sentence-input {
+      border: none; border-bottom: 2.5px solid var(--brown); background: transparent;
+      font-family: 'Nunito', sans-serif; font-size: 0.97rem; font-weight: 600;
+      color: var(--brown); min-width: 180px; flex: 1; padding: 0.2rem 0.4rem; outline: none;
+      transition: border-color 0.2s;
+    }
+    .sentence-input:focus { border-color: var(--terra); }
+    .hint-btn {
+      background: none; border: 2px solid var(--gold); color: #9A6E00;
+      border-radius: 20px; padding: 0.18rem 0.65rem; font-family: 'Nunito', sans-serif;
+      font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: all 0.2s; flex-shrink: 0;
+    }
+    .hint-btn:hover { background: var(--gold); color: white; }
+    .hint-popup {
+      display: none; background: #FFFBEE; border: 2px solid var(--gold);
+      border-radius: 8px; padding: 0.5rem 0.7rem; margin-top: 0.25rem; font-size: 0.82rem;
+    }
+    .hint-popup.show { display: block; }
+    .hint-popup strong { color: #7A5500; margin-right: 0.3rem; }
+    .hint-word {
+      display: inline-block; background: var(--gold); color: white; border-radius: 12px;
+      padding: 0.12rem 0.5rem; margin: 0.12rem; font-weight: 700; font-size: 0.78rem;
+      cursor: pointer; transition: all 0.15s;
+    }
+    .hint-word:hover { background: var(--terra); transform: scale(1.05); }
+
+    /* Congrats banner */
+    .congrats { display: none; background: linear-gradient(135deg, #2D6A2F, #52A855); color: white; border-radius: 12px; padding: 1rem 1.4rem; margin-bottom: 1.4rem; font-size: 1.05rem; font-weight: 700; text-align: center; animation: pop 0.4s ease; }
+    .congrats.show { display: block; }
+    @keyframes pop { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    /* ===================== NIVEL 2 ===================== */
+    .n2-layout { display: grid; grid-template-columns: 1fr 210px; gap: 1.4rem; }
+    .panels-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+    .story-panel { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 10px var(--shadow); border: 2px solid var(--border); }
+    .panel-hdr { display: flex; align-items: center; gap: 0.45rem; padding: 0.55rem 0.9rem; font-weight: 800; font-size: 0.95rem; }
+    .panel-hdr.p1 { background: #FFEDE6; color: #9E2E0E; }
+    .panel-hdr.p2 { background: #FFF8E0; color: #7A5500; }
+    .panel-hdr.p3 { background: #E8F5E8; color: var(--green); }
+    .panel-hdr.p4 { background: #EEE8FF; color: #5330A0; }
+    .story-panel img { width: 100%; height: 150px; object-fit: cover; display: block; cursor: zoom-in; }
+    .panel-write { padding: 0.8rem; }
+    .panel-write .frame-start { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem; }
+    .panel-write textarea {
+      width: 100%; border: 2px solid var(--border); border-radius: 8px;
+      padding: 0.45rem; font-family: 'Nunito', sans-serif; font-size: 0.88rem;
+      resize: vertical; min-height: 68px; color: var(--brown); outline: none;
+      transition: border-color 0.2s;
+    }
+    .panel-write textarea:focus { border-color: var(--terra); }
+
+    .word-bank { background: white; border-radius: 12px; padding: 1.1rem; box-shadow: 0 2px 8px var(--shadow); margin-top: 1.1rem; }
+    .word-bank-title { font-weight: 800; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--green); margin-bottom: 0.65rem; }
+    .word-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .word-chip {
+      background: #E8F5E8; border: 2px solid var(--green); color: var(--green);
+      border-radius: 20px; padding: 0.25rem 0.8rem; font-weight: 700; font-size: 0.85rem;
+      cursor: pointer; transition: all 0.15s; user-select: none;
+    }
+    .word-chip:hover { background: var(--green); color: white; transform: scale(1.05); }
+    .word-chip.flash { background: var(--green); color: white; }
+
+    .char-ref img { width: 100%; border-radius: 12px; box-shadow: 0 3px 10px var(--shadow); border: 2px solid var(--border); cursor: zoom-in; }
+    .char-ref p { text-align: center; font-size: 0.78rem; font-weight: 600; color: #999; margin-top: 0.45rem; }
+
+    .gallery-strip { display: flex; gap: 0.65rem; overflow-x: auto; padding: 0.65rem 0; margin-bottom: 1.4rem; }
+    .gallery-strip img { height: 88px; width: auto; border-radius: 8px; border: 2px solid var(--border); flex-shrink: 0; object-fit: cover; cursor: zoom-in; transition: border-color 0.2s; }
+    .gallery-strip img:hover { border-color: var(--terra); }
+
+    /* ===================== NIVEL 3 ===================== */
+    .retell-table { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 10px var(--shadow); border: 2px solid var(--border); margin-bottom: 1.4rem; }
+    .retell-row { display: grid; grid-template-columns: 170px 1fr; border-bottom: 1px solid var(--border); }
+    .retell-row:last-child { border-bottom: none; }
+    .retell-lbl { background: #FAF0E0; padding: 0.9rem 1.1rem; border-right: 2px solid var(--border); }
+    .retell-lbl strong { display: block; font-size: 0.97rem; font-weight: 800; color: var(--terra); }
+    .retell-lbl em { font-style: normal; font-size: 0.78rem; color: #999; display: block; margin-top: 0.2rem; }
+    .retell-write { padding: 0.8rem 0.95rem; }
+    .retell-write textarea {
+      width: 100%; border: 2px solid var(--border); border-radius: 8px;
+      padding: 0.45rem; font-family: 'Nunito', sans-serif; font-size: 0.92rem;
+      min-height: 68px; resize: vertical; outline: none; color: var(--brown);
+      transition: border-color 0.2s;
+    }
+    .retell-write textarea:focus { border-color: var(--terra); }
+    .vocab-hint { margin-top: 0.4rem; font-size: 0.8rem; color: #AAA; display: flex; flex-wrap: wrap; gap: 0.3rem; align-items: center; }
+    .vocab-hint::before { content: '💡'; }
+    .vocab-word {
+      display: inline-block; background: #FFF8E0; border: 1px solid var(--gold);
+      border-radius: 10px; padding: 0.1rem 0.4rem; font-weight: 600; cursor: pointer;
+      color: #7A5500; transition: all 0.15s; font-size: 0.8rem;
+    }
+    .vocab-word:hover { background: var(--gold); color: white; }
+
+    .reflection-box { background: white; border-radius: 12px; padding: 1.4rem; box-shadow: 0 2px 8px var(--shadow); margin-bottom: 1.4rem; }
+    .reflection-box .q { font-size: 0.97rem; font-weight: 700; margin-bottom: 0.7rem; line-height: 1.55; }
+    .reflection-box textarea { width: 100%; border: 2px solid var(--border); border-radius: 8px; padding: 0.6rem; font-family: 'Nunito', sans-serif; font-size: 0.92rem; min-height: 90px; resize: vertical; outline: none; color: var(--brown); transition: border-color 0.2s; }
+    .reflection-box textarea:focus { border-color: var(--terra); }
+
+    .checklist-box { background: white; border-radius: 12px; padding: 1.4rem; box-shadow: 0 2px 8px var(--shadow); margin-bottom: 1.25rem; }
+    .progress-bar-wrap { background: #EEE; border-radius: 20px; height: 10px; margin-bottom: 0.5rem; overflow: hidden; }
+    .progress-bar-fill { background: linear-gradient(to right, var(--green), #52A855); height: 100%; border-radius: 20px; transition: width 0.4s ease; }
+    .progress-text { font-size: 0.82rem; font-weight: 700; color: var(--green); margin-bottom: 0.75rem; }
+    .checklist-item { display: flex; align-items: flex-start; gap: 0.65rem; padding: 0.6rem 0.4rem; border-bottom: 1px solid var(--border); transition: background 0.15s; border-radius: 6px; }
+    .checklist-item:last-child { border-bottom: none; }
+    .checklist-item:hover { background: #FAF0E0; }
+    .checklist-item input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--green); cursor: pointer; flex-shrink: 0; margin-top: 2px; }
+    .checklist-item label { font-size: 0.92rem; cursor: pointer; line-height: 1.45; }
+    .checklist-item.done label { text-decoration: line-through; color: #AAA; }
+
+    /* LIGHTBOX */
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 1000; align-items: center; justify-content: center; cursor: pointer; }
+    .lightbox.show { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 88vh; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.6); }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      .drop-zones { grid-template-columns: 1fr 1fr; }
+      .n2-layout { grid-template-columns: 1fr; }
+      .char-ref { display: none; }
+      .panels-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .tab-panel { padding: 1rem; }
+      header h1 { font-size: 1.35rem; }
+      .retell-row { grid-template-columns: 1fr; }
+      .retell-lbl { border-right: none; border-bottom: 1px solid var(--border); padding: 0.6rem 0.9rem; }
+    }
+    @media print {
+      .tab-nav, .actions, .hint-btn, .word-bank, .gallery-strip, .lightbox, .hint-popup { display: none !important; }
+      .tab-panel.active { display: block !important; padding: 0 !important; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🍫 Recontar: <em>El chocolate de abuela</em></h1>
+  <p>Practica tu recuento · Completa las oraciones</p>
+</header>
+
+<nav class="tab-nav">
+  <button class="tab-btn active" data-tab="nivel1">Nivel 1 — Secuencia</button>
+  <button class="tab-btn" data-tab="nivel2">Nivel 2 — Lee y escribe</button>
+  <button class="tab-btn" data-tab="nivel3">Nivel 3 — Recuento completo</button>
+</nav>
+
+<!-- ==================== NIVEL 1 ==================== -->
+<div id="nivel1" class="tab-panel active">
+
+  <div class="instructions">
+    <strong>Instrucciones:</strong> Haz clic en una imagen para seleccionarla (se pondrá de color dorado). Luego haz clic en la caja donde quieres colocarla. Completa las oraciones de abajo. Usa el botón <em>💡 Pista</em> si necesitas ayuda.
+  </div>
+
+  <div class="section-title">📦 Banco de imágenes</div>
+  <div class="card-bank" id="cardBank"></div>
+
+  <div class="congrats" id="congrats">🎉 ¡Muy bien! Pusiste todos los eventos en orden. Ahora completa las oraciones.</div>
+
+  <div class="section-title">📋 Pon los eventos en orden</div>
+  <div class="drop-zones">
+    <div class="drop-zone" data-slot="0" onclick="placeCard(0)">
+      <div class="seq-label">Primero</div>
+      <div class="drop-area" id="slot0"><span class="placeholder-txt">Haz clic aquí para colocar una imagen</span></div>
+    </div>
+    <div class="drop-zone" data-slot="1" onclick="placeCard(1)">
+      <div class="seq-label">Después</div>
+      <div class="drop-area" id="slot1"><span class="placeholder-txt">Haz clic aquí para colocar una imagen</span></div>
+    </div>
+    <div class="drop-zone" data-slot="2" onclick="placeCard(2)">
+      <div class="seq-label">Luego</div>
+      <div class="drop-area" id="slot2"><span class="placeholder-txt">Haz clic aquí para colocar una imagen</span></div>
+    </div>
+    <div class="drop-zone" data-slot="3" onclick="placeCard(3)">
+      <div class="seq-label">Al final</div>
+      <div class="drop-area" id="slot3"><span class="placeholder-txt">Haz clic aquí para colocar una imagen</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">✍️ Completa las oraciones</div>
+  <div class="sentence-frames">
+
+    <div class="sentence-row">
+      <div class="s-top">
+        <span class="seq-badge">Primero</span>
+        <span class="sentence-start">Primero, Abuela llega y</span>
+        <input type="text" class="sentence-input" id="s1" placeholder="________________________________" autocomplete="off">
+        <button class="hint-btn" onclick="toggleHint('h1')">💡 Pista</button>
+      </div>
+      <div class="hint-popup" id="h1">
+        <strong>Palabras clave:</strong>
+        <span class="hint-word" onclick="fillInput('s1', 'abre su maleta amarilla')">maleta amarilla</span>
+        <span class="hint-word" onclick="fillInput('s1', 'trae tesoros de México')">tesoros</span>
+        <span class="hint-word" onclick="fillInput('s1', 'abre su maleta llena de tesoros de México')">oración completa</span>
+      </div>
+    </div>
+
+    <div class="sentence-row">
+      <div class="s-top">
+        <span class="seq-badge">Después</span>
+        <span class="sentence-start">Después, Sabrina y Abuela</span>
+        <input type="text" class="sentence-input" id="s2" placeholder="________________________________" autocomplete="off">
+        <button class="hint-btn" onclick="toggleHint('h2')">💡 Pista</button>
+      </div>
+      <div class="hint-popup" id="h2">
+        <strong>Palabras clave:</strong>
+        <span class="hint-word" onclick="fillInput('s2', 'tocan música')">música</span>
+        <span class="hint-word" onclick="fillInput('s2', 'cantan con un tambor')">tambor</span>
+        <span class="hint-word" onclick="fillInput('s2', 'cantan y tocan música con un tambor y un silbato de barro')">oración completa</span>
+      </div>
+    </div>
+
+    <div class="sentence-row">
+      <div class="s-top">
+        <span class="seq-badge">Luego</span>
+        <span class="sentence-start">Luego, Sabrina aprende</span>
+        <input type="text" class="sentence-input" id="s3" placeholder="________________________________" autocomplete="off">
+        <button class="hint-btn" onclick="toggleHint('h3')">💡 Pista</button>
+      </div>
+      <div class="hint-popup" id="h3">
+        <strong>Palabras clave:</strong>
+        <span class="hint-word" onclick="fillInput('s3', 'sobre el huipil')">huipil</span>
+        <span class="hint-word" onclick="fillInput('s3', 'sobre la princesa maya')">princesa maya</span>
+        <span class="hint-word" onclick="fillInput('s3', 'sobre las tradiciones mayas. Abuela le pone un huipil y le trenza el pelo.')">oración completa</span>
+      </div>
+    </div>
+
+    <div class="sentence-row">
+      <div class="s-top">
+        <span class="seq-badge">Al final</span>
+        <span class="sentence-start">Al final,</span>
+        <input type="text" class="sentence-input" id="s4" placeholder="________________________________" autocomplete="off">
+        <button class="hint-btn" onclick="toggleHint('h4')">💡 Pista</button>
+      </div>
+      <div class="hint-popup" id="h4">
+        <strong>Palabras clave:</strong>
+        <span class="hint-word" onclick="fillInput('s4', 'hacen chocolate caliente')">chocolate caliente</span>
+        <span class="hint-word" onclick="fillInput('s4', 'Sabrina usa el molinillo')">molinillo</span>
+        <span class="hint-word" onclick="fillInput('s4', 'Sabrina y Abuela hacen chocolate caliente juntas con el molinillo.')">oración completa</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-secondary" onclick="resetLevel1()">🔄 Empezar de nuevo</button>
+    <button class="btn btn-primary" onclick="window.print()">🖨️ Imprimir</button>
+  </div>
+</div>
+
+<!-- ==================== NIVEL 2 ==================== -->
+<div id="nivel2" class="tab-panel">
+
+  <div class="instructions">
+    <strong>Instrucciones:</strong> Mira las imágenes para recordar la historia. Escribe oraciones completas en cada caja. Haz clic en las palabras del <em>banco de palabras</em> para agregarlas a la caja activa.
+  </div>
+
+  <div class="section-title">🖼️ Toda la historia — haz clic para ampliar</div>
+  <div class="gallery-strip" id="galleryStrip"></div>
+
+  <div class="n2-layout">
+    <div>
+      <div class="section-title">✍️ Lee y escribe</div>
+      <div class="panels-grid">
+
+        <div class="story-panel">
+          <div class="panel-hdr p1">🧳 Primero</div>
+          <img src="chocolate-abuela-p1-abuela-arrives.png" alt="Abuela llega" onclick="openLightbox(this.src, this.alt)">
+          <div class="panel-write">
+            <div class="frame-start">Primero, Abuela llega y…</div>
+            <textarea id="n2s1" placeholder="Escribe tu oración aquí…" onfocus="activeTA=this"></textarea>
+          </div>
+        </div>
+
+        <div class="story-panel">
+          <div class="panel-hdr p2">🎶 Después</div>
+          <img src="chocolate-abuela-p2-music-drum-whistle.png" alt="Tocan música" onclick="openLightbox(this.src, this.alt)">
+          <div class="panel-write">
+            <div class="frame-start">Después, Sabrina y Abuela…</div>
+            <textarea id="n2s2" placeholder="Escribe tu oración aquí…" onfocus="activeTA=this"></textarea>
+          </div>
+        </div>
+
+        <div class="story-panel">
+          <div class="panel-hdr p3">👑 Luego</div>
+          <img src="chocolate-abuela-p3-mayan-princess.png" alt="Princesa maya" onclick="openLightbox(this.src, this.alt)">
+          <div class="panel-write">
+            <div class="frame-start">Luego, Sabrina aprende…</div>
+            <textarea id="n2s3" placeholder="Escribe tu oración aquí…" onfocus="activeTA=this"></textarea>
+          </div>
+        </div>
+
+        <div class="story-panel">
+          <div class="panel-hdr p4">🍫 Al final</div>
+          <img src="chocolate-abuela-p6-making-hot-chocolate.png" alt="Chocolate caliente" onclick="openLightbox(this.src, this.alt)">
+          <div class="panel-write">
+            <div class="frame-start">Al final,…</div>
+            <textarea id="n2s4" placeholder="Escribe tu oración aquí…" onfocus="activeTA=this"></textarea>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="word-bank">
+        <div class="word-bank-title">📚 Banco de palabras — haz clic para agregar</div>
+        <div class="word-chips" id="wordChips"></div>
+      </div>
+    </div>
+
+    <div class="char-ref" style="position:sticky;top:1rem;">
+      <img src="chocolate-abuela-p0-character-sheet.png" alt="Personajes" onclick="openLightbox(this.src, 'Personajes: Sabrina y Abuela')">
+      <p>Personajes: Sabrina y Abuela</p>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-secondary" onclick="resetLevel2()">🔄 Borrar todo</button>
+    <button class="btn btn-primary" onclick="window.print()">🖨️ Imprimir</button>
+  </div>
+</div>
+
+<!-- ==================== NIVEL 3 ==================== -->
+<div id="nivel3" class="tab-panel">
+
+  <div class="instructions">
+    <strong>Instrucciones:</strong> Escribe un recuento completo de la historia. Usa las palabras clave para ayudarte. Cuando termines, marca tu lista de verificación.
+  </div>
+
+  <div class="section-title">📖 Recuento de la historia</div>
+  <div class="retell-table">
+
+    <div class="retell-row">
+      <div class="retell-lbl"><strong>Personajes</strong><em>¿Quiénes?</em></div>
+      <div class="retell-write">
+        <textarea id="r1" placeholder="¿Quiénes son los personajes principales?" onfocus="activeTA=this"></textarea>
+        <div class="vocab-hint">
+          <span class="vocab-word" onclick="appendWord('r1','Sabrina')">Sabrina</span>
+          <span class="vocab-word" onclick="appendWord('r1','Abuela')">Abuela</span>
+          <span class="vocab-word" onclick="appendWord('r1','Mamá')">Mamá</span>
+          <span class="vocab-word" onclick="appendWord('r1','mexicana-americana')">mexicana-americana</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="retell-row">
+      <div class="retell-lbl"><strong>Escenario</strong><em>¿Dónde?</em></div>
+      <div class="retell-write">
+        <textarea id="r2" placeholder="¿Dónde ocurre la historia?" onfocus="activeTA=this"></textarea>
+        <div class="vocab-hint">
+          <span class="vocab-word" onclick="appendWord('r2','la casa de Sabrina')">la casa de Sabrina</span>
+          <span class="vocab-word" onclick="appendWord('r2','la cocina')">la cocina</span>
+          <span class="vocab-word" onclick="appendWord('r2','los Estados Unidos')">los Estados Unidos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="retell-row">
+      <div class="retell-lbl"><strong>Primero</strong><em>¿Qué pasó?</em></div>
+      <div class="retell-write">
+        <textarea id="r3" placeholder="¿Qué pasa al principio de la historia?" onfocus="activeTA=this"></textarea>
+        <div class="vocab-hint">
+          <span class="vocab-word" onclick="appendWord('r3','maleta amarilla')">maleta amarilla</span>
+          <span class="vocab-word" onclick="appendWord('r3','tesoros')">tesoros</span>
+          <span class="vocab-word" onclick="appendWord('r3','llega de México')">llega de México</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="retell-row">
+      <div class="retell-lbl"><strong>Después</strong><em>¿Qué aprendió Sabrina?</em></div>
+      <div class="retell-write">
+        <textarea id="r4" placeholder="¿Qué aprende Sabrina de Abuela?" onfocus="activeTA=this"></textarea>
+        <div class="vocab-hint">
+          <span class="vocab-word" onclick="appendWord('r4','tambor')">tambor</span>
+          <span class="vocab-word" onclick="appendWord('r4','silbato de barro')">silbato de barro</span>
+          <span class="vocab-word" onclick="appendWord('r4','huipil')">huipil</span>
+          <span class="vocab-word" onclick="appendWord('r4','princesa maya')">princesa maya</span>
+          <span class="vocab-word" onclick="appendWord('r4','tradiciones mayas')">tradiciones mayas</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="retell-row">
+      <div class="retell-lbl"><strong>Luego</strong><em>¿Qué hicieron juntas?</em></div>
+      <div class="retell-write">
+        <textarea id="r5" placeholder="¿Qué hacen Sabrina y Abuela juntas?" onfocus="activeTA=this"></textarea>
+        <div class="vocab-hint">
+          <span class="vocab-word" onclick="appendWord('r5','molinillo')">molinillo</span>
+          <span class="vocab-word" onclick="appendWord('r5','chocolate caliente')">chocolate caliente</span>
+          <span class="vocab-word" onclick="appendWord('r5','cacao')">cacao</span>
+          <span class="vocab-word" onclick="appendWord('r5','Moctezuma')">Moctezuma</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="retell-row">
+      <div class="retell-lbl"><strong>Al final</strong><em>¿Cómo termina?</em></div>
+      <div class="retell-write">
+        <textarea id="r6" placeholder="¿Cómo termina la historia?" onfocus="activeTA=this"></textarea>
+        <div class="vocab-hint">
+          <span class="vocab-word" onclick="appendWord('r6','familia')">familia</span>
+          <span class="vocab-word" onclick="appendWord('r6','tradiciones')">tradiciones</span>
+          <span class="vocab-word" onclick="appendWord('r6','cultura')">cultura</span>
+          <span class="vocab-word" onclick="appendWord('r6','juntas')">juntas</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-title">💭 Pregunta de reflexión</div>
+  <div class="reflection-box">
+    <div class="q">¿Qué aprendió Sabrina sobre su cultura? ¿Qué tradiciones compartes tú con tu familia?</div>
+    <textarea id="reflection" placeholder="Escribe tus ideas aquí…"></textarea>
+  </div>
+
+  <div class="section-title">✅ Lista de verificación</div>
+  <div class="checklist-box">
+    <div class="progress-text" id="progressText">0 de 6 completados</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressBar" style="width:0%"></div></div>
+    <label class="checklist-item" id="ci0"><input type="checkbox" id="cb0" onchange="onCheck()"> <span>Nombré los personajes principales (Sabrina, Abuela).</span></label>
+    <label class="checklist-item" id="ci1"><input type="checkbox" id="cb1" onchange="onCheck()"> <span>Describí el escenario (la casa de Sabrina).</span></label>
+    <label class="checklist-item" id="ci2"><input type="checkbox" id="cb2" onchange="onCheck()"> <span>Conté los eventos en orden (primero, después, luego, al final).</span></label>
+    <label class="checklist-item" id="ci3"><input type="checkbox" id="cb3" onchange="onCheck()"> <span>Incluí detalles culturales (huipil, cacao, molinillo).</span></label>
+    <label class="checklist-item" id="ci4"><input type="checkbox" id="cb4" onchange="onCheck()"> <span>Expliqué lo que Sabrina aprendió de Abuela.</span></label>
+    <label class="checklist-item" id="ci5"><input type="checkbox" id="cb5" onchange="onCheck()"> <span>Incluí el mensaje o lección de la historia.</span></label>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-secondary" onclick="resetLevel3()">🔄 Borrar todo</button>
+    <button class="btn btn-primary" onclick="window.print()">🖨️ Imprimir</button>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lbImg" src="" alt="">
+</div>
+
+<script>
+// ===================== DATA =====================
+const events = [
+  { id: 'abuela',    img: 'chocolate-abuela-p1-abuela-arrives.png',         emoji: '🧳', label: 'Abuela llega con su maleta amarilla llena de tesoros.' },
+  { id: 'musica',    img: 'chocolate-abuela-p2-music-drum-whistle.png',      emoji: '🎶', label: 'Sabrina y Abuela cantan y tocan música juntas.' },
+  { id: 'princesa',  img: 'chocolate-abuela-p3-mayan-princess.png',          emoji: '👑', label: 'Sabrina juega a ser una princesa maya con huipil y trenzas.' },
+  { id: 'chocolate', img: 'chocolate-abuela-p6-making-hot-chocolate.png',    emoji: '🍫', label: 'Hacen chocolate caliente juntas con el molinillo.' },
+];
+
+const galleryImages = [
+  { src: 'chocolate-abuela-p1-abuela-arrives.png',       alt: 'Abuela llega' },
+  { src: 'chocolate-abuela-p2-music-drum-whistle.png',   alt: 'Tocan música' },
+  { src: 'chocolate-abuela-p3-mayan-princess.png',       alt: 'Princesa maya' },
+  { src: 'chocolate-abuela-p4-cacao-tree.png',           alt: 'El árbol de cacao' },
+  { src: 'chocolate-abuela-p5-moctezuma-chocolate.png',  alt: 'Moctezuma y el chocolate' },
+  { src: 'chocolate-abuela-p6-making-hot-chocolate.png', alt: 'Chocolate caliente' },
+];
+
+const wordBankWords = [
+  'maleta','amarilla','tesoros','México',
+  'tambor','silbato','música','cantan',
+  'princesa','maya','huipil','trenzas',
+  'cacao','chocolate','molinillo','familia',
+  'tradiciones','cultura','juntas','aprende',
+  'llega','abre','juega','hacen','abuela',
+];
+
+// ===================== STATE =====================
+let selectedCard = null;
+let slots = [null, null, null, null];
+let activeTA = null;
+
+// ===================== TABS =====================
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(this.dataset.tab).classList.add('active');
+    this.classList.add('active');
+  });
+});
+
+// ===================== NIVEL 1 =====================
+function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
+
+function initLevel1() {
+  selectedCard = null;
+  slots = [null, null, null, null];
+  document.getElementById('congrats').classList.remove('show');
+
+  const bank = document.getElementById('cardBank');
+  bank.innerHTML = '';
+  shuffle(events).forEach(ev => {
+    const card = document.createElement('div');
+    card.className = 'story-card';
+    card.id = 'card-' + ev.id;
+    card.dataset.id = ev.id;
+    card.innerHTML = `<img src="${ev.img}" alt="${ev.label}"><div class="card-label">${ev.emoji} ${ev.label}</div>`;
+    card.addEventListener('click', () => selectCard(ev.id));
+    bank.appendChild(card);
+  });
+
+  for (let i = 0; i < 4; i++) {
+    const slot = document.getElementById('slot' + i);
+    slot.innerHTML = '<span class="placeholder-txt">Haz clic aquí para colocar una imagen</span>';
+    slot.closest('.drop-zone').classList.remove('has-card', 'can-drop');
+  }
+
+  ['s1','s2','s3','s4'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+  ['h1','h2','h3','h4'].forEach(id => { const el = document.getElementById(id); if (el) el.classList.remove('show'); });
+}
+
+function selectCard(id) {
+  // Deselect all
+  document.querySelectorAll('.story-card').forEach(c => c.classList.remove('selected'));
+
+  if (selectedCard === id) {
+    selectedCard = null;
+    document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('can-drop'));
+    return;
+  }
+
+  selectedCard = id;
+  const card = document.getElementById('card-' + id);
+  if (card && !card.classList.contains('placed')) card.classList.add('selected');
+
+  document.querySelectorAll('.drop-zone').forEach(z => z.classList.add('can-drop'));
+}
+
+function placeCard(slotIndex) {
+  if (!selectedCard) return;
+
+  const ev = events.find(e => e.id === selectedCard);
+  const prevSlot = slots.indexOf(selectedCard);
+
+  // Remove from previous slot if present
+  if (prevSlot !== -1 && prevSlot !== slotIndex) {
+    slots[prevSlot] = null;
+    const prevEl = document.getElementById('slot' + prevSlot);
+    prevEl.innerHTML = '<span class="placeholder-txt">Haz clic aquí para colocar una imagen</span>';
+    prevEl.closest('.drop-zone').classList.remove('has-card');
+  }
+
+  // If target slot already occupied, return that card to bank
+  if (slots[slotIndex] && slots[slotIndex] !== selectedCard) {
+    const displaced = slots[slotIndex];
+    const bankCard = document.getElementById('card-' + displaced);
+    if (bankCard) bankCard.classList.remove('placed');
+  }
+
+  // Place in slot
+  slots[slotIndex] = selectedCard;
+  const slotEl = document.getElementById('slot' + slotIndex);
+  slotEl.innerHTML = `
+    <div class="placed-card">
+      <button class="remove-btn" onclick="event.stopPropagation(); removeCard(${slotIndex})">✕</button>
+      <img src="${ev.img}" alt="${ev.label}" onclick="event.stopPropagation(); selectCard('${ev.id}')">
+      <div class="placed-lbl">${ev.emoji} ${ev.label}</div>
+    </div>`;
+  slotEl.closest('.drop-zone').classList.add('has-card');
+
+  // Hide from bank
+  const bankCard = document.getElementById('card-' + selectedCard);
+  if (bankCard) bankCard.classList.add('placed');
+
+  // Reset selection
+  selectedCard = null;
+  document.querySelectorAll('.story-card').forEach(c => c.classList.remove('selected'));
+  document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('can-drop'));
+
+  // Check if all slots filled
+  if (slots.every(s => s !== null)) {
+    document.getElementById('congrats').classList.add('show');
+  }
+}
+
+function removeCard(slotIndex) {
+  const id = slots[slotIndex];
+  if (!id) return;
+  slots[slotIndex] = null;
+  const slotEl = document.getElementById('slot' + slotIndex);
+  slotEl.innerHTML = '<span class="placeholder-txt">Haz clic aquí para colocar una imagen</span>';
+  slotEl.closest('.drop-zone').classList.remove('has-card');
+  const bankCard = document.getElementById('card-' + id);
+  if (bankCard) bankCard.classList.remove('placed');
+  document.getElementById('congrats').classList.remove('show');
+}
+
+function resetLevel1() { initLevel1(); }
+
+function toggleHint(id) {
+  const popup = document.getElementById(id);
+  popup.classList.toggle('show');
+}
+
+function fillInput(inputId, text) {
+  const el = document.getElementById(inputId);
+  if (!el) return;
+  el.value = text;
+  el.focus();
+}
+
+// ===================== NIVEL 2 =====================
+function initWordBank() {
+  const container = document.getElementById('wordChips');
+  container.innerHTML = '';
+  wordBankWords.forEach(word => {
+    const chip = document.createElement('div');
+    chip.className = 'word-chip';
+    chip.textContent = word;
+    chip.addEventListener('click', () => {
+      const ta = activeTA || document.getElementById('n2s1');
+      const start = ta.selectionStart;
+      const end = ta.selectionEnd;
+      const val = ta.value;
+      const insert = (val.length > 0 && !val.endsWith(' ')) ? ' ' + word : word;
+      ta.value = val.substring(0, start) + insert + val.substring(end);
+      ta.selectionStart = ta.selectionEnd = start + insert.length;
+      ta.focus();
+      chip.classList.add('flash');
+      setTimeout(() => chip.classList.remove('flash'), 600);
+    });
+    container.appendChild(chip);
+  });
+}
+
+function initGallery() {
+  const strip = document.getElementById('galleryStrip');
+  strip.innerHTML = '';
+  galleryImages.forEach(({ src, alt }) => {
+    const img = document.createElement('img');
+    img.src = src; img.alt = alt; img.title = alt;
+    img.addEventListener('click', () => openLightbox(src, alt));
+    strip.appendChild(img);
+  });
+}
+
+function resetLevel2() {
+  ['n2s1','n2s2','n2s3','n2s4'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+}
+
+// ===================== NIVEL 3 =====================
+function appendWord(id, word) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const val = el.value;
+  el.value = val + (val.length > 0 && !val.endsWith(' ') ? ' ' : '') + word;
+  el.focus();
+}
+
+function onCheck() {
+  let count = 0;
+  for (let i = 0; i < 6; i++) {
+    const cb = document.getElementById('cb' + i);
+    const item = document.getElementById('ci' + i);
+    if (cb.checked) { count++; item.classList.add('done'); }
+    else { item.classList.remove('done'); }
+  }
+  document.getElementById('progressText').textContent = `${count} de 6 completados`;
+  document.getElementById('progressBar').style.width = `${(count / 6) * 100}%`;
+}
+
+function resetLevel3() {
+  ['r1','r2','r3','r4','r5','r6','reflection'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+  for (let i = 0; i < 6; i++) {
+    const cb = document.getElementById('cb' + i);
+    if (cb) cb.checked = false;
+  }
+  onCheck();
+}
+
+// ===================== LIGHTBOX =====================
+function openLightbox(src, alt) {
+  document.getElementById('lbImg').src = src;
+  document.getElementById('lbImg').alt = alt;
+  document.getElementById('lightbox').classList.add('show');
+}
+function closeLightbox() { document.getElementById('lightbox').classList.remove('show'); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// ===================== INIT =====================
+initLevel1();
+initWordBank();
+initGallery();
+</script>
+</body>
+</html>
