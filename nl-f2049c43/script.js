@@ -618,7 +618,7 @@ async function renderMySpecials() {
   const specialsSection = document.getElementById('section-specials');
   const classroomGrids = document.getElementById('classroom-grids');
   if (specialsSection) specialsSection.hidden = !!selectedClass;
-  if (classroomGrids) classroomGrids.hidden = !!selectedClass;
+  if (classroomGrids) classroomGrids.style.display = selectedClass ? 'none' : '';
 
   if (!selectedClass || !currentWeekData) {
     section.hidden = true;
