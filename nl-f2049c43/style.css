@@ -1673,8 +1673,7 @@ body.dark-mode .ics-btn:hover {
   .section-images,
   .book-yt-link,
   .math-details,
-  #error-overlay,
-  #password-gate {
+  #error-overlay {
     display: none !important;
   }
 
@@ -1857,11 +1856,6 @@ body.dark-mode .ics-btn:hover {
   }
 }
 
-/* Hide newsletter content until authenticated */
 .page-layout {
-  display: none;
-}
-
-.authenticated .page-layout {
   display: flex;
 }
