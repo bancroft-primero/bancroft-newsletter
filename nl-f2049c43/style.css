@@ -46,7 +46,7 @@ body {
 /* ===== Language Toggle ===== */
 .lang-toggle-wrap {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 0.4rem;
   flex-shrink: 0;
 }
@@ -277,6 +277,13 @@ body {
   letter-spacing: 0.5px;
   white-space: nowrap;
   margin-right: 0.2rem;
+}
+
+.toc-links-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  flex: 1;
 }
 
 .toc-link {
@@ -1503,6 +1510,129 @@ body.dark-mode .ics-btn:hover {
   }
 }
 
+/* ===== Mobile: Neat Button Grids ===== */
+@media (max-width: 700px) {
+  .class-selector-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .class-selector-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.35rem;
+  }
+  .class-btn {
+    text-align: center;
+    padding: 0.3rem 0.4rem;
+    font-size: 0.8rem;
+  }
+  .toc-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.3rem;
+    padding: 0.6rem 0.75rem;
+  }
+  .toc-bar .toc-label {
+    margin-bottom: 0.1rem;
+  }
+  .toc-links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.3rem;
+  }
+  .toc-link {
+    justify-content: center;
+    text-align: center;
+    padding: 0.35rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* ===== Mobile: Collapsible Accordion Sections ===== */
+@media (max-width: 700px) {
+  .section.mobile-collapsible .section-heading-wrap {
+    cursor: pointer;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .section.mobile-collapsible .section-heading-wrap::after {
+    content: '▸';
+    font-size: 1.2rem;
+    color: var(--color-text-light);
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+    margin-left: 0.5rem;
+  }
+  .section.mobile-collapsible.accordion-open .section-heading-wrap::after {
+    transform: rotate(90deg);
+  }
+  .section.mobile-collapsible .section-heading-wrap h3 {
+    margin: 0;
+  }
+  /* Also handle roars-header as clickable heading */
+  .section.mobile-collapsible .roars-header {
+    cursor: pointer;
+    margin-bottom: 0;
+  }
+  .section.mobile-collapsible .roars-header::after {
+    content: '▸';
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.7);
+    transition: transform 0.25s ease;
+  }
+  .section.mobile-collapsible.accordion-open .roars-header::after {
+    transform: rotate(90deg);
+  }
+  /* Collapse body content */
+  .section.mobile-collapsible .accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .section.mobile-collapsible.accordion-open .accordion-body {
+    max-height: 3000px;
+    transition: max-height 0.5s ease;
+  }
+  .section.mobile-collapsible.accordion-open .section-heading-wrap {
+    margin-bottom: 1rem;
+  }
+  .section.mobile-collapsible.accordion-open .roars-header {
+    margin-bottom: 1rem;
+  }
+  /* Reduce section padding when collapsed */
+  .section.mobile-collapsible {
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .section.mobile-collapsible.accordion-open {
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  /* Shrink heading pills when collapsed */
+  .section.mobile-collapsible .section-heading-wrap h3 {
+    font-size: 1.1rem;
+    padding: 0.15rem 1rem;
+  }
+  .section.mobile-collapsible.accordion-open .section-heading-wrap h3 {
+    font-size: 1.5rem;
+    padding: 0.2rem 1.5rem;
+  }
+  .section.mobile-collapsible .roars-heading {
+    font-size: 1.3rem;
+  }
+  .section.mobile-collapsible.accordion-open .roars-heading {
+    font-size: 2rem;
+  }
+  .section.mobile-collapsible .tiger-emoji {
+    font-size: 1.3rem;
+  }
+  .section.mobile-collapsible.accordion-open .tiger-emoji {
+    font-size: 2rem;
+  }
+}
+
 /* ===== Print ===== */
 @media print {
   .lang-toggle-wrap,
@@ -1570,6 +1700,16 @@ body.dark-mode .ics-btn:hover {
 
   .animate-ready {
     opacity: 1 !important;
+  }
+
+  /* Ensure accordion sections are expanded for print */
+  .section.mobile-collapsible .accordion-body {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  .section.mobile-collapsible .section-heading-wrap::after,
+  .section.mobile-collapsible .roars-header::after {
+    display: none !important;
   }
 
   .book-yt-link {

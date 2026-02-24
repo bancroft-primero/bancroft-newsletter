@@ -84,6 +84,9 @@ async function init() {
 
     // Set up scroll animations after initial render
     requestAnimationFrame(() => setupScrollAnimations());
+
+    // Set up mobile accordion
+    setupMobileAccordion();
   } catch (err) {
     showError('Could not load the newsletter. Please check back later.');
     console.error(err);
@@ -99,7 +102,6 @@ async function fetchJSON(path) {
 // --- Class Selector ---
 function buildClassSelector() {
   const container = document.getElementById('class-selector-buttons');
-  const allBtn = container.querySelector('[data-class=""]');
 
   const flags = configData.classroomFlags || {};
   configData.classrooms.forEach(classroom => {
@@ -118,15 +120,21 @@ function buildClassSelector() {
   container.querySelectorAll('.class-btn').forEach(btn => {
     if (btn.dataset.class === selectedClass) btn.classList.add('active');
   });
-  if (!selectedClass) allBtn.classList.add('active');
 
   container.addEventListener('click', (e) => {
     const btn = e.target.closest('.class-btn');
     if (!btn) return;
-    selectedClass = btn.dataset.class;
+
+    // Toggle: clicking the already-selected class deselects it
+    if (btn.dataset.class === selectedClass) {
+      selectedClass = '';
+    } else {
+      selectedClass = btn.dataset.class;
+    }
+
     localStorage.setItem('selectedClass', selectedClass);
     container.querySelectorAll('.class-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+    if (selectedClass) btn.classList.add('active');
     renderMySpecials();
     renderClassroomGrids(currentWeekData.specials, configData.labels[currentLang]);
     renderTOC();
@@ -224,6 +232,9 @@ function render() {
 
   // TOC (rendered after all sections are updated so visibility is accurate)
   renderTOC();
+
+  // Refresh mobile accordion state (sections may have changed visibility)
+  refreshMobileAccordion();
 }
 
 // ============================================================
@@ -634,7 +645,7 @@ async function renderMySpecials() {
   const translations = configData.subjectTranslations;
 
   heading.textContent = lang === 'es'
-    ? `Especialidades de ${selectedClass} Esta Semana`
+    ? `Especiales de ${selectedClass} Esta Semana`
     : `${selectedClass}'s Specials This Week`;
 
   const dayKeys = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
@@ -1030,16 +1041,14 @@ function renderTOC() {
   const lang = currentLang;
 
   const items = [
-    { id: 'dashboard',        es: '🗓️ Un Vistazo',       en: '🗓️ At a Glance' },
-    { id: 'my-specials',      es: '⭐ Mis Especialidades', en: '⭐ My Specials' },
+    { id: 'my-specials',      es: '⭐ Mis Especiales', en: '⭐ My Specials' },
     { id: 'section-welcome',  es: '👋 Bienvenida',         en: '👋 Welcome' },
     { id: 'reminders',        es: '📌 Recordatorios',      en: '📌 Reminders' },
     { id: 'section-math',     es: '🔢 Matemáticas',        en: '🔢 Math' },
     { id: 'section-literacy', es: '📚 Lectura',            en: '📚 Literacy' },
     { id: 'ask-your-child',   es: '💬 Pregúntale',         en: '💬 Ask Your Child' },
     { id: 'vocabulary',       es: '✏️ Vocabulario',        en: '✏️ Vocabulary' },
-    { id: 'books',            es: '📖 Libros',             en: '📖 Books' },
-    { id: 'section-specials', es: '🎨 Especialidades',     en: '🎨 Specials' },
+    { id: 'section-specials', es: '🎨 Especiales',     en: '🎨 Specials' },
     { id: 'section-roars',    es: '🐯 ROARS',              en: '🐯 ROARS' },
   ];
 
@@ -1057,9 +1066,33 @@ function renderTOC() {
   toc.hidden = false;
   toc.innerHTML =
     `<span class="toc-label">${label}</span>` +
+    `<div class="toc-links-grid">` +
     visibleItems.map(item =>
-      `<a href="#${item.id}" class="toc-link">${item[lang]}</a>`
-    ).join('');
+      `<a href="#${item.id}" class="toc-link" data-section="${item.id}">${item[lang]}</a>`
+    ).join('') +
+    `</div>`;
+
+  // On mobile, TOC clicks should open the accordion section
+  toc.querySelectorAll('.toc-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (!window.matchMedia('(max-width: 700px)').matches) return;
+      e.preventDefault();
+      const sectionId = link.dataset.section;
+      const section = document.getElementById(sectionId);
+      if (!section) return;
+
+      // Close all, open target
+      ACCORDION_SECTION_IDS.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.remove('accordion-open');
+      });
+      section.classList.add('accordion-open');
+
+      setTimeout(() => {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    });
+  });
 }
 
 // ============================================================
@@ -1081,6 +1114,105 @@ function addBackToTopLinks() {
       el.appendChild(link);
     }
   });
+}
+
+// ============================================================
+// Mobile Accordion Sections
+// ============================================================
+const ACCORDION_SECTION_IDS = [
+  'dashboard', 'my-specials', 'section-welcome', 'reminders',
+  'section-math', 'section-literacy', 'ask-your-child',
+  'vocabulary', 'books', 'section-specials', 'section-roars'
+];
+
+function refreshMobileAccordion() {
+  const isMobile = window.matchMedia('(max-width: 700px)').matches;
+  if (!isMobile) return;
+  ACCORDION_SECTION_IDS.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (el.hidden) {
+      el.classList.remove('mobile-collapsible', 'accordion-open');
+    } else {
+      el.classList.add('mobile-collapsible');
+    }
+  });
+}
+
+function setupMobileAccordion() {
+  const isMobile = () => window.matchMedia('(max-width: 700px)').matches;
+  const sectionIds = ACCORDION_SECTION_IDS;
+
+  // Wrap each section's body content in an accordion-body div
+  sectionIds.forEach(id => {
+    const section = document.getElementById(id);
+    if (!section || section.dataset.accordionSetup) return;
+    section.dataset.accordionSetup = 'true';
+
+    // Find the heading element (section-heading-wrap or roars-header)
+    const heading = section.querySelector('.section-heading-wrap') || section.querySelector('.roars-header');
+    if (!heading) return;
+
+    // Wrap everything after the heading in an accordion-body div
+    const wrapper = document.createElement('div');
+    wrapper.className = 'accordion-body';
+    const children = Array.from(section.children);
+    let afterHeading = false;
+    children.forEach(child => {
+      if (child === heading) { afterHeading = true; return; }
+      if (afterHeading && !child.classList.contains('back-to-top')) {
+        wrapper.appendChild(child);
+      }
+    });
+    // Also move back-to-top link inside the wrapper
+    const backToTop = section.querySelector('.back-to-top');
+    if (backToTop) wrapper.appendChild(backToTop);
+
+    section.appendChild(wrapper);
+
+    // Click handler on heading
+    heading.addEventListener('click', (e) => {
+      if (!isMobile()) return;
+      e.preventDefault();
+
+      const wasOpen = section.classList.contains('accordion-open');
+
+      // Close all open sections (accordion behavior)
+      sectionIds.forEach(otherId => {
+        const other = document.getElementById(otherId);
+        if (other) other.classList.remove('accordion-open');
+      });
+
+      // Toggle this one
+      if (!wasOpen) {
+        section.classList.add('accordion-open');
+        // Scroll into view after a short delay for animation
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    });
+  });
+
+  // Apply/remove mobile-collapsible class based on viewport
+  function updateAccordionState() {
+    if (isMobile()) {
+      sectionIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && !el.hidden) el.classList.add('mobile-collapsible');
+      });
+    } else {
+      sectionIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.classList.remove('mobile-collapsible', 'accordion-open');
+        }
+      });
+    }
+  }
+
+  updateAccordionState();
+  window.addEventListener('resize', updateAccordionState);
 }
 
 // --- Start ---
