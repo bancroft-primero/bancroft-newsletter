@@ -1635,6 +1635,24 @@ body.dark-mode .ics-btn:hover {
 
 /* ===== Print ===== */
 @media print {
+  /* --- Page setup --- */
+  @page {
+    size: letter;
+    margin: 0.4in 0.5in;
+  }
+
+  /* --- Reset colors for print --- */
+  body, body.dark-mode {
+    background: white !important;
+    color: #222 !important;
+    --color-text: #222;
+    --color-text-light: #444;
+    --color-white: #ffffff;
+    font-size: 10pt !important;
+    line-height: 1.35 !important;
+  }
+
+  /* --- Hide everything non-essential --- */
   .lang-toggle-wrap,
   .header-actions,
   .archive-sidebar,
@@ -1645,64 +1663,27 @@ body.dark-mode .ics-btn:hover {
   .back-to-top,
   .ics-btn,
   .weather-inline,
-  #my-specials {
+  #my-specials,
+  #dashboard,
+  #ask-your-child,
+  #vocabulary,
+  #books,
+  #section-specials,
+  #classroom-grids,
+  .section-images,
+  .book-yt-link,
+  .math-details,
+  #error-overlay,
+  #password-gate {
     display: none !important;
   }
 
-  body, body.dark-mode {
-    background: white !important;
-    color: #2d2d2d !important;
-    --color-text: #2d2d2d;
-    --color-text-light: #555;
-    --color-white: #ffffff;
-  }
-
-  .section, .newsletter-header, .dashboard-section {
-    box-shadow: none !important;
-    break-inside: avoid;
-    page-break-inside: avoid;
-    margin-bottom: 0.5rem !important;
-  }
-
-  .page-layout {
-    max-width: 100% !important;
-    padding: 0 !important;
-  }
-
-  #newsletter {
-    max-width: 100% !important;
-  }
-
-  .newsletter-header {
-    padding: 0.75rem !important;
-  }
-
-  .school-logo {
-    width: 60px !important;
-    height: 60px !important;
-  }
-
-  .header-text h1 { font-size: 1.6rem !important; }
-  .header-text h2 { font-size: 1rem !important; }
-
-  .section {
-    padding: 0.75rem !important;
-  }
-
-  .classroom-grids {
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 0.5rem !important;
-  }
-
-  .roars-cards {
-    grid-template-columns: repeat(3, 1fr) !important;
-  }
-
+  /* --- Animations off --- */
   .animate-ready {
     opacity: 1 !important;
   }
 
-  /* Ensure accordion sections are expanded for print */
+  /* --- Ensure accordion sections are expanded for print --- */
   .section.mobile-collapsible .accordion-body {
     max-height: none !important;
     overflow: visible !important;
@@ -1712,8 +1693,167 @@ body.dark-mode .ics-btn:hover {
     display: none !important;
   }
 
-  .book-yt-link {
+  /* --- Layout: full width, no gaps --- */
+  .page-layout {
+    max-width: 100% !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  #newsletter {
+    max-width: 100% !important;
+  }
+
+  /* --- Compact header --- */
+  .newsletter-header {
+    padding: 0.3rem 0 !important;
+    gap: 0.5rem !important;
+    box-shadow: none !important;
+    border-bottom: 2pt solid #2c3e7b;
+    border-radius: 0 !important;
+    margin-bottom: 0.4rem !important;
+    background: white !important;
+  }
+
+  .school-logo {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .header-text h1 {
+    font-size: 1.3rem !important;
+    line-height: 1.1 !important;
+  }
+  .header-text h2 {
+    font-size: 0.85rem !important;
+    letter-spacing: 1px !important;
+  }
+  #date-display {
+    font-size: 0.9rem !important;
+    margin-top: 0.1rem !important;
+  }
+  .header-right {
     display: none !important;
+  }
+
+  /* --- Compact sections --- */
+  .section {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0.35rem 0 !important;
+    margin-bottom: 0.2rem !important;
+    background: white !important;
+    border-top: 1pt solid #ccc !important;
+    border-left: none !important;
+  }
+
+  .section-heading-wrap {
+    margin-bottom: 0.25rem !important;
+  }
+
+  /* Flatten heading pills into simple bold text */
+  .welcome-heading,
+  .math-heading,
+  .literacy-heading,
+  .reminders-heading {
+    display: inline !important;
+    background: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    font-size: 11pt !important;
+    color: #222 !important;
+  }
+
+  .section-body p,
+  .reminder-content p {
+    margin-bottom: 0.25rem !important;
+    font-size: 10pt !important;
+  }
+
+  .section-body p:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* --- Reminders: compact --- */
+  .reminders-section {
+    background: white !important;
+    border-left: none !important;
+  }
+
+  .reminder-item {
+    padding: 0.15rem 0 !important;
+    gap: 0.35rem !important;
+    border-bottom: none !important;
+  }
+
+  .reminder-icon {
+    font-size: 0.9rem !important;
+  }
+
+  .reminder-date {
+    font-size: 0.75rem !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* --- ROARS: compact grid, no flags --- */
+  .roars-section {
+    background: white !important;
+    text-align: left !important;
+    padding: 0.35rem 0 !important;
+    border-top: 1pt solid #ccc !important;
+  }
+
+  .roars-header {
+    justify-content: flex-start !important;
+    gap: 0.35rem !important;
+    margin-bottom: 0.3rem !important;
+  }
+
+  .tiger-emoji {
+    font-size: 1rem !important;
+  }
+
+  .roars-heading {
+    font-size: 11pt !important;
+    color: #222 !important;
+    text-shadow: none !important;
+  }
+
+  .roars-cards {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.2rem !important;
+  }
+
+  .roars-card {
+    background: #f5f5f5 !important;
+    border-radius: 4px !important;
+    padding: 0.2rem 0.35rem !important;
+    text-align: center !important;
+  }
+
+  .roars-card-classroom {
+    font-size: 0.75rem !important;
+    padding: 0 0.3rem !important;
+    margin-bottom: 0 !important;
+    background: none !important;
+    font-weight: 700 !important;
+  }
+
+  /* Hide flags in print */
+  .roars-card-flag {
+    display: none !important;
+  }
+
+  .roars-card-name {
+    font-size: 0.8rem !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+  }
+
+  /* --- Prevent awkward page breaks --- */
+  .section {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 }
 
