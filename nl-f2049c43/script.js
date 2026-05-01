@@ -230,10 +230,19 @@ function renderDashboard() {
   const weekNum = Math.max(1, Math.ceil((currentWeekDate - firstDay + msPerWeek) / msPerWeek));
   const totalWeeks = Math.ceil((lastDay - firstDay + msPerWeek) / msPerWeek);
 
-  // Upcoming dates (next 3 future dates from calendar)
-  const upcomingDates = cal.dates
-    .filter(d => parseDate(d.date) > today)
-    .slice(0, 3);
+  // Upcoming dates (next 3 unique events from calendar, collapsing consecutive same-name dates into ranges)
+  const futureDates = cal.dates.filter(d => parseDate(d.date) > today);
+  const upcomingDates = [];
+  for (const d of futureDates) {
+    const prev = upcomingDates[upcomingDates.length - 1];
+    if (prev && prev.en === d.en) {
+      prev.endDate = d.date;
+    } else {
+      upcomingDates.push({ ...d, endDate: null });
+    }
+    if (upcomingDates.length > 5 && !upcomingDates[upcomingDates.length - 1].endDate) break;
+  }
+  upcomingDates.splice(5);
 
   const progressPct = Math.min(100, Math.round((elapsedSchoolDays / totalSchoolDays) * 100));
 
@@ -257,7 +266,7 @@ function renderDashboard() {
       ${upcomingDates.map(d => `
         <div class="dashboard-upcoming-item">
           <span class="dashboard-upcoming-type">${cal.typeLabels[lang][d.type] || d.type}</span>
-          <span class="dashboard-upcoming-date">${formatDate(d.date, lang)}</span>
+          <span class="dashboard-upcoming-date">${d.endDate ? formatDateRange(d.date, d.endDate, lang) : formatDate(d.date, lang)}</span>
           <span class="dashboard-upcoming-name">${d[lang]}</span>
           <button class="ics-btn" onclick="event.stopPropagation(); downloadICS('${d.date}', '${escapeAttr(d.en)}')" title="${labels.addToCalendar}">📅</button>
         </div>
@@ -361,7 +370,7 @@ function renderReminders() {
       <span class="reminder-icon">📌</span>
       <div class="reminder-content">
         <span class="reminder-date">${formatDate(r.date, currentLang)}</span>
-        <p>${escapeHTML(r[currentLang])}</p>
+        <p>${r[currentLang]}</p>
       </div>
     </div>
   `).join('');
@@ -385,9 +394,57 @@ function renderVocabulary() {
   section.hidden = false;
   heading.textContent = labels.vocabHeading;
 
-  body.innerHTML = `<div class="vocab-pills">
-    ${data.vocabulary[currentLang].map(word => `<span class="vocab-pill">${escapeHTML(word)}</span>`).join('')}
-  </div>`;
+  const vocabData = data.vocabulary[currentLang];
+
+  const otherLang = currentLang === 'en' ? 'es' : 'en';
+  const otherData = data.vocabulary[otherLang];
+
+  // Support grouped format: [{label, words}, ...] or flat array: ["word", ...]
+  if (Array.isArray(vocabData) && vocabData.length > 0 && typeof vocabData[0] === 'object' && vocabData[0].words) {
+    const enGroups = data.vocabulary['en'];
+    const esGroups = data.vocabulary['es'];
+    body.innerHTML = `<div class="vocab-columns">${vocabData.map((group, gi) => {
+      const otherGroup = Array.isArray(otherData) && otherData[gi] && otherData[gi].words ? otherData[gi] : null;
+      // If frontLang is set, always show that language on front regardless of current lang
+      const forcedFront = group.frontLang || (otherGroup && otherGroup.frontLang);
+      return `
+      <div class="vocab-group">
+        <div class="vocab-group-label">${escapeHTML(group.label)}</div>
+        <div class="vocab-pills">
+          ${group.words.map((word, wi) => {
+            let front = word;
+            let back = otherGroup && otherGroup.words[wi] ? otherGroup.words[wi] : word;
+            if (forcedFront) {
+              const fGroup = forcedFront === 'en' ? enGroups[gi] : esGroups[gi];
+              const bGroup = forcedFront === 'en' ? esGroups[gi] : enGroups[gi];
+              front = fGroup.words[wi];
+              back = bGroup.words[wi];
+            }
+            return `<span class="vocab-pill-flip" onclick="this.classList.toggle('flipped')">
+              <span class="vocab-pill-inner">
+                <span class="vocab-pill-front">${escapeHTML(front)}</span>
+                <span class="vocab-pill-back">${escapeHTML(back)}</span>
+              </span>
+            </span>`;
+          }).join('')}
+        </div>
+      </div>`;
+    }).join('')}</div>`;
+  } else {
+    // Flat array — pair by index if other lang is also flat
+    const otherFlat = Array.isArray(otherData) && typeof otherData[0] === 'string' ? otherData : null;
+    body.innerHTML = `<div class="vocab-pills">
+      ${vocabData.map((word, i) => {
+        const back = otherFlat && otherFlat[i] ? otherFlat[i] : word;
+        return `<span class="vocab-pill-flip" onclick="this.classList.toggle('flipped')">
+          <span class="vocab-pill-inner">
+            <span class="vocab-pill-front">${escapeHTML(word)}</span>
+            <span class="vocab-pill-back">${escapeHTML(back)}</span>
+          </span>
+        </span>`;
+      }).join('')}
+    </div>`;
+  }
 }
 
 // ============================================================
@@ -784,19 +841,34 @@ function formatDate(dateStr, lang) {
   });
 }
 
+function formatDateRange(startStr, endStr, lang) {
+  const [sy, sm, sd] = startStr.split('-').map(Number);
+  const [ey, em, ed] = endStr.split('-').map(Number);
+  const locale = lang === 'es' ? 'es-US' : 'en-US';
+  const startDate = new Date(sy, sm - 1, sd);
+  const endDate = new Date(ey, em - 1, ed);
+  const startMonth = startDate.toLocaleDateString(locale, { month: 'long' });
+  const endMonth = endDate.toLocaleDateString(locale, { month: 'long' });
+  if (sm === em && sy === ey) {
+    return `${startMonth} ${sd}–${ed}, ${sy}`;
+  }
+  return `${startMonth} ${sd} – ${endMonth} ${ed}, ${ey}`;
+}
+
 function textToHTML(text) {
   if (!text) return '';
-  // Preserve <a> tags before escaping
-  const links = [];
-  const withPlaceholders = text.replace(/<a\s[^>]*>.*?<\/a>/gi, (match) => {
-    links.push(match);
-    return `__LINK_${links.length - 1}__`;
+  // Preserve allowed HTML tags before escaping: <a>, <b>, <i>, <br>, <img>
+  const preserved = [];
+  const tagPattern = /<(?:a\s[^>]*>.*?<\/a>|img\s[^>]*\/?\s*>|\/?\s*[bi]\s*>|br\s*\/?\s*>)/gi;
+  const withPlaceholders = text.replace(tagPattern, (match) => {
+    preserved.push(match);
+    return `__TAG_${preserved.length - 1}__`;
   });
   const escaped = withPlaceholders
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
-  const restored = escaped.replace(/__LINK_(\d+)__/g, (_, i) => links[i]);
+  const restored = escaped.replace(/__TAG_(\d+)__/g, (_, i) => preserved[i]);
   const paragraphs = restored.split(/\n\n+/);
   return paragraphs.map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
 }

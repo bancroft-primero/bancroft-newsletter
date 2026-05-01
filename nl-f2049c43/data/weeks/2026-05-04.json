@@ -1,0 +1,133 @@
+{
+  "date": "2026-05-04",
+  "season": "spring",
+  "welcome": {
+    "en": "And, just like that, it's <b>May</b>. We'll be taking <b>end-of-year assessments</b> in the coming weeks — please make sure students are logging on to <b>i-Ready</b>, reading nightly, and arriving to school on time. Also, please help us out by teaching your student to <b>tie their own shoelaces</b>. Thank you so much, dear families, for all your collaboration at home!",
+    "es": "Y, así sin más, ya es <b>mayo</b>. En las próximas semanas realizaremos las <b>evaluaciones de fin de año</b> — por favor, asegúrense de que los estudiantes inicien sesión en <b>i-Ready</b>, lean todas las noches y lleguen a la escuela a tiempo. Además, ayúdennos enseñándoles a sus estudiantes a <b>atarse los cordones de los zapatos</b>. ¡Muchas gracias, queridas familias, por toda su colaboración en casa!"
+  },
+  "math": {
+    "en": "This week we continue <b>Module 6 with Topic B: Composition of Shapes</b>. Students are exploring how smaller shapes can be combined to create new, larger <b>composed shapes</b>.\n\n<img src=\"images/weekly/m6-tb-strategy-en.png\" alt=\"Composition of shapes: a rectangle composed of two triangles, a hexagon composed of a trapezoid, triangle, and rhombus, and a pattern of squares added to a 6-sided figure\" style=\"max-width:100%;border-radius:8px;margin:8px 0\">\n\n<b>Key vocabulary:</b> <i>composed shape, trapezoid, rhombus, hexagon, triangle, rectangle</i>\n\n<b>How you can help at home — look for composed shapes together:</b>\n\n• <b>Kitchen tiles, window panes, quilts, sidewalk patterns</b> — they're everywhere once you start looking. Try asking:\n  — \"What shapes do you see?\"\n  — \"Can 2 small shapes make a composed shape? How about 4?\"\n  — \"How many sides does the composed shape have?\"\n  — \"How many composed shapes do you see?\"\n\n• <b>Make composed shapes:</b> Use masking tape or chalk on a tabletop or section of sidewalk. Invite your student to divide the surface into 2 smaller shapes, then ask: \"Can you name the shapes? Could you divide it into even more shapes?\"\n\nFor more details and at-home activities, see the Eureka Math Family Math letter: <a href=\"docs/EM2_G1_M6_TB_FamilyMath_WCAG21.pdf\" target=\"_blank\">Topic B: Composition of Shapes</a>",
+    "es": "Esta semana continuamos el <b>Módulo 6 con el Tema B: Composición de figuras geométricas</b>. Los estudiantes están explorando cómo las figuras más pequeñas pueden combinarse para crear nuevas <b>figuras compuestas</b> más grandes.\n\n<img src=\"images/weekly/m6-tb-strategy-es.png\" alt=\"Composición de figuras: un rectángulo compuesto por dos triángulos, un hexágono compuesto por un trapecio, un triángulo y un rombo, y un patrón de cuadrados que se agregan a una figura de 6 lados\" style=\"max-width:100%;border-radius:8px;margin:8px 0\">\n\n<b>Vocabulario clave:</b> <i>figura compuesta, trapecio, rombo, hexágono, triángulo, rectángulo</i>\n\n<b>Cómo pueden ayudar en casa — busquen figuras compuestas juntos:</b>\n\n• <b>Azulejos de la cocina, paneles de ventanas, colchas, patrones en la acera</b> — están en todas partes una vez que empiezan a observarlas. Prueben preguntar:\n  — «¿Qué figuras ves?»\n  — «¿Pueden combinarse 2 figuras pequeñas para hacer una figura compuesta? ¿Y 4?»\n  — «¿Cuántos lados tiene la figura compuesta?»\n  — «¿Cuántas figuras compuestas ves?»\n\n• <b>Crear figuras compuestas:</b> Usen cinta adhesiva o tiza sobre la mesa o un trozo de acera. Invite a su estudiante a dividir la superficie en 2 figuras más pequeñas, y luego pregunte: «¿Puedes nombrar las figuras? ¿Podrías dividirlas en aún más figuras?»\n\nPara más detalles y actividades en casa, vean la carta de Eureka Math para familias: <a href=\"docs/EM2_G1_M6_TB_FamilyMath_SPA_WCAG21.pdf\" target=\"_blank\">Tema B: Composición de figuras geométricas</a>"
+  },
+  "literacy": {
+    "en": "In <b>SLA</b>, we are taking the <b>writing assessment</b> for our Plants unit. Students will read a text and then respond to an opinion question in a paragraph, expressing their opinion and supporting it with reasons using <b>evidence from the text</b>.\n\nIn <b>ELA</b>, we are <b>closing out our Plants unit</b>! We will build our <b>bilingual books</b> and complete the end-of-unit assessment. Continue reading at least <b>20 minutes a day</b> and practicing heart words at home.",
+    "es": "En <b>SLA</b>, estamos realizando el <b>examen de escritura</b> de la unidad de Plantas. Los estudiantes leerán un texto y luego responderán una pregunta de opinión en un párrafo, expresando su opinión y apoyándola con razones usando <b>evidencia del texto</b>.\n\nEn <b>ELA</b>, estamos <b>cerrando nuestra unidad de Plantas</b>. Armaremos nuestros <b>libros bilingües</b> y completaremos la evaluación de fin de unidad. ¡Continúen leyendo al menos <b>20 minutos al día</b> y practicando las palabras de memoria (heart words) en casa!"
+  },
+  "specials": {
+    "monday": "C",
+    "tuesday": "D",
+    "wednesday": "E",
+    "thursday": "F",
+    "friday": "A"
+  },
+  "roars": {
+    "DR": "Paloma C.",
+    "Managua": "Alexander L.",
+    "Venezuela": "Elodie K.",
+    "Cartagena": "Nicholas D.",
+    "Colombia": "Owen W.",
+    "España": "Keidelyn D."
+  },
+  "reminders": [
+    {
+      "date": "2026-05-25",
+      "en": "<b>Memorial Day — Monday, May 25</b> — No school.",
+      "es": "<b>Día de los Caídos — lunes 25 de mayo</b> — No hay clases."
+    }
+  ],
+  "askYourChild": [
+    {
+      "en": "What shapes do you see in this room? Can two of them make a composed shape?",
+      "es": "¿Qué figuras ves en esta habitación? ¿Pueden dos de ellas formar una figura compuesta?"
+    },
+    {
+      "en": "What is your opinion about plants — and what evidence from the text supports it?",
+      "es": "¿Cuál es tu opinión sobre las plantas — y qué evidencia del texto la apoya?"
+    },
+    {
+      "en": "How many sides does a hexagon have? What about a trapezoid?",
+      "es": "¿Cuántos lados tiene un hexágono? ¿Y un trapecio?"
+    }
+  ],
+  "vocabulary": {
+    "en": [
+      {
+        "label": "Math",
+        "words": [
+          "composed shape",
+          "trapezoid",
+          "rhombus",
+          "hexagon",
+          "triangle",
+          "rectangle"
+        ]
+      },
+      {
+        "label": "SLA",
+        "words": [
+          "opinion",
+          "evidence",
+          "paragraph",
+          "reason"
+        ],
+        "frontLang": "es"
+      },
+      {
+        "label": "ELA",
+        "words": [
+          "bilingual book",
+          "heart words",
+          "assessment",
+          "plants"
+        ]
+      }
+    ],
+    "es": [
+      {
+        "label": "Matemáticas",
+        "words": [
+          "figura compuesta",
+          "trapecio",
+          "rombo",
+          "hexágono",
+          "triángulo",
+          "rectángulo"
+        ]
+      },
+      {
+        "label": "SLA",
+        "words": [
+          "opinión",
+          "evidencia",
+          "párrafo",
+          "razón"
+        ],
+        "frontLang": "es"
+      },
+      {
+        "label": "ELA",
+        "words": [
+          "libro bilingüe",
+          "palabras de memoria",
+          "evaluación",
+          "plantas"
+        ]
+      }
+    ]
+  },
+  "books": [],
+  "mathDetails": {
+    "module": {
+      "en": "Module 6",
+      "es": "Módulo 6"
+    },
+    "topic": {
+      "en": "Topic B: Composition of Shapes",
+      "es": "Tema B: Composición de figuras geométricas"
+    },
+    "lesson": {
+      "en": "Combining smaller shapes to form larger composed shapes",
+      "es": "Combinando figuras más pequeñas para formar figuras compuestas más grandes"
+    }
+  }
+}

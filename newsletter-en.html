@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First Grade Weekly Newsletter – March 2, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Open+Sans:wght@400;600;700&display=swap');
+
+@page {
+  size: letter;
+  margin: 0.5in;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #333;
+}
+
+h1, h2, h3 {
+  font-family: 'Patrick Hand', cursive;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.header-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.header-text h1 {
+  font-size: 32px;
+  color: #2c3e7b;
+  line-height: 1.1;
+}
+
+.header-text .subtitle {
+  font-size: 20px;
+  color: #5b8a5e;
+  font-family: 'Patrick Hand', cursive;
+}
+
+.header-text .date {
+  font-size: 14px;
+  color: #666;
+  margin-top: 2px;
+}
+
+/* SECTION BOXES */
+.section {
+  border-radius: 16px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+}
+
+.section-heading {
+  display: inline-block;
+  border-radius: 24px;
+  padding: 4px 18px;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* WELCOME */
+.welcome {
+  background: #fff9e0;
+}
+.welcome .section-heading {
+  background: #f5d64e;
+  color: #333;
+}
+
+/* MATH */
+.math {
+  background: #f0facd;
+}
+.math .section-heading {
+  background: #c5e84d;
+  color: #333;
+}
+
+/* LITERACY */
+.literacy {
+  background: #e8f4fd;
+}
+.literacy .section-heading {
+  background: #2c3e7b;
+  color: #fff;
+}
+
+/* SPECIALS */
+.specials {
+  background: #fff;
+  border: 1px solid #ddd;
+  page-break-before: always;
+}
+.specials .section-heading {
+  background: #5b8a5e;
+  color: #fff;
+}
+
+.specials-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 6px;
+  font-size: 12px;
+}
+
+.specials-table th, .specials-table td {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  text-align: center;
+}
+
+.specials-table th {
+  background: #5b8a5e;
+  color: #fff;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 14px;
+}
+
+.specials-table td {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.day-date {
+  display: block;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: #eee;
+}
+
+/* CLASSROOM GRIDS */
+.classrooms-title {
+  text-align: center;
+  font-size: 22px;
+  color: #2c3e7b;
+  margin: 16px 0 10px;
+}
+
+.classrooms-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.classroom-card {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.classroom-card-header {
+  background: #5b8a5e;
+  color: #fff;
+  text-align: center;
+  padding: 5px 4px 4px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 15px;
+}
+
+.classroom-card-header img {
+  height: 14px;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+.classroom-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.5px;
+}
+
+.classroom-table th {
+  background: #eee;
+  padding: 2px 4px;
+  font-size: 8.5px;
+  text-align: center;
+}
+
+.classroom-table td {
+  border-top: 1px solid #eee;
+  padding: 2px 4px;
+  text-align: center;
+}
+
+.classroom-table .icon {
+  font-size: 12px;
+}
+
+/* ROARS */
+.roars {
+  background: #f5a623;
+  color: #fff;
+}
+.roars .section-heading {
+  background: rgba(255,255,255,0.3);
+  color: #fff;
+  font-size: 20px;
+}
+
+.roars-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.roar-card {
+  background: rgba(255,255,255,0.25);
+  border-radius: 12px;
+  padding: 8px;
+  text-align: center;
+}
+
+.roar-card .classroom-name {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.roar-card img {
+  height: 16px;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+.roar-card .student-name {
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.section p {
+  margin-bottom: 6px;
+}
+.section ul {
+  margin: 4px 0 6px 18px;
+}
+.section li {
+  margin-bottom: 2px;
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="header">
+  <img class="header-logo" src="file:///Users/mekocewalker/Library/CloudStorage/Dropbox/Bancroft ES/2025-2026/Weekly Newsletters/bancroft-newsletter/nl-f2049c43/images/logos/default.png" alt="Bancroft ES Logo">
+  <div class="header-text">
+    <h1>First Grade</h1>
+    <div class="subtitle">Weekly Newsletter</div>
+    <div class="date">March 2, 2026</div>
+  </div>
+</div>
+
+<div class="section welcome">
+  <h2 class="section-heading">Hello 1st Grade Families!</h2>
+  <p>Happy March! Last week, we loved learning about family traditions from some of our first grade families — thank you to everyone who shared food, stories, and special objects with us! This week, we will wrap up our Family Traditions unit as students write their own family stories in both English and Spanish. We are also excited to launch our new unit on Plants!</p>
+</div>
+
+<div class="section math">
+  <h2 class="section-heading">Math News</h2>
+  <p>This week in Module 4, we continue learning about comparing and measuring lengths! Students compare objects by aligning their endpoints to determine which is longer or shorter, and practice ordering several objects from shortest to longest. They also learn that they can compare lengths even when objects are not next to each other, using math reasoning strategies.</p>
+  <p>Then, students begin measuring objects using centimeter cubes and 10-centimeter bars, lining them up carefully without gaps to find exact lengths. They also represent their measurements with drawings and explain how they measured and why their answers make sense.</p>
+  <p>During this unit, we are beginning to work on comparison problems, such as "How much longer?" or "How much shorter?" In these problems, students compare two lengths to find the difference using drawings, cubes, and addition or subtraction strategies.</p>
+  <p>How you can help at home: Ask your child to compare everyday objects throughout the day. For example:</p>
+  <ul>
+    <li>"Which is taller, the table or the chair?"</li>
+    <li>"Which is longer, your shoe or my shoe?"</li>
+    <li>"Which is the tallest?"</li>
+  </ul>
+  <p>You can also practice measuring objects at home and talking about where to start and stop measuring, making sure to line up objects or tools carefully.</p>
+  <p>For more details and at-home activities, see the Eureka Math Family Math letters: <a href="https://bancroft1.org/docs/EM2_G1_M4_TB_FamilyMath_WCAG21_v2.pdf">Topic B: Length Measurement and Comparison</a> | <a href="https://bancroft1.org/docs/EM2_G1_M4_TC_FamilyMath_WCAG21_v2.pdf">Topic C: Comparison Problems with Measurement</a></p>
+</div>
+
+<div class="section literacy">
+  <h2 class="section-heading">Literacy News</h2>
+  <p>In Spanish, students are writing their own family narratives! Over the past few weeks, we have been reading wonderful family stories like <i>Abuela</i>, <i>El Tapiz de Abuela</i>, and <i>Yo Recuerdo a Abuelito</i>, and learning the elements of a narrative: characters, setting, events, problem, and solution. Now it's their turn to write! Each student will choose a family memory and go through the writing process — planning, drafting, revising, and editing. In word study, we will work with verb endings –aría, –ería, –iría, –ara, and –iera. At home, share a favorite family memory with your child and talk through: Who was there? Where were you? What happened? How did it end? This is exactly what they're practicing in class! You can also practice breaking words into syllables and reading and writing sentences using words such as: hablar, hablaría, hablarían, comer, comería, and comerías.</p>
+  <p>In ELA we are continuing to practice words with digraphs. Digraphs are two letters that make one sound. Keep practicing your heart words at home! In ARC we are continuing to write our Small Moments — short personal stories that "zoom in" on ONE specific moment. We use the Watermelon Strategy: the watermelon is the big topic (like "my birthday party"), and the seed is the small moment (like "the moment I blew out my candles"). At home, help your child pick one small moment from a family memory and ask: "What did you see? What did you hear? How did you feel?" These sensory details and feelings are what make their stories come alive!</p>
+</div>
+
+<!-- PAGE 2 -->
+<div class="section specials">
+  <h2 class="section-heading">Specials Schedule</h2>
+  <table class="specials-table">
+    <thead>
+      <tr>
+        <th>Monday<span class="day-date">3/2</span></th>
+        <th>Tuesday<span class="day-date">3/3</span></th>
+        <th>Wednesday<span class="day-date">3/4</span></th>
+        <th>Thursday<span class="day-date">3/5</span></th>
+        <th>Friday<span class="day-date">3/6</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A</td>
+        <td>B</td>
+        <td>C</td>
+        <td>D</td>
+        <td>E</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="classrooms-title">Classroom Rotations</h2>
+
+<div class="classrooms-grid">
+  <!-- Cartagena -->
+  <div class="classroom-card">
+    <div class="classroom-card-header">Cartagena <img src="file:///Users/mekocewalker/Library/CloudStorage/Dropbox/Bancroft ES/2025-2026/Weekly Newsletters/bancroft-newsletter/nl-f2049c43/images/flags/cartagena.svg" alt="flag"></div>
+    <table class="classroom-table">
+      <thead><tr><th>Day</th><th></th><th>Subject</th></tr></thead>
+      <tbody>
+        <tr><td>A</td><td class="icon">🎵</td><td>Music</td></tr>
+        <tr><td>B</td><td class="icon">🔬</td><td>Science</td></tr>
+        <tr><td>C</td><td class="icon">🏀</td><td>PE</td></tr>
+        <tr><td>D</td><td class="icon">🏀</td><td>PE</td></tr>
+        <tr><td>E</td><td class="icon">📚</td><td>Library</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Colombia -->
+  <div class="classroom-card">
+    <div class="classroom-card-header">Colombia <img src="file:///Users/mekocewalker/Library/CloudStorage/Dropbox/Bancroft ES/2025-2026/Weekly Newsletters/bancroft-newsletter/nl-f2049c43/images/flags/colombia.svg" alt="flag"></div>
+    <table class="classroom-table">
+      <thead><tr><th>Day</th><th></th><th>Subject</th></tr></thead>
+      <tbody>
+        <tr><td>A</td><td class="icon">🔬</td><td>Science</td></tr>
+        <tr><td>B</td><td class="icon">🏀</td><td>PE</td></tr>
+        <tr><td>C</td><td class="icon">🏀</td><td>PE</td></tr>
+        <tr><td>D</td><td class="icon">📚</td><td>Library</td></tr>
+        <tr><td>E</td><td class="icon">🎨</td><td>Art</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- España -->
+  <div class="classroom-card">
+    <div class="classroom-card-header">España <img src="file:///Users/mekocewalker/Library/CloudStorage/Dropbox/Bancroft ES/2025-2026/Weekly Newsletters/bancroft-newsletter/nl-f2049c43/images/flags/espana.svg" alt="flag"></div>
+    <table class="classroom-table">
+      <thead><tr><th>Day</th><th></th><th>Subject</th></tr></thead>
+      <tbody>
+        <tr><td>A</td><td class="icon">🏀</td><td>PE</td></tr>
+        <tr><td>B</td><td class="icon">🏀</td><td>PE</td></tr>
+        <tr><td>C</td><td class="icon">📚</td><td>Library</td></tr>
+        <tr><td>D</td><td class="icon">🎨</td><td>Art</td></tr>
+        <tr><td>E</td><td class="icon">🎵</td><td>Music</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- DR -->
+  <div class="classroom-card">
+    <div class="classroom-card-header">DR <img src="file:///Users/mekocewalker/Library/CloudStorage/Dropbox/Bancroft ES/2025-2026/Weekly Newsletters/bancroft-newsletter/nl-f2049c43/images/flags/dr.svg" alt="flag"></div>
+    <table class="classroom-table">
+      <thead><tr><th>Day</th><th></th><th>Subject</th></tr></thead>
+      <tbody>
+        <tr><td>A</td><td class="icon">📚</td><td>Library</td></tr>
+        <tr><td>B</td><td class="icon">🎨</td><td>Art</td></tr>
+        <tr><td>C</td><td class="icon">🎵</td><td>Music</td></tr>
+        <tr><td>D</td><td class="icon">🔬</td><td>Science</td></tr>
+        <tr><td>E</td><td class="icon">🏀</td><td>PE</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Managua -->
+  <div class="classroom-card">
+    <div class="classroom-card-header">Managua <img src="file:///Users/mekocewalker/Library/CloudStorage/Dropbox/Bancroft ES/2025-2026/Weekly Newsletters/bancroft-newsletter/nl-f2049c43/images/flags/managua.svg" alt="flag"></div>
+    <table class="classroom-table">
+      <thead><tr><th>Day</th><th></th><th>Subject</th></tr></thead>
+      <tbody>
+        <tr><td>A</td><td class="icon">🏀</td><td>PE</td></tr>
+        <tr><td>B</td><td class="icon">📚</td><td>Library</td></tr>
+        <tr><td>C</td><td class="icon">🎨</td><td>Art</td></tr>
+        <tr><td>D</td><td class="icon">🎵</td><td>Music</td></tr>
+        <tr><td>E</td><td class="icon">🔬</td><td>Science</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Venezuela -->
+  <div class="classroom-card">
+    <div class="classroom-card-header">Venezuela <img src="file:///Users/mekocewalker/Library/CloudStorage/Dropbox/Bancroft ES/2025-2026/Weekly Newsletters/bancroft-newsletter/nl-f2049c43/images/flags/venezuela.svg" alt="flag"></div>
+    <table class="classroom-table">
+      <thead><tr><th>Day</th><th></th><th>Subject</th></tr></thead>
+      <tbody>
+        <tr><td>A</td><td class="icon">🎨</td><td>Art</td></tr>
+        <tr><td>B</td><td class="icon">🎵</td><td>Music</td></tr>
+        <tr><td>C</td><td class="icon">🔬</td><td>Science</td></tr>
+        <tr><td>D</td><td class="icon">🏀</td><td>PE</td></tr>
+        <tr><td>E</td><td class="icon">🏀</td><td>PE</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section roars">
+  <h2 class="section-heading">🌟 ROARS 🌟</h2>
+  <div class="roars-grid">
+    <div class="roar-card">
+      <div class="classroom-name">Cartagena <img src="file:///Users/mekocewalker/Library/CloudStorage/Dropbox/Bancroft ES/2025-2026/Weekly Newsletters/bancroft-newsletter/nl-f2049c43/images/flags/cartagena.svg" alt="flag"></div>
+      <div class="student-name">Camila T.</div>
+    </div>
+    <div class="roar-card">
+      <div class="classroom-name">Colombia <img src="file:///Users/mekocewalker/Library/CloudStorage/Dropbox/Bancroft ES/2025-2026/Weekly Newsletters/bancroft-newsletter/nl-f2049c43/images/flags/colombia.svg" alt="flag"></div>
+      <div class="student-name">Jessia B.</div>
+    </div>
+    <div class="roar-card">
+      <div class="classroom-name">España <img src="file:///Users/mekocewalker/Library/CloudStorage/Dropbox/Bancroft ES/2025-2026/Weekly Newsletters/bancroft-newsletter/nl-f2049c43/images/flags/espana.svg" alt="flag"></div>
+      <div class="student-name">Monica A.</div>
+    </div>
+    <div class="roar-card">
+      <div class="classroom-name">DR <img src="file:///Users/mekocewalker/Library/CloudStorage/Dropbox/Bancroft ES/2025-2026/Weekly Newsletters/bancroft-newsletter/nl-f2049c43/images/flags/dr.svg" alt="flag"></div>
+      <div class="student-name">Kylie R.</div>
+    </div>
+    <div class="roar-card">
+      <div class="classroom-name">Managua <img src="file:///Users/mekocewalker/Library/CloudStorage/Dropbox/Bancroft ES/2025-2026/Weekly Newsletters/bancroft-newsletter/nl-f2049c43/images/flags/managua.svg" alt="flag"></div>
+      <div class="student-name">Kace P.</div>
+    </div>
+    <div class="roar-card">
+      <div class="classroom-name">Venezuela <img src="file:///Users/mekocewalker/Library/CloudStorage/Dropbox/Bancroft ES/2025-2026/Weekly Newsletters/bancroft-newsletter/nl-f2049c43/images/flags/venezuela.svg" alt="flag"></div>
+      <div class="student-name">Eloise P.</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

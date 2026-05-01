@@ -1,0 +1,97 @@
+{
+  "date": "2026-04-06",
+  "season": "spring",
+  "welcome": {
+    "en": "Hello first grade families! One more week and then it's <b>Spring Break</b>! We hope students (and parents) enjoy their well-deserved vacation. This week also marks the start of <b>Term 4</b> — the home stretch of first grade! As always, please make sure students are dressed in layers as the spring weather can be unpredictable. Have a wonderful week!",
+    "es": "Hola familias de primer grado. <b>¡Una semana más y luego serán las vacaciones de primavera!</b> ¡Esperamos que los estudiantes (y los padres) disfruten de sus merecidas vacaciones! Esta semana también marca el inicio del <b>Período 4</b> — ¡la recta final de primer grado! Como siempre, por favor asegúrense de que los estudiantes lleven capas de ropa ya que el clima de primavera puede ser impredecible. ¡Que tengan una excelente semana!"
+  },
+  "math": {
+    "en": "This week we continue Module 5 with <b>Topic D: Addition and Subtraction of Tens</b> (Lessons 16–19).\n\nStudents are learning to add and subtract <b>multiples of 10</b> (10, 20, 30, … 100). Here's what this looks like:\n\n<img src=\"images/weekly/m5-td-strategy-en.png\" alt=\"Adding and subtracting tens: number line counting by tens, and unit form showing 7 tens + 2 tens = 9 tens\" style=\"max-width:100%;border-radius:8px;margin:8px 0\">\n\nThe big ideas this week:\n\n• <b>Unit form:</b> Students think of tens as units — so 70 + 20 becomes \"7 tens + 2 tens = 9 tens,\" which makes the math feel just like 7 + 2!\n• <b>Counting on and back:</b> To add tens, count on by tens on a number line. To subtract, count back — or think about addition to find the answer.\n• <b>Adding tens to a two-digit number:</b> When you add tens to a number like 17 + 30, the <i>tens digit</i> changes (1 → 4) but the <i>ones digit</i> stays the same (7). Students use place value charts to see this pattern.\n• <b>True or false?</b> Students evaluate number sentences like 20 + 30 = 60 − 10 by solving both sides — building algebraic thinking!\n\n<b>Key vocabulary:</b> <i>multiples of ten, tens, ones, add, subtract, count on, count back, unit form, true, false</i>\n\n<b>How you can help at home:</b>\n\n• <b>Unit form practice:</b> Say \"What is 5 tens plus 3 tens?\" Your child should answer \"8 tens — that's 80!\" Then try subtraction: \"9 tens minus 4 tens?\"\n\n• <b>Add tens to any number:</b> Pick a two-digit number and add tens: \"What is 23 + 40? What changed — the tens or the ones?\" Try: 17 + 30, 45 + 20, 62 + 30.\n\n• <b>First to 100 game:</b> Write the numbers 1–6 on slips of paper. Each number represents that many tens (3 = 30). Draw a starting number, then take turns drawing and choosing to add or subtract that many tens. First to land on exactly 100 wins! You can't go below 0 or above 100.\n\nFor more details and at-home activities, see the Eureka Math Family Math letter: <a href=\"docs/EM2_G1_M5_TD_FamilyMath_WCAG21.pdf\" target=\"_blank\">Topic D: Addition and Subtraction of Tens</a>",
+    "es": "Esta semana continuamos el Módulo 5 con el <b>Tema D: Suma y resta de decenas</b> (Lecciones 16–19).\n\nLos estudiantes están aprendiendo a sumar y restar <b>múltiplos de 10</b> (10, 20, 30, … 100). Así se ve:\n\n<img src=\"images/weekly/m5-td-strategy-es.png\" alt=\"Suma y resta de decenas: recta numérica contando de decena en decena, y forma unitaria mostrando 7 decenas + 2 decenas = 9 decenas\" style=\"max-width:100%;border-radius:8px;margin:8px 0\">\n\nLas ideas principales de esta semana:\n\n• <b>Forma unitaria:</b> Los estudiantes piensan en las decenas como unidades — así que 70 + 20 se convierte en «7 decenas + 2 decenas = 9 decenas», ¡lo que hace que las matemáticas se sientan como 7 + 2!\n• <b>Contar hacia delante y hacia atrás:</b> Para sumar decenas, cuentan hacia delante de decena en decena. Para restar, cuentan hacia atrás — o piensan en la suma para encontrar la respuesta.\n• <b>Sumar decenas a un número de dos dígitos:</b> Cuando se suman decenas a un número como 17 + 30, el <i>dígito de las decenas</i> cambia (1 → 4) pero el <i>dígito de las unidades</i> queda igual (7). Los estudiantes usan tablas de valor posicional para ver este patrón.\n• <b>¿Verdadero o falso?</b> Los estudiantes evalúan oraciones numéricas como 20 + 30 = 60 − 10 resolviendo ambos lados — ¡desarrollando pensamiento algebraico!\n\n<b>Vocabulario clave:</b> <i>múltiplos de diez, decenas, unidades, sumar, restar, contar hacia delante, contar hacia atrás, forma unitaria, verdadero, falso</i>\n\n<b>Cómo pueden ayudar en casa:</b>\n\n• <b>Práctica con forma unitaria:</b> Digan «¿Cuánto es 5 decenas más 3 decenas?» Su hijo/a debe responder «8 decenas — ¡eso es 80!» Luego prueben con resta: «¿9 decenas menos 4 decenas?»\n\n• <b>Sumar decenas a cualquier número:</b> Elijan un número de dos dígitos y sumen decenas: «¿Cuánto es 23 + 40? ¿Qué cambió — las decenas o las unidades?» Prueben: 17 + 30, 45 + 20, 62 + 30.\n\n• <b>Juego Carrera hasta el 100:</b> Escriban los números del 1 al 6 en papelitos. Cada número representa esa cantidad de decenas (3 = 30). Saquen un número inicial, y luego túrnense sacando papelitos y eligiendo sumar o restar esa cantidad de decenas. ¡El primero en llegar exactamente a 100 gana! No se puede bajar de 0 ni pasar de 100.\n\nPara más detalles y actividades en casa, vean la carta de Eureka Math para familias: <a href=\"docs/EM2_G1_M5_TD_FamilyMath_SPA_WCAG21.pdf\" target=\"_blank\">Tema D: Suma y resta de decenas</a>"
+  },
+  "literacy": {
+    "en": "In Spanish, this week we will be reading and writing <b>informational texts and diagrams</b> to answer the research question: <b>What is the life cycle of my plant?</b> Students will explore how plants grow and change over time, from seed to mature plant. In word study, we continue working on different ways to express <b>actions in the past</b>. At home, practice reading and writing the word pairs: <i>quise–quiere</i>, <i>puse–puso</i>, <i>hice–hizo</i>, <i>produjo–produjeron</i>. These irregular verbs are tricky — the more practice, the better! Keep using a one-minute timer to build reading fluency.\n\nIn ELA, we continue our unit on <b>Plants</b>. This week's focus question is: <b>What does my plant need to survive?</b> Students will be learning and discussing vocabulary such as: <i>sunlight, water, nutrients, carbon dioxide</i>, and <i>space</i>. This is a great conversation to have at home — look at the plants around you and talk about what they need to stay alive and healthy!\n\n<a href=\"vocabulary.html?lang=en\" target=\"_blank\">Click here for all 66 vocabulary words from our Plants unit</a> — with bilingual definitions, gestures, and memory tips to practice at home!",
+    "es": "En español, esta semana estaremos leyendo y escribiendo <b>textos y diagramas informativos</b> para responder a la pregunta de investigación: <b>¿Cuál es el ciclo de vida de mi planta?</b> Los estudiantes explorarán cómo las plantas crecen y cambian con el tiempo, desde la semilla hasta la planta madura. En estudio de palabras, seguimos trabajando en las diferentes formas para expresar <b>acciones del pasado</b>. En casa, practiquen a leer y escribir los pares de palabras: <i>quise–quiere</i>, <i>puse–puso</i>, <i>hice–hizo</i>, <i>produjo–produjeron</i>. ¡Estos verbos irregulares son difíciles — mientras más se practiquen, mejor! Sigan practicando a leer palabras y textos usando un cronómetro de un minuto para practicar la rapidez lectora.\n\nEn ELA, continuamos con nuestra unidad sobre las <b>Plantas</b>. La pregunta de enfoque de esta semana es: <b>¿Qué necesita mi planta para sobrevivir?</b> Los estudiantes estarán aprendiendo y usando vocabulario como: <i>luz solar, agua, nutrientes, dióxido de carbono</i> y <i>espacio</i>. ¡Esta es una gran conversación para tener en casa — observen las plantas a su alrededor y hablen sobre lo que necesitan para mantenerse vivas y saludables!\n\n<a href=\"vocabulary.html?lang=es\" target=\"_blank\">Haz clic aquí para ver las 66 palabras de vocabulario de nuestra unidad de Plantas</a> — ¡con definiciones bilingües, gestos y consejos para practicar en casa!"
+  },
+  "specials": {
+    "monday": "No School",
+    "tuesday": "A",
+    "wednesday": "B",
+    "thursday": "C",
+    "friday": "D"
+  },
+  "roars": {
+    "DR": "Miley N-K.",
+    "Managua": "Briana M.",
+    "Venezuela": "Elias R.",
+    "Cartagena": "Kendrick T.",
+    "Colombia": "Alondra B.",
+    "España": "Charlie Y."
+  },
+  "reminders": [
+    {
+      "date": "2026-04-06",
+      "en": "<b>No School Monday, April 6</b> — End of Term / Records Day. School resumes Tuesday!",
+      "es": "<b>No hay clases lunes 6 de abril</b> — Fin de Período / Día de Registros. ¡Las clases continúan el martes!"
+    },
+    {
+      "date": "2026-04-12",
+      "en": "<b>ECUSA Art Competition</b> — Last chance! Students ages 4–8 can draw themselves as scientists or paleontologists. Deadline: April 12. <a href=\"https://docs.google.com/forms/d/1GJavcBSC036QUDjuQYviQs9pUjtqc1Q0GXPAYrNOWag/viewform\" target=\"_blank\">Click here to participate</a>.",
+      "es": "<b>Concurso de Arte ECUSA</b> — ¡Última oportunidad! Estudiantes de 4 a 8 años pueden dibujarse como científicos o paleontólogos. Fecha límite: 12 de abril. <a href=\"https://docs.google.com/forms/d/1GJavcBSC036QUDjuQYviQs9pUjtqc1Q0GXPAYrNOWag/viewform\" target=\"_blank\">Haz clic aquí para participar</a>."
+    },
+    {
+      "date": "2026-04-13",
+      "en": "<b>Spring Recess: April 13–17</b> — No school all week. Classes resume Monday, April 20.",
+      "es": "<b>Receso de Primavera: 13–17 de abril</b> — No hay clases en toda la semana. Las clases se reanudan el lunes 20 de abril."
+    }
+  ],
+  "askYourChild": [
+    {
+      "en": "What is 50 + 30? How many tens is that?",
+      "es": "¿Cuánto es 50 + 30? ¿Cuántas decenas son?"
+    },
+    {
+      "en": "What is 17 + 30? What digit changed — the tens or the ones?",
+      "es": "¿Cuánto es 17 + 30? ¿Qué dígito cambió — las decenas o las unidades?"
+    },
+    {
+      "en": "True or false: 20 + 40 = 90 − 30. How do you know?",
+      "es": "¿Verdadero o falso: 20 + 40 = 90 − 30? ¿Cómo lo sabes?"
+    },
+    {
+      "en": "What is the life cycle of your plant? What happens first?",
+      "es": "¿Cuál es el ciclo de vida de tu planta? ¿Qué pasa primero?"
+    },
+    {
+      "en": "What does your plant need to survive? Which need is the most important?",
+      "es": "¿Qué necesita tu planta para sobrevivir? ¿Cuál necesidad es la más importante?"
+    }
+  ],
+  "vocabulary": {
+    "en": [
+      { "label": "Math", "words": ["multiples of ten", "tens", "ones", "count on", "count back", "unit form", "true", "false"] },
+      { "label": "SLA", "words": ["I wanted", "I put", "I made/did", "he/she produced", "they produced"], "frontLang": "es" },
+      { "label": "ELA", "words": ["life cycle", "sunlight", "water", "nutrients", "carbon dioxide", "space"] }
+    ],
+    "es": [
+      { "label": "Matemáticas", "words": ["múltiplos de diez", "decenas", "unidades", "contar hacia delante", "contar hacia atrás", "forma unitaria", "verdadero", "falso"] },
+      { "label": "SLA", "words": ["quise", "puse", "hice", "produjo", "produjeron"], "frontLang": "es" },
+      { "label": "ELA", "words": ["ciclo de vida", "luz solar", "agua", "nutrientes", "dióxido de carbono", "espacio"] }
+    ]
+  },
+  "books": [],
+  "mathDetails": {
+    "module": {
+      "en": "Module 5: Place Value Concepts to Compare, Add, and Subtract",
+      "es": "Módulo 5: Conceptos de Valor Posicional para Comparar, Sumar y Restar"
+    },
+    "topic": {
+      "en": "Topic D: Addition and Subtraction of Tens",
+      "es": "Tema D: Suma y resta de decenas"
+    },
+    "lesson": {
+      "en": "Lessons 16-19",
+      "es": "Lecciones 16-19"
+    }
+  }
+}

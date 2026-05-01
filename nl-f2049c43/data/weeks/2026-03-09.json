@@ -1,0 +1,100 @@
+{
+  "date": "2026-03-09",
+  "season": "bancroft",
+  "welcome": {
+    "en": "It's almost Spring! This Friday is a Wellness Day so there will be no school. Enjoy the upcoming extended weekend!",
+    "es": "¡La primavera ya casi llega! Este viernes es un Día de Bienestar, así que no habrá clases. ¡Disfruten el próximo fin de semana largo!"
+  },
+  "math": {
+    "en": "This week in Module 4, students are solving comparison word problems with measurement! They measure objects using centimeter cubes, align endpoints carefully, and then compare two lengths to answer questions like \"How much longer?\" and \"How much shorter?\" They use cubes and tape diagrams to find the difference — for example, if a pencil is 14 centimeters and a frog is 10 centimeters, the pencil is 4 cubes longer. Students learn they can find the difference by adding cubes to the shorter length OR taking away cubes from the longer length.\n\nKey vocabulary this week: <i>measure, length, centimeter cube, longer than, shorter than, aligned, endpoint, difference</i>.\n\nHow you can help at home:\n\u2022 Ask your child to explain the rules of measurement — they've been learning to line up cubes with no gaps and start at the endpoint!\n\u2022 If you have a ruler at home, ask them to measure objects in centimeters\n\u2022 Try a comparison problem together: \"A cucumber is 17 centimeters long. A carrot is 11 centimeters long. How much shorter is the carrot? What could you draw to show this?\"\n\nFor more details and at-home activities, see the Eureka Math Family Math letters: <a href=\"docs/EM2_G1_M4_TC_FamilyMath_WCAG21_v2.pdf\" target=\"_blank\">Topic C: Comparison Problems with Measurement</a>",
+    "es": "¡Esta semana en el Módulo 4, los estudiantes están resolviendo problemas de comparación con medición! Miden objetos usando cubos de un centímetro, alinean los extremos con cuidado, y luego comparan dos longitudes para responder preguntas como «¿Cuánto más largo?» y «¿Cuánto más corto?». Usan cubos y diagramas de cinta para encontrar la diferencia — por ejemplo, si un lápiz mide 14 centímetros y una rana mide 10 centímetros, el lápiz es 4 cubos más largo. Los estudiantes aprenden que pueden encontrar la diferencia sumando cubos a la longitud más corta O quitando cubos de la longitud más larga.\n\nVocabulario clave de esta semana: <i>medir, longitud, cubo de un centímetro, más largo que, más corto que, alineado, extremo, diferencia</i>.\n\nCómo pueden ayudar en casa:\n\u2022 Pídale a su hijo/a que explique las reglas de medición — ¡han aprendido a alinear cubos sin dejar espacios y a empezar desde el extremo!\n\u2022 Si tienen una regla en casa, pídanle que mida objetos en centímetros\n\u2022 Prueben juntos un problema de comparación: «Un pepino mide 17 centímetros de largo. Una zanahoria mide 11 centímetros. ¿Cuánto más corta es la zanahoria? ¿Qué podrías dibujar para mostrar esto?»\n\nPara más detalles y actividades en casa, vean las cartas de Eureka Math para familias: <a href=\"docs/EM2_G1_M4_TC_FamilyMath_SPA_WCAG21.pdf\" target=\"_blank\">Tema C: Problemas de Comparación con Medición</a>"
+  },
+  "literacy": {
+    "en": "In Spanish, we are launching our exciting new <b>Plants unit (Unit 4)</b>! This first week, students will celebrate the lives and contributions of women who have studied plants, including botanists like Ynes Mexia, Janaki Ammal, and Wangari Maathai. Students will learn about each woman's work and write about why they celebrate her: \"Yo celebro a _____ porque _____.\" We will also finish editing and sharing our narrative stories from the Family Traditions unit. In word study, we are working on past tense verb endings -é, -í, -ó, and -ió (for example: escribí, escribió, dibujé, viajé). At home, please practice reading and writing sentences using the words: envié, envió, abandoné, abandonó, respondí, and respondió.\n\nIn ELA, we are continuing to practice words with digraphs (two letters that make one sound) — keep practicing your heart words at home! In ARC, we will start the week by finishing and sharing our LAST Small Moment, incorporating what we learned from our Family Traditions unit. Then we will launch our exciting new <b>Plants unit (Unit 4)</b>! Our weekly question is: \"Which is the most interesting plant you would like to study? Why?\" Students will take a walk around the school garden to observe plants up close and write questions about what they see.",
+    "es": "¡En español, estamos comenzando nuestra emocionante nueva <b>unidad de Plantas (Unidad 4)</b>! En esta primera semana, los estudiantes celebrarán las vidas y contribuciones de mujeres que han estudiado las plantas, incluyendo botánicas como Ynes Mexia, Janaki Ammal y Wangari Maathai. Los estudiantes aprenderán sobre el trabajo de cada mujer y escribirán sobre por qué la celebran: «Yo celebro a _____ porque _____.» También terminaremos de editar y compartir nuestras historias narrativas de la unidad de Tradiciones Familiares. En estudio de palabras, estamos trabajando con terminaciones de verbos en pasado -é, -í, -ó, -ió (por ejemplo: escribí, escribió, dibujé, viajé). En casa, por favor practiquen a leer y escribir oraciones con las palabras: envié, envió, abandoné, abandonó, respondí, respondió.\n\nEn ELA, seguimos practicando palabras con dígrafos (dos letras que forman un solo sonido) — ¡sigan practicando las palabras esenciales (heart words) en casa! En ARC, comenzaremos la semana terminando y compartiendo nuestro ÚLTIMO Momento Pequeño, incorporando lo que aprendimos de nuestra unidad de Tradiciones Familiares. Luego lanzaremos nuestra emocionante nueva <b>unidad de Plantas (Unidad 4)</b>. Nuestra pregunta semanal es: «¿Cuál es la planta más interesante que te gustaría estudiar? ¿Por qué?» Los estudiantes darán un paseo por el jardín de la escuela para observar las plantas de cerca y escribir preguntas sobre lo que ven."
+  },
+  "specials": {
+    "monday": "F",
+    "tuesday": "A",
+    "wednesday": "B",
+    "thursday": "C",
+    "friday": null
+  },
+  "roars": {
+    "Cartagena": "Lohany G.",
+    "Colombia": "Aideen P.",
+    "España": "Ashwin A.",
+    "DR": "Oscar Q.",
+    "Managua": "Talia D.",
+    "Venezuela": "Maya M."
+  },
+  "reminders": [
+    {
+      "date": "2026-03-12",
+      "en": "Conference reports will be sent home (PTC canceled due to snow days — regular school day)",
+      "es": "Los informes de conferencia se enviarán a casa (Conferencias canceladas por días de nieve — día escolar regular)"
+    },
+    {
+      "date": "2026-03-24",
+      "en": "<b>Field Trip to The Phillips Collection</b> — DR & España",
+      "es": "<b>Excursión a The Phillips Collection</b> — DR y España"
+    },
+    {
+      "date": "2026-03-26",
+      "en": "<b>Field Trip to The Phillips Collection</b> — Venezuela & Cartagena",
+      "es": "<b>Excursión a The Phillips Collection</b> — Venezuela y Cartagena"
+    },
+    {
+      "date": "2026-03-27",
+      "en": "<b>Field Trip to The Phillips Collection</b> — Managua & Colombia",
+      "es": "<b>Excursión a The Phillips Collection</b> — Managua y Colombia"
+    },
+    {
+      "date": "2026-03-27",
+      "en": "<b>Math Night!</b> Friday, 5:30–7:30pm (gym entrance). Math games, activities, and pizza for PreK–5th grade families!",
+      "es": "<b>¡Noche de Matemáticas!</b> Viernes, 5:30–7:30pm (entrada por el gimnasio). ¡Juegos de matemáticas, actividades y pizza para familias de PreK a 5º grado!"
+    },
+    {
+      "date": "2026-04-12",
+      "en": "<b>ECUSA Art Competition</b> — Students ages 4–8 can draw themselves as scientists or paleontologists! Deadline: April 12. <a href=\"https://docs.google.com/forms/d/1GJavcBSC036QUDjuQYviQs9pUjtqc1Q0GXPAYrNOWag/viewform\" target=\"_blank\">Click here to participate</a>.",
+      "es": "<b>Concurso de Arte ECUSA</b> — ¡Estudiantes de 4 a 8 años pueden dibujarse como científicos o paleontólogos! Fecha límite: 12 de abril. <a href=\"https://docs.google.com/forms/d/1GJavcBSC036QUDjuQYviQs9pUjtqc1Q0GXPAYrNOWag/viewform\" target=\"_blank\">Haz clic aquí para participar</a>."
+    }
+  ],
+  "askYourChild": [
+    {
+      "en": "What are the rules of measurement? Can you show me how to measure something?",
+      "es": "¿Cuáles son las reglas de medición? ¿Puedes enseñarme cómo medir algo?"
+    },
+    {
+      "en": "What was your narrative story about? How did you edit it?",
+      "es": "¿De qué trataba tu historia narrativa? ¿Cómo la editaste?"
+    },
+    {
+      "en": "Which woman botanist did you celebrate today? Why did you choose her?",
+      "es": "¿A qué mujer botánica celebraste hoy? ¿Por qué la escogiste?"
+    },
+    {
+      "en": "What plants did you see in the school garden? What questions did you write about them?",
+      "es": "¿Qué plantas viste en el jardín de la escuela? ¿Qué preguntas escribiste sobre ellas?"
+    }
+  ],
+  "vocabulary": {
+    "en": ["measure", "centimeter", "difference", "longer", "shorter", "botanist", "plant", "observe", "digraph", "celebrate"],
+    "es": ["medir", "centímetro", "diferencia", "más largo", "más corto", "botánica", "planta", "observar", "dígrafo", "celebrar"]
+  },
+  "books": [],
+  "mathDetails": {
+    "module": {
+      "en": "Module 4: Comparison and Composition of Length Measurements",
+      "es": "Módulo 4: Comparación y Composición de Medidas de Longitud"
+    },
+    "topic": {
+      "en": "Topic C: Comparison Problems with Measurement",
+      "es": "Tema C: Problemas de Comparación con Medición"
+    },
+    "lesson": {
+      "en": "Lessons 11-13",
+      "es": "Lecciones 11-13"
+    }
+  }
+}

@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocabulary Study Guide — Bancroft Grade 1</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-dark: #166534; --green-light: #dcfce7; --green-mid: #bbf7d0; --green-border: #86efac;
+    --teal-dark: #0f766e; --teal-light: #ccfbf1; --teal-mid: #99f6e4; --teal-border: #5eead4;
+    --amber-dark: #92400e; --amber-light: #fef3c7; --amber-mid: #fde68a; --amber-border: #fcd34d;
+    --orange-dark: #9a3412; --orange-light: #fff7ed; --orange-mid: #fed7aa; --orange-border: #fdba74;
+    --purple-dark: #581c87; --purple-light: #f3e8ff; --purple-mid: #e9d5ff; --purple-border: #c084fc;
+    --blue-dark: #1e40af; --blue-light: #dbeafe; --blue-mid: #bfdbfe; --blue-border: #93c5fd;
+    --rose-dark: #9f1239; --rose-light: #ffe4e6; --rose-mid: #fecdd3; --rose-border: #fda4af;
+    --bg: #f0fdf4; --text: #1a2e1a; --text-secondary: #4a5e4a;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #166534 0%, #15803d 40%, #0f766e 100%);
+    color: white;
+    padding: 2.5rem 1.5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '🌱🌿🍃🌸🌻🌾🍀🌵';
+    position: absolute;
+    top: 0.5rem;
+    left: 0;
+    right: 0;
+    font-size: 1.5rem;
+    letter-spacing: 1.2rem;
+    opacity: 0.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 800;
+    margin-bottom: 0.4rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  }
+  .header p {
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+    opacity: 0.92;
+    margin-bottom: 0.2rem;
+    font-weight: 400;
+  }
+  .header p.school {
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    opacity: 1;
+  }
+  .word-count-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 0.25rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    margin-top: 0.75rem;
+    font-weight: 600;
+  }
+
+  /* CONTROLS */
+  .controls {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(240, 253, 244, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #bbf7d0;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .search-wrapper {
+    max-width: 560px;
+    margin: 0 auto 0.85rem;
+    position: relative;
+  }
+  .search-wrapper .icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .search-input {
+    width: 100%;
+    padding: 0.7rem 1rem 0.7rem 2.6rem;
+    border: 2px solid #bbf7d0;
+    border-radius: 12px;
+    font-size: 1rem;
+    background: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  .search-input:focus {
+    border-color: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34,197,94,0.15);
+  }
+  .search-input::placeholder { color: #9ca3af; }
+
+  .filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .filter-btn {
+    border: 2px solid #d1d5db;
+    background: white;
+    padding: 0.4rem 0.9rem;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    color: #374151;
+  }
+  .filter-btn:hover { transform: translateY(-1px); box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+  .filter-btn.active { color: white; border-color: transparent; transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,0.15); }
+  .filter-btn[data-cat="all"].active { background: #166534; }
+  .filter-btn[data-cat="parts"].active { background: #166534; }
+  .filter-btn[data-cat="cycle"].active { background: #0f766e; }
+  .filter-btn[data-cat="needs"].active { background: #92400e; }
+  .filter-btn[data-cat="adapt"].active { background: #9a3412; }
+  .filter-btn[data-cat="writing"].active { background: #581c87; }
+  .filter-btn[data-cat="habitat"].active { background: #1e40af; }
+  .filter-btn[data-cat="repro"].active { background: #9f1239; }
+
+  .results-count {
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    margin-top: 0.6rem;
+    font-weight: 500;
+  }
+
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 1.25rem;
+    padding: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  @media (max-width: 480px) {
+    .grid { grid-template-columns: 1fr; padding: 1rem; gap: 1rem; }
+  }
+
+  /* CARDS */
+  .card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.3s ease;
+    opacity: 1;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .card.hidden { display: none; }
+
+  .card-accent { height: 5px; }
+  .card-accent.parts { background: linear-gradient(90deg, #166534, #22c55e); }
+  .card-accent.cycle { background: linear-gradient(90deg, #0f766e, #14b8a6); }
+  .card-accent.needs { background: linear-gradient(90deg, #92400e, #f59e0b); }
+  .card-accent.adapt { background: linear-gradient(90deg, #9a3412, #f97316); }
+  .card-accent.writing { background: linear-gradient(90deg, #581c87, #a855f7); }
+  .card-accent.habitat { background: linear-gradient(90deg, #1e40af, #3b82f6); }
+  .card-accent.repro { background: linear-gradient(90deg, #9f1239, #f43f5e); }
+
+  .card-body { padding: 1.25rem 1.35rem 1.1rem; }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    margin-bottom: 0.85rem;
+  }
+  .card-emoji {
+    font-size: 2.4rem;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: #f0fdf4;
+  }
+  .card-emoji.parts { background: var(--green-light); }
+  .card-emoji.cycle { background: var(--teal-light); }
+  .card-emoji.needs { background: var(--amber-light); }
+  .card-emoji.adapt { background: var(--orange-light); }
+  .card-emoji.writing { background: var(--purple-light); }
+  .card-emoji.habitat { background: var(--blue-light); }
+  .card-emoji.repro { background: var(--rose-light); }
+
+  .card-titles { flex: 1; min-width: 0; }
+  .word-number {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.15rem;
+    opacity: 0.7;
+  }
+  .word-number.parts { color: var(--green-dark); }
+  .word-number.cycle { color: var(--teal-dark); }
+  .word-number.needs { color: var(--amber-dark); }
+  .word-number.adapt { color: var(--orange-dark); }
+  .word-number.writing { color: var(--purple-dark); }
+  .word-number.habitat { color: var(--blue-dark); }
+  .word-number.repro { color: var(--rose-dark); }
+
+  .word-spanish {
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--text);
+  }
+  .word-english {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-top: 0.1rem;
+  }
+
+  .category-tag {
+    display: inline-block;
+    padding: 0.15rem 0.65rem;
+    border-radius: 50px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    letter-spacing: 0.02em;
+  }
+  .category-tag.parts { background: var(--green-light); color: var(--green-dark); }
+  .category-tag.cycle { background: var(--teal-light); color: var(--teal-dark); }
+  .category-tag.needs { background: var(--amber-light); color: var(--amber-dark); }
+  .category-tag.adapt { background: var(--orange-light); color: var(--orange-dark); }
+  .category-tag.writing { background: var(--purple-light); color: var(--purple-dark); }
+  .category-tag.habitat { background: var(--blue-light); color: var(--blue-dark); }
+  .category-tag.repro { background: var(--rose-light); color: var(--rose-dark); }
+
+  /* TPR Section */
+  .tpr-section {
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    margin: 0.85rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .tpr-section.parts { background: var(--green-light); border: 1px solid var(--green-border); }
+  .tpr-section.cycle { background: var(--teal-light); border: 1px solid var(--teal-border); }
+  .tpr-section.needs { background: var(--amber-light); border: 1px solid var(--amber-border); }
+  .tpr-section.adapt { background: var(--orange-light); border: 1px solid var(--orange-border); }
+  .tpr-section.writing { background: var(--purple-light); border: 1px solid var(--purple-border); }
+  .tpr-section.habitat { background: var(--blue-light); border: 1px solid var(--blue-border); }
+  .tpr-section.repro { background: var(--rose-light); border: 1px solid var(--rose-border); }
+
+  .tpr-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.7);
+  }
+  .tpr-content { flex: 1; }
+  .tpr-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.2rem;
+  }
+  .tpr-label.parts { color: var(--green-dark); }
+  .tpr-label.cycle { color: var(--teal-dark); }
+  .tpr-label.needs { color: var(--amber-dark); }
+  .tpr-label.adapt { color: var(--orange-dark); }
+  .tpr-label.writing { color: var(--purple-dark); }
+  .tpr-label.habitat { color: var(--blue-dark); }
+  .tpr-label.repro { color: var(--rose-dark); }
+
+  .asl-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 50px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-left: 0.5rem;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+  .asl-badge::before {
+    content: '🤟';
+    font-size: 0.75rem;
+  }
+  .asl-note {
+    font-size: 0.75rem;
+    color: #6366f1;
+    font-style: italic;
+    margin-top: 0.35rem;
+    padding-left: 0.1rem;
+  }
+
+  .tpr-gesture {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.35;
+  }
+
+  /* Definitions */
+  .definitions {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .def-block {
+    padding: 0.6rem 0.8rem;
+    border-radius: 10px;
+    background: #f9fafb;
+    border-left: 3px solid #d1d5db;
+  }
+  .def-block.en { border-left-color: #60a5fa; }
+  .def-block.es { border-left-color: #f97316; }
+  .def-lang {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.15rem;
+  }
+  .def-lang.en { color: #2563eb; }
+  .def-lang.es { color: #ea580c; }
+  .def-text {
+    font-size: 0.88rem;
+    line-height: 1.45;
+    color: var(--text);
+  }
+
+  /* Memory Tip */
+  .memory-tip {
+    margin-top: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #fefce8, #fef9c3);
+    border: 1px solid #fde047;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .memory-tip-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .memory-tip-content { flex: 1; }
+  .memory-tip-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #854d0e;
+    margin-bottom: 0.1rem;
+  }
+  .memory-tip-text {
+    font-size: 0.82rem;
+    color: #713f12;
+    line-height: 1.4;
+    font-style: italic;
+  }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    grid-column: 1 / -1;
+    display: none;
+  }
+  .empty-state.visible { display: block; }
+  .empty-state .emoji { font-size: 3rem; margin-bottom: 1rem; }
+  .empty-state h3 { font-size: 1.2rem; color: var(--text); margin-bottom: 0.5rem; }
+  .empty-state p { color: var(--text-secondary); font-size: 0.95rem; }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: linear-gradient(135deg, #166534, #0f766e);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.82rem;
+    margin-top: 1rem;
+  }
+  .footer strong { color: white; }
+
+  /* PRINT */
+  @media print {
+    body { background: white; font-size: 10pt; }
+    .controls { position: static; background: white; backdrop-filter: none; border: none; box-shadow: none; padding: 0.5rem 0; }
+    .search-wrapper, .filter-buttons, .results-count, .word-count-badge { display: none !important; }
+    .header { background: none !important; color: black; padding: 0.5rem 0; border-bottom: 3px solid #166534; }
+    .header h1 { color: #166534; text-shadow: none; font-size: 18pt; }
+    .header p { color: #333; opacity: 1; }
+    .grid { padding: 0.5rem 0; gap: 0.5rem; grid-template-columns: repeat(2, 1fr); }
+    .card { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; page-break-inside: avoid; }
+    .card:hover { transform: none; box-shadow: none; }
+    .footer { background: none !important; color: #333; border-top: 2px solid #166534; padding: 0.5rem 0; }
+  }
+  /* Language toggle */
+  .lang-es { display: none; }
+  body.es .lang-en { display: none !important; }
+  body.es .lang-es { display: inline !important; }
+  .lang-toggle { position: absolute; top: 1rem; right: 1rem; background: rgba(255,255,255,0.2); color: #fff; border: 1px solid rgba(255,255,255,0.4); padding: 4px 12px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; transition: background 0.2s; z-index: 2; }
+  .lang-toggle:hover { background: rgba(255,255,255,0.35); }
+  @media print { .lang-toggle { display: none; } }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <button class="lang-toggle" onclick="toggleLang()"><span class="lang-en">ES</span><span class="lang-es">EN</span></button>
+  <h1><span class="lang-en">Plants Unit &mdash; Vocabulary Study Guide</span><span class="lang-es">Unidad de Plantas &mdash; Gu&iacute;a de Vocabulario</span></h1>
+  <p class="school">Bancroft Elementary School &mdash; Grade 1</p>
+  <p><span class="lang-en">66 bilingual vocabulary words with gestures and definitions</span><span class="lang-es">66 palabras biling&uuml;es con gestos y definiciones</span></p>
+  <div class="word-count-badge" id="wordCountBadge"><span class="lang-en">66 Vocabulary Words</span><span class="lang-es">66 Palabras de Vocabulario</span></div>
+</header>
+
+<nav class="controls" role="search">
+  <div class="search-wrapper">
+    <span class="icon">🔍</span>
+    <input type="text" class="search-input" id="searchInput" placeholder="Search words in English or Spanish..." aria-label="Search vocabulary words">
+  </div>
+  <div class="filter-buttons" role="tablist" aria-label="Category filters">
+    <button class="filter-btn active" data-cat="all" role="tab" aria-selected="true"><span class="lang-en">All Words</span><span class="lang-es">Todas</span></button>
+    <button class="filter-btn" data-cat="parts" role="tab" aria-selected="false"><span class="lang-en">🌱 Core Plant Parts (Wk 1–2)</span><span class="lang-es">🌱 Partes de Plantas (Sem 1–2)</span></button>
+    <button class="filter-btn" data-cat="cycle" role="tab" aria-selected="false"><span class="lang-en">🔄 Plant Life Cycle (Wk 3–4)</span><span class="lang-es">🔄 Ciclo de Vida (Sem 3–4)</span></button>
+    <button class="filter-btn" data-cat="needs" role="tab" aria-selected="false"><span class="lang-en">☀️ Needs &amp; Photosynthesis (Wk 5–6)</span><span class="lang-es">☀️ Necesidades y Fotos&iacute;ntesis (Sem 5–6)</span></button>
+    <button class="filter-btn" data-cat="adapt" role="tab" aria-selected="false"><span class="lang-en">💪 Adaptations &amp; Defense (Wk 6–7)</span><span class="lang-es">💪 Adaptaciones y Defensa (Sem 6–7)</span></button>
+    <button class="filter-btn" data-cat="writing" role="tab" aria-selected="false"><span class="lang-en">✍️ Writing &amp; Research (Wk 5–8)</span><span class="lang-es">✍️ Escritura e Investigaci&oacute;n (Sem 5–8)</span></button>
+    <button class="filter-btn" data-cat="habitat" role="tab" aria-selected="false"><span class="lang-en">🌍 Habitats &amp; Soil / SLA (Wk 2)</span><span class="lang-es">🌍 H&aacute;bitats y Suelo / SLA (Sem 2)</span></button>
+    <button class="filter-btn" data-cat="repro" role="tab" aria-selected="false"><span class="lang-en">🌺 Reproduction / SLA (Wk 4)</span><span class="lang-es">🌺 Reproducci&oacute;n / SLA (Sem 4)</span></button>
+  </div>
+  <div class="results-count" id="resultsCount" aria-live="polite">Showing 30 of 66 words</div>
+</nav>
+
+<main class="grid" id="cardGrid"></main>
+
+<footer class="footer">
+  <strong>Bancroft Elementary School</strong> &bull; <span class="lang-en">Grade 1 Bilingual</span><span class="lang-es">1er Grado Biling&uuml;e</span> &bull; <span class="lang-en">Unit 4: Plantas</span><span class="lang-es">Unidad 4: Plantas</span> &bull; <span class="lang-en">SY</span><span class="lang-es">A&ntilde;o Escolar</span> 2025&ndash;2026
+</footer>
+
+<script>
+const VOCAB = [
+  // Core Plant Parts
+  {n:1, es:"Plantas", en:"Plants", cat:"parts", catLabel:"Core Plant Parts", emoji:"🌱",
+   defEn:"Living things that grow in soil and need water, sunlight, and air",
+   defEs:"Seres vivos que crecen en la tierra y necesitan agua, luz solar y aire",
+   tpr:"Arms up like a growing plant", tprEmoji:"🌿",
+   tip:"Raising your arms mimics how a plant stretches toward the sun as it grows taller.",
+   tprEs:"Brazos arriba como una planta creciendo", tipEs:"Levantar los brazos imita cómo una planta se estira hacia el sol mientras crece.", catLabelEs:"Partes Básicas de la Planta"},
+  {n:2, es:"Raíces", en:"Roots", cat:"parts", catLabel:"Core Plant Parts", emoji:"🌿",
+   defEn:"The part of the plant underground that absorbs water and nutrients",
+   defEs:"La parte de la planta bajo la tierra que absorbe agua y nutrientes",
+   tpr:"Wiggle fingers downward", tprEmoji:"👇",
+   tip:"Your wiggling fingers look like roots spreading through the soil, searching for water.",
+   tprEs:"Mueve los dedos hacia abajo", tipEs:"Tus dedos moviéndose parecen raíces extendiéndose por la tierra, buscando agua.", catLabelEs:"Partes Básicas de la Planta"},
+  {n:3, es:"Tallo", en:"Stem", cat:"parts", catLabel:"Core Plant Parts", emoji:"🌾",
+   defEn:"The main body of the plant that holds it up and carries water",
+   defEs:"El cuerpo principal de la planta que la sostiene y lleva agua",
+   tpr:"Stand tall with arms at sides", tprEmoji:"🧍",
+   tip:"Standing tall and straight is exactly what a stem does — it holds the whole plant upright!",
+   tprEs:"Párate derecho con los brazos a los lados", tipEs:"Pararse derecho y firme es exactamente lo que hace un tallo — ¡sostiene toda la planta!", catLabelEs:"Partes Básicas de la Planta"},
+  {n:4, es:"Flor", en:"Flower", cat:"parts", catLabel:"Core Plant Parts", emoji:"🌸",
+   defEn:"The colorful part of the plant that makes seeds",
+   defEs:"La parte colorida de la planta que produce semillas",
+   tpr:"Open hands like a blooming flower", tprEmoji:"🤲",
+   tip:"Your hands opening up mirror petals unfolding when a flower blooms in the morning sun.",
+   tprEs:"Abre las manos como una flor floreciendo", tipEs:"Tus manos abriéndose imitan los pétalos desplegándose cuando una flor florece con el sol de la mañana.", catLabelEs:"Partes Básicas de la Planta"},
+  {n:5, es:"Hoja", en:"Leaf", cat:"parts", catLabel:"Core Plant Parts", emoji:"🍃",
+   defEn:"The flat green part that makes food for the plant",
+   defEs:"La parte plana y verde que produce alimento para la planta",
+   tpr:"Flat hand, palm up", tprEmoji:"✋",
+   tip:"Your flat palm is shaped just like a leaf catching sunlight to make food.",
+   tprEs:"Mano plana, palma hacia arriba", tipEs:"Tu palma plana tiene la forma de una hoja atrapando la luz del sol para hacer alimento.",
+   asl:true, aslNote:"Approximates the ASL sign for LEAF (flat hand represents the leaf shape)", aslNoteEs:"Se parece a la seña ASL de HOJA (la mano plana representa la forma de la hoja)", catLabelEs:"Partes Básicas de la Planta"},
+  {n:6, es:"Fruta / Fruto", en:"Fruit", cat:"parts", catLabel:"Core Plant Parts", emoji:"🍎",
+   defEn:"The part of the plant that holds the seeds",
+   defEs:"La parte de la planta que contiene las semillas (fruta = para comer, fruto = término científico)",
+   tpr:"Cupped hands together", tprEmoji:"🫶",
+   tip:"Cupping your hands creates a little bowl, just like a fruit holds and protects its seeds inside.",
+   tprEs:"Manos juntas en forma de copa", tipEs:"Juntar las manos en forma de copa crea un pequeño tazón, igual que una fruta sostiene y protege sus semillas adentro.", catLabelEs:"Partes Básicas de la Planta"},
+  {n:7, es:"Semilla", en:"Seed", cat:"parts", catLabel:"Core Plant Parts", emoji:"🫘",
+   defEn:"The small part of a plant that can grow into a new plant",
+   defEs:"La parte pequeña de una planta que puede crecer en una nueva planta",
+   tpr:"Pinch fingers together", tprEmoji:"🤏",
+   tip:"Pinching shows how tiny a seed is — yet something so small holds an entire future plant!",
+   tprEs:"Pellizca los dedos juntos", tipEs:"Pellizcar muestra lo pequeña que es una semilla — ¡y algo tan pequeño contiene toda una planta futura!", catLabelEs:"Partes Básicas de la Planta"},
+  {n:8, es:"Tierra", en:"Soil", cat:"parts", catLabel:"Core Plant Parts", emoji:"🟤",
+   defEn:"The top layer of earth where plants grow",
+   defEs:"La capa superior de la tierra donde crecen las plantas",
+   tpr:"Rub hands together like dirt", tprEmoji:"👐",
+   tip:"Rubbing your hands together feels like crumbling rich soil between your fingers in a garden.",
+   tprEs:"Frota las manos como si fuera tierra", tipEs:"Frotar las manos se siente como desmenuzar tierra rica entre los dedos en un jardín.",
+   asl:true, aslNote:"Closely matches the ASL sign for DIRT/SOIL (rubbing fingertips together)", aslNoteEs:"Se parece mucho a la seña ASL de TIERRA (frotar las puntas de los dedos)", catLabelEs:"Partes Básicas de la Planta"},
+
+  // Plant Life Cycle
+  {n:9, es:"Ciclo de vida", en:"Life Cycle", cat:"cycle", catLabel:"Plant Life Cycle", emoji:"🔄",
+   defEn:"The stages a plant goes through from seed to adult",
+   defEs:"Las etapas que atraviesa una planta desde semilla hasta adulta",
+   tpr:"Circular hand motion", tprEmoji:"🔁",
+   tip:"The circular motion shows that a life cycle goes around — from seed, to plant, back to seed again!",
+   tprEs:"Movimiento circular con la mano", tipEs:"El movimiento circular muestra que un ciclo de vida da vueltas — ¡de semilla, a planta, y de vuelta a semilla!", catLabelEs:"Ciclo de Vida de la Planta"},
+  {n:10, es:"Germinación", en:"Germination", cat:"cycle", catLabel:"Plant Life Cycle", emoji:"🌱",
+   defEn:"When a seed starts to grow",
+   defEs:"Cuando una semilla empieza a crecer",
+   tpr:"Fist slowly opening upward", tprEmoji:"✊➡️🖐️",
+   tip:"Your closed fist is the seed, and opening it shows the first sprout breaking through the soil.",
+   tprEs:"Puño abriéndose lentamente hacia arriba", tipEs:"Tu puño cerrado es la semilla, y abrirlo muestra el primer brote saliendo de la tierra.",
+   asl:true, aslNote:"Closely matches the ASL sign for GROW (closed hand opens upward as it rises)", aslNoteEs:"Se parece mucho a la seña ASL de CRECER (la mano cerrada se abre hacia arriba mientras sube)", catLabelEs:"Ciclo de Vida de la Planta"},
+  {n:11, es:"Reproducir", en:"Reproduce", cat:"cycle", catLabel:"Plant Life Cycle", emoji:"🌿",
+   defEn:"To make new plants",
+   defEs:"Hacer nuevas plantas",
+   tpr:"One fist opens into two hands", tprEmoji:"✊➡️🖐️🖐️",
+   tip:"One becoming two shows how a single plant can create new plants — that's reproduction!",
+   tprEs:"Un puño se abre en dos manos", tipEs:"Uno convirtiéndose en dos muestra cómo una sola planta puede crear nuevas plantas — ¡eso es reproducción!", catLabelEs:"Ciclo de Vida de la Planta"},
+  {n:12, es:"Polen", en:"Pollen", cat:"cycle", catLabel:"Plant Life Cycle", emoji:"✨",
+   defEn:"A fine powder made by flowers",
+   defEs:"Un polvo fino producido por las flores",
+   tpr:"Sprinkle fingers", tprEmoji:"🤌",
+   tip:"Sprinkling your fingers looks like tiny pollen grains floating through the air from a flower.",
+   tprEs:"Espolvorea con los dedos", tipEs:"Espolvorear con los dedos se ve como pequeños granos de polen flotando por el aire desde una flor.", catLabelEs:"Ciclo de Vida de la Planta"},
+  {n:13, es:"Polinizar", en:"Pollinate", cat:"cycle", catLabel:"Plant Life Cycle", emoji:"🐝",
+   defEn:"To transfer pollen so plants can make seeds",
+   defEs:"Transferir polen para que las plantas puedan hacer semillas",
+   tpr:"Flutter fingers like a bee", tprEmoji:"🐝",
+   tip:"Fluttering fingers look like a buzzing bee visiting flowers and carrying pollen from one to another.",
+   tprEs:"Aletea los dedos como una abeja", tipEs:"Los dedos aleteando parecen una abeja zumbando que visita flores y lleva polen de una a otra.", catLabelEs:"Ciclo de Vida de la Planta"},
+
+  // Plant Needs & Photosynthesis
+  {n:14, es:"Nutrientes", en:"Nutrients", cat:"needs", catLabel:"Needs & Photosynthesis", emoji:"🥄",
+   defEn:"Substances that plants need to grow and be healthy",
+   defEs:"Sustancias que las plantas necesitan para crecer y estar saludables",
+   tpr:"Eating motion", tprEmoji:"🍽️",
+   tip:"Just like you eat food to grow strong, plants absorb nutrients from the soil to stay healthy.",
+   tprEs:"Movimiento de comer", tipEs:"Igual que tú comes para crecer fuerte, las plantas absorben nutrientes de la tierra para estar saludables.",
+   asl:true, aslNote:"Approximates the ASL sign for EAT/FOOD (flat O handshape brought to mouth)", aslNoteEs:"Se parece a la seña ASL de COMER/COMIDA (mano en forma de O plana llevada a la boca)", catLabelEs:"Necesidades y Fotosíntesis"},
+  {n:15, es:"Hábitat", en:"Habitat", cat:"needs", catLabel:"Needs & Photosynthesis", emoji:"🏡",
+   defEn:"The natural home of a plant or animal",
+   defEs:"El hogar natural de una planta o animal",
+   tpr:"Make a roof shape with hands", tprEmoji:"🏠",
+   tip:"The roof shape represents a home — a habitat is nature's home for living things.",
+   tprEs:"Haz forma de techo con las manos", tipEs:"La forma de techo representa un hogar — un hábitat es el hogar natural de los seres vivos.",
+   asl:true, aslNote:"Approximates the ASL sign for HOUSE (hands form roofline, the most distinctive part)", aslNoteEs:"Se parece a la seña ASL de CASA (las manos forman la línea del techo, la parte más distintiva)", catLabelEs:"Necesidades y Fotosíntesis"},
+  {n:16, es:"Fotosíntesis", en:"Photosynthesis", cat:"needs", catLabel:"Needs & Photosynthesis", emoji:"☀️",
+   defEn:"The process plants use to make food from sunlight",
+   defEs:"El proceso que usan las plantas para hacer alimento de la luz solar",
+   tpr:"Sun gesture + eating motion", tprEmoji:"☀️🍽️",
+   tip:"Combining sun and eating shows how photosynthesis turns sunlight into food — plants cook with sunshine!",
+   tprEs:"Gesto de sol + movimiento de comer", tipEs:"Combinar sol y comer muestra cómo la fotosíntesis convierte la luz solar en alimento — ¡las plantas cocinan con sol!", catLabelEs:"Necesidades y Fotosíntesis"},
+  {n:17, es:"Energía", en:"Energy", cat:"needs", catLabel:"Needs & Photosynthesis", emoji:"⚡",
+   defEn:"The power plants get from sunlight to grow",
+   defEs:"La energía que las plantas obtienen de la luz solar para crecer",
+   tpr:"Fist pump", tprEmoji:"💪",
+   tip:"A fist pump shows power and strength — that's what energy gives to plants so they can grow!",
+   tprEs:"Puño al aire", tipEs:"Un puño al aire muestra poder y fuerza — ¡eso es lo que la energía les da a las plantas para crecer!", catLabelEs:"Necesidades y Fotosíntesis"},
+  {n:18, es:"Clorofila", en:"Chlorophyll", cat:"needs", catLabel:"Needs & Photosynthesis", emoji:"💚",
+   defEn:"The green substance in leaves that captures sunlight",
+   defEs:"La sustancia verde en las hojas que captura la luz solar",
+   tpr:"Hold up green leaf/paper", tprEmoji:"🟢",
+   tip:"Holding up something green reminds us that chlorophyll is why leaves are green — it catches sunlight.",
+   tprEs:"Levanta una hoja verde o papel verde", tipEs:"Levantar algo verde nos recuerda que la clorofila es la razón por la que las hojas son verdes — atrapa la luz del sol.", catLabelEs:"Necesidades y Fotosíntesis"},
+  {n:19, es:"Dióxido de carbono", en:"Carbon Dioxide", cat:"needs", catLabel:"Needs & Photosynthesis", emoji:"💨",
+   defEn:"A gas plants breathe in from the air",
+   defEs:"Un gas que las plantas absorben del aire",
+   tpr:"Breathe in deeply", tprEmoji:"😤",
+   tip:"Breathing in shows what plants do — they pull carbon dioxide from the air just like we breathe in oxygen.",
+   tprEs:"Respira profundo", tipEs:"Respirar profundo muestra lo que hacen las plantas — absorben dióxido de carbono del aire igual que nosotros respiramos oxígeno.", catLabelEs:"Necesidades y Fotosíntesis"},
+  {n:20, es:"Oxígeno", en:"Oxygen", cat:"needs", catLabel:"Needs & Photosynthesis", emoji:"🌬️",
+   defEn:"A gas plants release into the air",
+   defEs:"Un gas que las plantas liberan al aire",
+   tpr:"Breathe out", tprEmoji:"😮‍💨",
+   tip:"Breathing out is like what plants do when they release oxygen — the fresh air we need to live!",
+   tprEs:"Exhala", tipEs:"Exhalar es como lo que hacen las plantas cuando liberan oxígeno — ¡el aire fresco que necesitamos para vivir!", catLabelEs:"Necesidades y Fotosíntesis"},
+  {n:21, es:"Glucosa", en:"Glucose", cat:"needs", catLabel:"Needs & Photosynthesis", emoji:"🍬",
+   defEn:"The food/sugar plants make during photosynthesis",
+   defEs:"El alimento/azúcar que las plantas hacen durante la fotosíntesis",
+   tpr:"Rub tummy", tprEmoji:"😋",
+   tip:"Rubbing your tummy means yummy food — glucose is the sweet food plants make for themselves!",
+   tprEs:"Frota la barriga", tipEs:"Frotar la barriga significa comida rica — ¡la glucosa es el alimento dulce que las plantas hacen para sí mismas!", catLabelEs:"Necesidades y Fotosíntesis"},
+
+  // Plant Adaptations & Defense
+  {n:22, es:"Adaptación", en:"Adaptation", cat:"adapt", catLabel:"Adaptations & Defense", emoji:"💪",
+   defEn:"A change that helps a plant survive in its habitat",
+   defEs:"Un cambio que ayuda a una planta a sobrevivir en su hábitat",
+   tpr:"Flexing/changing pose", tprEmoji:"🧘",
+   tip:"Changing your pose shows adapting — plants change and adjust to survive wherever they live.",
+   tprEs:"Flexionar/cambiar de pose", tipEs:"Cambiar de pose muestra adaptación — las plantas cambian y se ajustan para sobrevivir donde viven.", catLabelEs:"Adaptaciones y Defensa"},
+  {n:23, es:"Defensa", en:"Defense", cat:"adapt", catLabel:"Adaptations & Defense", emoji:"🛡️",
+   defEn:"How a plant protects itself",
+   defEs:"Cómo una planta se protege",
+   tpr:"Cross wrists in fists in front of chest", tprEmoji:"🤜🤛",
+   tip:"Crossing your arms is a blocking move — plants use thorns, poison, and other defenses to block danger.",
+   tprEs:"Cruza las muñecas con puños frente al pecho", tipEs:"Cruzar los brazos es un movimiento de bloqueo — las plantas usan espinas, veneno y otras defensas para bloquear el peligro.",
+   asl:true, aslNote:"Closely matches the ASL sign for PROTECT/DEFEND (crossed fists pushed forward)", aslNoteEs:"Se parece mucho a la seña ASL de PROTEGER/DEFENDER (puños cruzados empujados hacia adelante)", catLabelEs:"Adaptaciones y Defensa"},
+  {n:24, es:"Carnívoro", en:"Carnivore", cat:"adapt", catLabel:"Adaptations & Defense", emoji:"🪤",
+   defEn:"An organism that eats meat; some plants trap insects",
+   defEs:"Un organismo que come carne; algunas plantas atrapan insectos",
+   tpr:"Snapping/chomping motion with hands", tprEmoji:"🫲🫱",
+   tip:"Snapping your hands is like a Venus flytrap snapping shut to catch a bug — chomp!",
+   tprEs:"Movimiento de morder/atrapar con las manos", tipEs:"Cerrar las manos de golpe es como una venus atrapamoscas cerrándose para atrapar un insecto — ¡chomp!", catLabelEs:"Adaptaciones y Defensa"},
+  {n:25, es:"Veneno", en:"Poison", cat:"adapt", catLabel:"Adaptations & Defense", emoji:"☠️",
+   defEn:"A harmful substance some plants produce to protect themselves",
+   defEs:"Una sustancia dañina que algunas plantas producen para protegerse",
+   tpr:"Cross arms like skull and crossbones", tprEmoji:"❌",
+   tip:"Crossing your arms makes an X meaning 'stay away!' — that's exactly what poisonous plants are saying.",
+   tprEs:"Cruza los brazos como calavera y huesos", tipEs:"Cruzar los brazos hace una X que significa '¡aléjate!' — eso es exactamente lo que dicen las plantas venenosas.", catLabelEs:"Adaptaciones y Defensa"},
+
+  // Writing & Research
+  {n:26, es:"Opinión", en:"Opinion", cat:"writing", catLabel:"Writing & Research", emoji:"💭",
+   defEn:"What you think or believe about something",
+   defEs:"Lo que piensas o crees sobre algo",
+   tpr:"Hand on heart", tprEmoji:"🫀",
+   tip:"Placing your hand on your heart connects to feelings and beliefs — opinions come from what you feel inside.",
+   tprEs:"Mano en el corazón", tipEs:"Poner la mano en el corazón conecta con sentimientos y creencias — las opiniones vienen de lo que sientes por dentro.", catLabelEs:"Escritura e Investigación"},
+  {n:27, es:"Hecho", en:"Fact", cat:"writing", catLabel:"Writing & Research", emoji:"✅",
+   defEn:"Something that is true and can be proven",
+   defEs:"Algo que es verdadero y se puede comprobar",
+   tpr:'Point to eye ("I saw proof")', tprEmoji:"👁️",
+   tip:"Pointing at your eye means 'I saw it' — facts are things you can see and prove are real.",
+   tprEs:'Señala el ojo ("Yo vi la prueba")', tipEs:"Señalar el ojo significa 'lo vi' — los hechos son cosas que puedes ver y comprobar que son reales.", catLabelEs:"Escritura e Investigación"},
+  {n:28, es:"Evidencia", en:"Evidence", cat:"writing", catLabel:"Writing & Research", emoji:"🔍",
+   defEn:"Proof or reasons that support your opinion",
+   defEs:"Pruebas o razones que apoyan tu opinión",
+   tpr:"Pointing at proof", tprEmoji:"👉",
+   tip:"Pointing shows 'look here!' — evidence is the proof you point to when you want to convince someone.",
+   tprEs:"Señalando la prueba", tipEs:"Señalar muestra '¡mira aquí!' — la evidencia es la prueba que señalas cuando quieres convencer a alguien.", catLabelEs:"Escritura e Investigación"},
+  {n:29, es:"Introducción", en:"Introduction", cat:"writing", catLabel:"Writing & Research", emoji:"🚪",
+   defEn:"The beginning of a piece of writing",
+   defEs:"El comienzo de un escrito",
+   tpr:"Door opening gesture", tprEmoji:"🚪",
+   tip:"Opening a door is how you enter a room — an introduction opens the door to your writing for the reader.",
+   tprEs:"Gesto de abrir una puerta", tipEs:"Abrir una puerta es cómo entras a un cuarto — una introducción abre la puerta de tu escrito para el lector.", catLabelEs:"Escritura e Investigación"},
+  {n:30, es:"Conclusión", en:"Conclusion", cat:"writing", catLabel:"Writing & Research", emoji:"📕",
+   defEn:"The ending of a piece of writing",
+   defEs:"El final de un escrito",
+   tpr:"Hands clapping shut like a book", tprEmoji:"👏",
+   tip:"Clapping a book shut means 'the end' — a conclusion wraps everything up and closes your writing.",
+   tprEs:"Manos cerrándose como un libro", tipEs:"Cerrar un libro de golpe significa 'el fin' — una conclusión envuelve todo y cierra tu escrito.",
+   asl:true, aslNote:"Approximates the ASL sign for BOOK (palms open then close together)", aslNoteEs:"Se parece a la seña ASL de LIBRO (las palmas se abren y luego se cierran juntas)", catLabelEs:"Escritura e Investigación"},
+
+  // ── Hábitats & Suelo (Week 2 SLA) ──
+  {n:31, es:"Clima", en:"Climate", cat:"habitat", catLabel:"Hábitats y Suelo", emoji:"🌤️",
+   defEn:"The usual weather conditions of a place over a long time",
+   defEs:"Las condiciones del tiempo habituales de un lugar durante mucho tiempo",
+   tpr:"Point to sky, then sweep hand across horizon", tprEmoji:"🌅",
+   tip:"Sweeping across the sky shows the big picture — climate is the big pattern of weather over time.",
+   tprEs:"Señala el cielo, luego barre la mano por el horizonte", tipEs:"Barrer el cielo muestra el panorama completo — el clima es el gran patrón del tiempo a lo largo de los años.", catLabelEs:"Hábitats y Suelo"},
+  {n:32, es:"Estación seca", en:"Dry Season", cat:"habitat", catLabel:"Hábitats y Suelo", emoji:"☀️",
+   defEn:"A time of year with very little rain",
+   defEs:"Una época del año con muy poca lluvia",
+   tpr:"Wipe forehead like sweating", tprEmoji:"😓",
+   tip:"Wiping sweat off your forehead shows it's hot and dry — no rain during dry season!",
+   tprEs:"Limpia la frente como si sudaras", tipEs:"Limpiarse el sudor de la frente muestra que hace calor y está seco — ¡no hay lluvia en la estación seca!", catLabelEs:"Hábitats y Suelo"},
+  {n:33, es:"Estación húmeda", en:"Wet Season", cat:"habitat", catLabel:"Hábitats y Suelo", emoji:"🌧️",
+   defEn:"A time of year with lots of rain",
+   defEs:"Una época del año con mucha lluvia",
+   tpr:"Fingers wiggle down like rain", tprEmoji:"🌧️",
+   tip:"Wiggling fingers downward look like raindrops falling — wet season means lots and lots of rain.",
+   tprEs:"Los dedos se mueven hacia abajo como lluvia", tipEs:"Los dedos moviéndose hacia abajo parecen gotas de lluvia cayendo — la estación húmeda significa mucha, mucha lluvia.", catLabelEs:"Hábitats y Suelo"},
+  {n:34, es:"Templado", en:"Temperate", cat:"habitat", catLabel:"Hábitats y Suelo", emoji:"🌿",
+   defEn:"A mild climate that is not too hot or too cold",
+   defEs:"Un clima moderado que no es ni muy caliente ni muy frío",
+   tpr:"Hands flat, palms down, balanced", tprEmoji:"⚖️",
+   tip:"Balanced hands show 'just right' — temperate means not too hot, not too cold, perfectly balanced.",
+   tprEs:"Manos planas, palmas hacia abajo, en equilibrio", tipEs:"Las manos equilibradas muestran 'justo bien' — templado significa ni muy caliente, ni muy frío, perfectamente equilibrado.", catLabelEs:"Hábitats y Suelo"},
+  {n:35, es:"Tropical", en:"Tropical", cat:"habitat", catLabel:"Hábitats y Suelo", emoji:"🌴",
+   defEn:"A hot and humid climate near the equator",
+   defEs:"Un clima cálido y húmedo cerca del ecuador",
+   tpr:"Fan yourself with hand", tprEmoji:"🥵",
+   tip:"Fanning yourself means it's really hot — tropical places are warm and steamy all year!",
+   tprEs:"Abánicate con la mano", tipEs:"Abanicarte significa que hace mucho calor — ¡los lugares tropicales son cálidos y húmedos todo el año!", catLabelEs:"Hábitats y Suelo"},
+  {n:36, es:"Árido", en:"Arid", cat:"habitat", catLabel:"Hábitats y Suelo", emoji:"🏜️",
+   defEn:"Very dry with almost no rain",
+   defEs:"Muy seco con casi nada de lluvia",
+   tpr:"Tongue out, panting like thirsty", tprEmoji:"😛",
+   tip:"Panting with your tongue out means super thirsty — arid places are so dry that plants struggle to find water.",
+   tprEs:"Lengua afuera, jadeando como con sed", tipEs:"Jadear con la lengua afuera significa mucha sed — los lugares áridos son tan secos que las plantas luchan por encontrar agua.", catLabelEs:"Hábitats y Suelo"},
+  {n:37, es:"Precipitación", en:"Precipitation", cat:"habitat", catLabel:"Hábitats y Suelo", emoji:"🌦️",
+   defEn:"Water that falls from the sky as rain, snow, or hail",
+   defEs:"Agua que cae del cielo como lluvia, nieve o granizo",
+   tpr:"Hands high, fingers flutter down", tprEmoji:"🤲",
+   tip:"Fluttering fingers falling from above look like rain, snow, or hail coming down from the clouds.",
+   tprEs:"Manos arriba, dedos aleteando hacia abajo", tipEs:"Los dedos aleteando desde arriba parecen lluvia, nieve o granizo cayendo de las nubes.", catLabelEs:"Hábitats y Suelo"},
+  {n:38, es:"Sequía", en:"Drought", cat:"habitat", catLabel:"Hábitats y Suelo", emoji:"🥀",
+   defEn:"A long time without rain when plants and soil dry out",
+   defEs:"Un largo tiempo sin lluvia cuando las plantas y la tierra se secan",
+   tpr:"Hands cracking apart like dry earth", tprEmoji:"💔",
+   tip:"Pulling hands apart like cracked earth shows what happens when there's no rain for a long time.",
+   tprEs:"Manos separándose como tierra agrietada", tipEs:"Separar las manos como tierra agrietada muestra lo que pasa cuando no llueve por mucho tiempo.", catLabelEs:"Hábitats y Suelo"},
+  {n:39, es:"Fronda", en:"Frond", cat:"habitat", catLabel:"Hábitats y Suelo", emoji:"🌿",
+   defEn:"A large leaf, especially on a fern or palm tree",
+   defEs:"Una hoja grande, especialmente de un helecho o palmera",
+   tpr:"Spread fingers wide like a big leaf", tprEmoji:"🖐️",
+   tip:"Spreading all your fingers wide looks like the many leaflets on a fern frond.",
+   tprEs:"Abre los dedos como una hoja grande", tipEs:"Abrir todos los dedos se ve como las muchas hojitas de una fronda de helecho.", catLabelEs:"Hábitats y Suelo"},
+  {n:40, es:"Refugio", en:"Shelter", cat:"habitat", catLabel:"Hábitats y Suelo", emoji:"🛖",
+   defEn:"A place where living things find protection from weather or danger",
+   defEs:"Un lugar donde los seres vivos encuentran protección del clima o el peligro",
+   tpr:"Hands over head like a roof", tprEmoji:"🏠",
+   tip:"Making a roof over your head shows protection — a shelter keeps living things safe from storms and danger.",
+   tprEs:"Manos sobre la cabeza como un techo", tipEs:"Hacer un techo sobre la cabeza muestra protección — un refugio mantiene a los seres vivos a salvo de tormentas y peligro.", catLabelEs:"Hábitats y Suelo"},
+  {n:41, es:"Arena", en:"Sand", cat:"habitat", catLabel:"Hábitats y Suelo", emoji:"🏖️",
+   defEn:"Tiny grains of rock found on beaches and in deserts",
+   defEs:"Pequeños granos de roca que se encuentran en las playas y en los desiertos",
+   tpr:"Rub fingertips together gently", tprEmoji:"🤏",
+   tip:"Rubbing fingertips together feels like tiny grains of sand slipping between your fingers.",
+   tprEs:"Frota las puntas de los dedos suavemente", tipEs:"Frotar las puntas de los dedos se siente como pequeños granos de arena deslizándose entre los dedos.", catLabelEs:"Hábitats y Suelo"},
+  {n:42, es:"Limo", en:"Silt", cat:"habitat", catLabel:"Hábitats y Suelo", emoji:"🟤",
+   defEn:"Very fine soil particles, smoother than sand",
+   defEs:"Partículas de tierra muy finas, más suaves que la arena",
+   tpr:"Smooth palms together slowly", tprEmoji:"🫲",
+   tip:"Smoothing your palms shows how silky silt feels — it's much finer and smoother than gritty sand.",
+   tprEs:"Alisa las palmas lentamente", tipEs:"Alisar las palmas muestra cómo se siente el limo sedoso — es mucho más fino y suave que la arena granulosa.", catLabelEs:"Hábitats y Suelo"},
+  {n:43, es:"Arcilla", en:"Clay", cat:"habitat", catLabel:"Hábitats y Suelo", emoji:"🏺",
+   defEn:"Heavy, sticky soil that holds water",
+   defEs:"Tierra pesada y pegajosa que retiene agua",
+   tpr:"Squeeze and mold with hands", tprEmoji:"🤜",
+   tip:"Squeezing and shaping with your hands is like molding clay — it's thick and sticky!",
+   tprEs:"Aprieta y moldea con las manos", tipEs:"Apretar y dar forma con las manos es como moldear arcilla — ¡es gruesa y pegajosa!", catLabelEs:"Hábitats y Suelo"},
+  {n:44, es:"Marga", en:"Loam", cat:"habitat", catLabel:"Hábitats y Suelo", emoji:"🌱",
+   defEn:"Rich, dark soil that is the best for growing plants",
+   defEs:"Tierra rica y oscura que es la mejor para cultivar plantas",
+   tpr:"Scoop up with both hands, smile", tprEmoji:"😊",
+   tip:"Scooping up with a smile shows this is the good stuff — loam is the best soil for a healthy garden!",
+   tprEs:"Recoge con ambas manos, sonríe", tipEs:"Recoger con una sonrisa muestra que esto es lo bueno — ¡la marga es la mejor tierra para un jardín saludable!", catLabelEs:"Hábitats y Suelo"},
+  {n:45, es:"Humus", en:"Humus", cat:"habitat", catLabel:"Hábitats y Suelo", emoji:"🍂",
+   defEn:"Dark, rich material in soil made from decayed leaves and plants",
+   defEs:"Material oscuro y rico en la tierra hecho de hojas y plantas descompuestas",
+   tpr:"Crumble fingers down like falling leaves", tprEmoji:"🍁",
+   tip:"Crumbling fingers show leaves breaking down — humus is the decomposed leaf layer that makes soil super nutritious.",
+   tprEs:"Desmenuza los dedos hacia abajo como hojas cayendo", tipEs:"Los dedos desmenuzándose muestran hojas descomponiéndose — el humus es la capa de hojas descompuestas que hace la tierra súper nutritiva.", catLabelEs:"Hábitats y Suelo"},
+
+  // ── Reproducción / Life Cycle Details (Week 4 SLA) ──
+  {n:46, es:"Espora", en:"Spore", cat:"repro", catLabel:"Reproducción", emoji:"✨",
+   defEn:"A tiny cell some plants use to reproduce instead of seeds",
+   defEs:"Una célula diminuta que algunas plantas usan para reproducirse en vez de semillas",
+   tpr:"Blow gently off palm", tprEmoji:"🌬️",
+   tip:"Blowing off your palm shows how tiny spores float through the air to land and grow into new plants.",
+   tprEs:"Sopla suavemente desde la palma", tipEs:"Soplar desde la palma muestra cómo las pequeñas esporas flotan por el aire para aterrizar y crecer en nuevas plantas.", catLabelEs:"Reproducción"},
+  {n:47, es:"Germen", en:"Sprout/Germ", cat:"repro", catLabel:"Reproducción", emoji:"🌱",
+   defEn:"The first tiny growth from a seed",
+   defEs:"El primer brote pequeño de una semilla",
+   tpr:"Thumb poking up through closed fist", tprEmoji:"👍",
+   tip:"Your thumb poking through your fist looks like a tiny sprout breaking through the soil for the first time!",
+   tprEs:"El pulgar asomándose por el puño cerrado", tipEs:"Tu pulgar saliendo del puño parece un pequeño brote saliendo de la tierra por primera vez.", catLabelEs:"Reproducción"},
+  {n:48, es:"Retoño", en:"Shoot", cat:"repro", catLabel:"Reproducción", emoji:"🌿",
+   defEn:"A new growth or young stem on a plant",
+   defEs:"Un nuevo crecimiento o tallo joven en una planta",
+   tpr:"One finger rising quickly from fist", tprEmoji:"☝️",
+   tip:"A finger shooting upward shows how fast a young shoot grows — it reaches for the sun!",
+   tprEs:"Un dedo subiendo rápido desde el puño", tipEs:"Un dedo subiendo rápido muestra lo rápido que crece un retoño joven — ¡busca el sol!", catLabelEs:"Reproducción"},
+  {n:49, es:"Brote", en:"Bud", cat:"repro", catLabel:"Reproducción", emoji:"🌷",
+   defEn:"A small bump on a plant that will grow into a leaf or flower",
+   defEs:"Una pequeña protuberancia en la planta que crecerá en hoja o flor",
+   tpr:"Closed fist slowly starting to open", tprEmoji:"✊",
+   tip:"A closed fist just beginning to open is like a bud — it's not a flower yet, but it's getting ready!",
+   tprEs:"Puño cerrado empezando a abrirse lentamente", tipEs:"Un puño cerrado que empieza a abrirse es como un brote — ¡todavía no es flor, pero se está preparando!", catLabelEs:"Reproducción"},
+  {n:50, es:"Inmaduro", en:"Immature", cat:"repro", catLabel:"Reproducción", emoji:"🟢",
+   defEn:"Not yet fully grown or developed",
+   defEs:"Que aún no está completamente desarrollado",
+   tpr:"Crouch down small", tprEmoji:"🧒",
+   tip:"Crouching small shows something that hasn't finished growing yet — immature means still young.",
+   tprEs:"Agáchate haciéndote pequeño", tipEs:"Agacharse muestra algo que todavía no terminó de crecer — inmaduro significa que aún es joven.", catLabelEs:"Reproducción"},
+  {n:51, es:"Maduro", en:"Mature", cat:"repro", catLabel:"Reproducción", emoji:"🔴",
+   defEn:"Fully grown and ready to reproduce",
+   defEs:"Completamente desarrollado y listo para reproducirse",
+   tpr:"Stand tall and spread arms wide", tprEmoji:"🧍",
+   tip:"Standing tall with arms wide shows full growth — mature means all grown up and ready!",
+   tprEs:"Párate derecho y abre los brazos", tipEs:"Pararse derecho con los brazos abiertos muestra crecimiento completo — ¡maduro significa completamente desarrollado y listo!", catLabelEs:"Reproducción"},
+  {n:52, es:"Capullo", en:"Cocoon/Bud", cat:"repro", catLabel:"Reproducción", emoji:"🌸",
+   defEn:"A flower bud that hasn't opened yet",
+   defEs:"Un botón de flor que aún no se ha abierto",
+   tpr:"Both hands cupped together tightly", tprEmoji:"🤲",
+   tip:"Cupping hands tightly closed is like a flower bud wrapped up and waiting for the right moment to bloom.",
+   tprEs:"Ambas manos juntas en copa bien cerradas", tipEs:"Las manos juntas bien cerradas son como un capullo de flor envuelto y esperando el momento perfecto para florecer.", catLabelEs:"Reproducción"},
+  {n:53, es:"Bulbo", en:"Bulb", cat:"repro", catLabel:"Reproducción", emoji:"🧅",
+   defEn:"A round underground part of a plant that stores food",
+   defEs:"Una parte redonda subterránea de la planta que almacena alimento",
+   tpr:"Both hands cupped in a round shape", tprEmoji:"🫶",
+   tip:"Making a round shape with your hands looks like a bulb underground — it's the plant's food storage!",
+   tprEs:"Ambas manos en copa formando una forma redonda", tipEs:"Hacer una forma redonda con las manos parece un bulbo bajo tierra — ¡es el almacén de comida de la planta!", catLabelEs:"Reproducción"},
+  {n:54, es:"Florecer", en:"To Bloom", cat:"repro", catLabel:"Reproducción", emoji:"🌻",
+   defEn:"When a flower opens its petals",
+   defEs:"Cuando una flor abre sus pétalos",
+   tpr:"Hands open outward like petals unfolding", tprEmoji:"🌺",
+   tip:"Hands opening outward look exactly like petals unfolding — blooming is when the flower finally opens!",
+   tprEs:"Las manos se abren hacia afuera como pétalos desplegándose", tipEs:"Las manos abriéndose hacia afuera se ven exactamente como pétalos desplegándose — ¡florecer es cuando la flor finalmente se abre!", catLabelEs:"Reproducción"},
+  {n:55, es:"Estambre", en:"Stamen", cat:"repro", catLabel:"Reproducción", emoji:"🌼",
+   defEn:"The part of the flower that makes pollen",
+   defEs:"La parte de la flor que produce el polen",
+   tpr:"Finger pointing up from cupped hand", tprEmoji:"☝️",
+   tip:"A finger sticking up from a cupped hand looks like a stamen rising from the center of a flower.",
+   tprEs:"Dedo apuntando hacia arriba desde la mano en copa", tipEs:"Un dedo saliendo de una mano en copa parece un estambre subiendo desde el centro de una flor.", catLabelEs:"Reproducción"},
+  {n:56, es:"Pistilo", en:"Pistil", cat:"repro", catLabel:"Reproducción", emoji:"🌷",
+   defEn:"The part of the flower that receives pollen and makes seeds",
+   defEs:"La parte de la flor que recibe el polen y produce semillas",
+   tpr:"Cupped hand catching sprinkles from above", tprEmoji:"🤲",
+   tip:"A cupped hand catching from above shows the pistil's job — catching pollen to start making seeds.",
+   tprEs:"Mano en copa atrapando gotas desde arriba", tipEs:"Una mano en copa atrapando desde arriba muestra el trabajo del pistilo — atrapar polen para empezar a hacer semillas.", catLabelEs:"Reproducción"},
+  {n:57, es:"Nuez", en:"Nut", cat:"repro", catLabel:"Reproducción", emoji:"🥜",
+   defEn:"A hard-shelled seed or fruit",
+   defEs:"Una semilla o fruto con cáscara dura",
+   tpr:"Knock fists together", tprEmoji:"🤜🤛",
+   tip:"Knocking fists together makes a hard sound — nuts have a tough shell protecting the seed inside.",
+   tprEs:"Golpea los puños juntos", tipEs:"Golpear los puños hace un sonido duro — las nueces tienen una cáscara resistente que protege la semilla adentro.", catLabelEs:"Reproducción"},
+  {n:58, es:"Cono", en:"Cone", cat:"repro", catLabel:"Reproducción", emoji:"🌲",
+   defEn:"The seed-bearing structure of pine and other conifer trees",
+   defEs:"La estructura que lleva semillas en pinos y otros árboles de coníferas",
+   tpr:"Hands form a cone/triangle shape", tprEmoji:"🔺",
+   tip:"Making a triangle with your hands looks like a pine cone — these hold seeds for trees like pines and spruces.",
+   tprEs:"Las manos forman una forma de cono/triángulo", tipEs:"Hacer un triángulo con las manos parece una piña de pino — estas guardan semillas para árboles como pinos y abetos.", catLabelEs:"Reproducción"},
+
+  // ── Additional Adaptation & Defense words (Week 6 SLA) ──
+  {n:59, es:"Espina", en:"Thorn", cat:"adapt", catLabel:"Adaptations & Defense", emoji:"🌵",
+   defEn:"A sharp, pointed growth on a plant stem",
+   defEs:"Un crecimiento puntiagudo y afilado en el tallo de una planta",
+   tpr:"Poke finger out sharply", tprEmoji:"👆",
+   tip:"Poking your finger out sharply feels prickly — just like a thorn that says 'don't touch me!'",
+   tprEs:"Saca el dedo con fuerza", tipEs:"Sacar el dedo con fuerza se siente puntiagudo — ¡igual que una espina que dice 'no me toques!'", catLabelEs:"Adaptaciones y Defensa"},
+  {n:60, es:"Pincho", en:"Spike/Prickle", cat:"adapt", catLabel:"Adaptations & Defense", emoji:"📌",
+   defEn:"A small, sharp point on a plant's surface",
+   defEs:"Un punto pequeño y afilado en la superficie de una planta",
+   tpr:"All fingers pointing outward like spikes", tprEmoji:"🖐️",
+   tip:"Fingers pointing outward in all directions look like the spiky surface of a cactus or thistle.",
+   tprEs:"Todos los dedos apuntando hacia afuera como pinchos", tipEs:"Los dedos apuntando en todas las direcciones parecen la superficie espinosa de un cactus o cardo.", catLabelEs:"Adaptaciones y Defensa"},
+  {n:61, es:"Capa", en:"Layer", cat:"adapt", catLabel:"Adaptations & Defense", emoji:"📚",
+   defEn:"A covering or level of material over another",
+   defEs:"Una cubierta o nivel de material sobre otro",
+   tpr:"Stack flat hands on top of each other", tprEmoji:"🫱🫲",
+   tip:"Stacking hands shows layers building up — plants use thick layers of bark or wax to protect themselves.",
+   tprEs:"Apila las manos planas una sobre otra", tipEs:"Apilar las manos muestra capas acumulándose — las plantas usan capas gruesas de corteza o cera para protegerse.", catLabelEs:"Adaptaciones y Defensa"},
+  {n:62, es:"Raíz primaria", en:"Taproot", cat:"adapt", catLabel:"Adaptations & Defense", emoji:"🥕",
+   defEn:"One thick main root that grows deep into the soil",
+   defEs:"Una raíz principal gruesa que crece profundo en la tierra",
+   tpr:"Point one arm straight down", tprEmoji:"👇",
+   tip:"One arm pointing straight down is like a taproot — one strong root drilling deep to find water far underground.",
+   tprEs:"Apunta un brazo recto hacia abajo", tipEs:"Un brazo apuntando hacia abajo es como una raíz primaria — una raíz fuerte que cava profundo para encontrar agua bajo tierra.", catLabelEs:"Adaptaciones y Defensa"},
+  {n:63, es:"Raíces fibrosas", en:"Fibrous Roots", cat:"adapt", catLabel:"Adaptations & Defense", emoji:"🕸️",
+   defEn:"Many thin roots that spread out wide near the surface",
+   defEs:"Muchas raíces delgadas que se extienden cerca de la superficie",
+   tpr:"Spread all fingers wide and wiggle", tprEmoji:"🖐️",
+   tip:"Spreading and wiggling all your fingers shows many thin roots reaching out in every direction to catch water.",
+   tprEs:"Abre todos los dedos y muévelos", tipEs:"Abrir y mover todos los dedos muestra muchas raíces delgadas extendiéndose en todas las direcciones para atrapar agua.", catLabelEs:"Adaptaciones y Defensa"},
+  {n:64, es:"Suculento", en:"Succulent", cat:"adapt", catLabel:"Adaptations & Defense", emoji:"🪴",
+   defEn:"A plant with thick, fleshy parts that store water",
+   defEs:"Una planta con partes gruesas y carnosas que almacenan agua",
+   tpr:"Squeeze fist like squishing something juicy", tprEmoji:"💧",
+   tip:"Squeezing like something juicy shows that succulents are full of stored water — they're like little water tanks!",
+   tprEs:"Aprieta el puño como exprimiendo algo jugoso", tipEs:"Apretar como algo jugoso muestra que las suculentas están llenas de agua almacenada — ¡son como pequeños tanques de agua!", catLabelEs:"Adaptaciones y Defensa"},
+  {n:65, es:"De hoja perenne", en:"Evergreen", cat:"adapt", catLabel:"Adaptations & Defense", emoji:"🌲",
+   defEn:"A plant that keeps its leaves all year long",
+   defEs:"Una planta que mantiene sus hojas durante todo el año",
+   tpr:"Hold hands up like leaves, keep them there", tprEmoji:"🌳",
+   tip:"Holding your hands up and keeping them shows leaves that stay — evergreen trees never drop all their leaves!",
+   tprEs:"Levanta las manos como hojas y mantenlas ahí", tipEs:"Mantener las manos arriba muestra hojas que se quedan — ¡los árboles de hoja perenne nunca pierden todas sus hojas!", catLabelEs:"Adaptaciones y Defensa"},
+  {n:66, es:"De hoja caduca", en:"Deciduous", cat:"adapt", catLabel:"Adaptations & Defense", emoji:"🍂",
+   defEn:"A plant that loses its leaves in fall or dry season",
+   defEs:"Una planta que pierde sus hojas en otoño o la estación seca",
+   tpr:"Hands up, then flutter fingers down", tprEmoji:"🍁",
+   tip:"Fluttering fingers downward are falling leaves — deciduous trees drop their leaves when the cold or dry season comes.",
+   tprEs:"Manos arriba, luego aletea los dedos hacia abajo", tipEs:"Los dedos aleteando hacia abajo son hojas cayendo — los árboles de hoja caduca pierden sus hojas cuando llega el frío o la estación seca.", catLabelEs:"Adaptaciones y Defensa"}
+];
+
+function buildCard(v) {
+  var tprEs = v.tprEs || v.tpr;
+  var tipEs = v.tipEs || v.tip;
+  var catEs = v.catLabelEs || v.catLabel;
+  var aslNoteEs = v.aslNoteEs || v.aslNote || '';
+  return `
+    <article class="card" data-cat="${v.cat}" data-search="${(v.es+' '+v.en+' '+v.defEn+' '+v.defEs+' '+v.tpr+' '+tprEs).toLowerCase()}">
+      <div class="card-accent ${v.cat}"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-emoji ${v.cat}">${v.emoji}</div>
+          <div class="card-titles">
+            <div class="word-number ${v.cat}"><span class="lang-en">Word ${v.n} of 66</span><span class="lang-es">Palabra ${v.n} de 66</span></div>
+            <div class="word-spanish">${v.es}</div>
+            <div class="word-english">${v.en}</div>
+            <span class="category-tag ${v.cat}"><span class="lang-en">${v.catLabel}</span><span class="lang-es">${catEs}</span></span>
+          </div>
+        </div>
+        <div class="tpr-section ${v.cat}">
+          <div class="tpr-icon">${v.tprEmoji}</div>
+          <div class="tpr-content">
+            <div class="tpr-label ${v.cat}"><span class="lang-en">TPR Gesture</span><span class="lang-es">Gesto TPR</span>${v.asl ? '<span class="asl-badge"><span class="lang-en">ASL Sign</span><span class="lang-es">Seña ASL</span></span>' : ''}</div>
+            <div class="tpr-gesture"><span class="lang-en">${v.tpr}</span><span class="lang-es">${tprEs}</span></div>${v.aslNote ? '<div class="asl-note"><span class="lang-en">'+v.aslNote+'</span><span class="lang-es">'+(aslNoteEs)+'</span></div>' : ''}
+          </div>
+        </div>
+        <div class="definitions">
+          <div class="def-block en">
+            <div class="def-lang en">English</div>
+            <div class="def-text">${v.defEn}</div>
+          </div>
+          <div class="def-block es">
+            <div class="def-lang es">Español</div>
+            <div class="def-text">${v.defEs}</div>
+          </div>
+        </div>
+        <div class="memory-tip">
+          <div class="memory-tip-icon">💡</div>
+          <div class="memory-tip-content">
+            <div class="memory-tip-label"><span class="lang-en">Why This Gesture?</span><span class="lang-es">¿Por qué este gesto?</span></div>
+            <div class="memory-tip-text"><span class="lang-en">${v.tip}</span><span class="lang-es">${tipEs}</span></div>
+          </div>
+        </div>
+      </div>
+    </article>`;
+}
+
+// Render all cards
+const grid = document.getElementById('cardGrid');
+grid.innerHTML = VOCAB.map(buildCard).join('') +
+  '<div class="empty-state" id="emptyState"><div class="emoji">🔍</div><h3><span class="lang-en">No words found</span><span class="lang-es">No se encontraron palabras</span></h3><p><span class="lang-en">Try a different search term or category filter.</span><span class="lang-es">Intenta con otro término de búsqueda o filtro de categoría.</span></p></div>';
+
+// Filter logic
+const cards = grid.querySelectorAll('.card');
+const btns = document.querySelectorAll('.filter-btn');
+const searchInput = document.getElementById('searchInput');
+const resultsCount = document.getElementById('resultsCount');
+let activeCat = 'all';
+
+function applyFilters() {
+  const q = searchInput.value.toLowerCase().trim();
+  let visible = 0;
+  cards.forEach(card => {
+    const matchCat = activeCat === 'all' || card.dataset.cat === activeCat;
+    const matchSearch = !q || card.dataset.search.includes(q);
+    const show = matchCat && matchSearch;
+    card.classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+  resultsCount.textContent = document.body.classList.contains('es') ? `Mostrando ${visible} de 66 palabras` : `Showing ${visible} of 66 words`;
+  document.getElementById('emptyState').classList.toggle('visible', visible === 0);
+}
+
+btns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    btns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected','true');
+    activeCat = btn.dataset.cat;
+    applyFilters();
+  });
+});
+
+searchInput.addEventListener('input', applyFilters);
+</script>
+<script>
+function toggleLang(){document.body.classList.toggle('es');localStorage.setItem('siteLang',document.body.classList.contains('es')?'es':'en');updatePlaceholder();if(typeof applyFilters==='function')applyFilters();}
+function updatePlaceholder(){var s=document.getElementById('searchInput');if(s)s.placeholder=document.body.classList.contains('es')?'Buscar palabras en inglés o español...':'Search words in English or Spanish...';}
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var urlLang = params.get('lang');
+  if (urlLang === 'es') {
+    document.body.classList.add('es');
+  } else if (urlLang === 'en') {
+    document.body.classList.remove('es');
+  } else if (localStorage.getItem('siteLang') === 'es') {
+    document.body.classList.add('es');
+  }
+  updatePlaceholder();
+})();
+</script>
+</body>
+</html>
