@@ -1,22 +1,25 @@
-# Bancroft1.org — School Site + G1 Weekly Newsletter
+# Bancroft1.org — Legacy SPA (ARCHIVED)
 
-Static site at https://bancroft1.org. Production version of the G1 weekly parent newsletter.
-Plain HTML/CSS/JS + JSON data, hosted on Vercel.
+**Status: ARCHIVED as of 2026-05-01.** Production was cut over to the Astro
+site at `../bancroft-newsletter-astro/`, which now serves `bancroft1.org`.
 
-## Current state
-Active. ~weekly deploys for newsletter updates. Tier 1.
+This folder is kept as a complete snapshot of the original plain-HTML/JS SPA
+(everything through May 4 2026) and pushed to `bancroft-primero/bancroft-newsletter`
+on GitHub. **Do not deploy from here** unless rolling back.
 
-## Tech stack
+## Tech stack (historical)
 - Plain HTML/CSS/JS (no framework)
 - JSON data files in `nl-f2049c43/data/weeks/`
-- Vercel hosting (project: `bancroft-newsletter`, root = `nl-f2049c43/`, aliased to `bancroft1.org`)
+- Vercel project: `bancroft-newsletter`, root = `nl-f2049c43/`. Latest deployment
+  (still reachable, no longer aliased): `bancroft-newsletter-24nrjsxzz-mws-projects-080b130f.vercel.app`
 
-## Critical gotchas
-- **Newsletter post flow lives in `../OPERATIONS.md`** — read it before posting.
-- **Vercel project root is `nl-f2049c43/`**, not the folder root. Deploy from `sites/bancroft1.org/`.
-- **FERPA**: ROARS section contains student first names + last initials. Don't expose anywhere indexable.
+## Rollback procedure
+If the new astro site breaks:
+```
+cd sites/bancroft1.org
+npx vercel alias set bancroft-newsletter-24nrjsxzz-mws-projects-080b130f.vercel.app bancroft1.org
+```
 
 ## See also
-- `../bancroft-newsletter-astro/CLAUDE.md` — Astro mirror, auto-posted alongside this one (default "post the newsletter" = both)
-- `../OPERATIONS.md` — full posting flow for both sites
-- Feedback memories: `feedback_newsletter_images.md`, `feedback_newsletter_text_heavy.md`, `feedback_eureka_activity_filter.md`
+- `../bancroft-newsletter-astro/CLAUDE.md` — current production
+- `../OPERATIONS.md` — newsletter posting flow (now astro-only)
