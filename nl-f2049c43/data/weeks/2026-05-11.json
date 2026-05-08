@@ -127,19 +127,5 @@
       }
     ]
   },
-  "books": [],
-  "mathDetails": {
-    "module": {
-      "en": "End-of-year review",
-      "es": "Repaso de fin de año"
-    },
-    "topic": {
-      "en": "Reviewing for the i-Ready assessment",
-      "es": "Repaso para la evaluación de i-Ready"
-    },
-    "lesson": {
-      "en": "Big strategies from across the year",
-      "es": "Estrategias clave de todo el año"
-    }
-  }
+  "books": []
 }
