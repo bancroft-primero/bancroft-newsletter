@@ -30,6 +30,11 @@
   },
   "reminders": [
     {
+      "date": "2026-05-11",
+      "en": "<b>End-of-year i-Ready assessments — May 11 to May 29.</b> SLA the week of 5/11, ELA the week of 5/18, Math the week of 5/25. Please make sure students arrive on time, well rested, and have eaten breakfast on testing days.",
+      "es": "<b>Evaluaciones de i-Ready de fin de año — del 11 al 29 de mayo.</b> SLA la semana del 11/5, ELA la semana del 18/5 y Matemáticas la semana del 25/5. Por favor, asegúrense de que los estudiantes lleguen a tiempo, bien descansados y desayunados los días de evaluación."
+    },
+    {
       "date": "2026-05-16",
       "en": "<b>Spring Fair — Saturday, May 16, 11:00 am – 3:00 pm</b>. Come join us!",
       "es": "<b>Spring Fair (Feria de Primavera) — sábado 16 de mayo, 11:00 am – 3:00 pm</b>. ¡Vengan a acompañarnos!"
@@ -38,11 +43,6 @@
       "date": "2026-05-25",
       "en": "<b>Memorial Day — Monday, May 25</b> — No school.",
       "es": "<b>Día de los Caídos — lunes 25 de mayo</b> — No hay clases."
-    },
-    {
-      "date": "2026-05-11",
-      "en": "<b>End-of-year i-Ready assessments — May 11 to May 29.</b> SLA the week of 5/11, ELA the week of 5/18, Math the week of 5/25. Please make sure students arrive on time, well rested, and have eaten breakfast on testing days.",
-      "es": "<b>Evaluaciones de i-Ready de fin de año — del 11 al 29 de mayo.</b> SLA la semana del 11/5, ELA la semana del 18/5 y Matemáticas la semana del 25/5. Por favor, asegúrense de que los estudiantes lleguen a tiempo, bien descansados y desayunados los días de evaluación."
     }
   ],
   "askYourChild": [
