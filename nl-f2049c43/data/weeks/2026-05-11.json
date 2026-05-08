@@ -1,0 +1,145 @@
+{
+  "date": "2026-05-11",
+  "season": "spring",
+  "welcome": {
+    "en": "Hi families! What beautiful spring weather we're having ☀️. A friendly reminder that the <b>Spring Fair is this Saturday, May 16, from 11:00 am to 3:00 pm</b> — we'd love to see you there!\n\nAs we head into the last few weeks of school, students will be taking some end-of-year assessments. If your student is feeling worn out, please give them lots of <b>encouragement</b> and remind them to <b>try their best</b> — they've worked hard all year!",
+    "es": "¡Hola familias! ¡Qué hermoso clima de primavera estamos teniendo ☀️! Un recordatorio amigable: el <b>Spring Fair (Feria de Primavera) es este sábado 16 de mayo, de 11:00 am a 3:00 pm</b> — ¡nos encantaría verlos allí!\n\nA medida que entramos en las últimas semanas de clases, los estudiantes realizarán algunas evaluaciones de fin de año. Si su estudiante se siente cansado/a, por favor bríndenle muchas <b>palabras de aliento</b> y recuérdenle que <b>dé lo mejor de sí</b> — ¡han trabajado duro todo el año!"
+  },
+  "math": {
+    "en": "This week, we begin <b>reviewing everything we've learned this year</b> in preparation for the <b>end-of-year i-Ready assessment</b> the last week of May.\n\n<b>How you can help at home:</b>\n\n• <b>Talk about <i>process of elimination</i></b> on multiple-choice questions — ask your student which answer choice <i>does not</i> make sense, and why. This is a powerful test-taking strategy.\n\n• <b>Practice on ST Math</b> a few times this week — even 10–15 minutes makes a difference.\n\n• <b>Review the big strategies</b>: number bonds, counting on, make-ten, place value (tens and ones), and naming shapes.\n\nThank you for all your support — our students are ready to show the amazing math they've learned this year!",
+    "es": "Esta semana comenzamos a <b>repasar todo lo que hemos aprendido este año</b> en preparación para la <b>evaluación de i-Ready de fin de año</b> durante la última semana de mayo.\n\n<b>Cómo pueden ayudar en casa:</b>\n\n• <b>Hablen sobre el <i>proceso de eliminación</i></b> en las preguntas de opción múltiple — pregúntenle a su estudiante qué respuesta <i>no</i> tiene sentido y por qué. Es una estrategia muy útil para los exámenes.\n\n• <b>Practiquen en ST Math</b> unas cuantas veces esta semana — incluso 10–15 minutos hacen una gran diferencia.\n\n• <b>Repasen las estrategias clave</b>: vínculos numéricos, conteo hacia adelante, formar diez, valor posicional (decenas y unidades) y nombrar figuras geométricas.\n\n¡Gracias por todo su apoyo — nuestros estudiantes están listos para mostrar las matemáticas asombrosas que han aprendido este año!"
+  },
+  "literacy": {
+    "en": "In <b>SLA</b>, we'll take the <b>end-of-year i-Ready assessment</b> and begin our introduction to <b>Unidad 5: Primeros Habitantes de Hispanoamérica</b> (Unit 5: First Inhabitants of Spanish America).\n\n<b>How you can help in Spanish at home:</b>\n\n• Read different texts together and <b>time the reading</b> to build speed and accuracy.\n• Ask <b>comprehension, inference, prediction, and vocabulary</b> questions, for example:\n  — «¿Qué significa la palabra _____ en esta oración?»\n  — «¿Quién está narrando la historia?»\n  — «¿Qué otra palabra en el texto significa lo mismo que _____?»\n\nIn <b>ELA</b>, we've finished our <b>Plants unit</b>! Look out for your student's <b>bilingual book</b> coming home in their backpack next week. We're starting our Social Studies unit on <b>American Symbols</b> — talk with your student about <b>what a symbol is</b> and what it stands for.",
+    "es": "En <b>SLA</b>, tomaremos la <b>evaluación de i-Ready de fin de año</b> y comenzaremos la introducción a la <b>Unidad 5: Primeros Habitantes de Hispanoamérica</b>.\n\n<b>Cómo pueden ayudar en español en casa:</b>\n\n• Lean diferentes textos juntos y <b>tomen el tiempo de la lectura</b> para practicar rapidez y precisión.\n• Hagan preguntas de <b>comprensión, inferencia, predicción y vocabulario</b>, por ejemplo:\n  — «¿Qué significa la palabra _____ en esta oración?»\n  — «¿Quién está narrando la historia?»\n  — «¿Qué otra palabra en el texto significa lo mismo que _____?»\n\nEn <b>ELA</b>, ¡terminamos nuestra unidad de <b>Plantas</b>! Estén atentos al <b>libro bilingüe</b> de su estudiante que llegará a casa en la mochila la próxima semana. Comenzamos nuestra unidad de Estudios Sociales sobre los <b>Símbolos Estadounidenses (American Symbols)</b> — conversen con su estudiante sobre <b>qué es un símbolo</b> y qué representa."
+  },
+  "specials": {
+    "monday": "B",
+    "tuesday": "C",
+    "wednesday": "D",
+    "thursday": "E",
+    "friday": "F"
+  },
+  "roars": {
+    "DR": "Kian B.",
+    "Managua": "Mercedes P.",
+    "Venezuela": "Rose E.",
+    "Cartagena": "Trent K.",
+    "Colombia": "Chelsy L.",
+    "España": "Nacer B."
+  },
+  "reminders": [
+    {
+      "date": "2026-05-16",
+      "en": "<b>Spring Fair — Saturday, May 16, 11:00 am – 3:00 pm</b>. Come join us!",
+      "es": "<b>Spring Fair (Feria de Primavera) — sábado 16 de mayo, 11:00 am – 3:00 pm</b>. ¡Vengan a acompañarnos!"
+    },
+    {
+      "date": "2026-05-25",
+      "en": "<b>Memorial Day — Monday, May 25</b> — No school.",
+      "es": "<b>Día de los Caídos — lunes 25 de mayo</b> — No hay clases."
+    },
+    {
+      "date": "2026-05-26",
+      "en": "<b>End-of-year i-Ready assessments</b> — last week of May. Please make sure students arrive on time, well rested, and have eaten breakfast.",
+      "es": "<b>Evaluaciones de i-Ready de fin de año</b> — última semana de mayo. Por favor, asegúrense de que los estudiantes lleguen a tiempo, bien descansados y desayunados."
+    }
+  ],
+  "askYourChild": [
+    {
+      "en": "When you see a multiple-choice question, which answer can you cross out first because it doesn't make sense?",
+      "es": "Cuando ves una pregunta de opción múltiple, ¿cuál respuesta puedes tachar primero porque no tiene sentido?"
+    },
+    {
+      "en": "What is a symbol? Can you name an American symbol?",
+      "es": "¿Qué es un símbolo? ¿Puedes nombrar un símbolo estadounidense?"
+    },
+    {
+      "en": "Tell me about something you learned in math this year that you're proud of.",
+      "es": "Cuéntame algo que aprendiste en matemáticas este año de lo que te sientas orgulloso/a."
+    }
+  ],
+  "vocabulary": {
+    "en": [
+      {
+        "label": "Math review",
+        "words": [
+          "number bond",
+          "counting on",
+          "make ten",
+          "place value",
+          "tens and ones",
+          "composed shape"
+        ]
+      },
+      {
+        "label": "SLA",
+        "words": [
+          "primeros habitantes",
+          "Hispanoamérica",
+          "civilización",
+          "comprensión",
+          "inferencia"
+        ],
+        "frontLang": "es"
+      },
+      {
+        "label": "ELA",
+        "words": [
+          "symbol",
+          "American",
+          "country",
+          "flag"
+        ]
+      }
+    ],
+    "es": [
+      {
+        "label": "Repaso de Matemáticas",
+        "words": [
+          "vínculo numérico",
+          "conteo hacia adelante",
+          "formar diez",
+          "valor posicional",
+          "decenas y unidades",
+          "figura compuesta"
+        ]
+      },
+      {
+        "label": "SLA",
+        "words": [
+          "primeros habitantes",
+          "Hispanoamérica",
+          "civilización",
+          "comprensión",
+          "inferencia"
+        ],
+        "frontLang": "es"
+      },
+      {
+        "label": "ELA",
+        "words": [
+          "símbolo",
+          "estadounidense",
+          "país",
+          "bandera"
+        ]
+      }
+    ]
+  },
+  "books": [],
+  "mathDetails": {
+    "module": {
+      "en": "End-of-year review",
+      "es": "Repaso de fin de año"
+    },
+    "topic": {
+      "en": "Reviewing for the i-Ready assessment",
+      "es": "Repaso para la evaluación de i-Ready"
+    },
+    "lesson": {
+      "en": "Big strategies from across the year",
+      "es": "Estrategias clave de todo el año"
+    }
+  }
+}
